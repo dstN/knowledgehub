@@ -55,23 +55,44 @@ npm run preview
 knowledgehub/
 ├── src/
 │   ├── content/
-│   │   └── docs/                    # Markdown-Inhalte
-│   │       ├── index.md             # Startseite
-│   │       ├── 01-grundlagen/       # Kategorie 1
-│   │       ├── 02-eva-prinzip/      # Kategorie 2
-│   │       ├── 03-cpu-architektur/  # Kategorie 3
-│   │       ├── 04-mainboard-chipsatz/ # Kategorie 4
-│   │       └── 05-glossar/          # Kategorie 5
-│   ├── components/                  # React-Komponenten
-│   │   ├── EVADiagram.jsx           # Interaktives EVA-Diagramm
-│   │   ├── ArchitectureChart.jsx    # RISC/CISC Radar Chart
-│   │   └── MemoryHierarchyChart.jsx # Speicher Bubble Chart
-│   └── assets/                      # Statische Dateien (public/)
-├── astro.config.mjs                 # Astro-Konfiguration
-├── package.json                     # Dependencies
-├── .gitignore                       # Git ignore rules
-└── README.md                        # Dieses Dokument
+│   │   └── docs/                          # Alle Markdown-Inhalte
+│   │       ├── index.md                   # Startseite
+│   │       └── hardware/                  # Fach: Hardware
+│   │           ├── 01-grundlagen/         # Thema 1
+│   │           ├── 02-eva-prinzip/        # Thema 2
+│   │           ├── 03-cpu-architektur/    # Thema 3
+│   │           ├── 04-mainboard-chipsatz/ # Thema 4
+│   │           └── 05-glossar/            # Thema 5
+│   ├── components/                        # React-Komponenten
+│   │   ├── EVADiagram.jsx
+│   │   ├── ArchitectureChart.jsx
+│   │   └── MemoryHierarchyChart.jsx
+│   └── assets/                            # Statische Dateien (public/)
+├── astro.config.mjs                       # Astro-Konfiguration
+├── package.json                           # Dependencies
+├── .gitignore                             # Git ignore rules
+└── README.md                              # Dieses Dokument
 ```
+
+### Wie ist der Inhalt organisiert?
+
+Die Ordnerstruktur folgt einem **3-Ebenen-System**:
+
+```
+src/content/docs/
+└── [fach]/              ← z.B. hardware/, software/, netzwerke/
+    └── [thema]/         ← z.B. 01-grundlagen/, 02-eva-prinzip/
+        └── seite.md     ← z.B. analog-digital.md, risc-vs-cisc.md
+```
+
+**Beispiele:**
+| Datei | URL auf der Webseite |
+|-------|---------------------|
+| `hardware/01-grundlagen/index.md` | `/hardware/01-grundlagen/` |
+| `hardware/01-grundlagen/analog-digital.md` | `/hardware/01-grundlagen/analog-digital/` |
+| `software/01-grundlagen/index.md` | `/software/01-grundlagen/` |
+
+Dadurch können verschiedene Fächer jeweils ihre eigenen `01-grundlagen/` haben, ohne sich in die Quere zu kommen.
 
 ## ✏️ Inhalte bearbeiten – Schritt für Schritt
 
@@ -91,17 +112,28 @@ npm install
 ### Schritt 2 – Bestehende Seite bearbeiten
 
 1. Öffne die gewünschte Datei in `src/content/docs/`
-   - Grundlagen → `src/content/docs/01-grundlagen/`
-   - EVA-Prinzip → `src/content/docs/02-eva-prinzip/`
-   - CPU & Architektur → `src/content/docs/03-cpu-architektur/`
-   - Mainboard → `src/content/docs/04-mainboard-chipsatz/`
-   - Glossar → `src/content/docs/05-glossar/`
+   - Grundlagen → `src/content/docs/hardware/01-grundlagen/`
+   - EVA-Prinzip → `src/content/docs/hardware/02-eva-prinzip/`
+   - CPU & Architektur → `src/content/docs/hardware/03-cpu-architektur/`
+   - Mainboard → `src/content/docs/hardware/04-mainboard-chipsatz/`
+   - Glossar → `src/content/docs/hardware/05-glossar/`
 2. Datei mit VS Code öffnen und Text anpassen
 3. Speichern – fertig!
 
 ### Schritt 3 – Neue Seite hinzufügen
 
-1. Neue Datei anlegen, z.B. `src/content/docs/01-grundlagen/mein-thema.md`
+Das Prinzip: **Fach → Thema → Seite**
+
+- Du arbeitest an Hardware? → Datei kommt in `src/content/docs/hardware/`
+- Du arbeitest an Netzwerken? → Datei kommt in `src/content/docs/netzwerke/`
+
+**Beispiel**: Neue Seite "Binärsystem" unter Hardware → Grundlagen:
+
+```
+src/content/docs/hardware/01-grundlagen/binaersystem.md
+```
+
+1. Neue Datei anlegen unter dem passenden Fach/Thema-Ordner
 2. **Jede Datei braucht diesen Kopfbereich** (Frontmatter) ganz oben:
 
 ```markdown
@@ -138,21 +170,28 @@ print("Hallo Welt")
 
 Damit die neue Seite in der Navigation auftaucht, muss sie in `astro.config.mjs` eingetragen werden.
 
-Suche den passenden Abschnitt und füge einen Eintrag hinzu:
+Der `slug` ist immer der **Pfad ab `docs/` ohne `.md`**:
+
+| Datei | slug |
+|-------|------|
+| `hardware/01-grundlagen/binaersystem.md` | `hardware/01-grundlagen/binaersystem` |
+| `software/01-grundlagen/index.md` | `software/01-grundlagen` |
+
+Suche in `astro.config.mjs` den passenden Abschnitt und füge einen Eintrag hinzu:
 
 ```javascript
 {
   label: '01 Grundlagen',
   items: [
-    { label: 'Übersicht', slug: '01-grundlagen' },
-    { label: 'Evolution', slug: '01-grundlagen/evolution-datenverarbeitung' },
+    { label: 'Übersicht', slug: 'hardware/01-grundlagen' },
+    { label: 'Evolution', slug: 'hardware/01-grundlagen/evolution-datenverarbeitung' },
     // 👇 Hier deinen neuen Eintrag einfügen:
-    { label: 'Mein Thema', slug: '01-grundlagen/mein-thema' },
+    { label: 'Binärsystem', slug: 'hardware/01-grundlagen/binaersystem' },
   ],
 },
 ```
 
-> Der `slug` ist der Dateipfad **ohne** `.md` am Ende.
+> ⚠️ Wenn du eine **komplett neue Kategorie** (z.B. `software/`) anlegst, musst du in `astro.config.mjs` auch eine neue Gruppe auf der obersten Ebene eintragen – frag einfach nach, wenn du das brauchst!
 
 ### Schritt 5 – Lokal testen
 
