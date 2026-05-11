@@ -1,0 +1,40 @@
+name: Deploy to Webspace
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro project
+        run: npm run build
+
+      - name: Deploy to webspace
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+          SSH_TARGET_DIR: ${{ secrets.SSH_TARGET_DIR }}
+        run: |
+          apt-get update && apt-get install -y sshpass rsync
+          sshpass -p "$SSH_PASSWORD" rsync -avz --delete -e "ssh -p 22 -o StrictHostKeyChecking=no" \
+            ./dist/ \
+            "$SSH_USER@$SSH_HOST:$SSH_TARGET_DIR"
+
+      - name: Deployment successful
+        run: echo "✅ Deployment to ${{ secrets.SSH_HOST }} completed successfully!"
