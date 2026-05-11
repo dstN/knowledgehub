@@ -12,12 +12,14 @@ Dieser Artikel bietet einen detaillierten Überblick über alle wichtigen Kompon
 ### Recheneinheiten (Execution Units)
 
 #### ALU (Arithmetic Logic Unit)
+
 - Mathematische Operationen: +, -, ×, ÷, Modulo
 - Logische Operationen: AND, OR, NOT, XOR
 - Bitverschiebungen: <<, >>
 - Vergleichsoperationen: <, >, ==, !=
 
 #### FPU (Floating Point Unit)
+
 - Spezialisten für Dezimal-Arithmetik
 - IEEE 754 Standard
 - Nicht auf allen älteren CPUs (z.B. Intel 386)
@@ -27,21 +29,25 @@ Dieser Artikel bietet einen detaillierten Überblick über alle wichtigen Kompon
 ### Control Path
 
 #### Fetching (Befehl holen)
+
 1. Program Counter (PC) zeigt auf nächsten Befehl
 2. Instruktion aus L1-Cache oder RAM holen
 3. PC inkrementieren (für nächste Instruktion)
 
 #### Decoding (Befehl dekodieren)
+
 1. IDU erkennt Befehlstyp
 2. Mikrocode wird generiert
 3. Operanden-Adressen bestimmt
 
 #### Execution (Befehl ausführen)
+
 1. Daten von Register/RAM laden
 2. Operation in ALU/FPU durchführen
 3. Ergebnis speichern
 
 #### Write-Back (Ergebnis zurückschreiben)
+
 1. Register aktualisieren
 2. Flags setzen (für bedingte Sprünge)
 

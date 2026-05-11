@@ -41,6 +41,7 @@ Die **Eingabeeinheit** nimmt strukturierte Daten vom Benutzer oder anderen Syste
 **Aufgabe:** Daten von außen in das System bringen
 
 **Hardware-Beispiele:**
+
 - Tastatur
 - Maus
 - Touchscreen
@@ -61,12 +62,14 @@ Die **Verarbeitungseinheit** verarbeitet die Eingabedaten nach festgelegten Rege
 **Aufgabe:** Daten transformieren nach Programminstruktionen
 
 **Hardware-Komponenten:**
+
 - **CPU (Central Processing Unit)**: Der "Prozessor" – führt alle Befehle aus
 - **Chipsatz**: Koordiniert Datenaustausch zwischen Komponenten
 - **Grafikkern (GPU)**: Spezialisiert auf visuelle Verarbeitung
 - **Co-Prozessoren**: Zusätzliche spezialisierte Prozessoren
 
 **Speicherung (ständiger Austausch):**
+
 - **RAM (Arbeitsspeicher)**: Schneller, flüchtiger Speicher für aktive Daten
 - **Cache**: Noch schneller, befindet sich in/neben der CPU
 - **Register**: Extrem schnelle Zwischenspeicher direkt in der CPU
@@ -80,6 +83,7 @@ Die **Speichereinheit** steht im ständigen Austausch mit der Verarbeitungseinhe
 **Aufgabe:** Daten speichern (während und nach der Verarbeitung)
 
 **Hardware-Beispiele:**
+
 - **RAM (Arbeitsspeicher)**: Schnell, flüchtig (Daten weg bei Stromausfall)
 - **SSD (Solid State Drive)**: Schnell, persistent (Daten bleiben erhalten)
 - **Festplatte/HDD**: Langsamer aber große Kapazität, persistent
@@ -87,6 +91,7 @@ Die **Speichereinheit** steht im ständigen Austausch mit der Verarbeitungseinhe
 - **Cloud-Speicher**: Entfernter, netzwerkgebundener Speicher
 
 **Speicherhierarchie (schnell → groß):**
+
 1. Register (CPU)
 2. L1/L2 Cache
 3. Arbeitsspeicher (RAM)
@@ -102,6 +107,7 @@ Die **Ausgabeeinheit** gibt die erzeugten Ergebnisse an den Benutzer oder ein an
 **Aufgabe:** Verarbeitete Daten präsentieren
 
 **Hardware-Beispiele:**
+
 - Monitor / Display
 - Drucker
 - Lautsprecher
@@ -126,6 +132,7 @@ Eingabe → Verarbeitung → Ausgabe
 ```
 
 **Beispiel:** Ein Thermostat
+
 - Eingabe: Temperatur-Sensor misst aktuelle Temperatur
 - Verarbeitung: Vergleich mit Solltemperatur
 - Ausgabe: Heizung ein/aus schalten
@@ -137,27 +144,27 @@ Eingabe → Verarbeitung → Ausgabe
 
 ### Beispiel 1: Text-Verarbeitung
 
-| Schritt | Hardware |
-|---------|----------|
-| **Eingabe** | Tastatur: Text eingeben |
-| **Verarbeitung** | CPU/RAM: Text speichern und formatieren |
-| **Ausgabe** | Monitor: Text anzeigen; Festplatte: Datei speichern |
+| Schritt          | Hardware                                            |
+| ---------------- | --------------------------------------------------- |
+| **Eingabe**      | Tastatur: Text eingeben                             |
+| **Verarbeitung** | CPU/RAM: Text speichern und formatieren             |
+| **Ausgabe**      | Monitor: Text anzeigen; Festplatte: Datei speichern |
 
 ### Beispiel 2: Wettervorhersage-Supercomputer
 
-| Schritt | Hardware |
-|---------|----------|
-| **Eingabe** | Sensoren weltweit: Temperatur, Druck, Luftfeuchtigkeit |
-| **Verarbeitung** | Tausende CPUs: Komplexe mathematische Modelle |
-| **Ausgabe** | Grafiken/Karten; Datenbank für Vorhersagen |
+| Schritt          | Hardware                                               |
+| ---------------- | ------------------------------------------------------ |
+| **Eingabe**      | Sensoren weltweit: Temperatur, Druck, Luftfeuchtigkeit |
+| **Verarbeitung** | Tausende CPUs: Komplexe mathematische Modelle          |
+| **Ausgabe**      | Grafiken/Karten; Datenbank für Vorhersagen             |
 
 ### Beispiel 3: Online-Shopping
 
-| Schritt | Hardware |
-|---------|----------|
-| **Eingabe** | Tastatur/Maus: Artikel auswählen; Netzwerk: Daten zum Server |
-| **Verarbeitung** | Server-CPU: Bestellung verarbeiten, Bestand prüfen |
-| **Ausgabe** | Monitor: Bestellbestätigung; Netzwerk: Daten zurück |
+| Schritt          | Hardware                                                     |
+| ---------------- | ------------------------------------------------------------ |
+| **Eingabe**      | Tastatur/Maus: Artikel auswählen; Netzwerk: Daten zum Server |
+| **Verarbeitung** | Server-CPU: Bestellung verarbeiten, Bestand prüfen           |
+| **Ausgabe**      | Monitor: Bestellbestätigung; Netzwerk: Daten zurück          |
 
 ---
 

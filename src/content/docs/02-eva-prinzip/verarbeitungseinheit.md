@@ -20,21 +20,25 @@ Die Verarbeitungseinheit führt folgende Operationen aus:
 ## 🔧 Komponenten einer CPU
 
 ### Arithmetic Logic Unit (ALU)
+
 - **Funktion**: Führt mathematische und logische Berechnungen durch
-- **Operationen**: +, -, *, /, AND, OR, NOT, Bit-Shifts
+- **Operationen**: +, -, \*, /, AND, OR, NOT, Bit-Shifts
 - **Geschwindigkeit**: Wenige Nanosekunden pro Operation
 
 ### Steuerwerk (Control Unit)
+
 - **Funktion**: Dirigiert alle anderen Komponenten
 - **Aufgabe**: Befehle dekodieren und koordinieren
 - **Takt**: Arbeitet synchron mit dem Systemtakt
 
 ### Instruction Decode Unit (IDU)
+
 - **Funktion**: Übersetzt Programmbefehle in Mikrocode
 - **ROM**: Interner Speicher mit Befehlssätzen
 - **Mikrocode**: Vereinfachte, ausführbare Befehle
 
 ### Cache & Register
+
 - **Register**: Extrem schneller Speicher (0,1-1 ns Zugriff)
 - **L1-Cache**: Klein (32 KB), sehr schnell
 - **L2/L3-Cache**: Größer (256 KB - 8 MB), schnell

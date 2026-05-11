@@ -43,7 +43,7 @@ CPU ──┬── D0 ──── RAM
       ├── D1 ──── RAM
       ├── D2 ──── RAM
       └── D3 ──── RAM
-      
+
 Problem: Unterschiedliche Laufzeiten!
 D0 könnte 0,1ns früher ankommen als D3
 ```
@@ -77,16 +77,19 @@ Der Begriff für diesen Laufzeit-Unterschied:
 Weitere Probleme bei hohen Frequenzen:
 
 ### Reflektionen
+
 Signale reflektieren am Ende von Leiterbahnen (wenn nicht terminiert)
 
 **Lösung:** Terminatoren (Widerstände am Ende)
 
 ### Crosstalk
+
 Benachbarte Leiterbahnen beeinflussen sich gegenseitig
 
 **Lösung:** Großzügige Abstände, Ground-Plane dazwischen
 
 ### EMI (Elektromagnetische Interferenz)
+
 Hochfrequente Signale strahlen Energie ab
 
 **Lösung:** Abschirmung, ordnungsgemäße Layout-Praktiken

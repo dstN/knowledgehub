@@ -107,10 +107,12 @@ Register ⊂ L1 ⊂ L2 ⊂ L3 ⊂ RAM ⊂ SSD
 ### Write Policies
 
 **Write-Through:**
+
 - Daten in Cache UND RAM geschrieben
 - Langsamer, sicherer
 
 **Write-Back:**
+
 - Daten nur in Cache geschrieben
 - RAM wird später aktualisiert
 - Schneller, aber Daten-Verlust-Risiko

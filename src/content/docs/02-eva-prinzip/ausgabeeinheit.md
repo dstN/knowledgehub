@@ -15,36 +15,36 @@ Die **Ausgabeeinheit** gibt die verarbeiteten Ergebnisse an den Benutzer oder an
 
 ### Visuelle Ausgaben
 
-| Gerät | Funktion | Datenformat |
-|-------|----------|------------|
-| **Monitor/Display** | Bild-Anzeige | RGB-Pixel, 60-144 Hz |
-| **Beamer** | Großflächige Projektion | RGB-Signal |
-| **LED/LCD-Anzeige** | Zahlen/Indikatoren | Einfache Zustände |
+| Gerät               | Funktion                | Datenformat          |
+| ------------------- | ----------------------- | -------------------- |
+| **Monitor/Display** | Bild-Anzeige            | RGB-Pixel, 60-144 Hz |
+| **Beamer**          | Großflächige Projektion | RGB-Signal           |
+| **LED/LCD-Anzeige** | Zahlen/Indikatoren      | Einfache Zustände    |
 
 ### Akustische Ausgaben
 
-| Gerät | Funktion | Datenformat |
-|-------|----------|------------|
-| **Lautsprecher** | Soundwiedergabe | PCM-Audio, 48+ kHz |
-| **Kopfhörer** | Persönliche Audiowiedergabe | Stereo/Surround |
-| **Piezo-Buzzer** | Warntöne, Feedback | Simple Frequenzen |
+| Gerät            | Funktion                    | Datenformat        |
+| ---------------- | --------------------------- | ------------------ |
+| **Lautsprecher** | Soundwiedergabe             | PCM-Audio, 48+ kHz |
+| **Kopfhörer**    | Persönliche Audiowiedergabe | Stereo/Surround    |
+| **Piezo-Buzzer** | Warntöne, Feedback          | Simple Frequenzen  |
 
 ### Physische Ausgaben
 
-| Gerät | Funktion | Anwendung |
-|-------|----------|-----------|
-| **Drucker** | Papierdruck | Dokumente, Bilder |
-| **3D-Drucker** | Objekt-Erzeugung | Prototypen |
-| **Motor-Steuerung** | Bewegung | Roboter, Automatisierung |
-| **LED/Backlight** | Lichtsignale | Statusanzeige |
+| Gerät               | Funktion         | Anwendung                |
+| ------------------- | ---------------- | ------------------------ |
+| **Drucker**         | Papierdruck      | Dokumente, Bilder        |
+| **3D-Drucker**      | Objekt-Erzeugung | Prototypen               |
+| **Motor-Steuerung** | Bewegung         | Roboter, Automatisierung |
+| **LED/Backlight**   | Lichtsignale     | Statusanzeige            |
 
 ### Netzwerk-Ausgaben
 
-| Typ | Beschreibung | Beispiel |
-|-----|-------------|---------|
-| **LAN/WLAN** | Daten an Netzwerk senden | Upload, Streaming |
-| **Internet** | Cloud-Synchronisation | E-Mail senden, Cloud-Backup |
-| **USB** | Daten zu externem Gerät | Datei-Transfer |
+| Typ          | Beschreibung             | Beispiel                    |
+| ------------ | ------------------------ | --------------------------- |
+| **LAN/WLAN** | Daten an Netzwerk senden | Upload, Streaming           |
+| **Internet** | Cloud-Synchronisation    | E-Mail senden, Cloud-Backup |
+| **USB**      | Daten zu externem Gerät  | Datei-Transfer              |
 
 ## 🔄 Digital-zu-Analog Konvertierung (DAC)
 
@@ -69,11 +69,13 @@ Audio-Daten (101...) → DAC → Soundwellen → Lautsprecher
 ## 🎬 Bildschirm-Auflösung & Refresh-Rate
 
 ### Auflösung
+
 - **HD**: 1920×1080 Pixel
 - **4K**: 3840×2160 Pixel
 - **Gesamt Pixel**: Auflösung × Farbtiefe
 
 ### Refresh-Rate (Hz)
+
 - **60 Hz**: Standard, 60 Bilder/Sekunde
 - **144 Hz**: Gaming-Standard
 - **240+ Hz**: Professional/Esports
@@ -85,14 +87,17 @@ Audio-Daten (101...) → DAC → Soundwellen → Lautsprecher
 ## 📊 Ausgabe-Technologien
 
 ### Synchrone Ausgabe
+
 - Ausgabe erfolgt direkt nach Verarbeitung
 - Beispiel: Berechnungsergebnis auf Bildschirm
 
 ### Asynchrone Ausgabe
+
 - Ausgabe verzögert oder gepuffert
 - Beispiel: Druck-Spool (Druckauftrag wird in Queue gestellt)
 
 ### Streaming-Ausgabe
+
 - Kontinuierliche Ausgabe
 - Beispiel: Video-Playback, Live-Streaming
 

@@ -15,12 +15,14 @@ IT-Systeme lassen sich nach ihrer **Leistung**, ihrem **Einsatzbereich** und ihr
 Lösung hochkomplexer, rechenintensiver Aufgaben mit massiven Datenmengen.
 
 **Besonderheiten:**
+
 - **Tausende bis Millionen von Prozessoren**
 - Extrem hohe Parallelisierung
 - Spezialisierte Kühlsysteme (flüssiges Helium)
 - Kosten: Millionen von Euro
 
 **Typische Einsatzgebiete:**
+
 - Wetter- und Klimasimulation
 - Molekulare Modellierung
 - Astrophysik und Forschung
@@ -28,11 +30,13 @@ Lösung hochkomplexer, rechenintensiver Aufgaben mit massiven Datenmengen.
 - KI und Machine Learning Training
 
 **Leistungsmessung:**
+
 - **FLOPS** (Floating Point Operations Per Second)
 - Petaflops = 10^15 Operationen/Sekunde
 - Modern: Exaflops (10^18 FLOPS) in Erreichen
 
 **Beispiele:**
+
 - Fugaku (Japan): ~442 Petaflops
 - Summit (USA): ~200 Petaflops
 
@@ -44,6 +48,7 @@ Lösung hochkomplexer, rechenintensiver Aufgaben mit massiven Datenmengen.
 Zuverlässige, kontinuierliche Verarbeitung massiver Datenmengen für kritische Unternehmensanwendungen.
 
 **Besonderheiten:**
+
 - Fokus auf **Zuverlässigkeit** statt Geschwindigkeit
 - Redundante Systeme (Fehlertoleranz)
 - 24/7 Verfügbarkeit ohne Ausfallzeiten
@@ -51,6 +56,7 @@ Zuverlässige, kontinuierliche Verarbeitung massiver Datenmengen für kritische 
 - Spezielle Betriebssysteme (z.B. z/OS)
 
 **Typische Einsatzgebiete:**
+
 - Bankensysteme
 - Versicherungen
 - Staatliche Verwaltung
@@ -58,11 +64,13 @@ Zuverlässige, kontinuierliche Verarbeitung massiver Datenmengen für kritische 
 - Transaktionsabwicklung
 
 **Leistungsmessung:**
+
 - **Durchsatz** (Transactions Per Second)
 - **Verfügbarkeit** (99.99%+ Uptime)
 - **Datensicherheit**
 
 **Hersteller:**
+
 - IBM (Marktführer)
 - Fujitsu
 
@@ -74,6 +82,7 @@ Zuverlässige, kontinuierliche Verarbeitung massiver Datenmengen für kritische 
 Zentrale Verwaltung von Ressourcen und Diensten in einem Netzwerk. Bearbeitet Anfragen von vielen Clients gleichzeitig.
 
 **Besonderheiten:**
+
 - Läuft kontinuierlich (24/7)
 - Netzwerkanbindung essenziell
 - Multi-Prozessor / Multi-Core Standard
@@ -82,6 +91,7 @@ Zentrale Verwaltung von Ressourcen und Diensten in einem Netzwerk. Bearbeitet An
 - Server-Betriebssysteme (Linux, Windows Server)
 
 **Typische Einsatzgebiete:**
+
 - Webserver (HTTP-Anfragen)
 - Datenbankserver
 - Mail-Server
@@ -90,11 +100,13 @@ Zentrale Verwaltung von Ressourcen und Diensten in einem Netzwerk. Bearbeitet An
 - Cloud-Infrastructure
 
 **Leistungsmessung:**
+
 - **Netzwerklast** (Anfragen/Sekunde)
 - **Response-Zeit**
 - **Speicher-Durchsatz**
 
 **Kategorisierung von Servern:**
+
 - **Tower Server**: Groß, einfacher zu warten
 - **Rack Server**: Platzsparend, in Rechenzentren
 - **Blade Server**: Ultra-kompakt
@@ -107,6 +119,7 @@ Zentrale Verwaltung von Ressourcen und Diensten in einem Netzwerk. Bearbeitet An
 Reine Schnittstelle für Benutzer ohne eigene Rechenleistung. Alle Berechnungen erfolgen zentral auf einem Server.
 
 **Besonderheiten:**
+
 - **Keine lokale Rechenleistung**
 - Eingabegeräte: Tastatur, Maus
 - Ausgabegerät: Monitor
@@ -114,21 +127,25 @@ Reine Schnittstelle für Benutzer ohne eigene Rechenleistung. Alle Berechnungen 
 - Sehr wartungsarm
 
 **Historischer Kontext (1960er-1980er):**
+
 - Terminals waren an **Mainframes** über lange Leitungen verbunden
 - **Dumb Terminals**: NUR Eingabe/Ausgabe, keine Intelligenz
 
 **Moderne Verwendung:**
+
 - **Thin Clients**: PC mit minimaler Ausstattung
 - RDP/VNC Clients für Remote-Zugriff
 - Browser-basierte Anwendungen (Web-Apps)
 - Virtualisierte Desktops (VDI – Virtual Desktop Infrastructure)
 
 **Vorteile:**
+
 - Sehr günstig in der Anschaffung
 - Zentrale Datenkontrolle
 - Einfache Administration
 
 **Nachteile:**
+
 - Abhängig von Netzwerk und Server
 - Latenz bei langsamen Verbindungen
 
@@ -140,6 +157,7 @@ Reine Schnittstelle für Benutzer ohne eigene Rechenleistung. Alle Berechnungen 
 Universelle Rechenmaschine für einen oder wenige Benutzer mit Schwerpunkt auf Benutzerfreundlichkeit.
 
 **Besonderheiten:**
+
 - Eigenständige Rechenleistung
 - Vielfältige Verwendung (Arbeit, Freizeit, Lernen)
 - Großes Ökosystem an Software
@@ -147,6 +165,7 @@ Universelle Rechenmaschine für einen oder wenige Benutzer mit Schwerpunkt auf B
 - Moderate Kosten
 
 **Kategorien:**
+
 - **Desktop-PC**: Stationär (Monitor, Tastatur, Maus separat)
 - **Laptop/Notebook**: Mobil mit Akku
 - **Tablet**: Touchscreen-orientiert, weniger Speicher
@@ -160,12 +179,14 @@ Universelle Rechenmaschine für einen oder wenige Benutzer mit Schwerpunkt auf B
 Spezialisierte, dedizierte Rechenaufgaben in Geräten des Alltags.
 
 **Besonderheiten:**
+
 - **Sehr begrenzte Ressourcen**: RAM in KB, ROM in KB
 - Echtzeit-Anforderungen oft kritisch
 - Niedriger Stromverbrauch essentiell
 - Spezifische Aufgabe (nicht universell)
 
 **Beispiele:**
+
 - Microcontroller in Waschmaschinen
 - Arduino / Raspberry Pi Projekte
 - Automotronik (ABS, Airbag-Controller)
@@ -176,14 +197,14 @@ Spezialisierte, dedizierte Rechenaufgaben in Geräten des Alltags.
 
 ## 📊 Vergleichstabelle
 
-| Kriterium | Supercomputer | Mainframe | Server | Terminal | PC |
-|-----------|---------------|-----------|--------|----------|-----|
-| **Leistung** | Extrem | Sehr hoch | Hoch | Keine | Mittel |
-| **Zuverlässigkeit** | Mittel | Sehr hoch | Hoch | Keine | Mittel |
-| **Kosten** | Millionen | Millionen | Tausende | Hunderte | Hunderte-Tausende |
-| **Fokus** | Berechnung | Datendurchsatz | Netzwerk-Service | Benutzer-I/O | Universell |
-| **Zielgruppe** | Forschung | Enterprise | Enterprise/Cloud | Enterprise (Legacy) | Verbraucher/SMB |
-| **Parallelisierung** | Massiv | Hoch | Mittel-Hoch | Keine | Mittel |
+| Kriterium            | Supercomputer | Mainframe      | Server           | Terminal            | PC                |
+| -------------------- | ------------- | -------------- | ---------------- | ------------------- | ----------------- |
+| **Leistung**         | Extrem        | Sehr hoch      | Hoch             | Keine               | Mittel            |
+| **Zuverlässigkeit**  | Mittel        | Sehr hoch      | Hoch             | Keine               | Mittel            |
+| **Kosten**           | Millionen     | Millionen      | Tausende         | Hunderte            | Hunderte-Tausende |
+| **Fokus**            | Berechnung    | Datendurchsatz | Netzwerk-Service | Benutzer-I/O        | Universell        |
+| **Zielgruppe**       | Forschung     | Enterprise     | Enterprise/Cloud | Enterprise (Legacy) | Verbraucher/SMB   |
+| **Parallelisierung** | Massiv        | Hoch           | Mittel-Hoch      | Keine               | Mittel            |
 
 ---
 

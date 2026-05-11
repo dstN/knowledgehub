@@ -10,16 +10,19 @@ Der Konflikt zwischen RISC und CISC ist seit den 1980ern einer der größten in 
 ## 📖 Historischer Kontext
 
 ### CISC-Ära (1970er-1990er)
+
 - Intel x86: Dominantin auf PCs
 - Philosophie: "Eine Instruktion = ein Makro"
 - Trend: Immer mehr Befehle hinzufügen
 
 ### RISC-Revolution (1980er-1990er)
+
 - Berkeley RISC, Stanford MIPS Projekte
 - Konträr-Philosophie: "Keep It Simple"
 - Trend: Weniger, aber schneller Befehle
 
 ### Moderne Synthese (2000er-heute)
+
 - CISC hat RISC-Prinzipien übernommen (Decoder)
 - RISC hat CISC-Features übernommen (mehr Befehle)
 - Hybrid-Ansätze
@@ -57,11 +60,13 @@ STORE R2, Memory
 ### Hardware-Komplexität
 
 **CISC:**
+
 - Komplexer Decoder
 - Viele Transistoren für alle Befehle
 - Schwer zu optimieren
 
 **RISC:**
+
 - Einfacher Decoder
 - Weniger Transistoren
 - Leichter zu optimieren
@@ -69,11 +74,13 @@ STORE R2, Memory
 ### Register
 
 **CISC:**
+
 - Wenig Register (x86: 8)
 - Register für spezielle Aufgaben
 - Memory als zusätzliche Register (langsam)
 
 **RISC:**
+
 - Viele Register (MIPS: 32, ARM: 32)
 - Alle Register gleich
 - Weniger Speicherzugriffe
@@ -81,10 +88,12 @@ STORE R2, Memory
 ### Speicherzugriff
 
 **CISC:**
+
 - Viele Befehle mit Memory-Operanden
 - Load/Store gemischt in Befehlen
 
 **RISC:**
+
 - Nur explizite LOAD/STORE Befehle
 - Load-Store Architektur
 
@@ -92,23 +101,25 @@ STORE R2, Memory
 
 ## 📊 Praktischer Vergleich
 
-| Metrik | CISC | RISC |
-|--------|------|------|
-| **Befehlsgröße (Bits)** | 8-64 | 32-64 (fest) |
-| **Decoder-Latenz** | Länger | Kürzer |
-| **Instruktion Parallelism** | Schwer | Leicht |
-| **Cache-Effizienz** | Mittel | Besser |
-| **Power/Performance** | Schlecht | Gut |
+| Metrik                      | CISC     | RISC         |
+| --------------------------- | -------- | ------------ |
+| **Befehlsgröße (Bits)**     | 8-64     | 32-64 (fest) |
+| **Decoder-Latenz**          | Länger   | Kürzer       |
+| **Instruktion Parallelism** | Schwer   | Leicht       |
+| **Cache-Effizienz**         | Mittel   | Besser       |
+| **Power/Performance**       | Schlecht | Gut          |
 
 ---
 
 ## 🌍 Moderne Beispiele
 
 ### CISC
+
 - **Intel x86/x64**: Noch immer dominant auf Desktops/Servers
 - **AMD Ryzen**: Auch CISC (mit RISC-like Dekoder)
 
 ### RISC
+
 - **ARM**: Dominant in Smartphones (iPhone, Android)
 - **Apple M1/M2**: ARM-basiert, ultra-effizient
 - **RISC-V**: Offene Architektur, wachsend

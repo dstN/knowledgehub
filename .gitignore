@@ -33,3 +33,5 @@ pnpm-error.log*
 # OS-specific
 Thumbs.db
 
+# Content
+index.html

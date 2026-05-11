@@ -31,6 +31,7 @@ Die Speichereinheit muss balancieren zwischen:
 ### RAM (Arbeitsspeicher)
 
 **Eigenschaften:**
+
 - Flüchtig (Daten weg bei Stromausfall)
 - Schnell: ~10-20 ns Zugriff
 - Typisch: 4-64 GB bei modernen Systemen
@@ -39,6 +40,7 @@ Die Speichereinheit muss balancieren zwischen:
 ### SSD (Solid State Drive)
 
 **Eigenschaften:**
+
 - Persistent (Daten bleiben auch ohne Strom)
 - Schnell: ~100 μs Zugriff (1000× langsamer als RAM)
 - Große Kapazität: 256 GB - 2 TB
@@ -47,6 +49,7 @@ Die Speichereinheit muss balancieren zwischen:
 ### Festplatte (HDD)
 
 **Eigenschaften:**
+
 - Persistent
 - Langsam: ~5-10 ms Zugriff (noch 50× langsamer als SSD)
 - Sehr große Kapazität: Mehrere TB billig
@@ -55,11 +58,13 @@ Die Speichereinheit muss balancieren zwischen:
 ## 🔄 Speichermanagement
 
 ### Virtuelle Speicher
+
 - Wenn RAM voll: Daten auf Festplatte auslagern (Swapping)
 - Betriebssystem verwaltet transparent
 - Langsamer, aber mehr Speicher verfügbar
 
 ### Cache-Strategien
+
 - **Temporal Locality**: Kürzlich genutzte Daten bleiben im Cache
 - **Spatial Locality**: Nahe beieinanderliegende Daten zusammenfassen
 - **Replacement Policy**: Welche Daten verdrängen bei Platzmangel

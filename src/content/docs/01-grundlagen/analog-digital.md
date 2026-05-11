@@ -17,7 +17,7 @@ Dieser Abschnitt erklärt einen der fundamentalsten Unterschiede in der Informat
 
 - **Wertebereich**: Kontinuierlich von Minimum zu Maximum
 - **Abstufungen**: Unendlich viele mögliche Zwischenwerte
-- **Beispiele in der Natur**: 
+- **Beispiele in der Natur**:
   - Lautstärke von Schall
   - Helligkeit von Licht
   - Temperatur
@@ -99,12 +99,14 @@ Wenn ein analoges Signal in digital konvertiert wird, gibt es zwei wichtige Proz
 ### Sampling (Zeitliche Diskretisierung)
 
 Die analoge Kurve wird in zeitlichen Abständen abgetastet:
+
 - Je größer die Frequenz → desto bessere Qualität
 - **Faustregel**: Abtastfrequenz ≥ 2× höchste Frequenz im Signal (Nyquist)
 
 ### Quantisierung (Wert-Diskretisierung)
 
 Jeder Sample wird auf eine diskrete Stufe gerundet:
+
 - 8-Bit: 256 mögliche Werte
 - 16-Bit: 65.536 mögliche Werte
 - 24-Bit: 16 Millionen mögliche Werte
@@ -133,26 +135,28 @@ Je höher die Bit-Tiefe → desto präziser die Werte.
 
 ## ⚖️ Vergleichstabelle
 
-| Merkmal | Analog | Digital |
-|---------|--------|---------|
-| **Wertebereich** | Kontinuierlich | Diskret |
-| **Abstufungen** | Unendlich | Endlich |
-| **Fehleranfälligkeit** | Hoch | Niedrig |
-| **Speicherbarkeit** | Schwierig | Einfach |
-| **Verarbeitbarkeit** | Schwierig | Einfach |
+| Merkmal                | Analog         | Digital     |
+| ---------------------- | -------------- | ----------- |
+| **Wertebereich**       | Kontinuierlich | Diskret     |
+| **Abstufungen**        | Unendlich      | Endlich     |
+| **Fehleranfälligkeit** | Hoch           | Niedrig     |
+| **Speicherbarkeit**    | Schwierig      | Einfach     |
+| **Verarbeitbarkeit**   | Schwierig      | Einfach     |
 | **Qualität bei Kopie** | Verschlechtert | Unverändert |
-| **Kompressibilität** | Schwierig | Einfach |
+| **Kompressibilität**   | Schwierig      | Einfach     |
 
 ---
 
 ## 💡 Fazit
 
 **Computer sind digital**, weil digitale Signale:
+
 - Zuverlässig sind
 - Gespeichert und verarbeitet werden können
 - Fehlersicher sind
 
 Aber **die reale Welt ist analog**. Deshalb brauchen wir:
+
 - **ADC** (Analog-to-Digital Converter): Umwandlung von analog zu digital
 - **DAC** (Digital-to-Analog Converter): Umwandlung von digital zu analog
 

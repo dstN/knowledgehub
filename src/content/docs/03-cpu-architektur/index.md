@@ -64,6 +64,7 @@ Die **CPU** ist das Herzstück jedes Computers. Sie:
 - Leistung gemessen in **FLOPS** (Floating Point Operations Per Second)
 
 **Beispiele:**
+
 - 1 GHz CPU: ~1 Gigaflop
 - GPU: Mehrere Teraflops möglich
 
@@ -97,16 +98,19 @@ Die **CPU** ist das Herzstück jedes Computers. Sie:
 **Philosophie:** Ein Befehl soll mächtig sein
 
 **Eigenschaften:**
+
 - **Umfassender Befehlssatz:** 200-400+ verschiedene Befehle
 - **Mächtige Einzelbefehle:** Ein Befehl kann viel bewirken
 - **Variable Befehlslänge:** Befehle haben unterschiedliche Länge
 - **Viele CPU-Transistoren:** Für alle möglichen Befehle nötig
 
 **Vorteil:**
+
 - Weniger Befehle nötig für komplexe Aufgaben
 - Software einfacher zu schreiben
 
 **Nachteil:**
+
 - Jeder Befehl braucht mehrere Taktzyklen
 - CPU-Design komplex und energieintensiv
 - Weniger Register (um Kosten zu sparen)
@@ -120,18 +124,21 @@ Die **CPU** ist das Herzstück jedes Computers. Sie:
 **Philosophie:** Befehle sollen einfach und schnell sein
 
 **Eigenschaften:**
+
 - **Kleiner Befehlssatz:** 50-100 Befehle
 - **Einfache Befehle:** Ein Befehl macht eine Sache
 - **Feste Befehlslänge:** Standardisierte Größe (z.B. 32 Bit)
 - **Viele Register:** Für effiziente Datenflussoptimierung
 
 **Vorteil:**
+
 - Ein Befehl = ein Taktzyklus möglich
 - Einfacheres CPU-Design
 - Weniger Energieverbrauch
 - Pipeline-Optimierung leichter
 
 **Nachteil:**
+
 - Komplexe Aufgaben benötigen mehr Befehle
 - Höherer Code-Overhead
 - Braucht mehr Register
@@ -144,22 +151,22 @@ Die **CPU** ist das Herzstück jedes Computers. Sie:
 
 <ArchitectureChart client:load />
 
-*Das Diagramm zeigt konzeptionelle Unterschiede in verschiedenen Dimensionen.*
+_Das Diagramm zeigt konzeptionelle Unterschiede in verschiedenen Dimensionen._
 
 ---
 
 ## 📊 Tabellarischer Vergleich
 
-| Aspekt | CISC | RISC |
-|--------|------|------|
-| **Befehlssatz-Größe** | Groß (200-400) | Klein (50-100) |
-| **Befehle pro Operatio** | Wenige | Viele |
-| **Zyklen pro Befehl** | Mehrere (2-10) | Meist 1 |
-| **Register-Anzahl** | Wenig (8-16) | Viele (32+) |
-| **Code-Länge** | Kürzer | Länger |
-| **Hardware-Komplexität** | Hoch | Niedrig |
-| **Energie-Verbrauch** | Höher | Niedriger |
-| **Laufzeit** | Mittel | Schnell |
+| Aspekt                   | CISC           | RISC           |
+| ------------------------ | -------------- | -------------- |
+| **Befehlssatz-Größe**    | Groß (200-400) | Klein (50-100) |
+| **Befehle pro Operatio** | Wenige         | Viele          |
+| **Zyklen pro Befehl**    | Mehrere (2-10) | Meist 1        |
+| **Register-Anzahl**      | Wenig (8-16)   | Viele (32+)    |
+| **Code-Länge**           | Kürzer         | Länger         |
+| **Hardware-Komplexität** | Hoch           | Niedrig        |
+| **Energie-Verbrauch**    | Höher          | Niedriger      |
+| **Laufzeit**             | Mittel         | Schnell        |
 
 ---
 

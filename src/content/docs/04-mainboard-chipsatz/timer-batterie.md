@@ -30,6 +30,7 @@ PCIe Takt: 250 MHz
 ### Wichtigkeit
 
 **Ohne Timer-IC:**
+
 - Keine Synchronisation zwischen Komponenten
 - Daten ankommen zur falschen Zeit
 - System funktioniert gar nicht!

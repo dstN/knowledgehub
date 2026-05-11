@@ -17,32 +17,32 @@ Die Eingabeeinheit hat eine zentrale Aufgabe:
 
 ### Klassische Eingabegeräte
 
-| Gerät | Funktion | Datentyp | Beispiel |
-|-------|----------|----------|---------|
-| **Tastatur** | Text-Eingabe | ASCII/Unicode | Zeichen, Befehle |
-| **Maus** | Pointer-Bewegung | Koordinaten | X/Y Position, Klicks |
+| Gerät           | Funktion                   | Datentyp             | Beispiel               |
+| --------------- | -------------------------- | -------------------- | ---------------------- |
+| **Tastatur**    | Text-Eingabe               | ASCII/Unicode        | Zeichen, Befehle       |
+| **Maus**        | Pointer-Bewegung           | Koordinaten          | X/Y Position, Klicks   |
 | **Touchscreen** | Direkte Bildschirm-Eingabe | Koordinaten + Gesten | Tippen, Wischen, Pinch |
-| **Trackpad** | Laptop-Navigation | Koordinaten | Bewegung, Gesten |
+| **Trackpad**    | Laptop-Navigation          | Koordinaten          | Bewegung, Gesten       |
 
 ### Spezialisierte Eingabegeräte
 
-| Gerät | Einsatzgebiet | Input |
-|-------|---------------|-------|
-| **Barcode-Scanner** | Einzelhandel, Logistik | Artikel-ID als Barcode |
-| **Kreditkarten-Leser** | Zahlungsterminals | Kartendat und PIN |
-| **Mikrofon** | Audio-Aufnahme | Soundwellen → digitale Werte |
-| **Kamera/Webcam** | Video/Fotos | Lichtsignale → Pixel-Daten |
-| **Sensor** | IoT/Industrie 4.0 | Temperatur, Druck, Bewegung |
-| **Scanner** | Dokumentdigitalisierung | Papier → Bilddaten |
+| Gerät                  | Einsatzgebiet           | Input                        |
+| ---------------------- | ----------------------- | ---------------------------- |
+| **Barcode-Scanner**    | Einzelhandel, Logistik  | Artikel-ID als Barcode       |
+| **Kreditkarten-Leser** | Zahlungsterminals       | Kartendat und PIN            |
+| **Mikrofon**           | Audio-Aufnahme          | Soundwellen → digitale Werte |
+| **Kamera/Webcam**      | Video/Fotos             | Lichtsignale → Pixel-Daten   |
+| **Sensor**             | IoT/Industrie 4.0       | Temperatur, Druck, Bewegung  |
+| **Scanner**            | Dokumentdigitalisierung | Papier → Bilddaten           |
 
 ### Netzwerk-Eingaben
 
-| Typ | Quelle | Beispiel |
-|-----|--------|---------|
-| **LAN/WLAN** | Andere Computer im Netz | Datei-Download, Browsing |
-| **Internet** | Entfernte Server/Cloud | E-Mails, Webinhalte |
-| **Bluetooth** | Drahtlose Peripherie | Kopfhörer, Smartwatch |
-| **USB** | Externe Geräte | USB-Stick, externe Festplatte |
+| Typ           | Quelle                  | Beispiel                      |
+| ------------- | ----------------------- | ----------------------------- |
+| **LAN/WLAN**  | Andere Computer im Netz | Datei-Download, Browsing      |
+| **Internet**  | Entfernte Server/Cloud  | E-Mails, Webinhalte           |
+| **Bluetooth** | Drahtlose Peripherie    | Kopfhörer, Smartwatch         |
+| **USB**       | Externe Geräte          | USB-Stick, externe Festplatte |
 
 ## 🔄 Von Analog zu Digital
 
@@ -50,7 +50,7 @@ Der zentrale Prozess der Eingabeeinheit ist die **Analog-Digital-Konvertierung (
 
 ```
 Reale Welt (Analog)  →  Messung  →  Digitalisierung  →  Computer (Digital)
-    
+
 Beispiel:
 Sprache (Schallwellen) → Mikrofon → ADC → PCM-Daten (0101...) → RAM
 ```
@@ -69,16 +69,19 @@ Sprache (Schallwellen) → Mikrofon → ADC → PCM-Daten (0101...) → RAM
 ## 🎮 Eingabe-Methoden
 
 ### 1. Manuelle Eingabe
+
 - Direkter Benutzer-Input
 - Beispiele: Tastatur, Maus, Touchscreen
 - Synchron (sofort verarbeitet)
 
 ### 2. Automatische Eingabe
+
 - Sensoren/externe Systeme liefern Daten
 - Beispiele: Wetterstationen, Aktienquoten, IoT-Geräte
 - Oft asynchron (periodisch oder ereignisgesteuert)
 
 ### 3. Datei/Stream-Eingabe
+
 - Daten aus Speicher oder Netzwerk
 - Beispiele: Filme abspielen, Dateien importieren
 - Große Datenmengen möglich
@@ -88,17 +91,23 @@ Sprache (Schallwellen) → Mikrofon → ADC → PCM-Daten (0101...) → RAM
 ## ⚡ Eingabe-Technologien
 
 ### Polling
+
 Die CPU fragt regelmäßig: "Hat sich was geändert?"
+
 - **Vorteil**: Einfach zu implementieren
 - **Nachteil**: Ineffizient, verschwendet CPU-Zeit
 
 ### Interrupt-Driven
+
 Das Eingabegerät signalisiert: "Daten vorhanden!"
+
 - **Vorteil**: Effizient, schnelle Reaktion
 - **Nachteil**: Komplexer zu programmieren
 
 ### DMA (Direct Memory Access)
+
 Eingabegerät schreibt direkt in RAM, nicht über CPU
+
 - **Vorteil**: Sehr schnell, CPU frei
 - **Nachteil**: Teuer in Hardware
 

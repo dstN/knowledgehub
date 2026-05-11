@@ -14,11 +14,13 @@ Die Geschichte der Datenverarbeitung lässt sich in vier große Phasen einteilen
 **Definition:** Datenverarbeitung ohne technische Hilfsmittel
 
 **Beispiele:**
+
 - Kopfrechnen
 - Schriftliche Berechnungen auf Papier
 - Mentale Logik und Entscheidungsfindung
 
 **Besonderheiten:**
+
 - Sehr anfällig für menschliche Fehler
 - Langwierig bei komplexen Aufgaben
 - Begrenzt durch die kognitiven Fähigkeiten des Menschen
@@ -30,12 +32,14 @@ Die Geschichte der Datenverarbeitung lässt sich in vier große Phasen einteilen
 **Definition:** Datenverarbeitung mit physischen, nicht-elektrischen Hilfsmitteln
 
 **Beispiele:**
+
 - **Rechenschieber**: Logarithmische Skalen für Multiplikation und Division
 - **Abakus**: Altes Rechenwerkzeug mit Perlen und Stäben
 - **Rechenmaschinen**: Zahnräder und Hebel für automatisierte Berechnungen
 - **Lochkartensysteme**: Zur Speicherung und Verarbeitung von Daten
 
 **Besonderheiten:**
+
 - Reduziert menschliche Fehler
 - Schneller als reine manuelle Verarbeitung
 - Begrenzte Komplexität der durchführbaren Operationen
@@ -48,12 +52,14 @@ Die Geschichte der Datenverarbeitung lässt sich in vier große Phasen einteilen
 **Definition:** Datenverarbeitung mit strombetriebenen Geräten
 
 **Beispiele:**
+
 - **Registrierkassen**: Elektronische Erfassung von Verkaufsdaten
 - **Elektrische Additionsmaschinen**: Schnelle arithmetische Operationen
 - **Elektrische Schreibmaschinen**: Automatisierte Texteingabe
 - **Frühe Elektronenrechner**: Erste großformatige Rechenanlagen
 
 **Besonderheiten:**
+
 - Deutlich schneller als mechanische Systeme
 - Strom als Energiequelle notwendig
 - Beginn der Automatisierung
@@ -66,12 +72,14 @@ Die Geschichte der Datenverarbeitung lässt sich in vier große Phasen einteilen
 **Definition:** Datenverarbeitung durch gesteuerte elektronische Arbeitsmittel (Computer)
 
 **Beispiele:**
+
 - **Elektronenrechner**: ENIAC (1946), erste vollständig elektronische Rechenanlage
 - **Computer**: Von Großrechnern bis zu modernen Laptops und Smartphones
 - **Embedded Systems**: Mikrocontroller in Alltagsgeräten
 - **Cloud-Computing**: Verteilte Datenverarbeitung über Netzwerke
 
 **Besonderheiten:**
+
 - Programmierbar (Befehlssätze können verändert werden)
 - Extrem schnell (Milliarden Operationen pro Sekunde)
 - Speicherfähigkeit (RAM, Festplatten, Cloud)
@@ -82,14 +90,14 @@ Die Geschichte der Datenverarbeitung lässt sich in vier große Phasen einteilen
 
 ## 📊 Vergleich der Phasen
 
-| Aspekt | Manuell | Mechanisch | Elektrisch | Elektronisch |
-|--------|---------|-----------|-----------|-------------|
-| **Geschwindigkeit** | Sehr langsam | Langsam | Schnell | Sehr schnell |
-| **Automatisierung** | Keine | Teilweise | Teilweise | Vollständig |
-| **Fehlerquote** | Hoch | Mittel | Niedrig | Sehr niedrig |
-| **Programmierbark.** | Nein | Nein | Nein | Ja |
-| **Energiebedarf** | Keine | Keine | Strom | Strom |
-| **Speicherkapazität** | Begrenzt | Begrenzt | Begrenzt | Unbegrenzt |
+| Aspekt                | Manuell      | Mechanisch | Elektrisch | Elektronisch |
+| --------------------- | ------------ | ---------- | ---------- | ------------ |
+| **Geschwindigkeit**   | Sehr langsam | Langsam    | Schnell    | Sehr schnell |
+| **Automatisierung**   | Keine        | Teilweise  | Teilweise  | Vollständig  |
+| **Fehlerquote**       | Hoch         | Mittel     | Niedrig    | Sehr niedrig |
+| **Programmierbark.**  | Nein         | Nein       | Nein       | Ja           |
+| **Energiebedarf**     | Keine        | Keine      | Strom      | Strom        |
+| **Speicherkapazität** | Begrenzt     | Begrenzt   | Begrenzt   | Unbegrenzt   |
 
 ---
 

@@ -25,16 +25,19 @@ Das Mainboard (auch: Motherboard, PCB) ist eine **Leiterplatte**, auf der alle K
 ## 🔌 Komponenten des Mainboards
 
 ### BIOS/UEFI Speicher
+
 - Flash-EEPROM Chip
 - Speichert die Firmware
 - Wird beim Hochfahren geladen
 
 ### CMOS-Batterie
+
 - Kleine Lithium-Batterie (3V)
 - Versorgt RTC (Real Time Clock)
 - Hält Systemzeit auch ohne Strom
 
 ### Taktgeber (Oscillator)
+
 - Quartz-Oszillator (z.B. 100 MHz)
 - Erzeugt Master-Takt für ganzes System
 - Basis für alle Synchronisation
@@ -42,10 +45,12 @@ Das Mainboard (auch: Motherboard, PCB) ist eine **Leiterplatte**, auf der alle K
 ### Northbridge / Southbridge
 
 **Alte Architektur (Klassisch):**
+
 - Northbridge: Schnelle Komponenten (RAM, Grafik)
 - Southbridge: Langsame Komponenten (USB, SATA, Audio)
 
 **Moderne Architektur:**
+
 - PCH (Platform Controller Hub) ersetzt beide
 - Alles in einem Chip integriert
 - Weniger Latenz
@@ -63,15 +68,18 @@ Das Mainboard (auch: Motherboard, PCB) ist eine **Leiterplatte**, auf der alle K
 ### FSB / QPI / DMI
 
 **FSB (Front Side Bus - klassisch):**
+
 - Verbindet CPU mit Northbridge
 - Typisch 133-200 MHz
 
 **QPI/UPI (Intel):**
+
 - Point-to-Point statt Bus
 - Schneller als FSB
 - Proprietär (Intel-spezifisch)
 
 **DMI (Direct Media Interface):**
+
 - Moderne Standard
 - Verbindet CPU mit PCH
 - Asymmetrisch (schnell auf/ab)

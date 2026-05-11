@@ -23,11 +23,13 @@ Register sind **ultraschnelle, kleine Speicher direkt in der CPU**.
 ### Registertypen
 
 #### Allgemein-Purpose Register
+
 - Speicherung von Operanden und Zwischenergebnissen
 - In RISC: Alle Register gleichberechtigt
 - In CISC: Einige spezialisiert (z.B. AX für Accumulator)
 
 #### Spezial-Register
+
 - **Program Counter (PC):** Zeigt auf nächsten Befehl
 - **Stack Pointer (SP):** Zeigt auf Stack-Ende
 - **Flag Register:** Speichert Bedingungen (Zero, Carry, etc.)
@@ -109,12 +111,16 @@ RAM:         ~ 100 ns Zugriff (100× langsamer!)
 ## 🔄 Cache-Operationen
 
 ### Cache Hit
+
 Wenn gesuchte Daten im Cache sind:
+
 - **Schnell:** Daten sofort verfügbar
 - **Rate:** Typisch 90-99% Hit-Rate mit gutem Code
 
 ### Cache Miss
+
 Wenn gesuchte Daten nicht im Cache sind:
+
 - **Langsam:** RAM-Zugriff nötig
 - **Penalty:** 50-200 Taktzyklen Verzögerung
 
@@ -131,11 +137,15 @@ Wenn Cache voll ist, welche Daten verdrängen?
 ## 💡 Optimierung
 
 ### Temporal Locality
+
 Gleiche Daten werden bald wieder benutzt
+
 - **Strategie:** Im Cache behalten
 
 ### Spatial Locality
+
 Nahe beieinanderliegende Daten werden oft zusammen genutzt
+
 - **Strategie:** Größere Blocks prefetchen
 
 ### Praktische Tipps

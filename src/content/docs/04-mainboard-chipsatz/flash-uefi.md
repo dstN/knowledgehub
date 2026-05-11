@@ -40,6 +40,7 @@ Speichert die **Firmware** des Computers:
 **Modus:** Real Mode (16-Bit)
 
 **Limitationen:**
+
 - Nur 1 MB Speicher adressierbar
 - Max. 2 TB Festplatten (altes Standard)
 - Text-Menu nur
@@ -55,6 +56,7 @@ Speichert die **Firmware** des Computers:
 **Modus:** Protected Mode (32/64-Bit)
 
 **Vorteile:**
+
 - ✅ Grafische Oberfläche möglich
 - ✅ Unterstützt beliebig große Festplatten (GPT)
 - ✅ Modulare Struktur (Treiber laden)
@@ -62,6 +64,7 @@ Speichert die **Firmware** des Computers:
 - ✅ Network Boot einfacher
 
 **Moderne Standards:**
+
 - **UEFI Secure Boot:** Nur signierte Betriebssysteme booten
 - **TPM 2.0:** Trusted Platform Module für Sicherheit
 - **Fast Boot:** Unter 1 Sekunde von Stromschalter bis OS

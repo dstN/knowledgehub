@@ -31,7 +31,6 @@ CPU
 - **Northbridge:** "Fast Chipset"
   - Nahe bei CPU
   - Hohe Latenz bei RAM-Zugriff
-  
 - **Southbridge:** "Legacy Chipset"
   - Weit weg von CPU
   - USB, Audio, SATA
@@ -107,12 +106,12 @@ Ein Monolith-Chip mit:
 
 ## 📈 Entwicklungstrend
 
-| Ära | Architektur | Chips | Effizienz | Komplexität |
-|-----|-------------|-------|-----------|------------|
-| 1990er | NB+SB | 2+ | Niedrig | Hoch |
-| 2000er | MCH+ICH | 2-3 | Mittel | Hoch |
-| 2010er | PCH | 1-2 | Hoch | Mittel |
-| 2020er | SoC | 1 | Sehr hoch | Niedrig |
+| Ära    | Architektur | Chips | Effizienz | Komplexität |
+| ------ | ----------- | ----- | --------- | ----------- |
+| 1990er | NB+SB       | 2+    | Niedrig   | Hoch        |
+| 2000er | MCH+ICH     | 2-3   | Mittel    | Hoch        |
+| 2010er | PCH         | 1-2   | Hoch      | Mittel      |
+| 2020er | SoC         | 1     | Sehr hoch | Niedrig     |
 
 **Trend:** Alles an Bord, weniger separate Komponenten!
 
