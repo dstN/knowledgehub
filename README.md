@@ -16,9 +16,10 @@ Der IT-Hardware Studienführer ist ein Astro + Starlight-basiertes Web-Projekt, 
 
 ### Voraussetzungen
 
-- **Node.js 18+** ([nodejs.org](https://nodejs.org))
-- **npm 9+** oder **pnpm**
+- **Node.js 24** ([nodejs.org](https://nodejs.org)) – ältere Versionen funktionieren nicht!
+- **npm** (kommt automatisch mit Node.js)
 - **Git** (für Versionskontrolle)
+- **VS Code** (empfohlen, mit der Erweiterung [Markdown Preview](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one))
 
 ### Installation & Entwicklung
 
@@ -33,7 +34,7 @@ npm install
 # 3. Entwicklungsserver starten
 npm run dev
 
-# Server läuft auf http://localhost:3000
+# Server läuft auf http://localhost:4321
 ```
 
 ### Build & Deployment
@@ -44,11 +45,9 @@ npm run build
 
 # Preview der Build
 npm run preview
-
-# Deploy auf Vercel
-npm run build
-# Push zu GitHub → Vercel deployt automatisch
 ```
+
+> **Auto-Deploy**: Jeder Push zum `master` Branch deployt automatisch via GitHub Actions auf den Webspace.
 
 ## 📁 Projektstruktur
 
@@ -67,63 +66,123 @@ knowledgehub/
 │   │   ├── EVADiagram.jsx           # Interaktives EVA-Diagramm
 │   │   ├── ArchitectureChart.jsx    # RISC/CISC Radar Chart
 │   │   └── MemoryHierarchyChart.jsx # Speicher Bubble Chart
-│   └── styles/
-│       └── custom.css               # Custom Styling
+│   └── assets/                      # Statische Dateien (public/)
 ├── astro.config.mjs                 # Astro-Konfiguration
 ├── package.json                     # Dependencies
 ├── .gitignore                       # Git ignore rules
 └── README.md                        # Dieses Dokument
 ```
 
-## 📝 Inhalte bearbeiten
+## ✏️ Inhalte bearbeiten – Schritt für Schritt
 
-### Markdown-Dateien hinzufügen/ändern
+Du musst **kein** Entwickler sein, um Inhalte beizutragen! Alles funktioniert über einfache Textdateien.
 
-1. **Datei öffnen/erstellen**: `src/content/docs/[kategorie]/[dateiname].md`
-2. **Inhalt schreiben** (Markdown + Starlight-Komponenten)
-3. **Speichern** → Dev-Server lädt automatisch neu
+### Schritt 1 – Repository vorbereiten (einmalig)
 
-**Beispiel**:
+```bash
+# 1. Repo auf deinen PC klonen
+git clone <repo-url>
+cd knowledgehub
+
+# 2. Abhängigkeiten installieren
+npm install
+```
+
+### Schritt 2 – Bestehende Seite bearbeiten
+
+1. Öffne die gewünschte Datei in `src/content/docs/`
+   - Grundlagen → `src/content/docs/01-grundlagen/`
+   - EVA-Prinzip → `src/content/docs/02-eva-prinzip/`
+   - CPU & Architektur → `src/content/docs/03-cpu-architektur/`
+   - Mainboard → `src/content/docs/04-mainboard-chipsatz/`
+   - Glossar → `src/content/docs/05-glossar/`
+2. Datei mit VS Code öffnen und Text anpassen
+3. Speichern – fertig!
+
+### Schritt 3 – Neue Seite hinzufügen
+
+1. Neue Datei anlegen, z.B. `src/content/docs/01-grundlagen/mein-thema.md`
+2. **Jede Datei braucht diesen Kopfbereich** (Frontmatter) ganz oben:
+
 ```markdown
 ---
 title: Mein Thema
-description: Kurze Beschreibung
+description: Kurze Beschreibung, was auf dieser Seite steht
 ---
 
 # Mein Thema
 
+Hier kommt dein Text. Du kannst **fett**, *kursiv* und andere
+Markdown-Formatierungen nutzen.
+
 ## Unterabschnitt
 
-Dieser Text wird angezeigt.
+Weiterer Text...
 
-### Code-Beispiel
+## Tabelle
+
+| Spalte 1 | Spalte 2 |
+|----------|----------|
+| Wert A   | Wert B   |
+
+## Code-Beispiel
 
 \`\`\`python
 print("Hallo Welt")
 \`\`\`
 ```
 
-### Sidebar aktualisieren
+> ⚠️ Das `---` Frontmatter **muss** vorhanden sein, sonst baut die Seite nicht!
 
-Die Sidebar wird in `astro.config.mjs` konfiguriert:
+### Schritt 4 – Neue Seite in der Sidebar eintragen
+
+Damit die neue Seite in der Navigation auftaucht, muss sie in `astro.config.mjs` eingetragen werden.
+
+Suche den passenden Abschnitt und füge einen Eintrag hinzu:
 
 ```javascript
-sidebar: [
-  {
-    label: '01 Grundlagen',
-    items: [
-      { label: 'Übersicht', slug: '01-grundlagen/index' },
-      { label: 'Neuer Artikel', slug: '01-grundlagen/neuer-artikel' },
-    ],
-  },
-]
+{
+  label: '01 Grundlagen',
+  items: [
+    { label: 'Übersicht', slug: '01-grundlagen' },
+    { label: 'Evolution', slug: '01-grundlagen/evolution-datenverarbeitung' },
+    // 👇 Hier deinen neuen Eintrag einfügen:
+    { label: 'Mein Thema', slug: '01-grundlagen/mein-thema' },
+  ],
+},
 ```
+
+> Der `slug` ist der Dateipfad **ohne** `.md` am Ende.
+
+### Schritt 5 – Lokal testen
+
+```bash
+npm run dev
+```
+
+Browser öffnen: **http://localhost:4321** – dort siehst du deine Änderungen live.
+
+### Schritt 6 – Änderungen hochladen & deployen
+
+```bash
+# Alle Änderungen zum Commit vormerken
+git add .
+
+# Commit erstellen (beschreibe kurz, was du geändert hast)
+git commit -m "docs: Neues Kapitel zu Mein Thema"
+
+# Zu GitHub hochladen
+git push origin master
+```
+
+> 🚀 Nach dem Push startet automatisch GitHub Actions und deployt die Seite!
 
 ## 🔄 Zusammenarbeit im Team
 
 ### Workflow: Pull Request
 
 1. **Branchen erstellen**:
+
    ```bash
    git checkout -b feature/mein-inhalt
    ```
@@ -131,12 +190,14 @@ sidebar: [
 2. **Änderungen machen** (Dateien bearbeiten/hinzufügen)
 
 3. **Lokal testen**:
+
    ```bash
    npm run dev
    # http://localhost:3000 öffnen und Änderungen prüfen
    ```
 
 4. **Commit & Push**:
+
    ```bash
    git add .
    git commit -m "feat: Neuen Artikel zu CPU hinzugefügt"
@@ -150,8 +211,8 @@ sidebar: [
 
 6. **Review & Merge**:
    - Mitschüler reviewen den Code
-   - Falls OK → Merge zu `main`
-   - Vercel deployt automatisch
+   - Falls OK → Merge zu `master`
+   - GitHub Actions deployt automatisch auf den Webspace
 
 ### Commit-Nachricht Konventionen
 
@@ -163,6 +224,7 @@ style: Code-Formatierung (keine Logik-Änderungen)
 ```
 
 **Beispiele**:
+
 - `feat: EVA-Diagramm-Komponente erstellen`
 - `docs: Glossar-Einträge erweitern`
 - `fix: Typo in CPU-Erklärung beheben`
@@ -180,7 +242,7 @@ Für Custom CSS → `src/styles/custom.css` bearbeiten
 
 - 📚 [Starlight Dokumentation](https://starlight.astro.build)
 - 🚀 [Astro Dokumentation](https://docs.astro.build)
-- 🎯 [Vercel Deployment Guide](https://vercel.com/docs)
+- ⚙️ [GitHub Actions Dokumentation](https://docs.github.com/en/actions)
 
 ## ❓ FAQ & Tipps
 
@@ -189,12 +251,14 @@ A: Öffne einen PR mit einer `docs:` Commit-Nachricht (siehe oben)
 
 **Q: Wie füge ich Bilder/Diagramme ein?**  
 A: Speichere sie in `src/assets/` und referenziere sie in Markdown:
+
 ```markdown
 ![Alt-Text](../../assets/my-image.png)
 ```
 
 **Q: Mein Dev-Server läuft nicht!**  
 A: Prüfe:
+
 ```bash
 npm install  # Dependencies neu installieren
 npm run dev  # Erneut starten
