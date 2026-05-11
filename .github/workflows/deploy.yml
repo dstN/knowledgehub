@@ -31,7 +31,7 @@ jobs:
           SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
           SSH_TARGET_DIR: ${{ secrets.SSH_TARGET_DIR }}
         run: |
-          apt-get update && apt-get install -y sshpass rsync
+          sudo apt-get update && sudo apt-get install -y sshpass rsync
           sshpass -p "$SSH_PASSWORD" rsync -avz --delete -e "ssh -p 22 -o StrictHostKeyChecking=no" \
             ./dist/ \
             "$SSH_USER@$SSH_HOST:$SSH_TARGET_DIR"
