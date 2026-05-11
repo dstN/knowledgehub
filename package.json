@@ -1,7 +1,8 @@
 {
-  "name": "--force",
+  "name": "it-hardware-studienführer",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Interaktiver Studienführer zu Hardware-Grundlagen für IT-Azubis",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,8 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^3.0.9",
     "@astrojs/starlight": "^0.39.2",
     "astro": "^6.2.2",
+    "chart.js": "^4.4.1",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
     "sharp": "^0.34.5"
   }
 }

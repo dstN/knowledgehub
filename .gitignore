@@ -1,21 +1,35 @@
-# build output
+# Astro build output
 dist/
-# generated types
 .astro/
 
-# dependencies
+# Node.js / npm
 node_modules/
-
-# logs
+package-lock.json
 npm-debug.log*
+npm-error.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+pnpm-error.log*
 
-
-# environment variables
+# Environment variables
 .env
+.env.local
 .env.production
+.env.*.local
 
-# macOS-specific files
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+
+# Vercel
+.vercel/
+.vercelignore
+
+# OS-specific
+Thumbs.db
+
