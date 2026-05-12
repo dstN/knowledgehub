@@ -1,9 +1,156 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import BinaryConverter from '../../components/BinaryConverter.jsx';
 ---
 
 <StarlightPage frontmatter={{ title: 'Binär-Konverter', description: 'Interaktiver Binär-Konverter: Dezimal ↔ Binär umrechnen und IP-Adressen mit Netz- und Hostanteil visualisieren.' }}>
   <p>Konvertiere Dezimalwerte in Binär (und zurück), oder visualisiere eine IP-Adresse mit ihrem Netz- und Hostanteil farblich markiert.</p>
-  <BinaryConverter client:load />
+
+  <div id="bin-tool" style="max-width:720px;margin:1.5rem auto;font-family:sans-serif;">
+    <div style="border:1px solid #334155;border-radius:12px;padding:1.5rem;">
+      <div id="bin-tabs" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+        <button type="button" data-mode="dec2bin" class="bintab active" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:0.4rem 0.85rem;font-weight:700;font-size:0.85rem;cursor:pointer;">Dezimal → Binär</button>
+        <button type="button" data-mode="bin2dec" class="bintab" style="background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.85rem;font-weight:600;font-size:0.85rem;cursor:pointer;">Binär → Dezimal</button>
+        <button type="button" data-mode="ipvis" class="bintab" style="background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.85rem;font-weight:600;font-size:0.85rem;cursor:pointer;">IP visualisieren</button>
+      </div>
+
+      <div id="panel-dec2bin">
+        <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.4rem;">Dezimalwert (0–255)</span>
+        <input id="bc-dec" type="text" inputmode="numeric" placeholder="z.B. 192" style="border:1px solid #475569;border-radius:8px;padding:0.45rem 0.8rem;font-size:0.9rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:200px;margin-bottom:1rem;" />
+        <div id="bc-dec-result" style="border:1px solid #1e293b;border-radius:10px;padding:1rem 1.25rem;background:#0c1524;">
+          <div style="font-size:0.7rem;color:#64748b;text-transform:uppercase;margin-bottom:0.5rem;">Binärdarstellung</div>
+          <div id="bc-dec-output"><p style="color:#475569;font-style:italic;font-size:0.85rem;margin:0;">Gib oben einen Wert ein → das Ergebnis erscheint hier.</p></div>
+        </div>
+      </div>
+
+      <div id="panel-bin2dec" style="display:none;">
+        <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.4rem;">Binärwert (8 Bit, nur 0 und 1)</span>
+        <input id="bc-bin" type="text" maxlength="8" placeholder="z.B. 11000000" style="border:1px solid #475569;border-radius:8px;padding:0.45rem 0.8rem;font-size:0.9rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:260px;margin-bottom:1rem;" />
+        <div id="bc-bin-result" style="border:1px solid #1e293b;border-radius:10px;padding:1rem 1.25rem;background:#0c1524;">
+          <div style="font-size:0.7rem;color:#64748b;text-transform:uppercase;margin-bottom:0.5rem;">Dezimaldarstellung</div>
+          <div id="bc-bin-output"><p style="color:#475569;font-style:italic;font-size:0.85rem;margin:0;">Gib oben 8 Bits ein (z.B. 11000000) → das Ergebnis erscheint hier.</p></div>
+        </div>
+      </div>
+
+      <div id="panel-ipvis" style="display:none;">
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-start;margin-bottom:0.5rem;">
+          <div>
+            <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.4rem;">IP-Adresse</span>
+            <input id="bc-ip" type="text" value="192.168.1.1" placeholder="192.168.1.1" style="border:1px solid #475569;border-radius:8px;padding:0.45rem 0.8rem;font-size:0.9rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:200px;" />
+          </div>
+          <div>
+            <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.4rem;">Präfix</span>
+            <div style="display:flex;align-items:center;gap:0.25rem;">
+              <span style="font-family:monospace;color:#94a3b8;">/</span>
+              <input id="bc-pfx" type="number" value="24" min="1" max="32" style="border:1px solid #475569;border-radius:8px;padding:0.45rem 0.8rem;font-size:0.9rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:70px;" />
+            </div>
+          </div>
+        </div>
+        <div id="bc-ip-result" style="border:1px solid #1e293b;border-radius:10px;padding:1rem 1.25rem;background:#0c1524;">
+          <div id="bc-ip-output"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var panels = { dec2bin: document.getElementById('panel-dec2bin'), bin2dec: document.getElementById('panel-bin2dec'), ipvis: document.getElementById('panel-ipvis') };
+      var tabs = document.querySelectorAll('.bintab');
+
+      tabs.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var mode = btn.getAttribute('data-mode');
+          tabs.forEach(function(t) { t.style.background='#1e293b'; t.style.color='#94a3b8'; t.style.border='1px solid #334155'; });
+          btn.style.background='#0284c7'; btn.style.color='#fff'; btn.style.border='none';
+          Object.keys(panels).forEach(function(k) { panels[k].style.display = k===mode ? 'block' : 'none'; });
+        });
+      });
+
+      function toBin8(n) { return (n>>>0).toString(2).padStart(8,'0'); }
+
+      function renderBits(binStr) {
+        var html = '<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:0.75rem;">';
+        for (var i=0;i<binStr.length;i++) {
+          var bit = binStr[i];
+          var isOne = bit==='1';
+          var boxStyle = isOne
+            ? 'width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;font-family:monospace;font-weight:700;font-size:1rem;border:2px solid #0ea5e9;background:#0c2d4a;color:#38bdf8;'
+            : 'width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;font-family:monospace;font-weight:700;font-size:1rem;border:2px solid #334155;background:#1e293b;color:#475569;';
+          html += '<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">';
+          html += '<span style="font-size:0.6rem;color:#64748b;">'+(7-i)+'</span>';
+          html += '<span style="'+boxStyle+'">'+bit+'</span>';
+          html += '<span style="font-size:0.6rem;color:#64748b;">'+Math.pow(2,7-i)+'</span>';
+          html += '</div>';
+        }
+        html += '</div>';
+        var activeVals = [];
+        for (var j=0;j<binStr.length;j++) { if(binStr[j]==='1') activeVals.push(Math.pow(2,7-j)); }
+        var sum = activeVals.reduce(function(a,b){return a+b;},0);
+        html += '<div style="font-size:0.875rem;color:#94a3b8;margin-top:0.5rem;">';
+        html += activeVals.join(' + ') + ' = <span style="font-weight:700;color:#38bdf8;font-size:1.1rem;">'+sum+'</span>';
+        html += '</div>';
+        return html;
+      }
+
+      // Dezimal → Binär
+      document.getElementById('bc-dec').addEventListener('input', function() {
+        var val = this.value.trim();
+        var out = document.getElementById('bc-dec-output');
+        if (val === '') { out.innerHTML = '<p style="color:#475569;font-style:italic;font-size:0.85rem;margin:0;">Gib oben einen Wert ein → das Ergebnis erscheint hier.</p>'; return; }
+        var n = parseInt(val, 10);
+        if (isNaN(n) || n < 0 || n > 255) { out.innerHTML = '<p style="color:#f87171;font-size:0.85rem;margin:0;">Wert muss zwischen 0 und 255 liegen.</p>'; return; }
+        out.innerHTML = renderBits(toBin8(n));
+      });
+
+      // Binär → Dezimal
+      document.getElementById('bc-bin').addEventListener('input', function() {
+        var raw = this.value.replace(/[^01]/g,'').slice(0,8);
+        this.value = raw;
+        var out = document.getElementById('bc-bin-output');
+        if (raw.length < 8) { out.innerHTML = '<p style="color:#475569;font-style:italic;font-size:0.85rem;margin:0;">Gib oben 8 Bits ein (z.B. 11000000) → das Ergebnis erscheint hier.</p>'; return; }
+        out.innerHTML = renderBits(raw);
+      });
+
+      // IP visualisieren
+      function updateIpVis() {
+        var ipStr = document.getElementById('bc-ip').value.trim();
+        var pfx = parseInt(document.getElementById('bc-pfx').value, 10);
+        var out = document.getElementById('bc-ip-output');
+
+        if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(ipStr)) { out.innerHTML=''; return; }
+        var octets = ipStr.split('.').map(function(o){return Math.min(255, parseInt(o,10)||0);});
+        if (octets.some(function(o){return o>255;})) { out.innerHTML=''; return; }
+        if (isNaN(pfx)||pfx<1||pfx>32) { out.innerHTML=''; return; }
+
+        var fullBin = octets.map(function(o){return toBin8(o);}).join('');
+        var html = '<div style="display:flex;flex-wrap:nowrap;overflow-x:auto;padding-bottom:0.5rem;gap:1px;">';
+        for (var i=0;i<32;i++) {
+          var isNet = i < pfx;
+          if (i>0 && i%8===0) html += '<span style="width:8px;"></span>';
+          var s = isNet
+            ? 'width:22px;height:28px;display:inline-flex;align-items:center;justify-content:center;font-family:monospace;font-weight:700;font-size:0.8rem;border:1px solid #0ea5e9;background:#0c2d4a;color:#38bdf8;'
+            : 'width:22px;height:28px;display:inline-flex;align-items:center;justify-content:center;font-family:monospace;font-weight:700;font-size:0.8rem;border:1px solid #92400e;background:#1c0f00;color:#fb923c;';
+          html += '<span style="'+s+'">'+fullBin[i]+'</span>';
+        }
+        html += '</div>';
+        html += '<div style="display:flex;gap:1.5rem;margin-top:0.75rem;font-size:0.75rem;color:#94a3b8;">';
+        html += '<span><span style="display:inline-block;width:12px;height:12px;background:#0c2d4a;border:1px solid #0ea5e9;border-radius:3px;margin-right:4px;"></span>Netzanteil ('+pfx+' Bit)</span>';
+        html += '<span><span style="display:inline-block;width:12px;height:12px;background:#1c0f00;border:1px solid #92400e;border-radius:3px;margin-right:4px;"></span>Hostanteil ('+(32-pfx)+' Bit)</span>';
+        html += '</div>';
+        html += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-top:0.75rem;">';
+        for (var k=0;k<4;k++) {
+          html += '<div style="border:1px solid #1e293b;border-radius:8px;padding:0.5rem;text-align:center;background:#0f172a;">';
+          html += '<div style="font-family:monospace;font-weight:700;color:#e2e8f0;font-size:1rem;">'+octets[k]+'</div>';
+          html += '<div style="font-family:monospace;font-size:0.7rem;color:#64748b;margin-top:2px;">'+toBin8(octets[k])+'</div>';
+          html += '</div>';
+        }
+        html += '</div>';
+        out.innerHTML = html;
+      }
+
+      document.getElementById('bc-ip').addEventListener('input', updateIpVis);
+      document.getElementById('bc-pfx').addEventListener('input', updateIpVis);
+      updateIpVis();
+    })();
+  </script>
 </StarlightPage>

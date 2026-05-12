@@ -1,9 +1,120 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import ProgressTracker from '../components/ProgressTracker.jsx';
 ---
 
 <StarlightPage frontmatter={{ title: 'Lernfortschritt', description: 'Verfolge deinen Lernfortschritt durch alle CaveHub-Themen.' }}>
   <p>Hake ab, welche Themen du bereits durchgearbeitet hast. Dein Fortschritt wird lokal in deinem Browser gespeichert und bleibt beim nächsten Besuch erhalten.</p>
-  <ProgressTracker client:load />
+
+  <div id="progress-tool" style="max-width:700px;margin:1.5rem auto;font-family:sans-serif;">
+    <div style="border:1px solid #334155;border-radius:12px;padding:1.5rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h3 style="margin:0;color:#e2e8f0;font-size:1.1rem;">📋 Lernfortschritt</h3>
+        <button id="pt-reset" type="button" style="background:transparent;border:1px solid #475569;border-radius:6px;padding:0.3rem 0.75rem;color:#94a3b8;font-size:0.8rem;cursor:pointer;">Zurücksetzen</button>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#94a3b8;margin-bottom:0.4rem;">
+          <span id="pt-count">0 von 17 Themen abgeschlossen</span>
+          <span id="pt-pct" style="font-weight:700;color:#38bdf8;">0%</span>
+        </div>
+        <div style="height:8px;background:#1e293b;border-radius:4px;overflow:hidden;">
+          <div id="pt-bar" style="height:100%;background:linear-gradient(90deg,#0284c7,#38bdf8);border-radius:4px;width:0%;transition:width 0.3s;"></div>
+        </div>
+      </div>
+
+      <div id="pt-list"></div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var STORAGE_KEY = 'cavehub_progress';
+      var TOPICS = [
+        { section: 'Systemtechnik – Hardware', items: [
+          { id: 'hw-grundlagen', label: 'Grundlagen der Hardware' },
+          { id: 'hw-eva', label: 'EVA-Prinzip' },
+          { id: 'hw-cpu', label: 'CPU & Architektur' },
+          { id: 'hw-mainboard', label: 'Mainboard & Chipsatz' },
+          { id: 'hw-glossar', label: 'Glossar Hardware' }
+        ]},
+        { section: 'Netzwerke – OSI-Modell', items: [
+          { id: 'nw-osi', label: 'OSI-Modell Übersicht' },
+          { id: 'nw-osi-schichten', label: 'OSI-Schichten im Detail' }
+        ]},
+        { section: 'Netzwerke – IP & Subnetting', items: [
+          { id: 'nw-ip-grundlagen', label: 'IP-Grundlagen & Klassen' },
+          { id: 'nw-subnetting', label: 'Subnetting-Grundlagen' },
+          { id: 'nw-cidr', label: 'CIDR-Notation' },
+          { id: 'nw-berechnung', label: 'Subnetz-Berechnung' },
+          { id: 'nw-vlsm', label: 'VLSM' },
+          { id: 'nw-pruefung', label: 'Prüfungsfragen Subnetting' }
+        ]},
+        { section: 'Netzwerke – Sonstiges', items: [
+          { id: 'nw-protokolle', label: 'Protokolle (TCP/UDP/ICMP)' },
+          { id: 'nw-dns', label: 'DNS & DHCP' },
+          { id: 'nw-cheatsheet', label: 'Cheatsheet Netzwerke' }
+        ]}
+      ];
+
+      var checked = {};
+      try { checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+
+      var listEl = document.getElementById('pt-list');
+      var html = '';
+      var allItems = [];
+
+      TOPICS.forEach(function(topic) {
+        html += '<div style="margin-bottom:1rem;"><div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#64748b;margin-bottom:0.5rem;">'+topic.section+'</div>';
+        topic.items.forEach(function(item) {
+          allItems.push(item.id);
+          var isChecked = checked[item.id] ? ' checked' : '';
+          html += '<label style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;cursor:pointer;">';
+          html += '<input type="checkbox" data-id="'+item.id+'"'+isChecked+' style="width:18px;height:18px;cursor:pointer;accent-color:#0ea5e9;" />';
+          html += '<span style="color:#e2e8f0;font-size:0.9rem;">'+item.label+'</span>';
+          html += '</label>';
+        });
+        html += '</div>';
+      });
+
+      listEl.innerHTML = html;
+
+      function updateDisplay() {
+        var done = 0;
+        allItems.forEach(function(id) { if (checked[id]) done++; });
+        var total = allItems.length;
+        var pct = Math.round((done/total)*100);
+        document.getElementById('pt-count').textContent = done + ' von ' + total + ' Themen abgeschlossen';
+        document.getElementById('pt-pct').textContent = pct + '%';
+        document.getElementById('pt-bar').style.width = pct + '%';
+      }
+
+      updateDisplay();
+
+      listEl.addEventListener('change', function(e) {
+        var cb = e.target;
+        if (cb.tagName !== 'INPUT') return;
+        var id = cb.getAttribute('data-id');
+        checked[id] = cb.checked;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+        updateDisplay();
+        // Update badge if present
+        var badge = document.getElementById('progress-pct');
+        if (badge) {
+          var done = 0;
+          allItems.forEach(function(id) { if (checked[id]) done++; });
+          badge.textContent = Math.round((done/allItems.length)*100) + '%';
+        }
+      });
+
+      document.getElementById('pt-reset').addEventListener('click', function() {
+        checked = {};
+        localStorage.removeItem(STORAGE_KEY);
+        var boxes = listEl.querySelectorAll('input[type=checkbox]');
+        boxes.forEach(function(cb) { cb.checked = false; });
+        updateDisplay();
+        var badge = document.getElementById('progress-pct');
+        if (badge) badge.textContent = '0%';
+      });
+    })();
+  </script>
 </StarlightPage>

@@ -1,9 +1,272 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import SubnetCalculator from '../../components/SubnetCalculator.jsx';
 ---
 
 <StarlightPage frontmatter={{ title: 'Subnetz-Rechner', description: 'Interaktiver Subnetz-Rechner: IP + Präfix eingeben und automatisch Netzadresse, Broadcast, Hosts und alle Subnetze berechnen.' }}>
   <p>Gib eine IP-Adresse und einen Präfix ein – der Rechner berechnet automatisch Netzadresse, Broadcast, alle Subnetze und mehr.</p>
-  <SubnetCalculator client:load />
+
+  <div id="subnet-tool" style="max-width:860px;margin:1.5rem auto;font-family:sans-serif;">
+    <div style="border:1px solid #334155;border-radius:12px;padding:1.5rem;margin-bottom:1rem;">
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end;">
+        <div>
+          <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.3rem;">IP-Adresse</span>
+          <input id="sn-ip" type="text" value="192.168.1.0" style="border:1px solid #475569;border-radius:8px;padding:0.4rem 0.7rem;font-size:0.875rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:160px;" />
+        </div>
+        <div>
+          <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.3rem;">Präfix</span>
+          <div style="display:flex;align-items:center;gap:0.25rem;">
+            <span style="font-family:monospace;color:#94a3b8;">/</span>
+            <input id="sn-prefix" type="number" value="24" min="1" max="30" style="border:1px solid #475569;border-radius:8px;padding:0.4rem 0.7rem;font-size:0.875rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:70px;" />
+          </div>
+        </div>
+        <div>
+          <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.3rem;">Gewünschte Subnetze</span>
+          <input id="sn-subnets" type="number" value="1" min="1" max="256" style="border:1px solid #475569;border-radius:8px;padding:0.4rem 0.7rem;font-size:0.875rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:80px;" />
+        </div>
+        <button id="sn-btn" type="button" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:0.5rem 1.2rem;font-weight:700;font-size:0.875rem;cursor:pointer;">Berechnen</button>
+      </div>
+      <p id="sn-error" style="color:#f87171;font-size:0.85rem;margin-top:0.75rem;display:none;"></p>
+    </div>
+
+    <div id="sn-result" style="border:1px solid #1d4ed8;border-radius:12px;padding:1.5rem;background:#0c1a3a;">
+      <div style="font-weight:700;color:#38bdf8;margin-bottom:0.75rem;font-size:1rem;">Ergebnis</div>
+      <p id="sn-placeholder" style="color:#475569;font-style:italic;font-size:0.875rem;margin:0;">Klicke auf <strong style="color:#94a3b8;">Berechnen</strong> → das Ergebnis erscheint hier.</p>
+      <div id="sn-output" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('sn-btn').addEventListener('click', function() {
+      var ipStr = document.getElementById('sn-ip').value.trim();
+      var pfx = parseInt(document.getElementById('sn-prefix').value, 10);
+      var wantedSubnets = parseInt(document.getElementById('sn-subnets').value, 10);
+      var errEl = document.getElementById('sn-error');
+      var placeholder = document.getElementById('sn-placeholder');
+      var output = document.getElementById('sn-output');
+
+      errEl.style.display = 'none';
+
+      if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(ipStr) || ipStr.split('.').some(function(o){return parseInt(o)>255;})) {
+        errEl.textContent = 'Ungültige IP-Adresse.';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (isNaN(pfx) || pfx < 1 || pfx > 30) {
+        errEl.textContent = 'Präfix muss zwischen 1 und 30 liegen.';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      function ipToInt(ip) { return ip.split('.').reduce(function(a,o){return (a*256)+parseInt(o,10);},0)>>>0; }
+      function intToIp(n) { return [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.'); }
+      function intToBin(n) { return (n>>>0).toString(2).padStart(32,'0').replace(/(.{8})/g,'$1.').slice(0,-1); }
+
+      var ipInt = ipToInt(ipStr);
+      var mask = pfx===0?0:(0xFFFFFFFF<<(32-pfx))>>>0;
+      var netInt = (ipInt & mask)>>>0;
+      var bcInt = (netInt | (~mask>>>0))>>>0;
+      var totalHosts = Math.pow(2, 32-pfx);
+      var usableHosts = totalHosts - 2;
+
+      var subnetBits = 0;
+      while (Math.pow(2,subnetBits) < wantedSubnets) subnetBits++;
+      var newPrefix = pfx + subnetBits;
+
+      var html = '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-bottom:1rem;">';
+      var items = [
+        ['Netzadresse', intToIp(netInt)],
+        ['Broadcast', intToIp(bcInt)],
+        ['Subnetzmaske', intToIp(mask)],
+        ['Erste nutzbare IP', intToIp((netInt+1)>>>0)],
+        ['Letzte nutzbare IP', intToIp((bcInt-1)>>>0)],
+        ['Nutzbare Hosts', usableHosts.toLocaleString('de')]
+      ];
+      for (var k=0;k<items.length;k++) {
+        html += '<div style="border:1px solid #1e3a5f;border-radius:8px;padding:0.6rem 0.75rem;background:#0f172a;">';
+        html += '<div style="font-size:0.7rem;color:#64748b;">'+items[k][0]+'</div>';
+        html += '<div style="font-family:monospace;font-weight:600;font-size:0.875rem;color:#e2e8f0;">'+items[k][1]+'</div>';
+        html += '</div>';
+      }
+      html += '</div>';
+
+      html += '<div style="border:1px solid #1e3a5f;border-radius:8px;padding:0.75rem;font-family:monospace;font-size:0.8rem;background:#0f172a;color:#94a3b8;">';
+      html += '<div style="color:#475569;margin-bottom:0.2rem;">Netzadresse (binär):</div><div>'+intToBin(netInt)+'</div>';
+      html += '<div style="color:#475569;margin-top:0.5rem;margin-bottom:0.2rem;">Subnetzmaske (binär):</div><div>'+intToBin(mask)+'</div>';
+      html += '</div>';
+
+      if (newPrefix <= 30 && subnetBits > 0) {
+        var subnetCount = Math.pow(2, subnetBits);
+        var subnetSize = Math.pow(2, 32-newPrefix);
+        var newMask = (0xFFFFFFFF<<(32-newPrefix))>>>0;
+        html += '<div style="margin-top:1.25rem;">';
+        html += '<div style="font-weight:700;color:#e2e8f0;margin-bottom:0.25rem;">Subnetting: '+subnetBits+' Bit(s) geliehen → '+subnetCount+' Subnetze (/'+newPrefix+')</div>';
+        html += '<div style="font-size:0.8rem;color:#64748b;margin-bottom:0.75rem;">Neue Maske: '+intToIp(newMask)+' | Hosts/Subnetz: '+(subnetSize-2).toLocaleString('de')+'</div>';
+        html += '<table style="width:100%;font-family:monospace;font-size:0.85rem;border-collapse:collapse;">';
+        html += '<thead><tr style="border-bottom:1px solid #1e293b;">';
+        html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">#</th>';
+        html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">IP-Range</th>';
+        html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Netzwerk</th>';
+        html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Broadcast</th>';
+        html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Nutzbar</th>';
+        html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Hosts</th>';
+        html += '</tr></thead><tbody>';
+        for (var i=0;i<subnetCount;i++) {
+          var sNet = (netInt + i*subnetSize)>>>0;
+          var sBc = (sNet + subnetSize - 1)>>>0;
+          var bg = i%2===0?'#0f172a':'#0c1524';
+          html += '<tr style="background:'+bg+';">';
+          html += '<td style="padding:0.4rem 0.6rem;color:#475569;">'+(i+1)+'</td>';
+          html += '<td style="padding:0.4rem 0.6rem;font-weight:700;color:#e2e8f0;">'+intToIp(sNet)+' – '+intToIp(sBc)+'</td>';
+          html += '<td style="padding:0.4rem 0.6rem;color:#38bdf8;">'+intToIp(sNet)+'</td>';
+          html += '<td style="padding:0.4rem 0.6rem;color:#fb923c;">'+intToIp(sBc)+'</td>';
+          html += '<td style="padding:0.4rem 0.6rem;color:#94a3b8;">'+intToIp((sNet+1)>>>0)+' – '+intToIp((sBc-1)>>>0)+'</td>';
+          html += '<td style="padding:0.4rem 0.6rem;color:#22c55e;font-weight:600;">'+(subnetSize-2).toLocaleString('de')+'</td>';
+          html += '</tr>';
+        }
+        html += '</tbody></table></div>';
+      } else if (newPrefix > 30) {
+        html += '<div style="border:1px solid #7f1d1d;border-radius:10px;padding:0.75rem 1rem;color:#fca5a5;font-size:0.875rem;background:#1c0a0a;margin-top:1rem;">⚠️ Für '+wantedSubnets+' Subnetze wäre /'+newPrefix+' nötig – nicht sinnvoll.</div>';
+      }
+
+      placeholder.style.display = 'none';
+      output.innerHTML = html;
+      output.style.display = 'block';
+    });
+  </script>
+
+  <hr style="border:none;border-top:1px solid #334155;margin:2rem 0;" />
+
+  <h2 style="color:#e2e8f0;">Rückwärts-Rechner</h2>
+  <p>Du weißt, wie viele Hosts und Subnetze du brauchst – und willst wissen, welches Subnetting passt?</p>
+
+  <div id="rev-tool" style="max-width:860px;margin:1.5rem auto;font-family:sans-serif;">
+    <div style="border:1px solid #334155;border-radius:12px;padding:1.5rem;margin-bottom:1rem;">
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end;">
+        <div>
+          <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.3rem;">Benötigte Hosts/Subnetz</span>
+          <input id="rev-hosts" type="number" value="92" min="1" style="border:1px solid #475569;border-radius:8px;padding:0.4rem 0.7rem;font-size:0.875rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:120px;" />
+        </div>
+        <div>
+          <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.3rem;">Benötigte Subnetze</span>
+          <input id="rev-subnets" type="number" value="5" min="1" style="border:1px solid #475569;border-radius:8px;padding:0.4rem 0.7rem;font-size:0.875rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:100px;" />
+        </div>
+        <div>
+          <span style="display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:0.3rem;">Start-IP (optional)</span>
+          <input id="rev-ip" type="text" value="10.0.0.0" style="border:1px solid #475569;border-radius:8px;padding:0.4rem 0.7rem;font-size:0.875rem;font-family:monospace;background:#1e293b;color:#e2e8f0;width:140px;" />
+        </div>
+        <button id="rev-btn" type="button" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:0.5rem 1.2rem;font-weight:700;font-size:0.875rem;cursor:pointer;">Berechnen</button>
+      </div>
+      <p id="rev-error" style="color:#f87171;font-size:0.85rem;margin-top:0.75rem;display:none;"></p>
+    </div>
+
+    <div id="rev-result" style="border:1px solid #1d4ed8;border-radius:12px;padding:1.5rem;background:#0c1a3a;">
+      <div style="font-weight:700;color:#38bdf8;margin-bottom:0.75rem;font-size:1rem;">Ergebnis</div>
+      <p id="rev-placeholder" style="color:#475569;font-style:italic;font-size:0.875rem;margin:0;">Klicke auf <strong style="color:#94a3b8;">Berechnen</strong> → das Ergebnis erscheint hier.</p>
+      <div id="rev-output" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('rev-btn').addEventListener('click', function() {
+      var neededHosts = parseInt(document.getElementById('rev-hosts').value, 10);
+      var neededSubnets = parseInt(document.getElementById('rev-subnets').value, 10);
+      var startIp = document.getElementById('rev-ip').value.trim() || '10.0.0.0';
+      var errEl = document.getElementById('rev-error');
+      var placeholder = document.getElementById('rev-placeholder');
+      var output = document.getElementById('rev-output');
+
+      errEl.style.display = 'none';
+
+      if (isNaN(neededHosts) || neededHosts < 1) { errEl.textContent='Mindestens 1 Host angeben.'; errEl.style.display='block'; return; }
+      if (isNaN(neededSubnets) || neededSubnets < 1) { errEl.textContent='Mindestens 1 Subnetz angeben.'; errEl.style.display='block'; return; }
+      if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(startIp)) { errEl.textContent='Ungültige Start-IP.'; errEl.style.display='block'; return; }
+
+      // Host-Bits berechnen: 2^n - 2 >= neededHosts
+      var hostBits = 1;
+      while ((Math.pow(2, hostBits) - 2) < neededHosts) hostBits++;
+      var subnetPrefix = 32 - hostBits;
+      var actualHosts = Math.pow(2, hostBits) - 2;
+      var subnetSize = Math.pow(2, hostBits);
+
+      // Subnetz-Bits berechnen
+      var subnetBits = 0;
+      while (Math.pow(2, subnetBits) < neededSubnets) subnetBits++;
+      var actualSubnets = Math.pow(2, subnetBits);
+
+      // Übergeordnetes Netz
+      var parentPrefix = subnetPrefix - subnetBits;
+      if (parentPrefix < 1) { errEl.textContent='Kombination nicht möglich – zu viele Hosts/Subnetze.'; errEl.style.display='block'; return; }
+
+      var parentMask = (0xFFFFFFFF << (32 - parentPrefix)) >>> 0;
+      var subnetMask = (0xFFFFFFFF << (32 - subnetPrefix)) >>> 0;
+
+      function ipToInt(ip) { return ip.split('.').reduce(function(a,o){return (a*256)+parseInt(o,10);},0)>>>0; }
+      function intToIp(n) { return [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.'); }
+
+      var baseInt = ipToInt(startIp);
+      var netBase = (baseInt & parentMask) >>> 0;
+
+      var html = '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-bottom:1rem;">';
+      var infoItems = [
+        ['Benötigte Hosts', neededHosts],
+        ['Tatsächlich nutzbar', actualHosts],
+        ['Benötigte Subnetze', neededSubnets],
+        ['Tatsächliche Subnetze', actualSubnets],
+        ['Subnetz-Präfix', '/'+subnetPrefix],
+        ['Subnetzmaske', intToIp(subnetMask)],
+        ['Übergeordnetes Netz', intToIp(netBase)+'/'+parentPrefix],
+        ['Host-Bits', hostBits],
+        ['Subnetz-Bits (geliehen)', subnetBits]
+      ];
+      for (var k=0;k<infoItems.length;k++) {
+        html += '<div style="border:1px solid #1e3a5f;border-radius:8px;padding:0.6rem 0.75rem;background:#0f172a;">';
+        html += '<div style="font-size:0.7rem;color:#64748b;">'+infoItems[k][0]+'</div>';
+        html += '<div style="font-family:monospace;font-weight:600;font-size:0.875rem;color:#e2e8f0;">'+infoItems[k][1]+'</div>';
+        html += '</div>';
+      }
+      html += '</div>';
+
+      // Subnetz-Tabelle
+      html += '<div style="margin-top:1rem;">';
+      html += '<div style="font-weight:700;color:#e2e8f0;margin-bottom:0.5rem;">Subnetze (bei Start-IP '+intToIp(netBase)+')</div>';
+      html += '<table style="width:100%;font-family:monospace;font-size:0.85rem;border-collapse:collapse;">';
+      html += '<thead><tr style="border-bottom:1px solid #1e293b;">';
+      html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">#</th>';
+      html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">IP-Range</th>';
+      html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Netzwerk</th>';
+      html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Broadcast</th>';
+      html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Nutzbar</th>';
+      html += '<th style="text-align:left;padding:0.4rem 0.6rem;font-size:0.7rem;text-transform:uppercase;color:#64748b;">Hosts</th>';
+      html += '</tr></thead><tbody>';
+      for (var i=0;i<actualSubnets;i++) {
+        var sNet = (netBase + i*subnetSize)>>>0;
+        var sBc = (sNet + subnetSize - 1)>>>0;
+        var bg = i%2===0?'#0f172a':'#0c1524';
+        var needed = i < neededSubnets;
+        html += '<tr style="background:'+bg+';'+(needed?'':'opacity:0.5;')+'">';
+        html += '<td style="padding:0.4rem 0.6rem;color:#475569;">'+(i+1)+(needed?'':' (extra)')+'</td>';
+        html += '<td style="padding:0.4rem 0.6rem;font-weight:700;color:#e2e8f0;">'+intToIp(sNet)+' – '+intToIp(sBc)+'</td>';
+        html += '<td style="padding:0.4rem 0.6rem;color:#38bdf8;">'+intToIp(sNet)+'</td>';
+        html += '<td style="padding:0.4rem 0.6rem;color:#fb923c;">'+intToIp(sBc)+'</td>';
+        html += '<td style="padding:0.4rem 0.6rem;color:#94a3b8;">'+intToIp((sNet+1)>>>0)+' – '+intToIp((sBc-1)>>>0)+'</td>';
+        html += '<td style="padding:0.4rem 0.6rem;color:#22c55e;font-weight:600;">'+actualHosts+'</td>';
+        html += '</tr>';
+      }
+      html += '</tbody></table></div>';
+
+      // Zusammenfassung
+      html += '<div style="margin-top:1.25rem;border:1px solid #1e3a5f;border-radius:10px;padding:1rem;background:#0f172a;font-size:0.875rem;color:#94a3b8;">';
+      html += '<strong style="color:#e2e8f0;">Zusammenfassung:</strong> Du brauchst ein <strong style="color:#38bdf8;">/'+subnetPrefix+'</strong>-Subnetting ';
+      html += '(Maske <strong style="color:#38bdf8;">'+intToIp(subnetMask)+'</strong>). ';
+      html += 'Damit bekommst du <strong style="color:#22c55e;">'+actualHosts+'</strong> nutzbare Hosts pro Subnetz in <strong style="color:#22c55e;">'+actualSubnets+'</strong> Subnetzen.';
+      if (actualSubnets > neededSubnets) {
+        html += ' <span style="color:#fbbf24;">('+(actualSubnets-neededSubnets)+' Extra-Subnetz(e) für zukünftiges Wachstum.)</span>';
+      }
+      html += '</div>';
+
+      placeholder.style.display = 'none';
+      output.innerHTML = html;
+      output.style.display = 'block';
+    });
+  </script>
 </StarlightPage>
