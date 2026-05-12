@@ -14,7 +14,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
       <div style="margin-bottom:1.25rem;">
         <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#94a3b8;margin-bottom:0.4rem;">
-          <span id="pt-count">0 von 17 Themen abgeschlossen</span>
+          <span id="pt-count">0 von 24 Themen abgeschlossen</span>
           <span id="pt-pct" style="font-weight:700;color:#38bdf8;">0%</span>
         </div>
         <div style="height:8px;background:#1e293b;border-radius:4px;overflow:hidden;">
@@ -53,6 +53,15 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
           { id: 'nw-protokolle', label: 'Protokolle (TCP/UDP/ICMP)' },
           { id: 'nw-dns', label: 'DNS & DHCP' },
           { id: 'nw-cheatsheet', label: 'Cheatsheet Netzwerke' }
+        ]},
+        { section: 'Digitaltechnik', items: [
+          { id: 'dt-zahlensysteme', label: 'Zahlensysteme (Binär, Hex, Oktal)' },
+          { id: 'dt-bool-algebra', label: 'Boolesche Algebra & Logikgatter' },
+          { id: 'dt-de-morgan', label: 'De Morgansches Gesetz' },
+          { id: 'dt-kv-diagramme', label: 'Karnaugh-Veitch-Diagramme' },
+          { id: 'dt-codes', label: 'Codes (BCD, Gray, ASCII)' },
+          { id: 'dt-addierer', label: 'Halb- und Volladdierer' },
+          { id: 'dt-flipflops', label: 'Flipflops & Schaltwerke' }
         ]}
       ];
 

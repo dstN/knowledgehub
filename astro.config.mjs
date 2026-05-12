@@ -76,6 +76,44 @@ export default defineConfig({
 								},
 							],
 						},
+						{
+							label: 'Digitaltechnik',
+							collapsed: true,
+							items: [
+								{
+									label: 'Übersicht & Lernziele',
+									slug: 'digitaltechnik/00-uebersicht',
+								},
+								{
+									label: '01 Zahlensysteme',
+									slug: 'digitaltechnik/01-zahlensysteme',
+								},
+								{
+									label: '02 Boolesche Algebra',
+									slug: 'digitaltechnik/02-bool-algebra',
+								},
+								{
+									label: '03 De Morgansches Gesetz',
+									slug: 'digitaltechnik/03-de-morgan',
+								},
+								{
+									label: '04 KV-Diagramme',
+									slug: 'digitaltechnik/04-kv-diagramme',
+								},
+								{
+									label: '05 Codes (BCD, Gray, ASCII)',
+									slug: 'digitaltechnik/06-codes',
+								},
+								{
+									label: '06 Halb- & Volladdierer',
+									slug: 'digitaltechnik/05-addierer',
+								},
+								{
+									label: '07 Flipflops & Schaltwerke',
+									slug: 'digitaltechnik/07-flipflops',
+								},
+							],
+						},
 					],
 				},
 				{

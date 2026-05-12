@@ -8,9 +8,9 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
   <div id="bin-tool" style="max-width:720px;margin:1.5rem auto;font-family:sans-serif;">
     <div style="border:1px solid #334155;border-radius:12px;padding:1.5rem;">
       <div id="bin-tabs" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;">
-        <button type="button" data-mode="dec2bin" class="bintab active" style="background:#0284c7;color:#fff;border:none;border-radius:8px;padding:0.4rem 0.85rem;font-weight:700;font-size:0.85rem;cursor:pointer;">Dezimal → Binär</button>
-        <button type="button" data-mode="bin2dec" class="bintab" style="background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.85rem;font-weight:600;font-size:0.85rem;cursor:pointer;">Binär → Dezimal</button>
-        <button type="button" data-mode="ipvis" class="bintab" style="background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.85rem;font-weight:600;font-size:0.85rem;cursor:pointer;">IP visualisieren</button>
+        <button type="button" data-mode="dec2bin" class="bintab active" style="background:#0284c7;color:#fff;border:1px solid #0284c7;border-radius:8px;padding:0.4rem 0.85rem;font-weight:700;font-size:0.85rem;cursor:pointer;">Dezimal → Binär</button>
+        <button type="button" data-mode="bin2dec" class="bintab" style="background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.85rem;font-weight:700;font-size:0.85rem;cursor:pointer;">Binär → Dezimal</button>
+        <button type="button" data-mode="ipvis" class="bintab" style="background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;padding:0.4rem 0.85rem;font-weight:700;font-size:0.85rem;cursor:pointer;">IP visualisieren</button>
       </div>
 
       <div id="panel-dec2bin">
@@ -61,7 +61,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
         btn.addEventListener('click', function() {
           var mode = btn.getAttribute('data-mode');
           tabs.forEach(function(t) { t.style.background='#1e293b'; t.style.color='#94a3b8'; t.style.border='1px solid #334155'; });
-          btn.style.background='#0284c7'; btn.style.color='#fff'; btn.style.border='none';
+          btn.style.background='#0284c7'; btn.style.color='#fff'; btn.style.border='1px solid #0284c7';
           Object.keys(panels).forEach(function(k) { panels[k].style.display = k===mode ? 'block' : 'none'; });
         });
       });
