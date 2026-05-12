@@ -22,6 +22,8 @@ Willkommen bei **CaveHub** – deiner umfassenden Lernplattform zur Vorbereitung
 Starte direkt mit diesen Inhalten:
 
 - [OSI-Modell verstehen](/osi/) – Das Fundament der Netzwerkkommunikation
+- [Subnetting](/netzwerke/01-subnetting/) – Netzaufteilung, Binärrechnung, vollständige Berechnungsbeispiele
+- [CIDR – Classless Inter-Domain Routing](/netzwerke/01-subnetting/cidr/) – Von Klassen-IP zur flexiblen Netzaufteilung
 - [Hardware Grundlagen](/hardware/01-grundlagen/) – Evolution und Kategorisierung von IT-Systemen
 - [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren und Designphilosophien
 - [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
@@ -67,13 +69,19 @@ Das fundamentale Referenzmodell für die Netzwerkkommunikation:
 **Weitere Ressourcen:**
 - [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
 
+#### Subnetting & CIDR
+IP-Adressierung, Netzaufteilung und klassenlose Routingkonzepte:
+
+- [Subnetting – Übersicht](/netzwerke/01-subnetting/) – Binärtabellen, Subnetzmasken (/8–/30), Formeln $2^n - 2$ und $2^x$, vollständige Rechenbeispiele
+- [CIDR – Classless Inter-Domain Routing](/netzwerke/01-subnetting/cidr/) – Übergang von Klasse A/B/C zu CIDR, Präfixnotation, Aggregation, private Adressbereiche
+
 ---
 
 ## Weitere Fächer (in Planung)
 
 In Kürze kommen weitere Lernbereiche hinzu:
 
-- **Netzwerkadministration** (z.B. Subnetting, VLAN, Routing)
+- **Netzwerkadministration** (z.B. VLAN, Routing-Protokolle, NAT)
 - **Betriebssysteme** (Windows, Linux, macOS)
 - **Programmierung** (Grundlagen, Objektorientierung)
 - **Datenbanken** (SQL, Datenbankdesign)

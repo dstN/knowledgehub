@@ -86,6 +86,13 @@ export default defineConfig({
 								{ label: 'Glossar', slug: 'osi/glossar' },
 							],
 						},
+						{
+							label: '01 Subnetting & CIDR',
+							items: [
+								{ label: 'Übersicht & Subnetting', slug: 'netzwerke/01-subnetting' },
+								{ label: 'CIDR – Classless Inter-Domain Routing', slug: 'netzwerke/01-subnetting/cidr' },
+							],
+						},
 					],
 				},
 			],
