@@ -13,6 +13,7 @@ Subnetting bezeichnet die Technik, ein IP-Netzwerk in mehrere kleinere Teilnetze
 
 - [Subnetting – Übersicht](/netzwerke/01-subnetting/) ← du bist hier
 - [CIDR – Classless Inter-Domain Routing](/netzwerke/01-subnetting/cidr/)
+- [Schritt-für-Schritt-Berechnung](/netzwerke/01-subnetting/berechnung/)
 
 ---
 

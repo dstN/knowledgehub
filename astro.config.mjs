@@ -91,6 +91,7 @@ export default defineConfig({
 							items: [
 								{ label: 'Übersicht & Subnetting', slug: 'netzwerke/01-subnetting' },
 								{ label: 'CIDR – Classless Inter-Domain Routing', slug: 'netzwerke/01-subnetting/cidr' },
+								{ label: 'Schritt-für-Schritt-Berechnung', slug: 'netzwerke/01-subnetting/berechnung' },
 							],
 						},
 					],
