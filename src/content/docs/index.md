@@ -1,86 +1,101 @@
 ---
-title: IT-Hardware Studienführer
-description: Dein interaktiver Begleiter durch die Welt der Computerhardware
+title: CaveHub – Lernplattform für Fachinformatiker
+description: Deine zentrale Lernplattform zur Fachinformatiker-Umschulung mit fundiertem Wissen zu Hard- und Software
 ---
 
-# IT-Hardware Studienführer 🖥️
+# CaveHub
 
-## Willkommen!
+Willkommen bei **CaveHub** – deiner umfassenden Lernplattform zur Vorbereitung auf die Fachinformatiker-Umschulung. Hier findest du strukturiertes Fachwissen, detaillierte Erklärungen und praktische Einblicke in alle wichtigen IT-Bereiche.
 
-Dieser **interaktive Studienführer** wurde speziell für IT-Azubis entwickelt, um die Welt der Computerhardware verständlich und praxisorientiert zu vermitteln.
+## Was erwartet dich?
 
-Egal, ob du noch am Anfang stehst oder bereits fortgeschrittenes Wissen aufbaust – hier findest du:
-
-- 📚 **Fundierte Erklärungen** von Grundkonzepten
-- 🎮 **Interaktive Diagramme & Charts** zum aktiven Lernen
-- 🔍 **Detaillierte Visualisierungen** von Architektur-Konzepten
-- 📖 **Glossar** für schnelle Fachreferenzen
-
----
-
-## 📖 Inhaltsübersicht
-
-### **01 Grundlagen** 🏗️
-
-Beginne mit den Fundamenten: Wie hat sich die Datenverarbeitung entwickelt? Was ist der Unterschied zwischen analog und digital? Welche Arten von IT-Systemen gibt es?
-
-→ [Zu den Grundlagen](/01-grundlagen/)
-
-### **02 EVA-Prinzip** ⚙️
-
-Das universelle Architekturmodell: Eingabe → Verarbeitung → Ausgabe. Verstehe, wie Daten durch ein IT-System fließen und welche Hardware-Komponenten dafür verantwortlich sind.
-
-→ [Zum EVA-Prinzip](/02-eva-prinzip/)
-
-### **03 CPU & Architektur** 🖥️
-
-Tauche in das Gehirn des Computers ein! Lerne die internen Funktionseinheiten kennen (ALU, Steuerwerk, IDU) und vergleiche die zwei dominierenden Designphilosophien: **RISC** und **CISC**.
-
-→ [Zur CPU & Architektur](/03-cpu-architektur/)
-
-### **04 Mainboard & Chipsatz** 🔌
-
-Die Kommunikationszentrale des IT-Systems. Erfahre, wie Daten über Bussysteme übertragen werden, warum Taktgeber essenziell sind und wie sich der Chipsatz über die Zeit entwickelt hat.
-
-→ [Zum Mainboard & Chipsatz](/04-mainboard-chipsatz/)
-
-### **05 Glossar & Wissen** 📚
-
-Ein interaktives Nachschlagewerk für alle wichtigen Fachbegriffe. Perfekt zum Lernen und zur Vorbereitung auf Tests!
-
-→ [Zum Glossar](/05-glossar/)
+- **Systematische Struktur**: Fach → Hauptthema → Unterthema (einfach navigierbar)
+- **Fundierte Inhalte**: Von Grundlagen bis zu praktischen Anwendungen
+- **Interaktive Elemente**: Diagramme, Charts und Visualisierungen zum Verstehen
+- **Umfassendes Glossar**: Fachbegriffe schnell nachschlagen
+- **Kontinuierlich erweitert**: Neue Themen und Fächer kommen regelmäßig hinzu
 
 ---
 
-## 🌐 Netzwerke & Kommunikation
+## Schnellzugriff – Beliebte Themen
 
-### **OSI-Modell** 🔗
+Starte direkt mit diesen Inhalten:
 
-Das **Open Systems Interconnection Modell** ist das fundamentale Referenzmodell für Netzwerkkommunikation. Verstehe die 7 Schichten, von der physischen Bitübertragung bis zur Anwendungsebene – und wie jede Schicht beim Datentransport eine kritische Rolle spielt.
-
-→ [Zum OSI-Modell](/osi/)
-
----
-
-## 💡 Wie nutzt du diesen Studienführer am besten?
-
-1. **Systematisch**: Beginne mit den Grundlagen und arbeite dich schrittweise vor
-2. **Gezielt**: Nutze die Navigation links, um direkt zu Themen zu springen
-3. **Interaktiv**: Klicke auf Diagramme und Charts, um zu experimentieren
-4. **Repetitiv**: Kehre regelmäßig zum Glossar zurück, um Konzepte zu verfestigen
+- [OSI-Modell verstehen](/osi/) – Das Fundament der Netzwerkkommunikation
+- [Hardware Grundlagen](/01-grundlagen/) – Evolution und Kategorisierung von IT-Systemen
+- [CPU & Architektur](/03-cpu-architektur/) – Prozessoren und Designphilosophien
+- [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
 
 ---
 
-## 🤝 Mitautor werden?
+## Fächer & Themen
 
-Dieses Projekt lebt durch die Zusammenarbeit! Du kannst:
+### Systemtechnik
 
-- **Inhalte verbessern**: Tippfehler beheben, Erklärungen klarer machen
-- **Neue Inhalte hinzufügen**: Weitere Themen oder Übungsaufgaben beisteuern
-- **Feedback geben**: GitHub Issues für Verbesserungsvorschläge
+Verstehe die Hardware, das Betriebssystem und die Infrastruktur moderner IT-Systeme.
 
-Schau in die README.md für den Beitrag-Guide!
+#### Hardware
+Alles über die physischen Komponenten eines Computers:
+
+- [Grundlagen](/01-grundlagen/) – Evolution der Datenverarbeitung, analog vs. digital, IT-Systemkategorien
+- [EVA-Prinzip](/02-eva-prinzip/) – Eingabe → Verarbeitung → Ausgabe
+- [CPU & Architektur](/03-cpu-architektur/) – Prozessoren, ALU, Steuerwerk, RISC vs. CISC
+- [Mainboard & Chipsatz](/04-mainboard-chipsatz/) – Bussysteme, Taktgeber, Speicherhierarchie
+- [Glossar Hardware](/05-glossar/) – Alle Fachbegriffe
 
 ---
 
-**Viel Erfolg beim Lernen! 🎓**
+### Netzwerke & Kommunikation
+
+Lerne, wie Computer miteinander kommunizieren und Daten über Netzwerke übertragen werden.
+
+#### OSI-Modell
+Das fundamentale Referenzmodell für die Netzwerkkommunikation:
+
+**Übersicht & Grundlagen:**
+- [OSI-Modell Übersicht](/osi/) – Die 7 Schichten, Datenkapselung, Protokolle
+
+**Die 7 Schichten im Detail:**
+1. [Schicht 1 – Bitübertragung](/osi/01-bitübertragung/) – Physische Übertragung, Topologien, Kabel
+2. [Schicht 2 – Sicherung](/osi/02-sicherung/) – MAC-Adressen, Switches, Frames
+3. [Schicht 3 – Vermittlung](/osi/03-vermittlung/) – IP-Adressen, Routing, Router
+4. [Schicht 4 – Transport](/osi/04-transport/) – TCP, UDP, Portnummern
+5. [Schicht 5 – Sitzung](/osi/05-sitzung/) – Sitzungsverwaltung, Dialog-Steuerung
+6. [Schicht 6 – Darstellung](/osi/06-darstellung/) – Verschlüsselung, Kompression
+7. [Schicht 7 – Anwendung](/osi/07-anwendung/) – HTTP, E-Mail, DNS, VoIP
+
+**Weitere Ressourcen:**
+- [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
+
+---
+
+## Weitere Fächer (in Planung)
+
+In Kürze kommen weitere Lernbereiche hinzu:
+
+- **Netzwerkadministration** (z.B. Subnetting, VLAN, Routing)
+- **Betriebssysteme** (Windows, Linux, macOS)
+- **Programmierung** (Grundlagen, Objektorientierung)
+- **Datenbanken** (SQL, Datenbankdesign)
+- **Sicherheit & Datenschutz** (Verschlüsselung, Firewalls)
+- **Systemintegration** (Installation, Konfiguration, Troubleshooting)
+
+---
+
+## Wie lernst du mit CaveHub am effektivsten?
+
+1. **Finde dein Thema**: Nutze die oben genannte Struktur und wähle dein Fach
+2. **Arbeite systematisch**: Beginne mit Grundlagen, steige schrittweise auf
+3. **Nutze die Links**: Springe zwischen verwandten Themen und Glossar
+4. **Wiederhole regelmäßig**: Das Glossar hilft beim Verfestigen von Begriffen
+5. **Prüfe dein Wissen**: Die Glossare enthalten Definitionen und Beispiele
+
+---
+
+## Über CaveHub
+
+CaveHub entstand als Lernmaterialien-Sammlung für die Fachinformatiker-Umschulung. Das Projekt wird kontinuierlich erweitert und verbessert. Du hast Verbesserungsvorschläge? Feedback ist willkommen!
+
+---
+
+**Viel Erfolg beim Lernen!**
