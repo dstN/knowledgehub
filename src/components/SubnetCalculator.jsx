@@ -134,10 +134,13 @@ export default function SubnetCalculator() {
 				{error && <p style={S.error}>{error}</p>}
 			</div>
 
-			{result && (
-				<>
-					<div style={S.resultCard}>
-						<div style={S.resultTitle}>Ausgangsnetz: {result.network}/{prefix}</div>
+			<div style={S.resultCard}>
+				<div style={S.resultTitle}>Ergebnis</div>
+				{result ? (
+					<>
+						<div style={{ fontSize: '0.85rem', color: '#38bdf8', marginBottom: '0.75rem', fontWeight: 600 }}>
+							Ausgangsnetz: {result.network}/{prefix}
+						</div>
 						<div style={S.grid}>
 							{[
 								['Netzadresse', result.network],
@@ -159,49 +162,54 @@ export default function SubnetCalculator() {
 							<div style={S.binLabel}>Subnetzmaske (binär):</div>
 							<div>{result.maskBin}</div>
 						</div>
-					</div>
 
-					{result.subnetList.length > 0 && (
-						<div style={S.card}>
-							<div style={{ fontWeight: 700, color: '#e2e8f0', marginBottom: '0.25rem' }}>
-								Subnetting: {result.subnetBits} Bit(s) geliehen → {result.subnetList.length} Subnetze (/{result.newPrefix})
+						{result.newPrefix > 30 && (
+							<div style={{ ...S.warn, marginTop: '1rem' }}>
+								⚠️ Für {subnets} Subnetze wäre Präfix /{result.newPrefix} nötig – größer als /30, nicht sinnvoll einsetzbar.
 							</div>
-							<div style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '1rem' }}>
-								Neue Maske: {result.subnetList[0].mask} | Hosts/Subnetz: {(Math.pow(2, 32 - result.newPrefix) - 2).toLocaleString('de')}
-							</div>
-							<div style={S.tableWrap}>
-								<table style={S.table}>
-									<thead>
-										<tr>
-											<th style={S.th}>#</th>
-											<th style={S.th}>Netzadresse</th>
-											<th style={S.th}>Erste IP</th>
-											<th style={S.th}>Letzte IP</th>
-											<th style={S.th}>Broadcast</th>
-										</tr>
-									</thead>
-									<tbody>
-										{result.subnetList.map((sn, i) => (
-											<tr key={i} style={i % 2 === 0 ? S.trEven : S.trOdd}>
-												<td style={S.tdNum}>{i + 1}</td>
-												<td style={S.tdNet}>{sn.network}</td>
-												<td style={S.tdNormal}>{sn.first}</td>
-												<td style={S.tdNormal}>{sn.last}</td>
-												<td style={S.tdBc}>{sn.broadcast}</td>
+						)}
+
+						{result.subnetList.length > 0 && (
+							<div style={{ marginTop: '1.25rem' }}>
+								<div style={{ fontWeight: 700, color: '#e2e8f0', marginBottom: '0.25rem' }}>
+									Subnetting: {result.subnetBits} Bit(s) geliehen → {result.subnetList.length} Subnetze (/{result.newPrefix})
+								</div>
+								<div style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '0.75rem' }}>
+									Neue Maske: {result.subnetList[0].mask} | Hosts/Subnetz: {(Math.pow(2, 32 - result.newPrefix) - 2).toLocaleString('de')}
+								</div>
+								<div style={S.tableWrap}>
+									<table style={S.table}>
+										<thead>
+											<tr>
+												<th style={S.th}>#</th>
+												<th style={S.th}>Netzadresse</th>
+												<th style={S.th}>Erste IP</th>
+												<th style={S.th}>Letzte IP</th>
+												<th style={S.th}>Broadcast</th>
 											</tr>
-										))}
-									</tbody>
-								</table>
+										</thead>
+										<tbody>
+											{result.subnetList.map((sn, i) => (
+												<tr key={i} style={i % 2 === 0 ? S.trEven : S.trOdd}>
+													<td style={S.tdNum}>{i + 1}</td>
+													<td style={S.tdNet}>{sn.network}</td>
+													<td style={S.tdNormal}>{sn.first}</td>
+													<td style={S.tdNormal}>{sn.last}</td>
+													<td style={S.tdBc}>{sn.broadcast}</td>
+												</tr>
+											))}
+										</tbody>
+									</table>
+								</div>
 							</div>
-						</div>
-					)}
-					{result.newPrefix > 30 && (
-						<div style={S.warn}>
-							⚠️ Für {subnets} Subnetze wäre Präfix /{result.newPrefix} nötig – größer als /30, nicht sinnvoll einsetzbar.
-						</div>
-					)}
-				</>
-			)}
+						)}
+					</>
+				) : (
+					<p style={{ color: '#475569', fontStyle: 'italic', fontSize: '0.875rem', margin: 0 }}>
+						Gib oben eine IP-Adresse und einen Präfix ein, dann klick auf <strong style={{ color: '#94a3b8' }}>Berechnen</strong> → das Ergebnis erscheint hier.
+					</p>
+				)}
+			</div>
 		</div>
 	);
 }

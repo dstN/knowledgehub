@@ -1,48 +1,37 @@
 import { useState } from 'react';
 
-function decToBin(n) {
-	return n.toString(2).padStart(8, '0');
-}
-
-function binToDec(b) {
-	return parseInt(b, 2);
-}
-
-function highlight(bin, count) {
-	const net = bin.slice(0, count);
-	const host = bin.slice(count);
-	return { net, host };
-}
+function toBin(n) { return (n >>> 0).toString(2).padStart(8, '0'); }
+function toDec(b) { return parseInt(b, 2); }
 
 export default function BinaryConverter() {
 	const [mode, setMode] = useState('dec2bin');
-	const [dec, setDec] = useState('');
-	const [bin, setBin] = useState('');
+	const [decVal, setDecVal] = useState('');
+	const [binVal, setBinVal] = useState('');
 	const [ip, setIp] = useState('192.168.1.1');
 	const [prefix, setPrefix] = useState(24);
 	const [error, setError] = useState('');
 
-	function handleDec(val) {
+	function onDecChange(val) {
 		setError('');
-		setDec(val);
-		const n = parseInt(val);
-		if (val === '') { setBin(''); return; }
-		if (isNaN(n) || n < 0 || n > 255) { setError('Wert muss zwischen 0 und 255 liegen.'); setBin(''); return; }
-		setBin(decToBin(n));
+		setDecVal(val);
+		if (val === '') { setBinVal(''); return; }
+		const n = parseInt(val, 10);
+		if (isNaN(n) || n < 0 || n > 255) { setError('Wert 0–255 eingeben.'); setBinVal(''); return; }
+		setBinVal(toBin(n));
 	}
 
-	function handleBin(val) {
+	function onBinChange(val) {
 		setError('');
 		const clean = val.replace(/[^01]/g, '').slice(0, 8);
-		setBin(clean);
-		if (clean.length === 8) setDec(binToDec(clean).toString());
-		else setDec('');
+		setBinVal(clean);
+		if (clean.length === 8) setDecVal(String(toDec(clean)));
+		else setDecVal('');
 	}
 
-	const ipOctets = ip.split('.').map(o => parseInt(o) || 0);
+	const ipOctets = ip.split('.').map(o => { const n = parseInt(o, 10); return isNaN(n) ? 0 : Math.min(255, n); });
 	const ipValid = /^(\d{1,3}\.){3}\d{1,3}$/.test(ip) && ipOctets.every(o => o <= 255);
-	const pfx = parseInt(prefix);
-	const ipBinaryFull = ipOctets.map(o => decToBin(o)).join('');
+	const pfx = parseInt(prefix, 10);
+	const ipBinaryFull = ipOctets.map(o => toBin(o)).join('');
 
 	const S = {
 		wrap: { maxWidth: 720, margin: '1.5rem auto', fontFamily: 'sans-serif' },
@@ -78,27 +67,13 @@ export default function BinaryConverter() {
 		slash: { fontFamily: 'monospace', color: '#94a3b8' },
 	};
 
-	function BitDisplay({ bits }) {
-		return (
-			<div style={S.bitRow}>
-				{bits.split('').map((bit, i) => (
-					<div key={i} style={S.bitWrap}>
-						<span style={S.bitPos}>{7 - i}</span>
-						<span style={bit === '1' ? S.bit1 : S.bit0}>{bit}</span>
-						<span style={S.bitVal}>{Math.pow(2, 7 - i)}</span>
-					</div>
-				))}
-			</div>
-		);
-	}
-
 	return (
 		<div style={S.wrap}>
 			<div style={S.card}>
 				<div style={S.tabs}>
 					{[['dec2bin', 'Dezimal → Binär'], ['bin2dec', 'Binär → Dezimal'], ['ipvis', 'IP visualisieren']].map(([m, label]) => (
 						<button key={m} style={mode === m ? S.tabActive : S.tabInactive}
-							onClick={() => { setMode(m); setError(''); setDec(''); setBin(''); }}>
+							onClick={() => { setMode(m); setError(''); setDecVal(''); setBinVal(''); }}>
 							{label}
 						</button>
 					))}
@@ -107,36 +82,61 @@ export default function BinaryConverter() {
 				{mode === 'dec2bin' && (
 					<div>
 						<label style={S.fieldLabel}>Dezimalwert (0–255)</label>
-						<input style={S.input} type="number" min={0} max={255} value={dec}
-							onChange={e => handleDec(e.target.value)} placeholder="z.B. 192" />
+						<input style={S.input} type="text" inputMode="numeric" value={decVal}
+							onChange={e => onDecChange(e.target.value)} placeholder="z.B. 192" />
 						{error && <p style={S.error}>{error}</p>}
-						{bin && (
-							<div style={S.resultBox}>
-								<div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Binärdarstellung</div>
-								<BitDisplay bits={bin} />
-								<div style={S.sumLine}>
-									{bin.split('').map((b, i) => b === '1' ? Math.pow(2, 7 - i) : 0).filter(v => v > 0).join(' + ')}
-									{' = '}<span style={S.sumResult}>{parseInt(bin, 2)}</span>
-								</div>
-							</div>
-						)}
+						<div style={S.resultBox}>
+							<div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Binärdarstellung</div>
+							{binVal.length === 8 ? (
+								<>
+									<div style={S.bitRow}>
+										{binVal.split('').map((bit, i) => (
+											<div key={i} style={S.bitWrap}>
+												<span style={S.bitPos}>{7 - i}</span>
+												<span style={bit === '1' ? S.bit1 : S.bit0}>{bit}</span>
+												<span style={S.bitVal}>{Math.pow(2, 7 - i)}</span>
+											</div>
+										))}
+									</div>
+									<div style={S.sumLine}>
+										{binVal.split('').map((b, i) => b === '1' ? Math.pow(2, 7 - i) : 0).filter(v => v > 0).join(' + ')}
+										{' = '}<span style={S.sumResult}>{toDec(binVal)}</span>
+									</div>
+								</>
+							) : (
+								<p style={{ color: '#475569', fontStyle: 'italic', fontSize: '0.85rem', margin: 0 }}>Gib oben einen Wert ein → das Ergebnis erscheint hier.</p>
+							)}
+						</div>
 					</div>
 				)}
 
 				{mode === 'bin2dec' && (
 					<div>
-						<label style={S.fieldLabel}>Binärwert (8 Bit)</label>
-						<input style={S.inputWide} type="text" value={bin} maxLength={8}
-							onChange={e => handleBin(e.target.value)} placeholder="z.B. 11000000" />
-						{bin.length === 8 && (
-							<div style={S.resultBox}>
-								<BitDisplay bits={bin} />
-								<div style={S.sumLine}>
-									{bin.split('').map((b, i) => b === '1' ? Math.pow(2, 7 - i) : 0).filter(v => v > 0).join(' + ')}
-									{' = '}<span style={S.sumResult}>{dec}</span>
-								</div>
-							</div>
-						)}
+						<label style={S.fieldLabel}>Binärwert (8 Bit, nur 0 und 1)</label>
+						<input style={S.inputWide} type="text" value={binVal} maxLength={8}
+							onChange={e => onBinChange(e.target.value)} placeholder="z.B. 11000000" />
+						<div style={S.resultBox}>
+							<div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Dezimaldarstellung</div>
+							{binVal.length === 8 ? (
+								<>
+									<div style={S.bitRow}>
+										{binVal.split('').map((bit, i) => (
+											<div key={i} style={S.bitWrap}>
+												<span style={S.bitPos}>{7 - i}</span>
+												<span style={bit === '1' ? S.bit1 : S.bit0}>{bit}</span>
+												<span style={S.bitVal}>{Math.pow(2, 7 - i)}</span>
+											</div>
+										))}
+									</div>
+									<div style={S.sumLine}>
+										{binVal.split('').map((b, i) => b === '1' ? Math.pow(2, 7 - i) : 0).filter(v => v > 0).join(' + ')}
+										{' = '}<span style={S.sumResult}>{decVal}</span>
+									</div>
+								</>
+							) : (
+								<p style={{ color: '#475569', fontStyle: 'italic', fontSize: '0.85rem', margin: 0 }}>Gib oben 8 Bits ein (z.B. 11000000) → das Ergebnis erscheint hier.</p>
+							)}
+						</div>
 					</div>
 				)}
 
@@ -153,7 +153,7 @@ export default function BinaryConverter() {
 								<div style={S.prefixRow}>
 									<span style={S.slash}>/</span>
 									<input style={{ ...S.input, width: 70, marginBottom: 0 }} type="number" value={prefix}
-										min={1} max={32} onChange={e => setPrefix(e.target.value)} />
+										min={1} max={32} onChange={e => setPrefix(Number(e.target.value))} />
 								</div>
 							</div>
 						</div>
@@ -162,12 +162,12 @@ export default function BinaryConverter() {
 								<div style={S.ipBitRow}>
 									{ipBinaryFull.split('').map((bit, i) => {
 										const isNet = i < pfx;
-										const isOctetStart = i % 8 === 0 && i !== 0;
+										const sep = i % 8 === 0 && i !== 0;
 										return (
-											<>
-												{isOctetStart && <div key={`sep-${i}`} style={S.ipBitSep} />}
-												<span key={i} style={isNet ? S.ipBitNet : S.ipBitHost}>{bit}</span>
-											</>
+											<span key={i} style={{ display: 'inline-flex' }}>
+												{sep && <span style={S.ipBitSep} />}
+												<span style={isNet ? S.ipBitNet : S.ipBitHost}>{bit}</span>
+											</span>
 										);
 									})}
 								</div>
@@ -179,7 +179,7 @@ export default function BinaryConverter() {
 									{ipOctets.map((o, i) => (
 										<div key={i} style={S.octetCell}>
 											<div style={S.octetDec}>{o}</div>
-											<div style={S.octetBin}>{decToBin(o)}</div>
+											<div style={S.octetBin}>{toBin(o)}</div>
 										</div>
 									))}
 								</div>

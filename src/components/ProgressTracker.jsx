@@ -107,18 +107,27 @@ export default function ProgressTracker() {
 				{TOPICS.map(topic => (
 					<div key={topic.section} style={s.section}>
 						<div style={s.sectionTitle}>{topic.section}</div>
-						{topic.items.map(item => (
-							<label key={item.id} style={s.item}>
-								<input
-									type="checkbox"
-									style={s.checkbox}
-									checked={!!checked[item.id]}
-									onChange={() => toggle(item.id)}
-								/>
-								<span style={checked[item.id] ? s.labelDone : s.labelOpen}>{item.label}</span>
-								{checked[item.id] && <span style={s.checkmark}>✓</span>}
-							</label>
-						))}
+						{topic.items.map(item => {
+							const done = !!checked[item.id];
+							return (
+								<div
+									key={item.id}
+									style={{ ...s.item, background: done ? 'rgba(14,165,233,0.08)' : 'transparent' }}
+									onClick={() => toggle(item.id)}
+								>
+									<span style={{
+										display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+										width: 20, height: 20, borderRadius: 4, flexShrink: 0,
+										border: done ? '2px solid #0ea5e9' : '2px solid #475569',
+										background: done ? '#0ea5e9' : 'transparent',
+										color: '#fff', fontSize: '0.75rem', fontWeight: 700,
+									}}>
+										{done ? '✓' : ''}
+									</span>
+									<span style={done ? s.labelDone : s.labelOpen}>{item.label}</span>
+								</div>
+							);
+						})}
 					</div>
 				))}
 
