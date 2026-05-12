@@ -22,8 +22,8 @@ Willkommen bei **CaveHub** – deiner umfassenden Lernplattform zur Vorbereitung
 Starte direkt mit diesen Inhalten:
 
 - [OSI-Modell verstehen](/osi/) – Das Fundament der Netzwerkkommunikation
-- [Hardware Grundlagen](/01-grundlagen/) – Evolution und Kategorisierung von IT-Systemen
-- [CPU & Architektur](/03-cpu-architektur/) – Prozessoren und Designphilosophien
+- [Hardware Grundlagen](/hardware/01-grundlagen/) – Evolution und Kategorisierung von IT-Systemen
+- [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren und Designphilosophien
 - [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
 
 ---
@@ -37,11 +37,11 @@ Verstehe die Hardware, das Betriebssystem und die Infrastruktur moderner IT-Syst
 #### Hardware
 Alles über die physischen Komponenten eines Computers:
 
-- [Grundlagen](/01-grundlagen/) – Evolution der Datenverarbeitung, analog vs. digital, IT-Systemkategorien
-- [EVA-Prinzip](/02-eva-prinzip/) – Eingabe → Verarbeitung → Ausgabe
-- [CPU & Architektur](/03-cpu-architektur/) – Prozessoren, ALU, Steuerwerk, RISC vs. CISC
-- [Mainboard & Chipsatz](/04-mainboard-chipsatz/) – Bussysteme, Taktgeber, Speicherhierarchie
-- [Glossar Hardware](/05-glossar/) – Alle Fachbegriffe
+- [Grundlagen](/hardware/01-grundlagen/) – Evolution der Datenverarbeitung, analog vs. digital, IT-Systemkategorien
+- [EVA-Prinzip](/hardware/02-eva-prinzip/) – Eingabe → Verarbeitung → Ausgabe
+- [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren, ALU, Steuerwerk, RISC vs. CISC
+- [Mainboard & Chipsatz](/hardware/04-mainboard-chipsatz/) – Bussysteme, Taktgeber, Speicherhierarchie
+- [Glossar Hardware](/hardware/05-glossar/) – Alle Fachbegriffe
 
 ---
 
