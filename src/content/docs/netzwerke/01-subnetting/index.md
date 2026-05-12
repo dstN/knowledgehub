@@ -85,7 +85,7 @@ Diese Tabelle ist das Fundament jeder Subnetzberechnung. Dezimalwerte müssen si
 
 ## Vollständige Subnetzmasken-Tabelle (/8 bis /30)
 
-Diese Tabelle zeigt alle praxisrelevanten Präfixlängen mit der zugehörigen Subnetzmaske, der Anzahl möglicher Adressen, und der Anzahl **nutzbarer Hostadressen** ($2^{32-n} - 2$, da Netzadresse und Broadcast reserviert sind):
+Diese Tabelle zeigt alle praxisrelevanten Präfixlängen mit der zugehörigen Subnetzmaske, der Anzahl möglicher Adressen, und der Anzahl **nutzbarer Hostadressen** (Formel: `2^(32-n) - 2`, da Netzadresse und Broadcast reserviert sind):
 
 | Präfix | Subnetzmaske      | Anzahl Adressen | Nutzbare Hosts | Typische Verwendung        |
 |--------|-------------------|-----------------|----------------|----------------------------|
@@ -113,7 +113,7 @@ Diese Tabelle zeigt alle praxisrelevanten Präfixlängen mit der zugehörigen Su
 | /29    | 255.255.255.248   | 8               | 6              | Sehr kleines Segment       |
 | /30    | 255.255.255.252   | 4               | 2              | Punkt-zu-Punkt-Verbindung  |
 
-> **Hinweis:** Masken größer als /30 sind **nicht sinnvoll**, da bei /31 nur 2 Adressen ($2^1 = 2$) vorhanden wären – beide bereits durch Netzadresse und Broadcast belegt. Es verblieben **0 nutzbare Hostadressen**.
+> **Hinweis:** Masken größer als /30 sind **nicht sinnvoll**, da bei /31 nur 2 Adressen (2^1 = 2) vorhanden wären – beide bereits durch Netzadresse und Broadcast belegt. Es verblieben **0 nutzbare Hostadressen**.
 
 ---
 
@@ -121,34 +121,38 @@ Diese Tabelle zeigt alle praxisrelevanten Präfixlängen mit der zugehörigen Su
 
 ### Nutzbare Hostadressen
 
-$$\text{Nutzbare Hosts} = 2^{32 - n} - 2$$
+```
+Nutzbare Hosts = 2^(32 - n) - 2
+```
 
-Dabei ist $n$ die Präfixlänge (z.B. 24 bei /24).
+Dabei ist `n` die Präfixlänge (z.B. 24 bei /24).
 
 - Die **−2** ergibt sich aus der reservierten **Netzadresse** (Hostanteil = alle 0) und der **Broadcast-Adresse** (Hostanteil = alle 1).
 
 **Beispiele:**
 
-| Präfix | Formel             | Ergebnis |
-|--------|--------------------|----------|
-| /24    | $2^{32-24} - 2 = 2^8 - 2$  | 254      |
-| /26    | $2^{32-26} - 2 = 2^6 - 2$  | 62       |
-| /19    | $2^{32-19} - 2 = 2^{13} - 2$ | 8.190    |
-| /30    | $2^{32-30} - 2 = 2^2 - 2$  | 2        |
+| Präfix | Formel                      | Ergebnis |
+|--------|-----------------------------|----------|
+| /24    | 2^(32-24) - 2 = 2^8 - 2    | 254      |
+| /26    | 2^(32-26) - 2 = 2^6 - 2    | 62       |
+| /19    | 2^(32-19) - 2 = 2^13 - 2   | 8.190    |
+| /30    | 2^(32-30) - 2 = 2^2 - 2    | 2        |
 
 ### Anzahl der Subnetze
 
-Wenn man einem bestehenden Netzwerk $x$ weitere Bits für den Netzanteil hinzufügt, entstehen:
+Wenn man einem bestehenden Netzwerk `x` weitere Bits für den Netzanteil hinzufügt, entstehen:
 
-$$\text{Anzahl Subnetze} = 2^x$$
+```
+Anzahl Subnetze = 2^x
+```
 
-| Hinzugefügte Bits ($x$) | Formel | Subnetze |
-|------------------------|--------|----------|
-| 1                      | $2^1$  | 2        |
-| 2                      | $2^2$  | 4        |
-| 3                      | $2^3$  | 8        |
-| 4                      | $2^4$  | 16       |
-| 5                      | $2^5$  | 32       |
+| Hinzugefügte Bits (x) | Formel | Subnetze |
+|-----------------------|--------|----------|
+| 1                     | 2^1    | 2        |
+| 2                     | 2^2    | 4        |
+| 3                     | 2^3    | 8        |
+| 4                     | 2^4    | 16       |
+| 5                     | 2^5    | 32       |
 
 ---
 
@@ -202,9 +206,9 @@ Ausgangsnetz: `192.168.1.0/24` wird auf `/26` verfeinert.
 
 ### Was passiert bei /26?
 
-Von /24 auf /26: **2 zusätzliche Bits** werden dem Netzanteil zugeschlagen → $2^2 = 4$ Subnetze entstehen.
+Von /24 auf /26: **2 zusätzliche Bits** werden dem Netzanteil zugeschlagen → 2^2 = 4 Subnetze entstehen.
 
-Jedes Subnetz hat $2^6 = 64$ Adressen, davon **62 nutzbar**.
+Jedes Subnetz hat 2^6 = 64 Adressen, davon **62 nutzbar**.
 
 ### Vollständige Adresstabelle `192.168.1.0/26`
 
@@ -267,19 +271,23 @@ Gesetzte Bits: 8 + 8 + 1 = **17** → Präfix /17
 
 Hostbits: 32 − 17 = **15 Bits**
 
-$$\text{Adressen} = 2^{15} = 2^{10} \times 2^5 = 1024 \times 32 = 32.768$$
+```
+Adressen = 2^15 = 1024 x 32 = 32.768
+```
 
 ### Schritt 2: Wie viele Adressen hat jedes Teilnetz?
 
-Für **4 Teilnetze** werden $2^2 = 4$ benötigt → **2 zusätzliche Bits** für den Netzanteil.
+Für **4 Teilnetze** werden 2^2 = 4 benötigt → **2 zusätzliche Bits** für den Netzanteil.
 
 Neuer Präfix: /17 + 2 = **/19**
 
 Hostbits: 32 − 19 = **13 Bits**
 
-$$\text{Adressen pro Teilnetz} = 2^{13} = 2^{10} \times 2^3 = 1024 \times 8 = 8.192$$
+```
+Adressen pro Teilnetz = 2^13 = 1024 x 8 = 8.192
+```
 
-Nutzbare Hosts: $8.192 - 2 = 8.190$
+Nutzbare Hosts: 8.192 - 2 = 8.190
 
 ### Schritt 3: Welche Teilnetze entstehen?
 
@@ -353,7 +361,7 @@ Subnetting erlaubt es, diese starren Grenzen zu **überschreiben**. So kann ein 
 
 - **Netzadresse**: Hostanteil = alle `0`
 - **Broadcast**: Hostanteil = alle `1`
-- **Nutzbare Hosts**: $2^{\text{Hostbits}} - 2$
-- **Anzahl Subnetze**: $2^{\text{geliehene Bits}}$
+- **Nutzbare Hosts**: 2^(Hostbits) - 2
+- **Anzahl Subnetze**: 2^(geliehene Bits)
 - **Masken >30 sind sinnlos**: Bei /31 bleiben 0 nutzbare Hosts
 - **AND-Verknüpfung** von IP + Maske → ergibt immer die Netzadresse

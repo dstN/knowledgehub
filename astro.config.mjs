@@ -18,12 +18,15 @@ export default defineConfig({
 				},
 				{
 					label: 'Systemtechnik',
+					collapsed: true,
 					items: [
 						{
 							label: 'Hardware',
+							collapsed: true,
 							items: [
 								{
 									label: '01 Grundlagen',
+									collapsed: true,
 									items: [
 										{ label: 'Übersicht', slug: 'hardware/01-grundlagen' },
 										{ label: 'Evolution der Datenverarbeitung', slug: 'hardware/01-grundlagen/evolution-datenverarbeitung' },
@@ -33,6 +36,7 @@ export default defineConfig({
 								},
 								{
 									label: '02 EVA-Prinzip',
+									collapsed: true,
 									items: [
 										{ label: 'Übersicht', slug: 'hardware/02-eva-prinzip' },
 										{ label: 'Eingabeeinheit', slug: 'hardware/02-eva-prinzip/eingabeeinheit' },
@@ -43,6 +47,7 @@ export default defineConfig({
 								},
 								{
 									label: '03 CPU & Architektur',
+									collapsed: true,
 									items: [
 										{ label: 'Übersicht', slug: 'hardware/03-cpu-architektur' },
 										{ label: 'CPU-Komponenten', slug: 'hardware/03-cpu-architektur/cpu-komponenten' },
@@ -52,6 +57,7 @@ export default defineConfig({
 								},
 								{
 									label: '04 Mainboard & Chipsatz',
+									collapsed: true,
 									items: [
 										{ label: 'Übersicht', slug: 'hardware/04-mainboard-chipsatz' },
 										{ label: 'Leiterbahnen & Meander', slug: 'hardware/04-mainboard-chipsatz/leiterbahnen-meander' },
@@ -71,9 +77,11 @@ export default defineConfig({
 				},
 				{
 					label: 'Netzwerke & Kommunikation',
+					collapsed: true,
 					items: [
 						{
 							label: 'OSI-Modell',
+							collapsed: true,
 							items: [
 								{ label: 'Übersicht', slug: 'osi' },
 								{ label: 'Schicht 1 – Bitübertragung', slug: 'osi/01-bitübertragung' },
@@ -88,6 +96,7 @@ export default defineConfig({
 						},
 						{
 							label: '01 Subnetting & CIDR',
+							collapsed: true,
 							items: [
 								{ label: 'Übersicht & Subnetting', slug: 'netzwerke/01-subnetting' },
 								{ label: 'CIDR – Classless Inter-Domain Routing', slug: 'netzwerke/01-subnetting/cidr' },

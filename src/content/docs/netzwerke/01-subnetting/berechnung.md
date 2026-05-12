@@ -21,15 +21,17 @@ Diese Seite erklärt **eine einzige Methode**, mit der du jede Subnetting-Aufgab
 
 Wir brauchen mindestens **7 Subnetze**. Die Anzahl der Subnetze muss eine **Zweierpotenz** sein:
 
-$$\text{Anzahl Subnetze} = 2^x$$
+```
+Anzahl Subnetze = 2^x
+```
 
-Wir suchen das kleinste $x$, für das gilt $2^x \geq 7$:
+Wir suchen das kleinste `x`, für das gilt `2^x >= 7`:
 
-| $x$ (Bits) | $2^x$ | Ausreichend für 7 Netze? |
-|-----------|-------|--------------------------|
-| 1         | 2     | ✗ Nein                   |
-| 2         | 4     | ✗ Nein                   |
-| **3**     | **8** | **✓ Ja** (8 ≥ 7)        |
+| x (Bits) | 2^x | Ausreichend für 7 Netze? |
+|----------|-----|--------------------------|
+| 1         | 2     | Nein                     |
+| 2         | 4     | Nein                     |
+| **3**     | **8** | **Ja** (8 >= 7)          |
 
 → Wir brauchen **3 zusätzliche Bits** und erhalten **8 Subnetze** (wir runden immer auf die nächste Zweierpotenz auf).
 
@@ -40,7 +42,9 @@ Wir suchen das kleinste $x$, für das gilt $2^x \geq 7$:
 Das Ausgangsnetz hat den Präfix **/24** (Subnetzmaske `255.255.255.0`).  
 Wir fügen **3 Bits** hinzu:
 
-$$\text{Neuer Präfix} = 24 + 3 = /27$$
+```
+Neuer Präfix = 24 + 3 = /27
+```
 
 Die neue Subnetzmaske hat also **27 gesetzte Bits**. Im letzten Oktett bedeutet das:
 
@@ -59,14 +63,18 @@ Die neue Subnetzmaske hat also **27 gesetzte Bits**. Im letzten Oktett bedeutet 
 
 Die **Schrittgröße** gibt an, wie viele Adressen jedes Subnetz umfasst – und damit, um wie viel die Netzadresse von Subnetz zu Subnetz „springt".
 
-$$\text{Schrittgröße} = 256 - \text{letzter Oktett-Wert der Maske}$$
-
-$$\text{Schrittgröße} = 256 - 224 = \mathbf{32}$$
+```
+Schrittgröße = 256 - letzter Oktett-Wert der Maske
+Schrittgröße = 256 - 224 = 32
+```
 
 Jedes Subnetz umfasst also **32 Adressen**.
 
 Nutzbare Hosts pro Subnetz:
-$$2^5 - 2 = 32 - 2 = \mathbf{30 \text{ Hosts}}$$
+
+```
+2^5 - 2 = 32 - 2 = 30 Hosts
+```
 
 (5 Hostbits, da 32 − 27 = 5)
 
@@ -90,7 +98,7 @@ Wir zählen das letzte Oktett in 32er-Schritten hoch:
 | 7       | 192.168.10.**192** | 192.168.10.**193** | 192.168.10.**222** | 192.168.10.**223** |
 | 8       | 192.168.10.**224** | 192.168.10.**225** | 192.168.10.**254** | 192.168.10.**255** |
 
-> Subnetz 8 entsteht zwangsläufig – wir können keine 7 Subnetze erzeugen ohne 8 zu erhalten, da $2^3 = 8$.
+> Subnetz 8 entsteht zwangsläufig – wir können keine 7 Subnetze erzeugen ohne 8 zu erhalten, da 2^3 = 8.
 
 ---
 
@@ -139,9 +147,9 @@ Broadcast:            192.168.10.95   → letztes Oktett: 01011111  (Hostanteil 
 
 > **Gegeben:** `10.0.0.0/24`, **4 Subnetze** gewünscht.
 
-**Schritt 1:** $2^x \geq 4$ → $x = 2$ (da $2^2 = 4$)  
-**Schritt 2:** Neuer Präfix: $24 + 2 = /26$ → Maske: `255.255.255.192` (`11000000` = 192)  
-**Schritt 3:** Schrittgröße: $256 - 192 = 64$  
+**Schritt 1:** 2^x >= 4 → x = 2 (da 2^2 = 4)  
+**Schritt 2:** Neuer Präfix: 24 + 2 = /26 → Maske: `255.255.255.192` (`11000000` = 192)  
+**Schritt 3:** Schrittgröße: 256 - 192 = 64  
 **Schritt 4:**
 
 | Subnetz | Netzadresse  | Erste nutzbare | Letzte nutzbare | Broadcast    |
@@ -151,7 +159,7 @@ Broadcast:            192.168.10.95   → letztes Oktett: 01011111  (Hostanteil 
 | 3       | 10.0.0.128  | 10.0.0.129     | 10.0.0.190      | 10.0.0.191  |
 | 4       | 10.0.0.192  | 10.0.0.193     | 10.0.0.254      | 10.0.0.255  |
 
-Nutzbare Hosts: $2^6 - 2 = 62$ pro Subnetz.
+Nutzbare Hosts: 2^6 - 2 = 62 pro Subnetz.
 
 ---
 
@@ -159,10 +167,10 @@ Nutzbare Hosts: $2^6 - 2 = 62$ pro Subnetz.
 
 > **Gegeben:** `172.16.0.0/16`, **16 Subnetze** gewünscht.
 
-**Schritt 1:** $2^x \geq 16$ → $x = 4$ (da $2^4 = 16$)  
-**Schritt 2:** Neuer Präfix: $16 + 4 = /20$ → Maske: `255.255.240.0`  
+**Schritt 1:** 2^x >= 16 → x = 4 (da 2^4 = 16)  
+**Schritt 2:** Neuer Präfix: 16 + 4 = /20 → Maske: `255.255.240.0`  
 (Im 3. Oktett: 4 Bits → `11110000` = 240)  
-**Schritt 3:** Schrittgröße im **3. Oktett**: $256 - 240 = 16$
+**Schritt 3:** Schrittgröße im **3. Oktett**: 256 - 240 = 16
 
 | Subnetz | Netzadresse    | Broadcast       | Nutzbare Hosts |
 |---------|---------------|-----------------|----------------|
@@ -184,7 +192,7 @@ Nutzbare Hosts: $2^6 - 2 = 62$ pro Subnetz.
 | Subnetzmaske falsch berechnet | Bits falsch gezählt | Immer Binär aufschreiben und Werte addieren |
 | Netzadresse als Host vergeben | Vergessen, dass sie reserviert ist | 1. Adresse = immer Netzadresse |
 | Broadcast als Host vergeben | Vergessen, dass sie reserviert ist | Letzte Adresse = immer Broadcast |
-| Zu wenige Subnetze | Nicht auf Zweierpotenz aufgerundet | Immer $2^x$ mit kleinstem passenden $x$ |
+| Zu wenige Subnetze | Nicht auf Zweierpotenz aufgerundet | Immer 2^x mit kleinstem passenden x |
 | Schrittgröße falsch | 256 − Maske nicht korrekt | Nur letzten „gemischten" Oktett-Wert abziehen |
 | Präfix >30 gewählt | Zu viele Bits geliehen | Bei /31 bleiben 0 nutzbare Hosts – sinnlos |
 
