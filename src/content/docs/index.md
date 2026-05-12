@@ -52,6 +52,16 @@ Ein interaktives Nachschlagewerk für alle wichtigen Fachbegriffe. Perfekt zum L
 
 ---
 
+## 🌐 Netzwerke & Kommunikation
+
+### **OSI-Modell** 🔗
+
+Das **Open Systems Interconnection Modell** ist das fundamentale Referenzmodell für Netzwerkkommunikation. Verstehe die 7 Schichten, von der physischen Bitübertragung bis zur Anwendungsebene – und wie jede Schicht beim Datentransport eine kritische Rolle spielt.
+
+→ [Zum OSI-Modell](/osi/)
+
+---
+
 ## 💡 Wie nutzt du diesen Studienführer am besten?
 
 1. **Systematisch**: Beginne mit den Grundlagen und arbeite dich schrittweise vor
