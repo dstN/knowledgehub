@@ -3,8 +3,6 @@ title: Cache & Register
 description: Die schnellsten Speicher der CPU
 ---
 
-# Cache & Register
-
 Register und Cache sind die kritischsten Speicher im Computer. Sie überbrücken die Lücke zwischen dem ultraschnellen CPU-Kern und dem langsamen RAM.
 
 ## ⚡ Register

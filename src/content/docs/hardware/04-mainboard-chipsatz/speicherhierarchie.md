@@ -3,8 +3,6 @@ title: Speicherhierarchie
 description: Geschwindigkeit vs. Kapazität - Das Speicher-Dilemma
 ---
 
-# Speicherhierarchie
-
 ## 📐 Das Speicher-Dilemma
 
 Die Informatik steht vor einem fundamental Konflikt:

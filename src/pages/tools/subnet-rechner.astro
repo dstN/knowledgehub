@@ -1,0 +1,9 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import SubnetCalculator from '../../components/SubnetCalculator.jsx';
+---
+
+<StarlightPage frontmatter={{ title: 'Subnetz-Rechner', description: 'Interaktiver Subnetz-Rechner: IP + Präfix eingeben und automatisch Netzadresse, Broadcast, Hosts und alle Subnetze berechnen.' }}>
+  <p>Gib eine IP-Adresse und einen Präfix ein – der Rechner berechnet automatisch Netzadresse, Broadcast, alle Subnetze und mehr.</p>
+  <SubnetCalculator client:load />
+</StarlightPage>

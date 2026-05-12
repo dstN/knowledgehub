@@ -3,8 +3,6 @@ title: Leiterbahnen & Meander
 description: Physikalische Verbindungen auf dem Mainboard
 ---
 
-# Leiterbahnen & Meander
-
 ## 🔗 Leiterbahnen
 
 Leiterbahnen sind die **elektrischen Verbindungen** auf dem Mainboard. Sie verbinden:

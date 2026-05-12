@@ -1,0 +1,9 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import BinaryConverter from '../../components/BinaryConverter.jsx';
+---
+
+<StarlightPage frontmatter={{ title: 'Binär-Konverter', description: 'Interaktiver Binär-Konverter: Dezimal ↔ Binär umrechnen und IP-Adressen mit Netz- und Hostanteil visualisieren.' }}>
+  <p>Konvertiere Dezimalwerte in Binär (und zurück), oder visualisiere eine IP-Adresse mit ihrem Netz- und Hostanteil farblich markiert.</p>
+  <BinaryConverter client:load />
+</StarlightPage>

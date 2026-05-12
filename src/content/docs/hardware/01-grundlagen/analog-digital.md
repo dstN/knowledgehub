@@ -3,8 +3,6 @@ title: Analog vs. Digital
 description: Der fundamentale Unterschied zwischen analogen und digitalen Signalen
 ---
 
-# Analog vs. Digital
-
 Dieser Abschnitt erklärt einen der fundamentalsten Unterschiede in der Informatik: den Unterschied zwischen **analogen** und **digitalen** Signalen.
 
 ## 📊 Analoge Signale

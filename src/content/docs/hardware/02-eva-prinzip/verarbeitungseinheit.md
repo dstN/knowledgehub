@@ -3,8 +3,6 @@ title: Verarbeitungseinheit
 description: Das Herzstück des Computers - die CPU
 ---
 
-# Verarbeitungseinheit (Processing/V)
-
 Die **Verarbeitungseinheit** ist das **Gehirn des Computers**. Sie verarbeitet die Eingabedaten nach festgelegten Regeln (Programm) und erzeugt Ergebnisse.
 
 ## 🎯 Aufgabe

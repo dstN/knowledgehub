@@ -3,8 +3,6 @@ title: Subnetting – Übersicht
 description: Grundlagen des Subnettings – Netzaufteilung, Binärrechnung, Subnetzmasken und vollständige Berechnungsbeispiele für angehende Fachinformatiker
 ---
 
-# Subnetting
-
 Subnetting bezeichnet die Technik, ein IP-Netzwerk in mehrere kleinere Teilnetze (**Subnetze**) aufzuteilen. Dies ermöglicht eine effizientere Nutzung des verfügbaren IP-Adressraums und verbessert die Netzwerkorganisation, Sicherheit und Performance.
 
 ---

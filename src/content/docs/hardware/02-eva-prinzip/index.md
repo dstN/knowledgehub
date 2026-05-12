@@ -5,8 +5,6 @@ description: Der universelle Grundablauf elektronischer Datenverarbeitung
 
 import EVADiagram from '@/components/EVADiagram.jsx';
 
-# Das EVA-Prinzip
-
 Das **EVA-Prinzip** beschreibt das universelle Architekturmodell, auf dem **alle Computer basieren**. EVA steht für:
 
 - **E**ingabe (Input)

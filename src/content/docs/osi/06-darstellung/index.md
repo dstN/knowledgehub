@@ -3,8 +3,6 @@ title: Schicht 6 – Darstellungsschicht (Presentation Layer)
 description: Datenformatierung, Verschlüsselung und Kompression
 ---
 
-# 🎨 Schicht 6: Darstellungsschicht (Presentation Layer)
-
 Die **Darstellungsschicht** ist das "Übersetzungsbüro" des OSI-Modells. Sie stellt sicher, dass Daten **unabhängig von ihrer Herkunft** korrekt interpretiert und dargestellt werden. Sie behandelt Formatierung, Verschlüsselung und Kompression.
 
 ## 🎯 Kernaufgaben der Schicht 6

@@ -3,8 +3,6 @@ title: CIDR – Classless Inter-Domain Routing
 description: Von klassenbasierten IP-Netzen zu CIDR – Theorie, Notation, Subnetzmasken und flexible Netzaufteilung für angehende Fachinformatiker
 ---
 
-# CIDR – Classless Inter-Domain Routing
-
 CIDR (Classless Inter-Domain Routing) ist das heute dominierende Verfahren zur Zuweisung und Verwaltung von IP-Adressen. Es löste in den 1990er Jahren die starre klassenbasierte Einteilung (Klasse A, B, C) ab und ermöglicht eine **flexible, bedarfsgerechte** Aufteilung des IP-Adressraums.
 
 ---

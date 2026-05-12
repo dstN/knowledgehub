@@ -3,8 +3,6 @@ title: Flash-EEPROM & UEFI
 description: Firmware Speicherung und modernes Booting
 ---
 
-# Flash-EEPROM & UEFI
-
 ## 💾 Flash-EEPROM
 
 Das **Flash-EEPROM** ist ein spezieller Speicher-Chip auf dem Mainboard.

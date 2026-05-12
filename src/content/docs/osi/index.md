@@ -3,8 +3,6 @@ title: OSI-Modell – Die 7 Schichten der Netzwerkkommunikation
 description: Verstehe das Open Systems Interconnection Modell und wie Daten durch die 7 Schichten fließen
 ---
 
-# 🌐 Das OSI-Modell
-
 Das **Open Systems Interconnection (OSI) Modell** ist das fundamentale Referenzmodell für die Kommunikation in Computernetzwerken. Es beschreibt, wie Daten zwischen verschiedenen Systemen ausgetauscht werden, und teilt diesen Prozess in **7 logische Schichten** ein.
 
 ## 🎯 Warum das OSI-Modell wichtig ist

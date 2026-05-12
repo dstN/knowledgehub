@@ -3,8 +3,6 @@ title: Grundlagen
 description: Evolution und Kategorisierung von IT-Systemen
 ---
 
-# Grundlagen der Computerhardware
-
 Willkommen in unserem Studienführer! Dieser Bereich bietet einen übergeordneten Blick auf die Evolution und Einteilung von IT-Systemen. Hier erfahren Sie, wie sich die Datenverarbeitung entwickelt hat und welche Systemtypen heute dominieren.
 
 Diese Übersicht dient als Fundament, um die technischen Details in den folgenden Abschnitten einordnen zu können.

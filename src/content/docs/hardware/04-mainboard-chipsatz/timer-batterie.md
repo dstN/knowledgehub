@@ -3,8 +3,6 @@ title: Timer-IC & CMOS-Batterie
 description: Zeitmessung und Stromversorgung für Echtzeituhr
 ---
 
-# Timer-IC & CMOS-Batterie
-
 ## ⏰ Timer-IC (Oscillator)
 
 Das **Timer-IC** ist der "Herzschlag" des Computers.

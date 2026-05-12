@@ -5,8 +5,6 @@ description: Die Kommunikationszentrale des IT-Systems
 
 import MemoryHierarchyChart from '@/components/MemoryHierarchyChart.jsx';
 
-# Mainboard & Chipsatz
-
 Das **Mainboard** verbindet physisch und elektronisch alle Komponenten eines Computers. Es ist die "Kommunikationszentrale" des Systems.
 
 ## 🖨️ Was ist ein Mainboard?

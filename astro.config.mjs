@@ -10,6 +10,9 @@ export default defineConfig({
 		starlight({
 			title: 'CaveHub',
 			description: 'Lernplattform für Fachinformatiker – Umschulung',
+			components: {
+				SocialIcons: './src/components/ProgressBadge.astro',
+			},
 			social: [{ icon: 'github', label: 'GitHub Repository', href: 'https://github.com' }],
 			sidebar: [
 				{
@@ -101,8 +104,18 @@ export default defineConfig({
 								{ label: 'Übersicht & Subnetting', slug: 'netzwerke/01-subnetting' },
 								{ label: 'CIDR – Classless Inter-Domain Routing', slug: 'netzwerke/01-subnetting/cidr' },
 								{ label: 'Schritt-für-Schritt-Berechnung', slug: 'netzwerke/01-subnetting/berechnung' },
+								{ label: 'Prüfungsfragen', slug: 'netzwerke/01-subnetting/pruefung' },
 							],
 						},
+						{ label: 'IP & Subnetting Cheatsheet', slug: 'netzwerke/cheatsheet' },
+					],
+				},
+				{
+					label: 'Tools & Rechner',
+					collapsed: true,
+					items: [
+						{ label: 'Subnetz-Rechner', link: '/tools/subnet-rechner/' },
+						{ label: 'Binär-Konverter', link: '/tools/binaer-konverter/' },
 					],
 				},
 			],

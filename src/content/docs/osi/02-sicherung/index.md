@@ -3,8 +3,6 @@ title: Schicht 2 – Sicherungsschicht (Data Link Layer)
 description: MAC-Adressen, Switches, Frames und Fehlerprüfung
 ---
 
-# 🔗 Schicht 2: Sicherungsschicht (Data Link Layer)
-
 Die **Sicherungsschicht** ist verantwortlich für die **sichere und fehlerfreie Übertragung** von Daten zwischen direkt verbundenen Knoten in einem lokalen Netzwerk (LAN). Sie nimmt die rohen Bits der Schicht 1 entgegen und organisiert sie in strukturierten **Frames**.
 
 ## 🎯 Kernaufgaben der Schicht 2

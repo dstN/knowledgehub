@@ -3,8 +3,6 @@ title: Chipsatz Evolution
 description: Von Northbridge/Southbridge zu modernen Integrated Hubs
 ---
 
-# Chipsatz Evolution
-
 Der **Chipsatz** hat sich über Jahrzehnte massiv verändert. Diese Seite zeigt die Entwicklung.
 
 ## 📊 Phase 1: Northbridge/Southbridge (1990er-2000er)

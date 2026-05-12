@@ -3,8 +3,6 @@ title: Speichereinheit
 description: Wo Computer Daten speichern
 ---
 
-# Speichereinheit (Storage/S)
-
 Die **Speichereinheit** speichert Daten während und nach der Verarbeitung. Sie ist für Zwischen- und Langzeitspeicherung zuständig.
 
 ## 🎯 Funktion

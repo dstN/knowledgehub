@@ -3,8 +3,6 @@ title: DV-Geräte Kategorien
 description: Unterschiedliche Typen von Computersystemen und ihre Einsatzbereiche
 ---
 
-# Kategorien von Datenverarbeitungs-Geräten
-
 IT-Systeme lassen sich nach ihrer **Leistung**, ihrem **Einsatzbereich** und ihrer **Architektur** in verschiedene Kategorien einteilen. Jede Kategorie hat spezifische Anforderungen und Einsatzszenarien.
 
 ## 🏢 Übersicht der Gerätekategorien

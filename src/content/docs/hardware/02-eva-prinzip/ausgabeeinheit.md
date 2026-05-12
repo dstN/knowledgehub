@@ -3,8 +3,6 @@ title: Ausgabeeinheit
 description: Wie Computer Ergebnisse präsentieren
 ---
 
-# Ausgabeeinheit (Output/A)
-
 Die **Ausgabeeinheit** gibt die verarbeiteten Ergebnisse an den Benutzer oder andere Systeme weiter.
 
 ## 🎯 Funktion

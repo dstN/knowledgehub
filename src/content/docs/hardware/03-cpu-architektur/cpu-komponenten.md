@@ -3,8 +3,6 @@ title: CPU-Komponenten
 description: Detaillierter Überblick über CPU-Bauteile
 ---
 
-# CPU-Komponenten
-
 Dieser Artikel bietet einen detaillierten Überblick über alle wichtigen Komponenten einer modernen CPU.
 
 ## 🧩 Übersicht der Komponenten

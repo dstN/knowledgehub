@@ -3,8 +3,6 @@ title: Evolution der Datenverarbeitung
 description: Wie die menschliche Fähigkeit zur Datenverarbeitung sich entwickelt hat
 ---
 
-# Evolution der Datenverarbeitung
-
 Die Geschichte der Datenverarbeitung lässt sich in vier große Phasen einteilen, die die kontinuierliche Entwicklung hin zu automatisierten Systemen zeigt.
 
 ## 🔢 Die vier Phasen

@@ -3,8 +3,6 @@ title: OSI-Modell Glossar – Fachbegriffe erklärt
 description: Alphabetische Sammlung aller wichtigen OSI-Modell-Begriffe mit detaillierten Erklärungen
 ---
 
-# 📚 OSI-Modell Glossar
-
 Willkommen im umfassenden Glossar zum OSI-Modell! Hier findest du über 100 Fachbegriffe – alphabetisch sortiert und verständlich erklärt. Jeder Eintrag enthält die Schicht(en), auf die sich der Begriff bezieht, sowie praktische Beispiele.
 
 ---

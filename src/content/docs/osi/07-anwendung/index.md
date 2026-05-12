@@ -3,8 +3,6 @@ title: Schicht 7 – Anwendungsschicht (Application Layer)
 description: HTTP, FTP, E-Mail, DNS und Benutzer-Schnittstellen
 ---
 
-# 🖥️ Schicht 7: Anwendungsschicht (Application Layer)
-
 Die **Anwendungsschicht** ist die **oberste und sichtbarste** Schicht des OSI-Modells. Sie ist der direkte Kontaktpunkt zwischen Benutzer und Netzwerk. Hier existieren die Anwendungen, die wir täglich nutzen – von Web-Browsern über E-Mail bis zu VoIP-Telefonen.
 
 ## 🎯 Kernaufgaben der Schicht 7

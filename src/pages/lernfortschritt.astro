@@ -1,0 +1,9 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ProgressTracker from '../components/ProgressTracker.jsx';
+---
+
+<StarlightPage frontmatter={{ title: 'Lernfortschritt', description: 'Verfolge deinen Lernfortschritt durch alle CaveHub-Themen.' }}>
+  <p>Hake ab, welche Themen du bereits durchgearbeitet hast. Dein Fortschritt wird lokal in deinem Browser gespeichert und bleibt beim nächsten Besuch erhalten.</p>
+  <ProgressTracker client:load />
+</StarlightPage>

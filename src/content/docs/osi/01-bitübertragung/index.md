@@ -3,8 +3,6 @@ title: Schicht 1 – Bitübertragungsschicht (Physical Layer)
 description: Physische Übertragungsmedien, Topologien, Kabel und Hardware
 ---
 
-# ⚡ Schicht 1: Bitübertragungsschicht (Physical Layer)
-
 Die **Bitübertragungsschicht** ist die unterste Schicht des OSI-Modells und bildet die physische Grundlage aller Netzwerkkommunikation. Sie ist verantwortlich für die tatsächliche Übertragung von Rohdaten in Form von **digitalen Signalen (Bits)** über physische Medien.
 
 ## 🎯 Kernaufgaben der Schicht 1

@@ -3,8 +3,6 @@ title: RISC vs. CISC
 description: Vergleich der zwei dominierenden CPU-Architekturen
 ---
 
-# RISC vs. CISC - Die große Debatte
-
 Der Konflikt zwischen RISC und CISC ist seit den 1980ern einer der größten in der Computerarchitektur. Diese Seite fasst die wichtigsten Unterschiede zusammen.
 
 ## 📖 Historischer Kontext

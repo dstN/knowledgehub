@@ -3,8 +3,6 @@ title: Subnetting – Schritt-für-Schritt-Anleitung
 description: Idiotensichere Anleitung zur Subnetzberechnung – von der Aufgabe zur fertigen IP-Tabelle, mit vollständigem Rechenbeispiel
 ---
 
-# Subnetting – Schritt-für-Schritt-Anleitung
-
 Diese Seite erklärt **eine einzige Methode**, mit der du jede Subnetting-Aufgabe lösen kannst. Du brauchst nur Stift, Papier und diese 5 Schritte.
 
 ---

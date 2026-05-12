@@ -3,8 +3,6 @@ title: Schicht 4 – Transportschicht (Transport Layer)
 description: TCP, UDP, Portnummern und zuverlässige Ende-zu-Ende-Kommunikation
 ---
 
-# 🚚 Schicht 4: Transportschicht (Transport Layer)
-
 Die **Transportschicht** ist verantwortlich für die **zuverlässige Ende-zu-Ende-Kommunikation** zwischen Anwendungen auf verschiedenen Geräten. Sie bietet die logische Grundlage für alles, das im Internet funktioniert – von Web-Browsing bis zur Echtzeitkommunikation.
 
 ## 🎯 Kernaufgaben der Schicht 4

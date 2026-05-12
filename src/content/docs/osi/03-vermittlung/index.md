@@ -3,8 +3,6 @@ title: Schicht 3 – Vermittlungsschicht (Network Layer)
 description: IP-Adressierung, Routing, Router und logische Adressierung
 ---
 
-# 🗺️ Schicht 3: Vermittlungsschicht (Network Layer)
-
 Die **Vermittlungsschicht** ist das "Navigationssystem" des Internet. Sie bestimmt den **optimalen Weg (Routing)**, über den Daten zwischen verschiedenen Netzwerken befördert werden. Während Schicht 2 sich um lokale Netzwerke (LAN) kümmert, verbindet Schicht 3 unterschiedliche Netzwerke miteinander (WAN – Wide Area Network).
 
 ## 🎯 Kernaufgaben der Schicht 3

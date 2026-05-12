@@ -3,8 +3,6 @@ title: Schicht 5 – Sitzungsschicht (Session Layer)
 description: Sitzungsverwaltung, Dialog-Steuerung und Synchronisierung
 ---
 
-# 🔐 Schicht 5: Sitzungsschicht (Session Layer)
-
 Die **Sitzungsschicht** verwaltet und überwacht **Dialoge zwischen Anwendungen**. Sie ist verantwortlich für den Aufbau, die Aufrechterhaltung und den Abbau von **Sitzungen** – nicht zu verwechseln mit TCP-Verbindungen der Schicht 4.
 
 ## 🎯 Kernaufgaben der Schicht 5

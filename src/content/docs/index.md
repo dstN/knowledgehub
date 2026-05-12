@@ -3,8 +3,6 @@ title: CaveHub – Lernplattform für Fachinformatiker
 description: Deine zentrale Lernplattform zur Fachinformatiker-Umschulung mit fundiertem Wissen zu Hard- und Software
 ---
 
-# CaveHub
-
 Willkommen bei **CaveHub** – deiner umfassenden Lernplattform zur Vorbereitung auf die Fachinformatiker-Umschulung. Hier findest du strukturiertes Fachwissen, detaillierte Erklärungen und praktische Einblicke in alle wichtigen IT-Bereiche.
 
 ## Was erwartet dich?

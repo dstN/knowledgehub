@@ -3,8 +3,6 @@ title: Glossar & Selbstkontrolle
 description: Wichtige Fachbegriffe aus dem Studienführer
 ---
 
-# Glossar & Selbstkontrolle
-
 Überprüfen Sie Ihr Wissen mit diesem interaktiven Glossar. Dies ist ideal zur Vorbereitung auf Tests (wie Kahoot) und hilft bei der Festigung der Fachsprache.
 
 ## 📖 Glossar der wichtigsten Begriffe

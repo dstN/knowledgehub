@@ -3,8 +3,6 @@ title: Eingabeeinheit
 description: Wie Daten in ein IT-System gelangen
 ---
 
-# Eingabeeinheit (Input/E)
-
 Die **Eingabeeinheit** ist das Tor zum Computer. Sie nimmt Daten von außen auf und konvertiert sie in ein maschinenlesbares Format.
 
 ## 🎯 Funktion

@@ -5,8 +5,6 @@ description: Das Gehirn des Computers und seine internen Strukturen
 
 import ArchitectureChart from '@/components/ArchitectureChart.jsx';
 
-# CPU & Architektur
-
 In diesem Abschnitt tauchen wir tief in die **Central Processing Unit (CPU)** ein. Sie lernen die internen Funktionseinheiten kennen und vergleichen die zwei dominierenden Designphilosophien: **RISC** und **CISC**.
 
 ## 🧠 Was ist eine CPU?
