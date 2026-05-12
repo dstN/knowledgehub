@@ -37,6 +37,27 @@ const TOPICS = [
 
 const STORAGE_KEY = 'cavehub_progress';
 
+const s = {
+	wrap: { maxWidth: 640, margin: '1.5rem auto', fontFamily: 'sans-serif' },
+	card: { border: '1px solid #334155', borderRadius: 12, padding: '1.5rem', background: 'var(--sl-color-bg, #0f172a)' },
+	header: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' },
+	title: { fontSize: '1.1rem', fontWeight: 700, margin: 0, color: 'var(--sl-color-text, #e2e8f0)' },
+	resetBtn: { fontSize: '0.75rem', background: 'none', border: '1px solid #475569', borderRadius: 6, padding: '0.25rem 0.6rem', cursor: 'pointer', color: '#94a3b8' },
+	barWrap: { marginBottom: '1.5rem' },
+	barInfo: { display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.4rem' },
+	barPct: { fontWeight: 700, color: '#38bdf8' },
+	barBg: { height: 10, background: '#1e293b', borderRadius: 999, overflow: 'hidden' },
+	barFill: (pct) => ({ height: '100%', background: '#0ea5e9', borderRadius: 999, transition: 'width 0.4s ease', width: `${pct}%` }),
+	section: { marginBottom: '1.2rem' },
+	sectionTitle: { fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b', marginBottom: '0.5rem' },
+	item: { display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.4rem 0.5rem', borderRadius: 8, cursor: 'pointer', marginBottom: '0.15rem' },
+	checkbox: { width: 16, height: 16, accentColor: '#0ea5e9', cursor: 'pointer', flexShrink: 0 },
+	labelDone: { fontSize: '0.875rem', textDecoration: 'line-through', color: '#475569' },
+	labelOpen: { fontSize: '0.875rem', color: 'var(--sl-color-text, #cbd5e1)' },
+	checkmark: { marginLeft: 'auto', color: '#22c55e', fontSize: '0.8rem' },
+	hint: { fontSize: '0.7rem', color: '#475569', marginTop: '1rem' },
+};
+
 export default function ProgressTracker() {
 	const [checked, setChecked] = useState({});
 
@@ -44,7 +65,7 @@ export default function ProgressTracker() {
 		try {
 			const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 			setChecked(stored);
-		} catch { }
+		} catch {}
 	}, []);
 
 	function toggle(id) {
@@ -66,56 +87,42 @@ export default function ProgressTracker() {
 	const pct = Math.round((doneCount / totalCount) * 100);
 
 	return (
-		<div className="w-full max-w-2xl mx-auto my-6 font-sans">
-			<div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-				<div className="flex items-center justify-between mb-4">
-					<h3 className="text-lg font-bold text-slate-800">📋 Lernfortschritt</h3>
-					<button onClick={resetAll} className="text-xs text-slate-400 hover:text-red-500 transition-colors">
-						Zurücksetzen
-					</button>
+		<div style={s.wrap}>
+			<div style={s.card}>
+				<div style={s.header}>
+					<h3 style={s.title}>📋 Lernfortschritt</h3>
+					<button style={s.resetBtn} onClick={resetAll}>Zurücksetzen</button>
 				</div>
 
-				{/* Progress Bar */}
-				<div className="mb-6">
-					<div className="flex justify-between text-sm text-slate-600 mb-1">
+				<div style={s.barWrap}>
+					<div style={s.barInfo}>
 						<span>{doneCount} von {totalCount} Themen abgeschlossen</span>
-						<span className="font-semibold text-sky-600">{pct}%</span>
+						<span style={s.barPct}>{pct}%</span>
 					</div>
-					<div className="h-3 bg-slate-100 rounded-full overflow-hidden">
-						<div
-							className="h-full bg-sky-500 rounded-full transition-all duration-500"
-							style={{ width: `${pct}%` }}
-						/>
+					<div style={s.barBg}>
+						<div style={s.barFill(pct)} />
 					</div>
 				</div>
 
-				{/* Topics */}
 				{TOPICS.map(topic => (
-					<div key={topic.section} className="mb-5">
-						<h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">{topic.section}</h4>
-						<div className="flex flex-col gap-1">
-							{topic.items.map(item => (
-								<label
-									key={item.id}
-									className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer group"
-								>
-									<input
-										type="checkbox"
-										checked={!!checked[item.id]}
-										onChange={() => toggle(item.id)}
-										className="w-4 h-4 accent-sky-600 cursor-pointer"
-									/>
-									<span className={`text-sm transition-colors ${checked[item.id] ? 'line-through text-slate-400' : 'text-slate-700 group-hover:text-sky-600'}`}>
-										{item.label}
-									</span>
-									{checked[item.id] && <span className="ml-auto text-green-500 text-xs">✓</span>}
-								</label>
-							))}
-						</div>
+					<div key={topic.section} style={s.section}>
+						<div style={s.sectionTitle}>{topic.section}</div>
+						{topic.items.map(item => (
+							<label key={item.id} style={s.item}>
+								<input
+									type="checkbox"
+									style={s.checkbox}
+									checked={!!checked[item.id]}
+									onChange={() => toggle(item.id)}
+								/>
+								<span style={checked[item.id] ? s.labelDone : s.labelOpen}>{item.label}</span>
+								{checked[item.id] && <span style={s.checkmark}>✓</span>}
+							</label>
+						))}
 					</div>
 				))}
 
-				<p className="text-xs text-slate-400 mt-4">Fortschritt wird lokal in deinem Browser gespeichert.</p>
+				<p style={s.hint}>Fortschritt wird lokal in deinem Browser gespeichert.</p>
 			</div>
 		</div>
 	);

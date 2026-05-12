@@ -78,63 +78,67 @@ export default function SubnetCalculator() {
 		});
 	}
 
+	const S = {
+		wrap: { maxWidth: 860, margin: '1.5rem auto', fontFamily: 'sans-serif' },
+		card: { border: '1px solid #334155', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', background: 'var(--sl-color-bg, #0f172a)' },
+		row: { display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'flex-end' },
+		fieldWrap: { display: 'flex', flexDirection: 'column', gap: '0.3rem' },
+		fieldLabel: { fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b' },
+		input: { border: '1px solid #475569', borderRadius: 8, padding: '0.4rem 0.7rem', fontSize: '0.875rem', fontFamily: 'monospace', background: '#1e293b', color: '#e2e8f0', width: 160 },
+		inputSmall: { border: '1px solid #475569', borderRadius: 8, padding: '0.4rem 0.7rem', fontSize: '0.875rem', fontFamily: 'monospace', background: '#1e293b', color: '#e2e8f0', width: 80 },
+		prefixRow: { display: 'flex', alignItems: 'center', gap: '0.25rem' },
+		slash: { fontFamily: 'monospace', color: '#94a3b8', fontSize: '1rem' },
+		btn: { background: '#0284c7', color: '#fff', border: 'none', borderRadius: 8, padding: '0.5rem 1.2rem', fontWeight: 700, fontSize: '0.875rem', cursor: 'pointer' },
+		error: { color: '#f87171', fontSize: '0.85rem', marginTop: '0.75rem' },
+		resultCard: { border: '1px solid #1d4ed8', borderRadius: 12, padding: '1.5rem', marginBottom: '1rem', background: '#0c1a3a' },
+		resultTitle: { fontWeight: 700, color: '#38bdf8', marginBottom: '1rem', fontSize: '1rem' },
+		grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1rem' },
+		cell: { border: '1px solid #1e3a5f', borderRadius: 8, padding: '0.6rem 0.75rem', background: '#0f172a' },
+		cellLabel: { fontSize: '0.7rem', color: '#64748b', marginBottom: '0.2rem' },
+		cellVal: { fontFamily: 'monospace', fontWeight: 600, fontSize: '0.875rem', color: '#e2e8f0' },
+		binBox: { border: '1px solid #1e3a5f', borderRadius: 8, padding: '0.75rem', fontFamily: 'monospace', fontSize: '0.8rem', background: '#0f172a', color: '#94a3b8' },
+		binLabel: { color: '#475569', marginBottom: '0.2rem' },
+		tableWrap: { overflowX: 'auto' },
+		table: { width: '100%', fontFamily: 'monospace', fontSize: '0.85rem', borderCollapse: 'collapse' },
+		th: { textAlign: 'left', padding: '0.4rem 0.6rem', fontSize: '0.7rem', textTransform: 'uppercase', color: '#64748b', borderBottom: '1px solid #1e293b' },
+		tdNum: { padding: '0.4rem 0.6rem', color: '#475569' },
+		tdNet: { padding: '0.4rem 0.6rem', fontWeight: 700, color: '#38bdf8' },
+		tdNormal: { padding: '0.4rem 0.6rem', color: '#94a3b8' },
+		tdBc: { padding: '0.4rem 0.6rem', color: '#fb923c' },
+		trEven: { background: '#0f172a' },
+		trOdd: { background: '#0c1524' },
+		warn: { border: '1px solid #7f1d1d', borderRadius: 10, padding: '0.75rem 1rem', color: '#fca5a5', fontSize: '0.875rem', background: '#1c0a0a' },
+	};
+
 	return (
-		<div className="w-full max-w-4xl mx-auto my-6 font-sans">
-			{/* Input */}
-			<div className="bg-white border border-slate-200 rounded-xl p-6 mb-4 shadow-sm">
-				<h3 className="text-lg font-bold text-slate-800 mb-4">🧮 Subnetz-Rechner</h3>
-				<div className="flex flex-col sm:flex-row gap-4 flex-wrap">
-					<div className="flex flex-col gap-1">
-						<label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">IP-Adresse</label>
-						<input
-							type="text"
-							value={ip}
-							onChange={e => setIp(e.target.value)}
-							placeholder="192.168.1.0"
-							className="border border-slate-300 rounded-lg px-3 py-2 text-sm font-mono w-40 focus:outline-none focus:border-sky-500"
-						/>
+		<div style={S.wrap}>
+			<div style={S.card}>
+				<div style={S.row}>
+					<div style={S.fieldWrap}>
+						<span style={S.fieldLabel}>IP-Adresse</span>
+						<input style={S.input} type="text" value={ip} onChange={e => setIp(e.target.value)} placeholder="192.168.1.0" />
 					</div>
-					<div className="flex flex-col gap-1">
-						<label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Präfix</label>
-						<div className="flex items-center gap-1">
-							<span className="text-slate-400 font-mono">/</span>
-							<input
-								type="number"
-								value={prefix}
-								min={1} max={30}
-								onChange={e => setPrefix(e.target.value)}
-								className="border border-slate-300 rounded-lg px-3 py-2 text-sm font-mono w-20 focus:outline-none focus:border-sky-500"
-							/>
+					<div style={S.fieldWrap}>
+						<span style={S.fieldLabel}>Präfix</span>
+						<div style={S.prefixRow}>
+							<span style={S.slash}>/</span>
+							<input style={S.inputSmall} type="number" value={prefix} min={1} max={30} onChange={e => setPrefix(e.target.value)} />
 						</div>
 					</div>
-					<div className="flex flex-col gap-1">
-						<label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Gewünschte Subnetze</label>
-						<input
-							type="number"
-							value={subnets}
-							min={1} max={256}
-							onChange={e => setSubnets(e.target.value)}
-							className="border border-slate-300 rounded-lg px-3 py-2 text-sm font-mono w-28 focus:outline-none focus:border-sky-500"
-						/>
+					<div style={S.fieldWrap}>
+						<span style={S.fieldLabel}>Gewünschte Subnetze</span>
+						<input style={S.inputSmall} type="number" value={subnets} min={1} max={256} onChange={e => setSubnets(e.target.value)} />
 					</div>
-					<div className="flex flex-col justify-end">
-						<button
-							onClick={calculate}
-							className="bg-sky-600 hover:bg-sky-700 text-white font-semibold px-6 py-2 rounded-lg text-sm transition-colors"
-						>
-							Berechnen
-						</button>
-					</div>
+					<button style={S.btn} onClick={calculate}>Berechnen</button>
 				</div>
-				{error && <p className="mt-3 text-red-600 text-sm font-medium">{error}</p>}
+				{error && <p style={S.error}>{error}</p>}
 			</div>
 
 			{result && (
 				<>
-					{/* Netz-Übersicht */}
-					<div className="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-200 rounded-xl p-6 mb-4">
-						<h4 className="font-bold text-sky-800 mb-4">Ausgangsnetz: {result.network}/{prefix}</h4>
-						<div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+					<div style={S.resultCard}>
+						<div style={S.resultTitle}>Ausgangsnetz: {result.network}/{prefix}</div>
+						<div style={S.grid}>
 							{[
 								['Netzadresse', result.network],
 								['Broadcast', result.broadcast],
@@ -143,48 +147,47 @@ export default function SubnetCalculator() {
 								['Letzte nutzbare IP', result.last],
 								['Nutzbare Hosts', result.usableHosts.toLocaleString('de')],
 							].map(([label, val]) => (
-								<div key={label} className="bg-white rounded-lg p-3 border border-sky-100">
-									<div className="text-xs text-slate-500 mb-1">{label}</div>
-									<div className="font-mono font-semibold text-slate-800 text-sm">{val}</div>
+								<div key={label} style={S.cell}>
+									<div style={S.cellLabel}>{label}</div>
+									<div style={S.cellVal}>{val}</div>
 								</div>
 							))}
 						</div>
-						<div className="bg-white rounded-lg p-3 border border-sky-100 font-mono text-xs text-slate-600">
-							<div className="text-slate-400 mb-1">Netzadresse (binär):</div>
-							<div>{result.networkBin}</div>
-							<div className="text-slate-400 mt-2 mb-1">Subnetzmaske (binär):</div>
+						<div style={S.binBox}>
+							<div style={S.binLabel}>Netzadresse (binär):</div>
+							<div style={{ marginBottom: '0.5rem' }}>{result.networkBin}</div>
+							<div style={S.binLabel}>Subnetzmaske (binär):</div>
 							<div>{result.maskBin}</div>
 						</div>
 					</div>
 
-					{/* Subnetting-Ergebnis */}
 					{result.subnetList.length > 0 && (
-						<div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-							<h4 className="font-bold text-slate-800 mb-1">
+						<div style={S.card}>
+							<div style={{ fontWeight: 700, color: '#e2e8f0', marginBottom: '0.25rem' }}>
 								Subnetting: {result.subnetBits} Bit(s) geliehen → {result.subnetList.length} Subnetze (/{result.newPrefix})
-							</h4>
-							<p className="text-xs text-slate-500 mb-4">
-								Neue Maske: {result.subnetList[0].mask} &nbsp;|&nbsp; Hosts/Subnetz: {(Math.pow(2, 32 - result.newPrefix) - 2).toLocaleString('de')}
-							</p>
-							<div className="overflow-x-auto">
-								<table className="w-full text-sm font-mono">
+							</div>
+							<div style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '1rem' }}>
+								Neue Maske: {result.subnetList[0].mask} | Hosts/Subnetz: {(Math.pow(2, 32 - result.newPrefix) - 2).toLocaleString('de')}
+							</div>
+							<div style={S.tableWrap}>
+								<table style={S.table}>
 									<thead>
-										<tr className="bg-slate-50 text-slate-600 text-xs uppercase">
-											<th className="text-left p-2 font-semibold">#</th>
-											<th className="text-left p-2 font-semibold">Netzadresse</th>
-											<th className="text-left p-2 font-semibold">Erste IP</th>
-											<th className="text-left p-2 font-semibold">Letzte IP</th>
-											<th className="text-left p-2 font-semibold">Broadcast</th>
+										<tr>
+											<th style={S.th}>#</th>
+											<th style={S.th}>Netzadresse</th>
+											<th style={S.th}>Erste IP</th>
+											<th style={S.th}>Letzte IP</th>
+											<th style={S.th}>Broadcast</th>
 										</tr>
 									</thead>
 									<tbody>
-										{result.subnetList.map((s, i) => (
-											<tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-												<td className="p-2 text-slate-400">{i + 1}</td>
-												<td className="p-2 font-semibold text-sky-700">{s.network}</td>
-												<td className="p-2 text-slate-700">{s.first}</td>
-												<td className="p-2 text-slate-700">{s.last}</td>
-												<td className="p-2 text-orange-600">{s.broadcast}</td>
+										{result.subnetList.map((sn, i) => (
+											<tr key={i} style={i % 2 === 0 ? S.trEven : S.trOdd}>
+												<td style={S.tdNum}>{i + 1}</td>
+												<td style={S.tdNet}>{sn.network}</td>
+												<td style={S.tdNormal}>{sn.first}</td>
+												<td style={S.tdNormal}>{sn.last}</td>
+												<td style={S.tdBc}>{sn.broadcast}</td>
 											</tr>
 										))}
 									</tbody>
@@ -193,8 +196,8 @@ export default function SubnetCalculator() {
 						</div>
 					)}
 					{result.newPrefix > 30 && (
-						<div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
-							⚠️ Für {subnets} Subnetze wäre Präfix /{result.newPrefix} nötig – das ist größer als /30 und damit nicht sinnvoll einsetzbar.
+						<div style={S.warn}>
+							⚠️ Für {subnets} Subnetze wäre Präfix /{result.newPrefix} nötig – größer als /30, nicht sinnvoll einsetzbar.
 						</div>
 					)}
 				</>
