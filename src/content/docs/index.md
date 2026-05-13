@@ -72,7 +72,7 @@ Das fundamentale Referenzmodell für die Netzwerkkommunikation:
 #### Subnetting & CIDR
 IP-Adressierung, Netzaufteilung und klassenlose Routingkonzepte:
 
-- [Subnetting – Übersicht](/netzwerke/01-subnetting/) – Binärtabellen, Subnetzmasken (/8–/30), Formeln $2^n - 2$ und $2^x$, vollständige Rechenbeispiele
+- [Subnetting – Übersicht](/netzwerke/01-subnetting/) – Binärtabellen, Subnetzmasken (/8–/30), Formeln (2^n − 2) und 2^x, vollständige Rechenbeispiele
 - [CIDR – Classless Inter-Domain Routing](/netzwerke/01-subnetting/cidr/) – Übergang von Klasse A/B/C zu CIDR, Präfixnotation, Aggregation, private Adressbereiche
 - [VLSM – Variable Length Subnet Masks](/netzwerke/02-vlsm/) – Flexible Subnetze unterschiedlicher Größe, IHK-Prüfungsrelevant, Schritt-für-Schritt Beispiele
 - [Netzwerk-Glossar](/netzwerke/glossar/) – Alle wichtigen Begriffe zu IP-Adressierung und Subnetting

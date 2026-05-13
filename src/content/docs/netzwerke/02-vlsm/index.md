@@ -65,11 +65,11 @@ VLSM funktioniert nach einem **hierarchischen** Prinzip:
 
 ### Der Rechenweg:
 
-**Frage:** Wie viele Bits brauchst du für $n$ Hosts?
-**Antwort:** Mindestens $\log_2(n + 2)$ Bits (die +2 sind für Netzadresse und Broadcast)
+**Frage:** Wie viele Bits brauchst du für n Hosts?  
+**Antwort:** Mindestens ⌈log₂(n + 2)⌉ Bits (die +2 sind für Netzadresse und Broadcast)
 
-Beispiel: Für 100 Hosts brauchst du $\log_2(102) \approx 6.67$, aufgerundet **7 Hostbits**  
-→ Subnetzmaske: $32 - 7 = /25$ mit $2^7 = 128$ Adressen
+**Beispiel:** Für 100 Hosts brauchst du log₂(102) ≈ 6.67, aufgerundet **7 Hostbits**  
+→ Subnetzmaske: 32 − 7 = **/25** mit 2^7 = 128 Adressen
 
 ---
 
@@ -207,9 +207,9 @@ Broadcast:    203.0.113.243
 Nutze diese Schritte für jede Prüfungsaufgabe:
 
 1. **Höchstem Hostbedarf Priorität geben** → Größtes Subnetz zuerst
-2. **Für jeden: $\text{Hostbits} = \lceil \log_2(\text{Hosts} + 2) \rceil$**
-3. **Präfix berechnen:** $\text{Präfix} = 32 - \text{Hostbits}$
-4. **Subnetzgröße:** $2^{\text{Hostbits}}$
+2. **Für jeden: Hostbits = ⌈log₂(Hosts + 2)⌉** (aufrunden auf nächste Potenz von 2!)
+3. **Präfix berechnen:** Präfix = 32 − Hostbits
+4. **Subnetzgröße:** 2^Hostbits Adressen
 5. **Adressbereiche sequenziell ohne Lücken zuordnen**
 6. **Überlappung prüfen:** Ist Ende einer Range + 1 = Anfang nächster Range? ✅
 7. **Verschwendung checken:** Wieviele Adressen bleiben ungenutzt?
