@@ -63,13 +63,57 @@ VLSM funktioniert nach einem **hierarchischen** Prinzip:
 2. **Hierarchisch absteigen:** Danach teilst du die verbleibenden Adressen in kleinere Masken auf (z.B. `/25`, `/27`, `/30`)
 3. **Kein Überlappen:** Die Adressbereiche dürfen sich **nicht überlappen**
 
-### Der Rechenweg:
+### Wie viele Hosts passen in ein Subnetz?
 
-**Frage:** Wie viele Bits brauchst du für n Hosts?  
-**Antwort:** Mindestens ⌈log₂(n + 2)⌉ Bits (die +2 sind für Netzadresse und Broadcast)
+Das ist die Kernfrage bei VLSM. Die gute Nachricht: Du musst nicht rechnen, es gibt eine **einfache Tabelle**:
 
-**Beispiel:** Für 100 Hosts brauchst du log₂(102) ≈ 6.67, aufgerundet **7 Hostbits**  
-→ Subnetzmaske: 32 − 7 = **/25** mit 2^7 = 128 Adressen
+| Präfix | Subnetzgröße | Nutzbare Hosts |
+|--------|-------|----------|
+| **/30** | 4 | 2 |
+| **/29** | 8 | 6 |
+| **/28** | 16 | 14 |
+| **/27** | 32 | 30 |
+| **/26** | 64 | 62 |
+| **/25** | 128 | 126 |
+| **/24** | 256 | 254 |
+| **/23** | 512 | 510 |
+| **/22** | 1.024 | 1.022 |
+
+**Wie liest man die Tabelle?**
+- Du brauchst ein Subnetz für **100 Hosts**?
+- Schaue die Zeile, wo "Nutzbare Hosts" ≥ 100 ist → **/25** mit 126 Hosts ✅
+- Du brauchst ein Subnetz für **20 Hosts**?
+- Schaue die Zeile, wo "Nutzbare Hosts" ≥ 20 ist → **/26** mit 62 Hosts ✅
+
+**Das wars!** Keine Logarithmus-Formeln nötig, nur nachschlagen. 🎯
+
+---
+
+## Der VLSM-Rechenweg (Einfache Checkliste)
+
+Nutze diese praktischen Schritte für jede Prüfungsaufgabe:
+
+**Schritt 1: Alle Anforderungen aufschreiben**
+- Liste auf, wie viele Hosts jede Abteilung/jeder Bereich braucht
+- Sortiere sie von **größte zu kleinste**
+
+**Schritt 2: Für jede Anforderung den Präfix aus der Tabelle oben finden**
+- Beispiel: 60 Hosts → **nachschlagen** → /26 (62 nutzbar) ✅
+- Beispiel: 14 Hosts → **nachschlagen** → /28 (14 nutzbar) ✅
+- Beispiel: 2 Hosts → **nachschlagen** → /30 (2 nutzbar) ✅
+
+**Schritt 3: Adressbereiche sequenziell ohne Lücken zuordnen**
+- Beginne beim ersten verfügbaren Adressblock (z.B. 10.0.0.0)
+- Jeder Block folgt direkt nach dem vorherigen
+- Beispiel: Wenn Block A endet bei 10.0.0.127, beginnt Block B bei 10.0.0.128
+
+**Schritt 4: Überlappung prüfen** 
+- Ist Ende Range A + 1 = Anfang Range B? → ✅ Korrekt
+- Wenn nicht: Du hast einen Fehler beim Adressbereiche-Zuordnen
+
+**Schritt 5: Gesamtgröße checken**
+- Passt die Summe aller Subnetze ins verfügbare Netzwerk?
+- Beispiel: 64 + 16 + 4 = 84 Adressen insgesamt → passt in 1.024er Netzwerk ✅
 
 ---
 
@@ -82,15 +126,18 @@ VLSM funktioniert nach einem **hierarchischen** Prinzip:
 
 **Verfügbar:** `10.0.0.0/22` (1.024 IPs)
 
-### Schritt 1: Hostbits berechnen (für jede Abteilung)
+### Schritt 1: Präfix mit Tabelle finden (größte zuerst!)
 
-| Abteilung | Hosts | +2 | Min. Hostbits | Präfix | Netzgrößе |
-|-----------|-------|----|-|-|-|
-| Marketing | 60 | 62 | 6 | /26 | 64 |
-| IT | 14 | 16 | 4 | /28 | 16 |
-| Server | 2 | 4 | 2 | /30 | 4 |
+| Abteilung | Hosts | Tabelle: Präfix | Subnetzgröße |
+|-----------|-------|----|-|-|
+| Marketing | 60 | /26 | 64 |
+| IT | 14 | /28 | 16 |
+| Server | 2 | /30 | 4 |
 
-Wie rechnest du das? Für 60 Hosts: $2^6 = 64$, das passt. $32 - 6 = /26$ ✅
+**Wie funktioniert Schritt 1?**
+- Marketing: 60 Hosts → Tabelle sagt /26 mit 62 nutzbar → passt! ✅
+- IT: 14 Hosts → Tabelle sagt /28 mit 14 nutzbar → passt genau! ✅
+- Server: 2 Hosts → Tabelle sagt /30 mit 2 nutzbar → passt genau! ✅
 
 ### Schritt 2: Adressbereiche zuordnen (größte zuerst!)
 
@@ -143,18 +190,18 @@ Broadcast:    10.0.0.83
 
 Das ist der Haken: **Ein /24 mit nur 254 IP-Adressen insgesamt!** Reicht das?
 
-### Schritt 1: Berechnung
+### Schritt 1: Präfix mit Tabelle finden (größte zuerst!)
 
-| Kunde | Hosts | +2 | Min. Hosts | Hostbits | Präfix | Größe |
-|-------|-------|----|----|-------|--------|--------|
-| A | 100 | 102 | 128 | 7 | /25 | 128 |
-| B | 50 | 52 | 64 | 6 | /26 | 64 |
-| C | 30 | 32 | 32 | 5 | /27 | 32 |
-| D | 10 | 12 | 16 | 4 | /28 | 16 |
-| E | 2 | 4 | 4 | 2 | /30 | 4 |
-| **Gesamt** | - | - | **256** | - | - | **244** |
+| Kunde | Hosts | Tabelle: Präfix | Subnetzgröße |
+|-------|-------|----|-|-|
+| A | 100 | /25 | 128 |
+| B | 50 | /26 | 64 |
+| C | 30 | /26 | 64 |
+| D | 10 | /28 | 16 |
+| E | 2 | /30 | 4 |
+| **Gesamt** | - | - | **276** |
 
-⚠️ **Achtung!** 244 < 254 ist knapp, aber es **passt!** (gerade noch!)
+✅ **Passt?** 276 < 254 ist knapp, aber es **passt!** (gerade noch!)
 
 ### Schritt 2: Adressvergabe (größte zuerst!)
 
@@ -281,11 +328,11 @@ Subnetz 2: 10.0.0.128/26 (10.0.0.128 – 10.0.0.191) ← Keine Überlappung
 VLSM-Aufgaben in Prüfungen sehen oft so aus:
 > *„Ein Unternehmen hat das Netzwerk 192.168.0.0/22 und braucht 3 Abteilungen mit 80, 30 und 10 Hosts sowie eine WAN-Verbindung. Teilen Sie das Netzwerk mit VLSM auf."*
 
-**Dein Vorgehen:**
-1. ✅ Alle Anforderungen aufschreiben (80, 30, 10, 2)
-2. ✅ Größte zuerst → /25 für 80, dann /26 für 30, dann /28 für 10, dann /30 für WAN
-3. ✅ Tabelle erstellen und Ranges sequenziell zuordnen
-4. ✅ Finale Kontrolle: Keine Überschneidungen? Passt alles rein?
-5. ✅ Fertig! 🎯
+**Dein Vorgehen (Die 5-Punkt-Strategie):**
+1. ✅ **Alle Anforderungen aufschreiben:** 80 Hosts, 30 Hosts, 10 Hosts, 2 Hosts (WAN)
+2. ✅ **Größte zuerst:** Sortiere von groß zu klein
+3. ✅ **Tabelle nachschlagen:** 80 → /25, 30 → /26, 10 → /28, 2 → /30
+4. ✅ **Ranges zuordnen:** Start bei 192.168.0.0, dann sequenziell: .0/25 → .128/26 → .192/28 → .208/30
+5. ✅ **Checken:** Keine Überschneidungen? Summe passt? → Fertig! 🎯
 
-Viel Erfolg bei der Prüfung!
+**Bonus:** Nutze die Präfix-Tabelle, die du zu Beginn auswendig gelernt hast. Keine Logarithmen, kein Rechnen – nur nachschlagen und sequenziell zuordnen!
