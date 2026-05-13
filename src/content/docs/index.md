@@ -22,9 +22,11 @@ Starte direkt mit diesen Inhalten:
 - [OSI-Modell verstehen](/osi/) – Das Fundament der Netzwerkkommunikation
 - [Subnetting](/netzwerke/01-subnetting/) – Netzaufteilung, Binärrechnung, vollständige Berechnungsbeispiele
 - [CIDR – Classless Inter-Domain Routing](/netzwerke/01-subnetting/cidr/) – Von Klassen-IP zur flexiblen Netzaufteilung
+- [VLSM – Variable Length Subnet Masks](/netzwerke/02-vlsm/) – Flexible Subnetzierung mit unterschiedlichen Größen
 - [Hardware Grundlagen](/hardware/01-grundlagen/) – Evolution und Kategorisierung von IT-Systemen
 - [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren und Designphilosophien
 - [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
+- [Netzwerk-Glossar](/netzwerke/glossar/) – IP-Adressierung, Subnetting, VLSM
 
 ---
 
@@ -72,6 +74,8 @@ IP-Adressierung, Netzaufteilung und klassenlose Routingkonzepte:
 
 - [Subnetting – Übersicht](/netzwerke/01-subnetting/) – Binärtabellen, Subnetzmasken (/8–/30), Formeln $2^n - 2$ und $2^x$, vollständige Rechenbeispiele
 - [CIDR – Classless Inter-Domain Routing](/netzwerke/01-subnetting/cidr/) – Übergang von Klasse A/B/C zu CIDR, Präfixnotation, Aggregation, private Adressbereiche
+- [VLSM – Variable Length Subnet Masks](/netzwerke/02-vlsm/) – Flexible Subnetze unterschiedlicher Größe, IHK-Prüfungsrelevant, Schritt-für-Schritt Beispiele
+- [Netzwerk-Glossar](/netzwerke/glossar/) – Alle wichtigen Begriffe zu IP-Adressierung und Subnetting
 
 ---
 

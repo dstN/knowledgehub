@@ -145,6 +145,11 @@ export default defineConfig({
 								{ label: 'Prüfungsfragen', slug: 'netzwerke/01-subnetting/pruefung' },
 							],
 						},
+						{
+							label: '02 VLSM – Variable Length Subnet Masks',
+							slug: 'netzwerke/02-vlsm',
+						},
+						{ label: 'Netzwerk-Glossar', slug: 'netzwerke/glossar' },
 						{ label: 'IP & Subnetting Cheatsheet', slug: 'netzwerke/cheatsheet' },
 					],
 				},
