@@ -1,0 +1,398 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+---
+
+<StarlightPage frontmatter={{ title: 'AP1 Lernkarten – FISI', description: 'Interaktive Karteikarten zur Prüfungsvorbereitung AP1 Fachinformatik Systemintegration.' }}>
+  <p>Karteikarten zur AP1-Vorbereitung — Themenübersicht, interaktives Üben mit Flip-Karten und Alle-Karten-Ansicht.</p>
+
+  <div class="lk">
+    <nav class="lk-nav" id="lk-nav">
+      <button type="button" class="lk-nav-btn active" data-page="themen">📋 Themenübersicht</button>
+      <button type="button" class="lk-nav-btn" data-page="karten">🃏 Karteikarten üben</button>
+      <button type="button" class="lk-nav-btn" data-page="alle">📖 Alle Karten ansehen</button>
+    </nav>
+
+    <!-- PAGE 1: THEMEN -->
+    <div class="lk-page active" id="lk-page-themen">
+      <div class="lk-info" style="margin-bottom:12px;">
+        <strong style="font-size:15px;">Themengebiete AP1</strong>
+        <p style="font-size:13px;color:#94a3b8;margin:4px 0;">Die AP1 ist für alle IT-Berufe identisch. Prüfungsbereich: „Einrichten eines IT-gestützten Arbeitsplatzes" — 90 Minuten, 20 % der Gesamtnote.</p>
+        <p style="font-size:12px;color:#f97316;margin:0;">⚠ Ab 2025 gelten neue Inhalte. SQL und RAID wurden aus AP1 gestrichen. KI-Grundlagen wurden neu aufgenommen.</p>
+      </div>
+
+      <div class="lk-grid">
+        <div class="lk-theme" style="border-top:3px solid #1D9E75;">
+          <h3>🗂 Projektmanagement</h3>
+          <ul><li>Merkmale eines Projekts</li><li>Netzplan, Strukturplan</li><li>Kritischer Pfad, Pufferzeit</li><li>Meilensteine, Zeitplan</li><li>Auftragsunterlagen prüfen</li><li>Durchführbarkeit beurteilen</li></ul>
+        </div>
+        <div class="lk-theme" style="border-top:3px solid #378ADD;">
+          <h3>🖥 Hardware & Betriebssysteme</h3>
+          <ul><li>CPU, RAM, Speicher, Peripherie</li><li>Betriebssystem konfigurieren</li><li>Treiber, Updates, Patches</li><li>Virtualisierung</li><li>P = U × I (Strom, Spannung, Leistung)</li><li>Wirkungsgrad berechnen</li></ul>
+        </div>
+        <div class="lk-theme" style="border-top:3px solid #BA7517;">
+          <h3>🌐 Netzwerke</h3>
+          <ul><li>OSI-Schichtenmodell (7 Schichten)</li><li>IPv4/IPv6, Subnetting</li><li>DHCP, DNS, TCP, UDP</li><li>Netzwerktopologien</li><li>WLAN-Standards</li><li>IP-Adressberechnung</li></ul>
+        </div>
+        <div class="lk-theme" style="border-top:3px solid #E24B4A;">
+          <h3>🔒 IT-Sicherheit & Datenschutz</h3>
+          <ul><li>CIA-Prinzip (C/I/A)</li><li>DSGVO-Grundsätze</li><li>Verschlüsselung (sym./asym.)</li><li>Firewall, Zugriffsrechte</li><li>Backup-Strategien</li><li>Schadsoftware-Arten</li></ul>
+        </div>
+        <div class="lk-theme" style="border-top:3px solid #639922;">
+          <h3>💰 Wirtschaftlichkeit</h3>
+          <ul><li>Anschaffungs- & Betriebskosten</li><li>Fixe vs. variable Kosten</li><li>Leasing/Kauf/Miete Vergleich</li><li>Nutzwertanalyse</li><li>Stromkosten berechnen ⭐</li><li>Amortisationsrechnung</li></ul>
+        </div>
+        <div class="lk-theme" style="border-top:3px solid #D4537E;">
+          <h3>💻 Programmierung & Daten</h3>
+          <ul><li>Algorithmen beschreiben</li><li>UML, BPMN (PAP/Struktogramm: gestrichen!)</li><li>Pseudocode, Kontrollstrukturen</li><li>Datentypen, Arrays</li><li>Lastenheft vs. Pflichtenheft</li><li>Bedarfsanalyse</li></ul>
+        </div>
+        <div class="lk-theme" style="border-top:3px solid #7F77DD;">
+          <h3>🤖 KI-Grundlagen <span class="lk-new">NEU 2025</span></h3>
+          <ul><li>Maschinelles Lernen (ML)</li><li>Überwachtes/unüberwachtes Lernen</li><li>Neuronale Netze (Grundlagen)</li><li>KI-Einsatzbereiche in der IT</li><li>Chancen & Risiken von KI</li><li>BPMN 2.0 mit KI-Tools</li></ul>
+        </div>
+        <div class="lk-theme" style="border-top:3px solid #64748b;background:#0f172a;">
+          <h3>📝 Prüfungsformat</h3>
+          <ul><li>Dauer: 90 Minuten</li><li>Gewichtung: 20 % der Gesamtnote</li><li>Für alle IT-Berufe identisch</li><li>Multiple Choice & offene Fragen</li><li>Belegsatz wird mitgeliefert</li><li>Nach ca. 18 Monaten Ausbildung</li></ul>
+        </div>
+      </div>
+      <p style="margin-top:24px;font-size:12px;color:#64748b;border-top:1px solid #334155;padding-top:12px;">Quelle: ZPA Nordwest Prüfungskatalog (Stand Oktober 2024, gültig ab Frühjahr 2025)</p>
+    </div>
+
+    <!-- PAGE 2: KARTEIKARTEN ÜBEN -->
+    <div class="lk-page" id="lk-page-karten">
+      <p style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Karte anklicken zum Umdrehen. Dann bewerten.</p>
+      <div class="lk-filters" id="lk-filters"></div>
+
+      <div class="lk-fc-main">
+        <div class="lk-fc-meta">
+          <span id="lk-counter"></span>
+          <span id="lk-score" style="color:#22d3ee;font-weight:600;"></span>
+        </div>
+        <div class="lk-prog-wrap"><div class="lk-prog-fill" id="lk-prog"></div></div>
+
+        <div id="lk-card" class="lk-card">
+          <span id="lk-cat-tag" class="lk-cat-tag"></span>
+          <p id="lk-q" class="lk-q"></p>
+          <div id="lk-a" class="lk-a"></div>
+          <p id="lk-hint" class="lk-hint">Klicken zum Umdrehen</p>
+        </div>
+
+        <div class="lk-btns" id="lk-btn-row" style="display:none;">
+          <button type="button" class="lk-btn lk-btn-no" id="lk-rate-no">✗ Nochmal</button>
+          <button type="button" class="lk-btn lk-btn-skip" id="lk-skip">→ Überspringen</button>
+          <button type="button" class="lk-btn lk-btn-yes" id="lk-rate-yes">✓ Gewusst!</button>
+        </div>
+
+        <div id="lk-summary" style="display:none;text-align:center;padding:48px 16px;">
+          <h2 id="lk-sum-txt" style="font-size:28px;margin-bottom:8px;"></h2>
+          <p style="color:#94a3b8;margin-top:6px;">Runde abgeschlossen!</p>
+          <button type="button" class="lk-btn lk-btn-restart" id="lk-restart" style="margin-top:20px;">↺ Neu starten</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: ALLE KARTEN -->
+    <div class="lk-page" id="lk-page-alle">
+      <p style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Klicke auf eine Frage, um die Antwort zu sehen.</p>
+      <div id="lk-cards-list" class="lk-cards-list"></div>
+    </div>
+  </div>
+
+  <style is:global>
+    .lk { max-width:860px; margin:1.5rem auto; font-family:system-ui,-apple-system,sans-serif; }
+
+    /* Nav tabs – alle Reiter gleich breit, gleich hoch */
+    nav.lk-nav {
+      display:flex !important;
+      gap:0 !important;
+      border-bottom:1px solid #334155 !important;
+      margin-bottom:1.5rem !important;
+      overflow-x:auto !important;
+    }
+    nav.lk-nav > button.lk-nav-btn {
+      flex:1 1 0% !important;
+      min-width:0 !important;
+      margin:0 !important;
+      padding:12px 8px !important;
+      font-size:13px !important;
+      font-weight:500 !important;
+      border:none !important;
+      background:none !important;
+      cursor:pointer;
+      color:#94a3b8 !important;
+      border-bottom:2px solid transparent !important;
+      white-space:nowrap !important;
+      transition:all .15s;
+      line-height:1.4 !important;
+      display:flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      height:44px !important;
+      box-sizing:border-box !important;
+      align-self:stretch !important;
+    }
+    nav.lk-nav > button.lk-nav-btn.active { color:#e2e8f0 !important; border-bottom-color:#22d3ee !important; }
+    nav.lk-nav > button.lk-nav-btn:hover { color:#e2e8f0 !important; }
+
+    /* Pages */
+    .lk-page { display:none !important; }
+    .lk-page.active { display:block !important; }
+
+    /* Theme grid – alle Boxen gleich hoch pro Zeile */
+    div.lk-grid {
+      display:grid !important;
+      grid-template-columns:repeat(2,1fr) !important;
+      gap:14px !important;
+      align-items:stretch !important;
+    }
+    div.lk-grid > div.lk-theme {
+      background:#1e293b !important;
+      border-radius:10px !important;
+      padding:16px !important;
+      border:1px solid #334155 !important;
+      box-sizing:border-box !important;
+      min-height:0 !important;
+      margin:0 !important;
+      align-self:stretch !important;
+    }
+    @media (max-width:560px) { div.lk-grid { grid-template-columns:1fr !important; } }
+    .lk-theme h3 { font-size:14px !important; font-weight:500 !important; margin-bottom:8px !important; color:#e2e8f0 !important; }
+    .lk-theme ul { padding-left:16px !important; font-size:13px !important; color:#94a3b8 !important; line-height:1.8 !important; margin:0 !important; }
+    .lk-new { font-size:10px; background:#422006; color:#f97316; padding:2px 7px; border-radius:4px; font-weight:500; vertical-align:middle; margin-left:6px; }
+
+    /* Filter buttons – alle identische Breite */
+    div.lk-filters {
+      display:grid !important;
+      grid-template-columns:repeat(4, 1fr) !important;
+      gap:10px !important;
+      margin-bottom:16px !important;
+    }
+    div.lk-filters > button.lk-filter-btn {
+      font-size:12px !important;
+      padding:8px 6px !important;
+      border-radius:20px !important;
+      cursor:pointer;
+      border:1px solid #475569 !important;
+      background:#1e293b !important;
+      color:#94a3b8 !important;
+      transition:all .1s;
+      text-align:center !important;
+      width:100% !important;
+      height:36px !important;
+      margin:0 !important;
+      overflow:hidden !important;
+      text-overflow:ellipsis !important;
+      white-space:nowrap !important;
+      box-sizing:border-box !important;
+      align-self:center !important;
+    }
+    div.lk-filters > button.lk-filter-btn.on { background:#e2e8f0 !important; color:#0f172a !important; border-color:#e2e8f0 !important; }
+
+    /* Flashcard */
+    .lk-fc-main { max-width:600px; margin:0 auto; }
+    .lk-fc-meta { display:flex; justify-content:space-between; font-size:12px; color:#64748b; margin-bottom:10px; }
+    .lk-prog-wrap { height:4px; background:#1e293b; border-radius:2px; margin-bottom:16px; }
+    .lk-prog-fill { height:4px; background:#22d3ee; border-radius:2px; transition:width .3s; width:0%; }
+
+    .lk-card {
+      background:#1e293b; border:1px solid #334155; border-radius:14px;
+      min-height:200px; padding:32px 28px; cursor:pointer; text-align:center;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      transition:box-shadow .15s;
+    }
+    .lk-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.3); }
+    .lk-cat-tag { font-size:11px; padding:3px 10px; border-radius:20px; margin-bottom:14px; font-weight:500; }
+    .lk-q { font-size:16px; font-weight:500; line-height:1.5; color:#e2e8f0; margin:0; }
+    .lk-a { font-size:14px; color:#94a3b8; line-height:1.65; margin-top:18px; padding-top:18px; border-top:1px solid #334155; display:none; }
+    .lk-hint { font-size:12px; color:#64748b; margin-top:14px; }
+
+    /* Buttons */
+    .lk-btns { display:flex; gap:10px; margin-top:14px; justify-content:center; }
+    .lk-btn { padding:10px 20px; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; border:1px solid; }
+    .lk-btn-no  { background:#1c1917; color:#ef4444; border-color:#7f1d1d; }
+    .lk-btn-yes { background:#052e16; color:#22c55e; border-color:#14532d; }
+    .lk-btn-skip { background:#1e293b; color:#94a3b8; border-color:#475569; }
+    .lk-btn-restart { background:#e2e8f0; color:#0f172a; border-color:#e2e8f0; padding:12px 28px; }
+
+    /* All cards list */
+    .lk-cards-list {}
+    .lk-card-item { background:#1e293b; border-radius:10px; border:1px solid #334155; margin-bottom:10px; overflow:hidden; }
+    .lk-card-head {
+      padding:12px 16px; cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+      font-size:14px; font-weight:500; color:#e2e8f0;
+    }
+    .lk-card-head:hover { background:#0f172a; }
+    .lk-card-body { display:none !important; padding:12px 16px; border-top:1px solid #334155; font-size:13px; color:#94a3b8; line-height:1.65; background:#0f172a; }
+    .lk-card-body.open { display:block !important; }
+    .lk-cat-pill { font-size:11px; padding:2px 8px; border-radius:10px; margin-right:8px; }
+  </style>
+
+  <script>
+    (function() {
+      var catColors = {
+        "Projektmanagement": "#1D9E75",
+        "Netzwerke": "#BA7517",
+        "IT-Sicherheit": "#E24B4A",
+        "Wirtschaftlichkeit": "#639922",
+        "Hardware": "#378ADD",
+        "Programmierung": "#D4537E",
+        "KI-Grundlagen": "#7F77DD"
+      };
+
+      var cards = [
+        { cat:"Projektmanagement", q:"Was ist der kritische Pfad in einem Projektplan?", a:"Der längste Weg durch den Netzplan — Verzögerungen auf diesem Pfad verschieben direkt den Projektabschluss. Vorgänge auf dem kritischen Pfad haben keine Pufferzeit (Puffer = 0)." },
+        { cat:"Projektmanagement", q:"Was ist der Unterschied zwischen Pufferzeit und Meilenstein?", a:"Pufferzeit: zeitlicher Spielraum eines Vorgangs, ohne dass sich der Gesamtplan verzögert. Meilenstein: wichtiger Zwischentermin ohne eigene Dauer — zeigt Projektfortschritt an." },
+        { cat:"Projektmanagement", q:"Nenne 4 typische Merkmale eines Projekts.", a:"Einmalig (kein Routinevorgang), zeitlich begrenzt (klares Start- und Enddatum), definiertes Ziel, begrenzte Ressourcen (Budget, Personal, Zeit), oft eigene Projektorganisation." },
+        { cat:"Projektmanagement", q:"Was sollte ein Projektauftrag / eine Auftragsunterlage enthalten?", a:"Auftraggeber und Auftragnehmer, Projektziel (was soll erreicht werden?), Leistungsumfang, Termine/Meilensteine, Budget, Ressourcen, rechtliche/wirtschaftliche Rahmenbedingungen." },
+        { cat:"Netzwerke", q:"Erkläre das OSI-Modell in 7 Schichten (von unten nach oben).", a:"1 Bitübertragung (Kabel/Funk) → 2 Sicherung (MAC, Switches) → 3 Vermittlung (IP, Router) → 4 Transport (TCP/UDP) → 5 Sitzung → 6 Darstellung (Verschlüsselung, Codierung) → 7 Anwendung (HTTP, FTP, DNS)" },
+        { cat:"Netzwerke", q:"Was ist der Unterschied zwischen TCP und UDP?", a:"TCP: verbindungsorientiert, zuverlässig, Handshake, Bestätigung jedes Pakets (langsamer) — z.B. HTTP, FTP, Email. UDP: verbindungslos, kein Handshake, schnell aber unzuverlässig — z.B. Streaming, VoIP, DNS, Gaming." },
+        { cat:"Netzwerke", q:"Wie berechnet man die Netzwerkadresse aus IP und Subnetzmaske?", a:"Bitweise AND-Verknüpfung von IP-Adresse und Subnetzmaske. Beispiel: 192.168.10.50 AND 255.255.255.0 = 192.168.10.0 (Netzwerkadresse). Die Broadcast-Adresse ist die letzte Adresse im Netz." },
+        { cat:"Netzwerke", q:"Was macht DHCP, was macht DNS?", a:"DHCP (Dynamic Host Configuration Protocol): weist IP-Adressen, Subnetzmaske, Gateway und DNS-Server automatisch zu. DNS (Domain Name System): übersetzt Domainnamen in IP-Adressen — das 'Telefonbuch des Internets'." },
+        { cat:"Netzwerke", q:"Welche WLAN-Standards kennst du? Was unterscheidet sie?", a:"IEEE 802.11b/g/n/ac/ax (Wi-Fi 6). Unterschiede: Frequenzband (2,4 GHz vs. 5 GHz), maximale Übertragungsrate, Reichweite, Anzahl unterstützter Geräte. 5 GHz = schneller, weniger Reichweite. 2,4 GHz = mehr Reichweite, stärker belegt." },
+        { cat:"IT-Sicherheit", q:"Was bedeutet das CIA-Prinzip in der IT-Sicherheit?", a:"C = Confidentiality (Vertraulichkeit): Daten nur für Berechtigte. I = Integrity (Integrität): Daten dürfen nicht unbemerkt geändert werden. A = Availability (Verfügbarkeit): Systeme müssen erreichbar sein. Die 3 Schutzziele der Informationssicherheit." },
+        { cat:"IT-Sicherheit", q:"Nenne 4 DSGVO-Grundsätze.", a:"Zweckbindung (Daten nur für festgelegten Zweck), Datensparsamkeit (nur notwendige Daten), Richtigkeit (aktuelle Daten), Speicherbegrenzung, Integrität & Vertraulichkeit, Transparenz gegenüber Betroffenen, Rechenschaftspflicht." },
+        { cat:"IT-Sicherheit", q:"Was ist der Unterschied zwischen symmetrischer und asymmetrischer Verschlüsselung?", a:"Symmetrisch: ein Schlüssel für Ver- und Entschlüsselung (schnell, Problem: sicherer Schlüsselaustausch). Beispiel: AES. Asymmetrisch: öffentlicher Schlüssel zum Verschlüsseln, privater Schlüssel zum Entschlüsseln. Beispiel: RSA. Langsamer, aber kein Schlüsselaustauschproblem." },
+        { cat:"IT-Sicherheit", q:"Was ist der Unterschied zwischen einer Firewall und einem Virenscanner?", a:"Firewall: kontrolliert und filtert den Netzwerkverkehr nach Regeln (Ports, IPs, Protokolle) — schützt vor unerlaubten Verbindungen. Virenscanner: erkennt und entfernt Schadsoftware auf dem Gerät. Beide ergänzen sich." },
+        { cat:"Wirtschaftlichkeit", q:"Wie berechnet man den Stromverbrauch in kWh und die Kosten?", a:"Formel: W (kWh) = P (kW) × t (h). Beispiel: 300 Watt PC × 8 Stunden = 2,4 kWh. Kosten = kWh × Preis pro kWh. Amortisation: Mehrkosten teurerer Hardware / Einsparung pro Jahr = Jahre bis Amortisation." },
+        { cat:"Wirtschaftlichkeit", q:"Was ist eine Nutzwertanalyse?", a:"Methode zum qualitativen Vergleich von Alternativen: 1. Kriterien festlegen, 2. Kriterien gewichten (Summe = 100%), 3. Alternativen bewerten (z.B. 1-10), 4. Gewicht × Bewertung für jede Alternative, 5. Summe bilden — höchste Punktzahl gewinnt." },
+        { cat:"Wirtschaftlichkeit", q:"Was sind fixe und variable Kosten? Nenne je ein Beispiel.", a:"Fixe Kosten: entstehen unabhängig von der Nutzungsmenge (z.B. Miete, Grundgebühr, Abschreibungen, Leasingrate). Variable Kosten: steigen mit der Nutzung (z.B. Stromkosten, Verbrauchsmaterial, nutzungsabhängige Lizenzgebühren)." },
+        { cat:"Wirtschaftlichkeit", q:"Wann lohnt sich Leasing gegenüber Kauf?", a:"Leasing vorteilhaft wenn: geringere Anfangsinvestition gewünscht, regelmäßige Modernisierung wichtig, steuerliche Vorteile (Betriebsausgabe), Off-Balance-Sheet. Kauf vorteilhaft wenn: langfristige Nutzung, Eigenkapital vorhanden, keine Abhängigkeit vom Leasinggeber gewünscht." },
+        { cat:"Hardware", q:"Was ist der Unterschied zwischen SSD und HDD?", a:"SSD (Solid State Drive): Flash-Speicher, sehr schnell (500–7000 MB/s), leise, stoßfest, weniger heiß, teurer pro GB. HDD (Hard Disk Drive): magnetische rotierende Platten, langsamer (~100-200 MB/s), günstiger pro GB, anfälliger für Stöße." },
+        { cat:"Hardware", q:"Was ist Virtualisierung? Nenne einen Vorteil und einen Nachteil.", a:"Virtualisierung: ein physischer Server betreibt mehrere virtuelle Maschinen (VMs) mit eigenem OS. Vorteil: bessere Ressourcenauslastung, Isolation, einfache Skalierung, Snapshots. Nachteil: Overhead durch Hypervisor, bei Ausfall des Hosts fallen alle VMs aus." },
+        { cat:"Hardware", q:"Berechne Wirkungsgrad: Eingangsleistung 500W, Ausgangsleistung 425W.", a:"η = P_ab / P_zu × 100% = 425 W / 500 W × 100% = 85%. Verlustleistung: 500 - 425 = 75 W (wird als Wärme abgegeben). Formel merken: η = Nutzleistung / zugeführte Leistung." },
+        { cat:"Hardware", q:"Was versteht man unter einem BIOS/UEFI?", a:"BIOS/UEFI (Basic Input/Output System / Unified Extensible Firmware Interface): Firmware auf dem Mainboard. Initialisiert Hardware beim Start (POST), sucht bootfähiges Medium, startet das Betriebssystem. UEFI ist moderner: grafische Oberfläche, Secure Boot, unterstützt große Festplatten (>2 TB)." },
+        { cat:"Programmierung", q:"Was ist der Unterschied zwischen Lastenheft und Pflichtenheft?", a:"Lastenheft: erstellt vom Auftraggeber — beschreibt WAS gebraucht wird (Anforderungen aus Kundensicht, funktionale und nicht-funktionale Anforderungen). Pflichtenheft: erstellt vom Auftragnehmer — beschreibt WIE es umgesetzt wird (technische Lösung, konkret und messbar)." },
+        { cat:"Programmierung", q:"Was ist der Unterschied zwischen UML und BPMN?", a:"UML (Unified Modeling Language): für Software-Strukturen und -Abläufe (Klassendiagramm, Sequenzdiagramm, Anwendungsfalldiagramm, Aktivitätsdiagramm). BPMN (Business Process Model and Notation): für Geschäftsprozesse und betriebliche Abläufe — wer tut was, wann und in welcher Reihenfolge." },
+        { cat:"Programmierung", q:"Erkläre den Unterschied zwischen for-Schleife und while-Schleife.", a:"for-Schleife: verwendet wenn die Anzahl der Wiederholungen bekannt ist (z.B. 'für jeden Eintrag in der Liste'). while-Schleife: verwendet wenn eine Bedingung geprüft wird, Anzahl unbekannt (z.B. 'solange Eingabe ungültig, nochmal fragen'). do-while: mindestens 1x ausführen, dann prüfen." },
+        { cat:"KI-Grundlagen", q:"Was ist der Unterschied zwischen überwachtem und unüberwachtem Lernen?", a:"Überwachtes Lernen (Supervised Learning): Training mit gelabelten Daten (Eingabe + bekannte Ausgabe). Algorithmus lernt die Zuordnung. Beispiel: E-Mail als Spam/kein Spam klassifizieren. Unüberwachtes Lernen: keine Labels — Algorithmus findet selbst Muster/Cluster. Beispiel: Kunden nach Kaufverhalten gruppieren." },
+        { cat:"KI-Grundlagen", q:"Nenne 3 typische Einsatzbereiche von KI in der IT/Systemintegration.", a:"Anomalieerkennung (IT-Sicherheit, Intrusion Detection), Predictive Maintenance (Vorhersage von Hardware-Ausfällen), automatisiertes Testing, Chatbots/Helpdesk-Automatisierung, Spam-Filter, intelligente Netzwerküberwachung, Bilderkennung für QA." },
+        { cat:"KI-Grundlagen", q:"Was ist maschinelles Lernen (ML)?", a:"Teilgebiet der KI: Algorithmen, die aus Daten lernen ohne explizit programmiert zu werden. Das Modell wird anhand von Trainingsdaten optimiert, um Muster zu erkennen und Vorhersagen zu treffen. Grundlage: Statistik und lineare Algebra." }
+      ];
+
+      // --- NAV ---
+      var navBtns = document.querySelectorAll('.lk-nav-btn');
+      navBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var page = btn.getAttribute('data-page');
+          navBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          document.querySelectorAll('.lk-page').forEach(function(p) { p.classList.remove('active'); });
+          document.getElementById('lk-page-' + page).classList.add('active');
+          if (page === 'alle') renderAllCards();
+        });
+      });
+
+      // --- FLASHCARD LOGIC ---
+      var fcActive = cards.slice(), fcIdx = 0, fcCorrect = 0, fcShown = false;
+      var fcActiveCats = {};
+      cards.forEach(function(c) { fcActiveCats[c.cat] = true; });
+
+      function renderFilters() {
+        var cats = [];
+        var seen = {};
+        cards.forEach(function(c) { if (!seen[c.cat]) { seen[c.cat] = true; cats.push(c.cat); } });
+        var el = document.getElementById('lk-filters');
+        el.innerHTML = '';
+        cats.forEach(function(c) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'lk-filter-btn on';
+          btn.textContent = c;
+          btn.setAttribute('data-cat', c);
+          btn.addEventListener('click', function() { toggleCat(c, btn); });
+          el.appendChild(btn);
+        });
+      }
+
+      function toggleCat(cat, btn) {
+        var activeCount = 0;
+        for (var k in fcActiveCats) { if (fcActiveCats[k]) activeCount++; }
+        if (fcActiveCats[cat]) {
+          if (activeCount > 1) { fcActiveCats[cat] = false; btn.classList.remove('on'); }
+        } else {
+          fcActiveCats[cat] = true; btn.classList.add('on');
+        }
+        fcActive = cards.filter(function(c) { return fcActiveCats[c.cat]; });
+        fcIdx = 0; fcCorrect = 0;
+        document.getElementById('lk-summary').style.display = 'none';
+        document.getElementById('lk-card').style.display = 'flex';
+        fcRender();
+      }
+
+      function fcRender() {
+        if (fcIdx >= fcActive.length) { fcShowSummary(); return; }
+        var c = fcActive[fcIdx];
+        fcShown = false;
+        var tag = document.getElementById('lk-cat-tag');
+        var col = catColors[c.cat] || '#64748b';
+        tag.textContent = c.cat;
+        tag.style.background = col + '22';
+        tag.style.color = col;
+        document.getElementById('lk-q').textContent = c.q;
+        document.getElementById('lk-a').textContent = c.a;
+        document.getElementById('lk-a').style.display = 'none';
+        document.getElementById('lk-hint').style.display = '';
+        document.getElementById('lk-btn-row').style.display = 'none';
+        document.getElementById('lk-counter').textContent = (fcIdx + 1) + ' / ' + fcActive.length;
+        document.getElementById('lk-score').textContent = '✓ ' + fcCorrect + ' gewusst';
+        document.getElementById('lk-prog').style.width = (fcIdx / fcActive.length * 100) + '%';
+      }
+
+      document.getElementById('lk-card').addEventListener('click', function() {
+        if (fcShown) return;
+        fcShown = true;
+        document.getElementById('lk-a').style.display = 'block';
+        document.getElementById('lk-hint').style.display = 'none';
+        document.getElementById('lk-btn-row').style.display = 'flex';
+      });
+
+      document.getElementById('lk-rate-yes').addEventListener('click', function() { fcCorrect++; fcIdx++; fcRender(); });
+      document.getElementById('lk-rate-no').addEventListener('click', function() { fcIdx++; fcRender(); });
+      document.getElementById('lk-skip').addEventListener('click', function() { fcIdx++; fcRender(); });
+
+      function fcShowSummary() {
+        document.getElementById('lk-card').style.display = 'none';
+        document.getElementById('lk-btn-row').style.display = 'none';
+        document.getElementById('lk-summary').style.display = 'block';
+        document.getElementById('lk-sum-txt').textContent = fcCorrect + ' / ' + fcActive.length + ' gewusst 🎉';
+        document.getElementById('lk-prog').style.width = '100%';
+      }
+
+      document.getElementById('lk-restart').addEventListener('click', function() {
+        fcIdx = 0; fcCorrect = 0;
+        fcActive = cards.filter(function(c) { return fcActiveCats[c.cat]; });
+        fcActive.sort(function() { return Math.random() - 0.5; });
+        document.getElementById('lk-summary').style.display = 'none';
+        document.getElementById('lk-card').style.display = 'flex';
+        fcRender();
+      });
+
+      // --- ALL CARDS ---
+      function renderAllCards() {
+        var list = document.getElementById('lk-cards-list');
+        var byCat = {};
+        cards.forEach(function(c) { if (!byCat[c.cat]) byCat[c.cat] = []; byCat[c.cat].push(c); });
+        var html = '';
+        var catNames = Object.keys(byCat);
+        catNames.forEach(function(cat) {
+          var col = catColors[cat] || '#64748b';
+          html += '<h3 style="font-size:13px;font-weight:500;color:' + col + ';margin:20px 0 8px;">' + cat + '</h3>';
+          byCat[cat].forEach(function(c) {
+            html += '<div class="lk-card-item">';
+            html += '<div class="lk-card-head" onclick="this.nextElementSibling.classList.toggle(\'open\')">';
+            html += '<span>' + c.q + '</span>';
+            html += '<span style="color:#64748b;font-size:18px;margin-left:12px;">+</span>';
+            html += '</div>';
+            html += '<div class="lk-card-body">' + c.a + '</div>';
+            html += '</div>';
+          });
+        });
+        list.innerHTML = html;
+      }
+
+      // INIT
+      renderFilters();
+      fcActive.sort(function() { return Math.random() - 0.5; });
+      fcRender();
+    })();
+  </script>
+</StarlightPage>

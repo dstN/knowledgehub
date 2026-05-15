@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP1 Netzwerke Lernplan — FISI</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface2: #f0efe9;
+  --border: #dddbd3;
+  --text: #1a1916;
+  --muted: #7a7870;
+  --accent: #1a6b3c;
+  --accent-light: #e8f5ee;
+  --accent-border: #a8d5b8;
+  --danger: #c0392b;
+  --danger-light: #fdf0ee;
+  --warning: #b8660a;
+  --warning-light: #fef5e7;
+  --info: #1a4d7c;
+  --info-light: #e8f0fb;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --star: #e6a817;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+/* ===== LAYOUT ===== */
+.shell { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--text);
+  color: #e8e7e2;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 0 0 40px;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: #3a3835; border-radius: 2px; }
+
+.sidebar-header {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid #2e2d29;
+  background: #111110;
+}
+.sidebar-header .logo {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #4ade80;
+  letter-spacing: .1em;
+  margin-bottom: 6px;
+}
+.sidebar-header h2 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #e8e7e2;
+  line-height: 1.3;
+}
+.sidebar-progress {
+  padding: 12px 20px 16px;
+  border-bottom: 1px solid #2e2d29;
+}
+.progress-label {
+  font-size: 11px;
+  color: #7a7870;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+.progress-bar { height: 3px; background: #2e2d29; border-radius: 2px; }
+.progress-fill { height: 3px; background: #4ade80; border-radius: 2px; transition: width .4s; width: 0%; }
+
+.nav-section { padding: 16px 0 0; }
+.nav-section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #4a4845;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 0 20px;
+  margin-bottom: 4px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #9a9890;
+  transition: all .15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover { background: #1e1d1a; color: #e8e7e2; }
+.nav-item.active { background: #1e1d1a; color: #4ade80; border-left-color: #4ade80; }
+.nav-item .icon { font-size: 14px; width: 18px; text-align: center; }
+.nav-item .badge {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  background: #2e2d29;
+  color: #4a4845;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.nav-item.active .badge { background: rgba(74,222,128,.15); color: #4ade80; }
+.nav-item .star-badge {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+/* Main */
+.main { flex: 1; padding: 40px 48px 80px; max-width: 900px; }
+
+/* ===== PAGES ===== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ===== TYPOGRAPHY ===== */
+h1 { font-size: 28px; font-weight: 600; margin-bottom: 6px; }
+h2 { font-size: 20px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
+h3 { font-size: 16px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+p { margin-bottom: 12px; font-size: 15px; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.page-intro {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+}
+
+/* ===== CARDS & BOXES ===== */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card-sm {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.box-tip {
+  background: var(--accent-light);
+  border: 1px solid var(--accent-border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.box-tip strong { color: var(--accent); }
+.box-warn {
+  background: var(--warning-light);
+  border: 1px solid #f5cfa0;
+  border-left: 3px solid var(--warning);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.box-warn strong { color: var(--warning); }
+.box-danger {
+  background: var(--danger-light);
+  border: 1px solid #f5c0bb;
+  border-left: 3px solid var(--danger);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.box-danger strong { color: var(--danger); }
+.box-info {
+  background: var(--info-light);
+  border: 1px solid #b8cfe8;
+  border-left: 3px solid var(--info);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.box-info strong { color: var(--info); }
+
+/* Prüfungs-Tag */
+.pruef-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.hot-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ===== TABLES ===== */
+.tbl-wrap { overflow-x: auto; margin: 16px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th {
+  background: var(--text);
+  color: #e8e7e2;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 500;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(--surface2); }
+.td-mono { font-family: var(--mono); font-size: 13px; }
+.td-green { color: var(--accent); font-weight: 500; }
+.td-red { color: var(--danger); font-weight: 500; }
+.td-star { color: var(--star); }
+
+/* ===== OSI VISUAL ===== */
+.osi-stack { margin: 20px 0; }
+.osi-layer {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 4px;
+}
+.osi-num {
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 6px 0 0 6px;
+  flex-shrink: 0;
+}
+.osi-body {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.osi-name { font-weight: 600; font-size: 14px; }
+.osi-desc { font-size: 12px; opacity: .75; }
+.osi-example {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.12);
+  white-space: nowrap;
+}
+.l7 { background: #1a4d7c; color: #e8f0fb; } .l7 .osi-num { background: #163f66; }
+.l6 { background: #2d6a4f; color: #d8f3dc; } .l6 .osi-num { background: #245a42; }
+.l5 { background: #6b4226; color: #fdf0e4; } .l5 .osi-num { background: #5a3720; }
+.l4 { background: #7c3238; color: #ffe4e6; } .l4 .osi-num { background: #6b2a30; }
+.l3 { background: #6b3a7c; color: #f3e8ff; } .l3 .osi-num { background: #5a3068; }
+.l2 { background: #3a5a7c; color: #dbeafe; } .l2 .osi-num { background: #2e4a66; }
+.l1 { background: #4a4845; color: #e8e7e2; } .l1 .osi-num { background: #3a3835; }
+
+/* ===== BINARY CONVERTER ===== */
+.bit-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  margin: 16px 0;
+}
+.bit-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .15s;
+  user-select: none;
+  background: var(--surface);
+}
+.bit-cell:hover { border-color: var(--accent); }
+.bit-cell.on { background: var(--accent); border-color: var(--accent); }
+.bit-cell.on .bit-val { color: #fff; }
+.bit-cell.on .bit-pow { color: rgba(255,255,255,.7); }
+.bit-val { font-family: var(--mono); font-size: 18px; font-weight: 500; color: var(--text); }
+.bit-pow { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.bit-result {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+  text-align: center;
+  margin: 8px 0 4px;
+}
+.bit-result-label { text-align: center; font-size: 12px; color: var(--muted); }
+
+/* ===== SUBNET CALC ===== */
+.subnet-input {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.inp {
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  flex: 1;
+  min-width: 180px;
+}
+.inp:focus { border-color: var(--accent); }
+.btn-calc {
+  padding: 10px 22px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-calc:hover { background: #145c31; }
+.subnet-result {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 2;
+  display: none;
+}
+.subnet-result.show { display: block; }
+.sr-label { color: var(--muted); }
+.sr-val { color: var(--text); font-weight: 500; }
+
+/* ===== QUIZ ===== */
+.quiz-q {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 16px;
+}
+.quiz-q-text { font-size: 15px; font-weight: 500; margin-bottom: 16px; }
+.quiz-opts { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  background: var(--surface2);
+  transition: all .15s;
+  text-align: left;
+  width: 100%;
+  color: var(--text);
+  font-family: var(--sans);
+}
+.quiz-opt:hover:not(.locked) { border-color: var(--accent); }
+.quiz-opt.correct { background: var(--accent-light); border-color: var(--accent-border); }
+.quiz-opt.wrong { background: var(--danger-light); border-color: #f5c0bb; }
+.quiz-opt.dimmed { opacity: .4; cursor: default; }
+.quiz-key {
+  font-family: var(--mono); font-size: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  width: 24px; height: 24px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-weight: 500;
+}
+.quiz-exp {
+  display: none; margin-top: 12px; padding: 12px 14px;
+  border-radius: 8px; font-size: 13px; line-height: 1.6;
+  border-left: 3px solid;
+}
+.quiz-exp.show { display: block; }
+.quiz-exp.ok { background: var(--accent-light); border-color: var(--accent); color: #145c31; }
+.quiz-exp.err { background: var(--danger-light); border-color: var(--danger); color: var(--danger); }
+.btn-quiz-next {
+  display: none; margin-top: 12px;
+  padding: 10px 24px; background: var(--text); color: #e8e7e2;
+  border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: background .15s;
+}
+.btn-quiz-next:hover { background: #333; }
+.btn-quiz-next.show { display: inline-block; }
+.quiz-score-bar {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+  padding: 12px 16px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; font-size: 13px; color: var(--muted);
+}
+.quiz-score-bar strong { font-size: 16px; color: var(--accent); font-family: var(--mono); }
+
+/* ===== EXERCISE ACCORDION ===== */
+.ex-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.ex-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px; cursor: pointer;
+}
+.ex-head:hover { background: var(--surface2); }
+.ex-level {
+  font-family: var(--mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;
+}
+.lv-easy { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-border); }
+.lv-mid { background: var(--warning-light); color: var(--warning); border: 1px solid #f5cfa0; }
+.lv-hard { background: var(--danger-light); color: var(--danger); border: 1px solid #f5c0bb; }
+.ex-title { font-size: 14px; font-weight: 500; flex: 1; }
+.ex-toggle { font-size: 16px; color: var(--muted); transition: transform .2s; }
+.ex-toggle.open { transform: rotate(180deg); }
+.ex-body { display: none; padding: 0 18px 18px; border-top: 1px solid var(--border); }
+.ex-body.open { display: block; }
+.ex-q { padding: 14px 0 10px; font-size: 14px; font-weight: 500; }
+.sol-toggle {
+  margin-top: 12px; padding: 9px 18px;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 8px; font-size: 13px; cursor: pointer;
+  color: var(--muted); font-family: var(--sans);
+  transition: all .15s;
+}
+.sol-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.solution {
+  display: none; margin-top: 10px; padding: 14px 16px;
+  background: var(--accent-light); border: 1px solid var(--accent-border);
+  border-radius: 8px; font-size: 14px; line-height: 1.7;
+}
+.solution.show { display: block; }
+.solution code {
+  font-family: var(--mono); background: rgba(26,107,60,.1);
+  padding: 1px 5px; border-radius: 4px; font-size: 13px;
+}
+
+/* ===== MERKHILFE CARDS ===== */
+.merk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+.merk-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.merk-card .emo { font-size: 24px; margin-bottom: 8px; }
+.merk-card h4 { font-size: 13px; margin-bottom: 6px; }
+.merk-card p { font-size: 13px; color: var(--muted); margin: 0; }
+.merk-card .highlight { font-family: var(--mono); color: var(--accent); font-weight: 500; }
+
+/* ===== TOPIC OVERVIEW ===== */
+.topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 20px 0; }
+.topic-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.topic-card:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.05); }
+.topic-card .tc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.topic-card .tc-icon { font-size: 20px; }
+.topic-card h3 { font-size: 14px; margin: 0; }
+.topic-card p { font-size: 12px; color: var(--muted); margin: 0; line-height: 1.5; }
+.prio-high { border-top: 3px solid var(--danger); }
+.prio-mid { border-top: 3px solid var(--warning); }
+.prio-low { border-top: 3px solid var(--accent); }
+.prio-badge {
+  font-family: var(--mono); font-size: 10px; padding: 2px 7px; border-radius: 4px;
+  margin-left: auto; white-space: nowrap;
+}
+.pb-high { background: var(--danger-light); color: var(--danger); }
+.pb-mid { background: var(--warning-light); color: var(--warning); }
+.pb-low { background: var(--accent-light); color: var(--accent); }
+
+/* ===== CODE BLOCK ===== */
+.code-block {
+  background: #1a1916;
+  color: #e8e7e2;
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 12px 0;
+  overflow-x: auto;
+}
+.code-block .c-green { color: #4ade80; }
+.code-block .c-yellow { color: #fbbf24; }
+.code-block .c-blue { color: #60a5fa; }
+.code-block .c-gray { color: #6b7280; }
+
+/* ===== PROGRESS DOTS ===== */
+.dot-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+.dot.filled { background: var(--accent); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { padding: 24px 16px 60px; }
+}
+
+/* Section divider */
+.section-divider {
+  margin: 36px 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-divider h2 { margin: 0; }
+.section-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* Verständnisfrage */
+.vfrage {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 3px solid #f59e0b;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+.vfrage strong { color: #92400e; display: block; margin-bottom: 6px; }
+
+/* Footer */
+footer {
+  background: var(--text);
+  color: #6b7280;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">AP1 · FISI · 2025</div>
+    <h2>Netzwerke Lernplan</h2>
+  </div>
+  <div class="sidebar-progress">
+    <div class="progress-label">
+      <span>Lernfortschritt</span>
+      <span id="prog-text">0 / 8 Kapitel</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="main-prog"></div></div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Einführung</div>
+    <div class="nav-item active" onclick="showPage('overview', this)">
+      <span class="icon">🗺</span> Themenübersicht
+      <span class="badge">Start</span>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Grundlagen</div>
+    <div class="nav-item" onclick="showPage('osi', this)">
+      <span class="icon">📶</span> OSI & TCP/IP-Modell
+      <span class="star-badge">⭐</span>
+    </div>
+    <div class="nav-item" onclick="showPage('binary', this)">
+      <span class="icon">🔢</span> Binär & Dezimal
+      <span class="star-badge">⭐</span>
+    </div>
+    <div class="nav-item" onclick="showPage('ipv4', this)">
+      <span class="icon">🌐</span> IPv4, IPv6 & Subnetting
+      <span class="star-badge">⭐</span>
+    </div>
+    <div class="nav-item" onclick="showPage('devices', this)">
+      <span class="icon">🖥</span> Netzwerkgeräte & VLAN
+    </div>
+    <div class="nav-item" onclick="showPage('services', this)">
+      <span class="icon">⚙️</span> DNS, DHCP, NAT, VPN
+    </div>
+    <div class="nav-item" onclick="showPage('security', this)">
+      <span class="icon">🔒</span> Protokolle & Sicherheit
+    </div>
+    <div class="nav-item" onclick="showPage('wlan', this)">
+      <span class="icon">📡</span> WLAN & Topologien
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Praxis & Prüfung</div>
+    <div class="nav-item" onclick="showPage('exercises', this)">
+      <span class="icon">✏️</span> Übungen & Aufgaben
+    </div>
+    <div class="nav-item" onclick="showPage('quiz', this)">
+      <span class="icon">🎯</span> AP1 Probequiz
+      <span class="star-badge">🔥</span>
+    </div>
+    <div class="nav-item" onclick="showPage('merkhilfen', this)">
+      <span class="icon">🧠</span> Merkhilfen
+    </div>
+    <div class="nav-item" onclick="showPage('traps', this)">
+      <span class="icon">⚠️</span> IHK-Fallen
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- ================================================================ -->
+<!-- PAGE: OVERVIEW -->
+<!-- ================================================================ -->
+<div class="page active" id="page-overview">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 0 · Einstieg</div>
+    <h1>Willkommen im Netzwerke-Lernplan 👋</h1>
+    <p style="color:var(--muted);font-size:15px;">Du bist Anfängerin — das ist kein Problem. Hier lernst du alles, was du für die AP1 brauchst, Schritt für Schritt, mit Beispielen und ohne Vorkenntnisse.</p>
+  </div>
+
+  <div class="box-info">
+    <strong>📋 Was ist die AP1?</strong>
+    Die gestreckte Abschlussprüfung Teil 1 findet nach ca. 18 Monaten statt, dauert <strong>90 Minuten</strong> und macht <strong>20 % deiner Gesamtnote</strong> aus. Sie ist für alle IT-Berufe identisch — keine Multiple Choice, sondern offene Antworten!
+  </div>
+
+  <div class="section-divider"><h2>Themenübersicht & Prioritäten</h2></div>
+
+  <p>Die Tabelle zeigt alle Netzwerk-Themen mit ihrer Prüfungsrelevanz. <span style="color:var(--danger);font-weight:500;">Rot = fast immer dran</span>, <span style="color:var(--warning);font-weight:500;">Orange = häufig</span>, <span style="color:var(--accent);font-weight:500;">Grün = manchmal</span>.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Thema</th>
+          <th>Priorität</th>
+          <th>Warum wichtig?</th>
+          <th>Schwierigkeit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>OSI-Modell</strong> <span class="hot-tag">🔥 HOT</span></td>
+          <td class="td-red">⭐⭐⭐ Sehr hoch</td>
+          <td>Kommt in fast jeder Prüfung vor — Schichten, Protokolle zuordnen</td>
+          <td>Mittel</td>
+        </tr>
+        <tr>
+          <td><strong>IPv4 & Subnetting</strong> <span class="hot-tag">🔥 HOT</span></td>
+          <td class="td-red">⭐⭐⭐ Sehr hoch</td>
+          <td>Rechenaufgaben zu IP-Adressen, Netzwerkadressen, Hosts</td>
+          <td>Schwer</td>
+        </tr>
+        <tr>
+          <td><strong>Binär/Dezimal-Umrechnung</strong> <span class="hot-tag">🔥 HOT</span></td>
+          <td class="td-red">⭐⭐⭐ Sehr hoch</td>
+          <td>Grundlage für Subnetting — ohne das geht nix</td>
+          <td>Mittel</td>
+        </tr>
+        <tr>
+          <td><strong>TCP vs. UDP</strong></td>
+          <td class="td-red">⭐⭐⭐ Sehr hoch</td>
+          <td>Unterschiede, Einsatzgebiete, Ports</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>DNS & DHCP</strong></td>
+          <td style="color:var(--warning);font-weight:500;">⭐⭐ Hoch</td>
+          <td>Funktion erklären, Ablauf beschreiben</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>Netzwerkgeräte</strong></td>
+          <td style="color:var(--warning);font-weight:500;">⭐⭐ Hoch</td>
+          <td>Switch vs. Router vs. Hub unterscheiden</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>MAC-Adresse</strong></td>
+          <td style="color:var(--warning);font-weight:500;">⭐⭐ Hoch</td>
+          <td>Aufbau, Funktion, Unterschied zu IP</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>VLAN</strong></td>
+          <td style="color:var(--warning);font-weight:500;">⭐⭐ Hoch</td>
+          <td>Zweck, Vorteile, Trunk/Access Port</td>
+          <td>Mittel</td>
+        </tr>
+        <tr>
+          <td><strong>NAT</strong></td>
+          <td style="color:var(--warning);font-weight:500;">⭐⭐ Hoch</td>
+          <td>Private/öffentliche IPs, Funktionsweise</td>
+          <td>Mittel</td>
+        </tr>
+        <tr>
+          <td><strong>Ports & Protokolle</strong></td>
+          <td style="color:var(--warning);font-weight:500;">⭐⭐ Hoch</td>
+          <td>Wichtige Portnummern auswendig kennen</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>WLAN (IEEE 802.11)</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Standards, Frequenzen, Sicherheit</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>Topologien</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Stern, Bus, Ring, Masche erkennen</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>IPv6</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Grundprinzip, Unterschied zu IPv4</td>
+          <td>Mittel</td>
+        </tr>
+        <tr>
+          <td><strong>VPN</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Zweck, Tunneling-Konzept erklären</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>Routing & Switching</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Routing-Tabelle lesen, statisch vs. dynamisch</td>
+          <td>Mittel</td>
+        </tr>
+        <tr>
+          <td><strong>Client-Server-Prinzip</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Grundprinzip, Vor- und Nachteile</td>
+          <td>Leicht</td>
+        </tr>
+        <tr>
+          <td><strong>Paketaufbau</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Header-Felder kennen, Encapsulation</td>
+          <td>Schwer</td>
+        </tr>
+        <tr>
+          <td><strong>Netzwerkanalyse</strong></td>
+          <td class="td-green">⭐ Mittel</td>
+          <td>Ping, Traceroute, Wireshark — Praxiswissen</td>
+          <td>Mittel</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>Mein Lernplan für dich</h2></div>
+  <div class="box-tip">
+    <strong>💡 Empfohlene Reihenfolge:</strong> Starte mit Binär/Dezimal → dann OSI-Modell → dann IPv4 & Subnetting. Das sind die wichtigsten Bausteine. Danach alles andere.
+  </div>
+
+  <div class="merk-grid">
+    <div class="merk-card" style="border-top:3px solid var(--danger);">
+      <div class="emo">🗓 Woche 1</div>
+      <h4>Binär + OSI</h4>
+      <p>Zahlen umrechnen üben. OSI-Schichten auswendig. Täglich 30 Min.</p>
+    </div>
+    <div class="merk-card" style="border-top:3px solid var(--danger);">
+      <div class="emo">🗓 Woche 2</div>
+      <h4>IPv4 & Subnetting</h4>
+      <p>IP-Adresstypen, Netzwerkadresse berechnen, CIDR-Notation.</p>
+    </div>
+    <div class="merk-card" style="border-top:3px solid var(--warning);">
+      <div class="emo">🗓 Woche 3</div>
+      <h4>Geräte, DNS, DHCP</h4>
+      <p>Netzwerkgeräte unterscheiden, Dienste erklären können.</p>
+    </div>
+    <div class="merk-card" style="border-top:3px solid var(--warning);">
+      <div class="emo">🗓 Woche 4</div>
+      <h4>TCP/UDP, Ports, VLAN</h4>
+      <p>Protokolle vergleichen, wichtige Ports auswendig.</p>
+    </div>
+    <div class="merk-card" style="border-top:3px solid var(--accent);">
+      <div class="emo">🗓 Woche 5–6</div>
+      <h4>Rest + Praxis</h4>
+      <p>NAT, VPN, WLAN, Sicherheit. Quiz & Übungsaufgaben lösen.</p>
+    </div>
+  </div>
+
+  <div class="box-warn">
+    <strong>⚠️ IHK-Falle Nummer 1:</strong> Die Prüfung hat <strong>keine Multiple Choice</strong> — du musst Antworten selbst formulieren! Übe das Erklären in eigenen Worten, nicht nur das Auswendiglernen.
+  </div>
+
+  <div class="vfrage">
+    <strong>🤔 Verständnisfrage zum Einstieg:</strong>
+    Was glaubst du, was ein Netzwerk ist? Erkläre es in einem Satz als wärst du jemandem ohne IT-Kenntnisse. (Denk kurz darüber nach — dann lies weiter!)
+  </div>
+  <p style="color:var(--muted);font-size:13px;">👉 Antwort: Ein Netzwerk ist eine Verbindung zwischen mehreren Geräten, die es ihnen ermöglicht, Daten auszutauschen — wie ein Postsystem für Computer.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: OSI -->
+<!-- ================================================================ -->
+<div class="page" id="page-osi">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 1 · Grundlagen</div>
+    <h1>OSI-Modell & TCP/IP <span class="hot-tag">🔥 Sehr prüfungsrelevant</span></h1>
+    <p style="color:var(--muted);">Das OSI-Modell ist das A und O der Netzwerke. Fast jede Prüfung fragt danach.</p>
+  </div>
+
+  <div class="section-divider"><h2>Was ist das OSI-Modell?</h2></div>
+  <p>Stell dir vor, du verschickst einen Brief. Es gibt verschiedene Schritte: du schreibst ihn → steckst ihn in einen Umschlag → schreibst die Adresse → gibst ihn zur Post → der Postbote transportiert ihn → der Empfänger bekommt ihn.</p>
+  <p>Genauso funktioniert das OSI-Modell — es beschreibt in <strong>7 Schichten</strong>, wie Daten von einem Computer zu einem anderen gelangen. Jede Schicht hat eine klare Aufgabe.</p>
+
+  <div class="osi-stack">
+    <div class="osi-layer">
+      <div class="osi-num l7">7</div>
+      <div class="osi-body l7">
+        <div>
+          <div class="osi-name">Anwendungsschicht</div>
+          <div class="osi-desc">Schnittstelle zur Software — was du siehst</div>
+        </div>
+        <span class="osi-example">HTTP, FTP, DNS, SMTP</span>
+      </div>
+    </div>
+    <div class="osi-layer">
+      <div class="osi-num l6">6</div>
+      <div class="osi-body l6">
+        <div>
+          <div class="osi-name">Darstellungsschicht</div>
+          <div class="osi-desc">Codierung, Verschlüsselung, Kompression</div>
+        </div>
+        <span class="osi-example">TLS/SSL, JPEG, ASCII</span>
+      </div>
+    </div>
+    <div class="osi-layer">
+      <div class="osi-num l5">5</div>
+      <div class="osi-body l5">
+        <div>
+          <div class="osi-name">Sitzungsschicht</div>
+          <div class="osi-desc">Verbindungsaufbau und -verwaltung</div>
+        </div>
+        <span class="osi-example">NetBIOS, RPC</span>
+      </div>
+    </div>
+    <div class="osi-layer">
+      <div class="osi-num l4">4</div>
+      <div class="osi-body l4">
+        <div>
+          <div class="osi-name">Transportschicht</div>
+          <div class="osi-desc">Ende-zu-Ende-Kommunikation, Ports</div>
+        </div>
+        <span class="osi-example">TCP, UDP</span>
+      </div>
+    </div>
+    <div class="osi-layer">
+      <div class="osi-num l3">3</div>
+      <div class="osi-body l3">
+        <div>
+          <div class="osi-name">Vermittlungsschicht</div>
+          <div class="osi-desc">IP-Adressierung, Routing zwischen Netzen</div>
+        </div>
+        <span class="osi-example">IP, ICMP, Router</span>
+      </div>
+    </div>
+    <div class="osi-layer">
+      <div class="osi-num l2">2</div>
+      <div class="osi-body l2">
+        <div>
+          <div class="osi-name">Sicherungsschicht</div>
+          <div class="osi-desc">MAC-Adressierung, Frames, Fehlererkennung</div>
+        </div>
+        <span class="osi-example">Ethernet, Switch, MAC</span>
+      </div>
+    </div>
+    <div class="osi-layer">
+      <div class="osi-num l1">1</div>
+      <div class="osi-body l1">
+        <div>
+          <div class="osi-name">Bitübertragungsschicht</div>
+          <div class="osi-desc">Physikalische Übertragung von Bits (Kabel, Funk)</div>
+        </div>
+        <span class="osi-example">Kabel, WLAN, Hub</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-tip">
+    <strong>💡 Eselsbrücke (von unten nach oben):</strong><br>
+    <strong>B</strong>itte <strong>S</strong>end <strong>N</strong>ew <strong>T</strong>echnology <strong>P</strong>lease <strong>D</strong>ear <strong>A</strong>ndy<br>
+    <span style="color:var(--muted);font-size:13px;">Bitübertragung → Sicherung → Netzvermittlung → Transport → Presentation → Darstellung → Anwendung</span>
+  </div>
+
+  <div class="section-divider"><h2>Geräte den Schichten zuordnen</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Gerät</th><th>OSI-Schicht</th><th>Aufgabe</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Hub</strong></td><td class="td-mono">Schicht 1</td><td>Leitet alle Bits an alle Ports weiter — kein "Nachdenken"</td></tr>
+        <tr><td><strong>Switch</strong></td><td class="td-mono">Schicht 2</td><td>Leitet Frames anhand von MAC-Adressen gezielt weiter</td></tr>
+        <tr><td><strong>Router</strong></td><td class="td-mono">Schicht 3</td><td>Verbindet Netzwerke, leitet Pakete anhand von IP-Adressen</td></tr>
+        <tr><td><strong>Firewall</strong></td><td class="td-mono">Schicht 3–7</td><td>Filtert Datenverkehr nach Regeln</td></tr>
+        <tr><td><strong>Access Point</strong></td><td class="td-mono">Schicht 1–2</td><td>Verbindet WLAN-Geräte mit dem kabelgebundenen Netz</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>TCP/IP-Modell — das vereinfachte Modell</h2></div>
+  <p>In der Praxis wird oft das TCP/IP-Modell verwendet (4 Schichten). Es ist eine vereinfachte Version des OSI-Modells.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>TCP/IP-Schicht</th><th>Entspricht OSI-Schicht(en)</th><th>Protokolle</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Anwendung</strong></td><td class="td-mono">5 + 6 + 7</td><td>HTTP, FTP, DNS, SMTP, SSH</td></tr>
+        <tr><td><strong>Transport</strong></td><td class="td-mono">4</td><td>TCP, UDP</td></tr>
+        <tr><td><strong>Internet</strong></td><td class="td-mono">3</td><td>IPv4, IPv6, ICMP</td></tr>
+        <tr><td><strong>Netzzugang</strong></td><td class="td-mono">1 + 2</td><td>Ethernet, WLAN, MAC</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box-warn">
+    <strong>⚠️ IHK-Falle:</strong> Die IHK fragt häufig: "Auf welcher OSI-Schicht arbeitet ein Switch?" — Antwort: Schicht 2. Ein Layer-3-Switch kann aber auch auf Schicht 3 arbeiten. Lies die Frage genau!
+  </div>
+
+  <div class="section-divider"><h2>TCP vs. UDP — der wichtigste Vergleich</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Merkmal</th><th>TCP</th><th>UDP</th></tr></thead>
+      <tbody>
+        <tr><td>Verbindung</td><td class="td-green">Verbindungsorientiert (Handshake)</td><td class="td-red">Verbindungslos</td></tr>
+        <tr><td>Zuverlässigkeit</td><td class="td-green">Bestätigung, Neuübertragung</td><td class="td-red">Keine Bestätigung</td></tr>
+        <tr><td>Reihenfolge</td><td class="td-green">Pakete kommen geordnet an</td><td class="td-red">Reihenfolge unkontrolliert</td></tr>
+        <tr><td>Geschwindigkeit</td><td class="td-red">Langsamer (Overhead)</td><td class="td-green">Schnell</td></tr>
+        <tr><td>Typische Anwendung</td><td>HTTP, E-Mail, FTP, SSH</td><td>Streaming, VoIP, DNS, Gaming</td></tr>
+        <tr><td>Analogie</td><td>Einschreiben (Unterschrift nötig)</td><td>Postwurf (kein Nachweis)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="vfrage">
+    <strong>🤔 Verständnisfrage:</strong>
+    Warum nutzt Netflix (Video-Streaming) UDP statt TCP? Was wäre der Nachteil von TCP beim Streaming?
+    <details style="margin-top:8px;"><summary style="cursor:pointer;color:var(--accent);font-size:13px;">Antwort anzeigen</summary>
+    <p style="margin-top:8px;">Bei TCP würde ein verlorenes Paket neu übertragen — das würde das Video einfrieren oder ruckeln. Bei UDP wird das Paket einfach übersprungen. Ein kleiner Videofehler ist weniger störend als dauerndes Puffern.</p>
+    </details>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: BINARY -->
+<!-- ================================================================ -->
+<div class="page" id="page-binary">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 2 · Grundlagen</div>
+    <h1>Binär & Dezimal <span class="hot-tag">🔥 Pflicht!</span></h1>
+    <p style="color:var(--muted);">Ohne Binär kein Subnetting. Das ist das Fundament. Üb es bis es sitzt!</p>
+  </div>
+
+  <div class="section-divider"><h2>Warum Binär?</h2></div>
+  <p>Computer verstehen nur zwei Zustände: <strong>0 (aus)</strong> und <strong>1 (an)</strong>. IP-Adressen, Subnetzmasken — alles ist intern binär. Du musst zwischen Binär und Dezimal umrechnen können.</p>
+
+  <div class="section-divider"><h2>Interaktiver Binär-Rechner</h2></div>
+  <p style="font-size:14px;color:var(--muted);">Klick auf die Bits um sie ein/auszuschalten. Die Dezimalzahl wird automatisch berechnet.</p>
+
+  <div class="bit-grid" id="bit-grid"></div>
+  <div class="bit-result" id="bit-result">0</div>
+  <div class="bit-result-label">= Dezimalwert</div>
+
+  <div style="margin-top:20px;">
+    <h4 style="margin-bottom:10px;">Dezimal → Binär umrechnen:</h4>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <input class="inp" type="number" id="dec-input" placeholder="Zahl (0–255) eingeben" min="0" max="255" style="max-width:220px;">
+      <button class="btn-calc" onclick="dec2bin()">Umrechnen</button>
+    </div>
+    <div class="subnet-result" id="dec-result" style="margin-top:12px;"></div>
+  </div>
+
+  <div class="section-divider"><h2>Die Stellenwerttabelle</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Stelle (Bit)</th><th>8</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Wert (2ⁿ)</strong></td>
+          <td class="td-mono td-green">128</td><td class="td-mono td-green">64</td><td class="td-mono td-green">32</td>
+          <td class="td-mono td-green">16</td><td class="td-mono td-green">8</td><td class="td-mono td-green">4</td>
+          <td class="td-mono td-green">2</td><td class="td-mono td-green">1</td>
+        </tr>
+        <tr>
+          <td><strong>Beispiel: 192</strong></td>
+          <td class="td-mono">1</td><td class="td-mono">1</td><td class="td-mono">0</td>
+          <td class="td-mono">0</td><td class="td-mono">0</td><td class="td-mono">0</td>
+          <td class="td-mono">0</td><td class="td-mono">0</td>
+        </tr>
+        <tr>
+          <td><strong>192 = </strong></td>
+          <td colspan="8" style="font-family:var(--mono);">128 + 64 = <strong>192</strong> ✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>Schritt-für-Schritt: 172 in Binär</h2></div>
+  <div class="card">
+    <p><strong>Methode: Subtraktion von Potenzen</strong></p>
+    <div class="code-block">
+<span class="c-gray">Werte:   128  64  32  16   8   4   2   1</span>
+<span class="c-gray">Passt?:  Ja  Ja  Ja  Nein ... </span>
+
+172 ≥ 128? <span class="c-green">JA</span>  → Bit = 1,  Rest: 172 - 128 = <span class="c-yellow">44</span>
+ 44 ≥  64? <span class="c-green">NEIN</span> → Bit = 0
+ 44 ≥  32? <span class="c-green">JA</span>  → Bit = 1,  Rest:  44 -  32 = <span class="c-yellow">12</span>
+ 12 ≥  16? <span class="c-green">NEIN</span> → Bit = 0
+ 12 ≥   8? <span class="c-green">JA</span>  → Bit = 1,  Rest:  12 -   8 = <span class="c-yellow">4</span>
+  4 ≥   4? <span class="c-green">JA</span>  → Bit = 1,  Rest:   4 -   4 = <span class="c-yellow">0</span>
+  0 ≥   2? <span class="c-green">NEIN</span> → Bit = 0
+  0 ≥   1? <span class="c-green">NEIN</span> → Bit = 0
+
+Ergebnis: <span class="c-green">10101100</span> = 172 ✓
+    </div>
+  </div>
+
+  <div class="box-tip">
+    <strong>💡 Wichtige Zahlen auswendig lernen!</strong><br>
+    128 · 192 · 224 · 240 · 248 · 252 · 254 · 255<br>
+    Diese kommen bei Subnetzmasken immer vor — die solltest du im Schlaf kennen.
+  </div>
+
+  <div class="vfrage">
+    <strong>🤔 Übungsaufgabe:</strong> Rechne 200 in Binär um. Lösung: 11001000<br>
+    <span style="font-size:13px;color:var(--muted);">128+64+8 = 200 → 11001000</span>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: IPv4 -->
+<!-- ================================================================ -->
+<div class="page" id="page-ipv4">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 3 · Grundlagen</div>
+    <h1>IPv4, IPv6 & Subnetting <span class="hot-tag">🔥 Kommen immer dran!</span></h1>
+    <p style="color:var(--muted);">Das härteste Thema — aber mit System lösbar. Schritt für Schritt.</p>
+  </div>
+
+  <div class="section-divider"><h2>IPv4 — Aufbau einer IP-Adresse</h2></div>
+  <p>Eine IPv4-Adresse besteht aus <strong>4 Oktetts (je 8 Bit = 1 Byte)</strong>, getrennt durch Punkte. Jedes Oktett kann Werte von 0–255 annehmen.</p>
+
+  <div class="code-block">
+Beispiel: <span class="c-green">192.168.10.50</span>
+          <span class="c-yellow">192</span>  .  <span class="c-yellow">168</span>  .  <span class="c-yellow">10</span>   .  <span class="c-yellow">50</span>
+Binär:  <span class="c-blue">11000000</span>.<span class="c-blue">10101000</span>.<span class="c-blue">00001010</span>.<span class="c-blue">00110010</span>
+  </div>
+
+  <div class="section-divider"><h2>IP-Adressklassen & Private Adressen</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Bereich</th><th>Typ</th><th>Verwendung</th></tr></thead>
+      <tbody>
+        <tr><td class="td-mono">10.0.0.0 – 10.255.255.255</td><td>Privat (Klasse A)</td><td>Große Firmennetzwerke</td></tr>
+        <tr><td class="td-mono">172.16.0.0 – 172.31.255.255</td><td>Privat (Klasse B)</td><td>Mittlere Netzwerke</td></tr>
+        <tr><td class="td-mono">192.168.0.0 – 192.168.255.255</td><td>Privat (Klasse C)</td><td>Heimnetzwerke, kleine Firmen</td></tr>
+        <tr><td class="td-mono">127.0.0.1</td><td>Loopback</td><td>Eigener Rechner (localhost)</td></tr>
+        <tr><td class="td-mono">169.254.x.x</td><td>APIPA</td><td>Kein DHCP verfügbar — automatisch</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>Subnetzmaske & CIDR</h2></div>
+  <p>Die Subnetzmaske teilt eine IP-Adresse in <strong>Netzwerkteil</strong> und <strong>Hostteil</strong>. Wo in der Subnetzmaske eine <strong>1</strong> steht → Netzwerk. Wo eine <strong>0</strong> → Hosts.</p>
+
+  <div class="code-block">
+IP:    <span class="c-green">192.168.10.50</span>  = 11000000.10101000.00001010.<span class="c-yellow">00110010</span>
+Maske: <span class="c-green">255.255.255.0</span>   = 11111111.11111111.11111111.<span class="c-yellow">00000000</span>
+                                          <span class="c-gray">↑ Netzwerkteil ↑  ↑Host↑</span>
+
+AND:   <span class="c-green">192.168.10.0</span>   ← Netzwerkadresse (bitweises AND)
+Broadcast:     <span class="c-green">192.168.10.255</span> ← alle Bits des Hostteils = 1
+Hosts:         <span class="c-green">192.168.10.1</span> – <span class="c-green">192.168.10.254</span>  (254 Hosts)
+  </div>
+
+  <div class="section-divider"><h2>CIDR-Notation</h2></div>
+  <p>CIDR (Classless Inter-Domain Routing) schreibt die Subnetzmaske als <strong>/Anzahl der 1-Bits</strong>.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>CIDR</th><th>Subnetzmaske</th><th>Hosts nutzbar</th><th>Typische Verwendung</th></tr></thead>
+      <tbody>
+        <tr><td class="td-mono">/8</td><td class="td-mono">255.0.0.0</td><td class="td-mono">16.777.214</td><td>Sehr große Netze</td></tr>
+        <tr><td class="td-mono">/16</td><td class="td-mono">255.255.0.0</td><td class="td-mono">65.534</td><td>Große Firmennetzwerke</td></tr>
+        <tr><td class="td-mono">/24</td><td class="td-mono">255.255.255.0</td><td class="td-mono">254</td><td>Typisches Büronetz ⭐</td></tr>
+        <tr><td class="td-mono">/25</td><td class="td-mono">255.255.255.128</td><td class="td-mono">126</td><td>Subnetz von /24</td></tr>
+        <tr><td class="td-mono">/26</td><td class="td-mono">255.255.255.192</td><td class="td-mono">62</td><td>Kleines Subnetz</td></tr>
+        <tr><td class="td-mono">/28</td><td class="td-mono">255.255.255.240</td><td class="td-mono">14</td><td>Sehr kleines Netz</td></tr>
+        <tr><td class="td-mono">/30</td><td class="td-mono">255.255.255.252</td><td class="td-mono">2</td><td>Punkt-zu-Punkt-Verbindungen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box-tip">
+    <strong>💡 Formel für Hosts:</strong> 2^(32 − CIDR) − 2 = nutzbare Hosts<br>
+    Beispiel /24: 2^(32−24) − 2 = 2^8 − 2 = 256 − 2 = <strong>254 Hosts</strong><br>
+    <span style="color:var(--muted);font-size:13px;">−2 weil: Netzwerkadresse und Broadcast nicht nutzbar!</span>
+  </div>
+
+  <div class="section-divider"><h2>🛠 Interaktiver Subnetz-Rechner</h2></div>
+  <div class="subnet-input">
+    <input class="inp" type="text" id="subnet-ip" placeholder="IP-Adresse z.B. 192.168.10.50" value="192.168.10.50">
+    <input class="inp" type="number" id="subnet-cidr" placeholder="CIDR z.B. 24" min="1" max="30" value="24">
+    <button class="btn-calc" onclick="calcSubnet()">Berechnen</button>
+  </div>
+  <div class="subnet-result" id="subnet-result"></div>
+
+  <div class="section-divider"><h2>IPv6 — der Nachfolger</h2></div>
+  <p>IPv4 hat nur ~4,3 Milliarden Adressen — die sind aufgebraucht. IPv6 hat <strong>340 Sextillionen</strong> Adressen.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Merkmal</th><th>IPv4</th><th>IPv6</th></tr></thead>
+      <tbody>
+        <tr><td>Länge</td><td>32 Bit (4 Bytes)</td><td>128 Bit (16 Bytes)</td></tr>
+        <tr><td>Schreibweise</td><td class="td-mono">192.168.1.1</td><td class="td-mono">2001:0db8::1</td></tr>
+        <tr><td>Trennzeichen</td><td>Punkte</td><td>Doppelpunkte</td></tr>
+        <tr><td>NAT nötig?</td><td>Ja (Adressen knapp)</td><td>Nein (genug Adressen)</td></tr>
+        <tr><td>Loopback</td><td class="td-mono">127.0.0.1</td><td class="td-mono">::1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box-warn">
+    <strong>⚠️ IHK-Falle:</strong> Bei IPv6 kann <code>::</code> eine Gruppe aufeinanderfolgender Nullen ersetzen — aber nur EINMAL pro Adresse! <code>2001:0db8:0000:0000:0000:0000:0000:0001</code> = <code>2001:db8::1</code>
+  </div>
+
+  <div class="section-divider"><h2>MAC-Adresse</h2></div>
+  <p>Die MAC-Adresse ist die <strong>Hardware-Adresse</strong> — fest in der Netzwerkkarte eingebaut. Sie ist weltweit eindeutig.</p>
+  <div class="code-block">
+Aufbau:  <span class="c-green">00:1A:2B:3C:4D:5E</span>
+         <span class="c-yellow">00:1A:2B</span>  :  <span class="c-blue">3C:4D:5E</span>
+         <span class="c-yellow">Herstellerteil</span>     <span class="c-blue">Gerätekennzeichnung</span>
+         <span class="c-gray">(OUI)               (eindeutig)</span>
+
+6 Bytes = 48 Bit, hexadezimal geschrieben
+  </div>
+  <div class="box-tip">
+    <strong>💡 Unterschied IP vs. MAC:</strong> IP-Adresse = wie eine Postadresse (kann sich ändern). MAC-Adresse = wie eine Personalausweisnummer (fest, eingebaut).
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: DEVICES -->
+<!-- ================================================================ -->
+<div class="page" id="page-devices">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 4 · Netzwerkgeräte</div>
+    <h1>Netzwerkgeräte, Routing & VLAN</h1>
+    <p style="color:var(--muted);">Welches Gerät macht was? Das ist eine Klassiker-Prüfungsfrage.</p>
+  </div>
+
+  <div class="section-divider"><h2>Netzwerkgeräte im Überblick</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Gerät</th><th>OSI-Schicht</th><th>Adressierung</th><th>Funktion</th><th>Analogie</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Hub</strong></td>
+          <td class="td-mono">Schicht 1</td>
+          <td>Keine</td>
+          <td>Verteilt alle Pakete an ALLE Ports (Flooding)</td>
+          <td>Lautsprecher — alle hören alles</td>
+        </tr>
+        <tr>
+          <td><strong>Switch</strong></td>
+          <td class="td-mono">Schicht 2</td>
+          <td>MAC-Adresse</td>
+          <td>Leitet Frames gezielt an den richtigen Port</td>
+          <td>Postbote — kennt jeden Empfänger</td>
+        </tr>
+        <tr>
+          <td><strong>Router</strong></td>
+          <td class="td-mono">Schicht 3</td>
+          <td>IP-Adresse</td>
+          <td>Verbindet verschiedene Netzwerke, Routing</td>
+          <td>Zollkontrolle zwischen Ländern</td>
+        </tr>
+        <tr>
+          <td><strong>Access Point</strong></td>
+          <td class="td-mono">Schicht 1–2</td>
+          <td>MAC</td>
+          <td>Verbindet WLAN-Clients mit kabelgebundenem Netz</td>
+          <td>WLAN-Brücke</td>
+        </tr>
+        <tr>
+          <td><strong>Firewall</strong></td>
+          <td class="td-mono">Schicht 3–7</td>
+          <td>IP, Port</td>
+          <td>Filtert Datenverkehr nach Regeln</td>
+          <td>Sicherheitsdienst am Eingang</td>
+        </tr>
+        <tr>
+          <td><strong>Proxy</strong></td>
+          <td class="td-mono">Schicht 7</td>
+          <td>URL/IP</td>
+          <td>Vermittler zwischen Client und Internet</td>
+          <td>Dolmetscher/Vermittler</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>Routing</h2></div>
+  <p>Routing = den richtigen Weg durch das Netzwerk finden. Der Router schaut in seine <strong>Routing-Tabelle</strong> und entscheidet, wohin ein Paket als nächstes geht.</p>
+  <div class="code-block">
+Typische Routing-Tabelle:
+<span class="c-gray">Zielnetz          Netzmaske        Gateway         Interface</span>
+<span class="c-green">192.168.1.0</span>      <span class="c-yellow">255.255.255.0</span>   directly        eth0
+<span class="c-green">10.0.0.0</span>         <span class="c-yellow">255.0.0.0</span>       <span class="c-blue">192.168.1.254</span>   eth0
+<span class="c-green">0.0.0.0</span>          <span class="c-yellow">0.0.0.0</span>         <span class="c-blue">192.168.1.1</span>     eth1
+<span class="c-gray">↑ Default-Route (Fallback für alles andere)</span>
+  </div>
+
+  <div class="tbl-wrap" style="margin-top:16px;">
+    <table>
+      <thead><tr><th>Routing-Art</th><th>Beschreibung</th><th>Vorteil</th><th>Nachteil</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Statisches Routing</strong></td><td>Routen manuell eingetragen</td><td>Einfach, sicher, vorhersehbar</td><td>Manueller Aufwand, kein Failover</td></tr>
+        <tr><td><strong>Dynamisches Routing</strong></td><td>Routen automatisch gelernt (OSPF, BGP)</td><td>Automatisch, skalierbar</td><td>Komplexer, Sicherheitsrisiko</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>VLAN — Virtuelle Netzwerke</h2></div>
+  <p>Ein VLAN (Virtual Local Area Network) teilt ein physisches Netzwerk in <strong>logisch getrennte Netze</strong> auf — ohne zusätzliche Hardware.</p>
+
+  <div class="box-info">
+    <strong>📋 Beispiel Büro:</strong> Ein Switch, aber 3 Abteilungen sollen getrennt sein:<br>
+    VLAN 10 = Verwaltung (Ports 1–8)<br>
+    VLAN 20 = Technik (Ports 9–16)<br>
+    VLAN 30 = Gäste (Ports 17–24)<br>
+    → Jede Abteilung ist vom Rest isoliert — wie drei separate Switches.
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Begriff</th><th>Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Access Port</strong></td><td>Gehört zu genau einem VLAN — für Endgeräte (PC, Drucker)</td></tr>
+        <tr><td><strong>Trunk Port</strong></td><td>Trägt mehrere VLANs — für Verbindung zwischen Switches oder zu Router (802.1Q-Tag)</td></tr>
+        <tr><td><strong>VLAN-Tag (802.1Q)</strong></td><td>4-Byte-Markierung im Ethernet-Frame, enthält VLAN-ID</td></tr>
+        <tr><td><strong>Native VLAN</strong></td><td>VLAN ohne Tag auf einem Trunk-Port</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box-tip">
+    <strong>💡 Vorteile von VLANs:</strong> Sicherheit (Trennung), Broadcast-Kontrolle (weniger Traffic), Flexibilität (kein Kabelumbau), Kostenersparnis.
+  </div>
+
+  <div class="vfrage">
+    <strong>🤔 Verständnisfrage:</strong>
+    Was ist der Unterschied zwischen einem Hub und einem Switch? Warum verwendet man heute keine Hubs mehr?
+    <details style="margin-top:8px;"><summary style="cursor:pointer;color:var(--accent);font-size:13px;">Antwort anzeigen</summary>
+    <p style="margin-top:8px;">Hub: schickt alle Datenpakete an alle Ports → alle müssen mithören (Sicherheitsproblem, viele Kollisionen, langsam). Switch: leitet gezielt weiter → effizienter, sicherer, keine Kollisionen.</p>
+    </details>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: SERVICES -->
+<!-- ================================================================ -->
+<div class="page" id="page-services">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 5 · Netzwerkdienste</div>
+    <h1>DNS, DHCP, NAT & VPN</h1>
+    <p style="color:var(--muted);">Die unsichtbaren Helfer im Netzwerk — du nutzt sie täglich ohne es zu wissen.</p>
+  </div>
+
+  <div class="section-divider"><h2>DNS — Domain Name System</h2></div>
+  <div class="box-tip">
+    <strong>💡 Analogie:</strong> DNS ist das "Telefonbuch des Internets". Du weißt den Namen (google.com), DNS gibt dir die Nummer (IP-Adresse 142.250.185.238).
+  </div>
+  <p><strong>Ablauf einer DNS-Anfrage (wichtig für Prüfung!):</strong></p>
+  <div class="code-block">
+Du tippst: <span class="c-yellow">www.google.com</span>
+
+1. Browser fragt <span class="c-blue">lokalen DNS-Cache</span> — gespeichert? → fertig
+2. Nein → fragt <span class="c-blue">DNS-Resolver</span> (z.B. vom Router/ISP)
+3. Resolver fragt <span class="c-green">Root-Nameserver</span> → wer kennt .com?
+4. Root → fragt <span class="c-green">.com-Nameserver</span> → wer kennt google.com?
+5. google.com-Nameserver antwortet: <span class="c-yellow">142.250.185.238</span>
+6. Browser öffnet diese IP → fertig!
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>DNS-Recordtyp</th><th>Bedeutung</th><th>Beispiel</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A</strong></td><td>Domainname → IPv4-Adresse</td><td class="td-mono">google.com → 142.250.x.x</td></tr>
+        <tr><td><strong>AAAA</strong></td><td>Domainname → IPv6-Adresse</td><td class="td-mono">google.com → 2607::...</td></tr>
+        <tr><td><strong>MX</strong></td><td>Mailserver für Domain</td><td class="td-mono">@google.com → aspmx.l.google.com</td></tr>
+        <tr><td><strong>CNAME</strong></td><td>Alias (alternativer Name)</td><td class="td-mono">www → example.com</td></tr>
+        <tr><td><strong>PTR</strong></td><td>IP → Domainname (Reverse-DNS)</td><td class="td-mono">1.1.1.1 → one.one.one.one</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>DHCP — Automatische IP-Vergabe</h2></div>
+  <p>DHCP vergibt IP-Adressen automatisch — du musst nichts manuell konfigurieren.</p>
+  <div class="code-block">
+DORA-Prozess (4 Schritte):
+
+Client → Broadcast: <span class="c-yellow">DHCP DISCOVER</span>  "Gibt es einen DHCP-Server?"
+Server → Broadcast: <span class="c-green">DHCP OFFER</span>    "Ich! Hier ist eine Adresse für dich"
+Client → Broadcast: <span class="c-yellow">DHCP REQUEST</span>  "Ich nehme diese Adresse!"
+Server → Unicast:   <span class="c-green">DHCP ACK</span>      "Bestätigt! Gültig für X Minuten (Lease)"
+  </div>
+  <div class="box-warn">
+    <strong>⚠️ IHK-Falle:</strong> DORA steht für Discover → Offer → Request → Acknowledgment. Die Reihenfolge muss stimmen!
+  </div>
+
+  <div class="section-divider"><h2>NAT — Network Address Translation</h2></div>
+  <p>Problem: Private IP-Adressen (192.168.x.x) sind im Internet nicht gültig. NAT "übersetzt" sie in eine öffentliche IP.</p>
+  <div class="code-block">
+Heimnetz:                     Internet:
+PC1: <span class="c-blue">192.168.1.10</span>     →     Router übersetzt zu: <span class="c-green">85.12.45.67</span>
+PC2: <span class="c-blue">192.168.1.11</span>     →     Router übersetzt zu: <span class="c-green">85.12.45.67</span>
+PC3: <span class="c-blue">192.168.1.12</span>     →     Router übersetzt zu: <span class="c-green">85.12.45.67</span>
+<span class="c-gray">↑ viele private IPs         ↑ eine öffentliche IP (PAT/Masquerading)</span>
+  </div>
+  <div class="box-tip">
+    <strong>💡 Vorteil von NAT:</strong> Spart öffentliche IP-Adressen. Sicherheit: interne Geräte sind von außen nicht direkt erreichbar.
+  </div>
+
+  <div class="section-divider"><h2>VPN — Virtual Private Network</h2></div>
+  <p>Ein VPN erstellt einen verschlüsselten "Tunnel" durch das Internet — so als ob du direkt im Firmennetzwerk wärst, auch von zuhause.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>VPN-Typ</th><th>Verwendung</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Site-to-Site VPN</strong></td><td>Zwei Firmensstandorte dauerhaft verbunden (Router zu Router)</td></tr>
+        <tr><td><strong>Remote-Access VPN</strong></td><td>Mitarbeiter im Homeoffice verbindet sich mit Firmennetz</td></tr>
+        <tr><td><strong>SSL-VPN</strong></td><td>Über Browser, kein Client nötig</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box-tip">
+    <strong>💡 Typische Prüfungsfrage:</strong> "Welche Technologie ermöglicht einem Homeoffice-Mitarbeiter sicheren Zugriff auf das Firmennetzwerk?" → Antwort: VPN (Remote-Access VPN / SSL-VPN)
+  </div>
+
+  <div class="section-divider"><h2>Wichtige Ports auswendig lernen!</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Port</th><th>Protokoll</th><th>Beschreibung</th><th>Merkhilfe</th></tr></thead>
+      <tbody>
+        <tr><td class="td-mono td-green">20/21</td><td>FTP</td><td>Dateiübertragung</td><td>21 = FTP control, 20 = data</td></tr>
+        <tr><td class="td-mono td-green">22</td><td>SSH</td><td>Sichere Remote-Verbindung</td><td>22 = SSH (zwei s in SSH)</td></tr>
+        <tr><td class="td-mono td-green">23</td><td>Telnet</td><td>Unsichere Remote-Verbindung</td><td>Vor SSH → älter → 23</td></tr>
+        <tr><td class="td-mono td-green">25</td><td>SMTP</td><td>E-Mail senden</td><td>25 = Send Mail</td></tr>
+        <tr><td class="td-mono td-green">53</td><td>DNS</td><td>Namensauflösung</td><td>5+3=8 Buchstaben "Nameserv"</td></tr>
+        <tr><td class="td-mono td-green">67/68</td><td>DHCP</td><td>IP-Vergabe</td><td>67 = Server, 68 = Client</td></tr>
+        <tr><td class="td-mono td-green">80</td><td>HTTP</td><td>Webseiten unverschlüsselt</td><td>80 = HyperText</td></tr>
+        <tr><td class="td-mono td-green">110</td><td>POP3</td><td>E-Mails abrufen (löscht vom Server)</td><td>—</td></tr>
+        <tr><td class="td-mono td-green">143</td><td>IMAP</td><td>E-Mails abrufen (bleibt auf Server)</td><td>—</td></tr>
+        <tr><td class="td-mono td-green">443</td><td>HTTPS</td><td>Webseiten verschlüsselt (TLS)</td><td>4+4+3=11 → sicher</td></tr>
+        <tr><td class="td-mono td-green">3389</td><td>RDP</td><td>Windows Remote Desktop</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: SECURITY -->
+<!-- ================================================================ -->
+<div class="page" id="page-security">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 6 · Sicherheit</div>
+    <h1>Protokolle, Paketaufbau & Netzwerksicherheit</h1>
+  </div>
+
+  <div class="section-divider"><h2>Client-Server-Prinzip</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Merkmal</th><th>Client</th><th>Server</th></tr></thead>
+      <tbody>
+        <tr><td>Rolle</td><td>Stellt Anfragen (Request)</td><td>Beantwortet Anfragen (Response)</td></tr>
+        <tr><td>Beispiel</td><td>Browser (Chrome, Firefox)</td><td>Webserver (Apache, nginx)</td></tr>
+        <tr><td>Initiiert Verbindung?</td><td>Ja</td><td>Nein — wartet</td></tr>
+        <tr><td>Port</td><td>Zufälliger Quell-Port (>1024)</td><td>Fester Port (z.B. 80, 443)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>Paketaufbau — was steckt in einem Datenpaket?</h2></div>
+  <div class="code-block">
+Encapsulation — von oben nach unten:
+
+Schicht 7: <span class="c-yellow">[Daten]</span>                         ← deine Nachricht
+Schicht 4: <span class="c-green">[TCP/UDP-Header]</span> + <span class="c-yellow">[Daten]</span>     ← + Ports, Sequenznr.
+Schicht 3: <span class="c-blue">[IP-Header]</span> + <span class="c-green">[TCP]</span> + <span class="c-yellow">[Daten]</span>  ← + IP-Adressen
+Schicht 2: <span class="c-gray">[Eth-Header]</span> + <span class="c-blue">[IP]</span>+<span class="c-green">[TCP]</span>+<span class="c-yellow">[D]</span>+<span class="c-gray">[FCS]</span>← + MAC, Prüfsumme
+
+IP-Header enthält u.a.: Quell-IP, Ziel-IP, TTL, Protokoll
+TCP-Header enthält: Quell-Port, Ziel-Port, Sequenznr., ACK
+  </div>
+
+  <div class="section-divider"><h2>Wichtige Sicherheitskonzepte</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Konzept</th><th>Erklärung</th><th>Beispiel</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Firewall</strong></td><td>Filtert Traffic nach Regeln (IP, Port, Protokoll)</td><td>Blockiert Port 23 (Telnet)</td></tr>
+        <tr><td><strong>IDS</strong></td><td>Intrusion Detection System — erkennt Angriffe, meldet nur</td><td>Alarm bei Port-Scan</td></tr>
+        <tr><td><strong>IPS</strong></td><td>Intrusion Prevention System — erkennt UND blockiert</td><td>Blockiert DDoS automatisch</td></tr>
+        <tr><td><strong>DMZ</strong></td><td>Demilitarisierte Zone — Netz zwischen Internet und Intranet</td><td>Webserver steht in DMZ</td></tr>
+        <tr><td><strong>TLS/SSL</strong></td><td>Verschlüsselungsprotokoll (HTTPS = HTTP + TLS)</td><td>Online-Banking</td></tr>
+        <tr><td><strong>WPA2/WPA3</strong></td><td>WLAN-Verschlüsselung</td><td>Heimnetz-WLAN</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>Netzwerkanalyse-Tools</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Funktion</th><th>Typischer Befehl</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ping</strong></td><td>Erreichbarkeit eines Hosts testen (ICMP)</td><td class="td-mono">ping 192.168.1.1</td></tr>
+        <tr><td><strong>traceroute / tracert</strong></td><td>Weg eines Pakets durch das Netz verfolgen</td><td class="td-mono">tracert google.com</td></tr>
+        <tr><td><strong>ipconfig / ifconfig</strong></td><td>Eigene Netzwerkkonfiguration anzeigen</td><td class="td-mono">ipconfig /all</td></tr>
+        <tr><td><strong>nslookup</strong></td><td>DNS-Auflösung testen</td><td class="td-mono">nslookup google.com</td></tr>
+        <tr><td><strong>netstat</strong></td><td>Aktive Verbindungen und offene Ports anzeigen</td><td class="td-mono">netstat -an</td></tr>
+        <tr><td><strong>Wireshark</strong></td><td>Pakete mitschneiden und analysieren</td><td>Grafisch</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: WLAN -->
+<!-- ================================================================ -->
+<div class="page" id="page-wlan">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 7 · WLAN & Topologien</div>
+    <h1>WLAN-Grundlagen & Netzwerktopologien</h1>
+  </div>
+
+  <div class="section-divider"><h2>WLAN-Standards (IEEE 802.11)</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Standard</th><th>Frequenz</th><th>Max. Datenrate</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td class="td-mono">802.11b</td><td>2,4 GHz</td><td>11 Mbit/s</td><td>—</td></tr>
+        <tr><td class="td-mono">802.11g</td><td>2,4 GHz</td><td>54 Mbit/s</td><td>—</td></tr>
+        <tr><td class="td-mono">802.11n</td><td>2,4 + 5 GHz</td><td>600 Mbit/s</td><td>Wi-Fi 4</td></tr>
+        <tr><td class="td-mono">802.11ac</td><td>5 GHz</td><td>6,9 Gbit/s</td><td>Wi-Fi 5</td></tr>
+        <tr><td class="td-mono">802.11ax</td><td>2,4 + 5 + 6 GHz</td><td>9,6 Gbit/s</td><td>Wi-Fi 6 ⭐</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box-tip">
+    <strong>💡 2,4 GHz vs. 5 GHz:</strong><br>
+    2,4 GHz: Mehr Reichweite, durchdringt Wände besser, aber stärker belegt (Mikrowelle, Bluetooth, viele Netze).<br>
+    5 GHz: Schneller, weniger Störungen, aber kürzere Reichweite.
+  </div>
+
+  <div class="section-divider"><h2>WLAN-Sicherheit</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Protokoll</th><th>Sicherheit</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>WEP</td><td class="td-red">Sehr unsicher (geknackt)</td><td class="td-red">Nie verwenden!</td></tr>
+        <tr><td>WPA</td><td style="color:var(--warning);">Mittelmäßig</td><td style="color:var(--warning);">Veraltet</td></tr>
+        <tr><td>WPA2 (AES)</td><td class="td-green">Gut</td><td class="td-green">Standard heute</td></tr>
+        <tr><td>WPA3</td><td class="td-green">Sehr gut</td><td class="td-green">Empfohlen für neue Geräte</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"><h2>Netzwerktopologien</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Topologie</th><th>Beschreibung</th><th>Vorteil</th><th>Nachteil</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Stern ⭐</strong></td>
+          <td>Alle Geräte an zentralem Switch/Hub</td>
+          <td>Ausfall eines Geräts betrifft andere nicht</td>
+          <td>Ausfall des Switch = Totalausfall</td>
+        </tr>
+        <tr>
+          <td><strong>Bus</strong></td>
+          <td>Alle Geräte an einem gemeinsamen Kabel</td>
+          <td>Günstig, einfach</td>
+          <td>Ein Kabelbruch legt alles lahm</td>
+        </tr>
+        <tr>
+          <td><strong>Ring</strong></td>
+          <td>Geräte in einem Kreis verbunden</td>
+          <td>Gleichmäßige Auslastung</td>
+          <td>Ein Ausfall unterbricht den Ring</td>
+        </tr>
+        <tr>
+          <td><strong>Masche (Mesh)</strong></td>
+          <td>Jedes Gerät mit mehreren anderen verbunden</td>
+          <td>Sehr ausfallsicher (redundant)</td>
+          <td>Viele Kabel, teuer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box-tip">
+    <strong>💡 Heute Standard:</strong> Die Stern-Topologie ist in fast allen modernen Netzwerken der Standard — einfach zu warten, ausfallsicher für einzelne Geräte.
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: EXERCISES -->
+<!-- ================================================================ -->
+<div class="page" id="page-exercises">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 8 · Übungen</div>
+    <h1>Übungen & Lernaufgaben</h1>
+    <p style="color:var(--muted);">Von leicht bis schwer — Lösung jeweils aufklappbar.</p>
+  </div>
+
+  <div class="box-info">
+    <strong>📋 Tipp:</strong> Versuche jede Aufgabe erst selbst zu lösen, bevor du die Lösung aufklappst. Das ist der effektivste Weg zu lernen!
+  </div>
+
+  <div class="section-divider"><h2>⭐ Leicht — Grundlagen</h2></div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-easy">LEICHT</span>
+      <span class="ex-title">OSI: Schichten zuordnen</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Ordne diese Geräte/Protokolle der richtigen OSI-Schicht zu: <strong>Switch, IP-Adresse, HTTP, Ethernet-Kabel, TCP, TLS</strong></p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        <strong>Lösung:</strong><br>
+        Schicht 1 (Bitübertragung): <code>Ethernet-Kabel</code><br>
+        Schicht 2 (Sicherung): <code>Switch, Ethernet</code><br>
+        Schicht 3 (Vermittlung): <code>IP-Adresse</code><br>
+        Schicht 4 (Transport): <code>TCP</code><br>
+        Schicht 6 (Darstellung): <code>TLS</code><br>
+        Schicht 7 (Anwendung): <code>HTTP</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-easy">LEICHT</span>
+      <span class="ex-title">Ports: Welcher Port gehört zu welchem Protokoll?</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Nenne den Standardport für: HTTPS, SSH, DNS, HTTP, SMTP, RDP</p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        HTTPS → <code>443</code> | SSH → <code>22</code> | DNS → <code>53</code><br>
+        HTTP → <code>80</code> | SMTP → <code>25</code> | RDP → <code>3389</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-easy">LEICHT</span>
+      <span class="ex-title">Binär: Umrechnen</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Rechne um: a) 11000000 in Dezimal  b) 168 in Binär  c) 255 in Binär</p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        a) <code>11000000</code> = 128+64 = <strong>192</strong><br>
+        b) <code>168</code> = 128+32+8 = <code>10101000</code><br>
+        c) <code>255</code> = alle Bits 1 = <code>11111111</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><h2>⭐⭐ Mittel — Anwendung</h2></div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-mid">MITTEL</span>
+      <span class="ex-title">Subnetting: Netzwerkadresse berechnen</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Gegeben: IP 172.16.45.200, Subnetzmaske 255.255.240.0<br>
+      Bestimme: a) Netzwerkadresse b) Broadcast c) Anzahl nutzbare Hosts</p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        Subnetzmaske 255.255.240.0 = /20<br>
+        240 binär = <code>11110000</code><br><br>
+        45 binär = <code>00101101</code><br>
+        240 binär = <code>11110000</code><br>
+        AND Ergebnis = <code>00100000</code> = 32<br><br>
+        a) Netzwerkadresse: <code>172.16.32.0</code><br>
+        b) Broadcast: <code>172.16.47.255</code> (32+15=47, letztes Oktett=255)<br>
+        c) Nutzbare Hosts: 2^12 − 2 = <code>4094 Hosts</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-mid">MITTEL</span>
+      <span class="ex-title">DHCP-Ablauf erklären</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Ein neuer PC wird ins Netzwerk eingesteckt. Erkläre in eigenen Worten (4 Schritte), wie er seine IP-Adresse bekommt. Nenne auch die technischen Bezeichnungen.</p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        1. <strong>DHCP Discover:</strong> PC schickt Broadcast "Gibt es einen DHCP-Server?"<br>
+        2. <strong>DHCP Offer:</strong> Server antwortet mit einem IP-Adress-Angebot<br>
+        3. <strong>DHCP Request:</strong> PC akzeptiert das Angebot (Broadcast, damit andere Server wissen, welches Angebot gewählt wurde)<br>
+        4. <strong>DHCP Acknowledge (ACK):</strong> Server bestätigt und der PC kann die IP für die Lease-Dauer verwenden.<br><br>
+        Merke: <strong>DORA</strong> — Discover, Offer, Request, Acknowledge
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-mid">MITTEL</span>
+      <span class="ex-title">TCP vs. UDP: Praxisszenario</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Ein Unternehmen nutzt folgende Dienste: E-Mail-Versand, IP-Telefonie (VoIP), Dateiübertragung (FTP), Online-Gaming, Webseiten (HTTP). Ordne jedem Dienst TCP oder UDP zu und begründe kurz.</p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        <strong>TCP:</strong> E-Mail (SMTP) — muss ankommen. FTP — Datei muss vollständig sein. HTTP/HTTPS — Webseiten müssen korrekt geladen werden.<br><br>
+        <strong>UDP:</strong> VoIP — Geschwindigkeit wichtiger als Vollständigkeit (kurze Unterbrechung besser als Verzögerung). Online-Gaming — niedrige Latenz kritisch, kleine Datenverluste akzeptabel.
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><h2>⭐⭐⭐ Schwer — Prüfungsniveau</h2></div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-hard">SCHWER</span>
+      <span class="ex-title">Subnetting: Netz aufteilen</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Ein Unternehmen bekommt das Netzwerk 192.168.100.0/24. Es soll in 4 gleichgroße Subnetze aufgeteilt werden.<br>
+      a) Wie viele Bits werden für die Subnetze "geliehen"?<br>
+      b) Wie lautet die neue Subnetzmaske?<br>
+      c) Nenne die Netzwerkadressen aller 4 Subnetze.</p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        a) Für 4 Subnetze brauchen wir 2^n ≥ 4 → <code>n = 2 Bits</code><br><br>
+        b) /24 + 2 Bits = /26 → Subnetzmaske: <code>255.255.255.192</code><br>
+        (192 binär = 11000000)<br><br>
+        c) Jedes Subnetz hat 2^6 = 64 Adressen (62 nutzbar):<br>
+        Subnetz 1: <code>192.168.100.0/26</code> (Hosts: .1–.62)<br>
+        Subnetz 2: <code>192.168.100.64/26</code> (Hosts: .65–.126)<br>
+        Subnetz 3: <code>192.168.100.128/26</code> (Hosts: .129–.190)<br>
+        Subnetz 4: <code>192.168.100.192/26</code> (Hosts: .193–.254)
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-item">
+    <div class="ex-head" onclick="toggleEx(this)">
+      <span class="ex-level lv-hard">SCHWER</span>
+      <span class="ex-title">Praxisszenario: Netzwerk planen</span>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="ex-body">
+      <p class="ex-q">Ein mittelständisches Unternehmen hat 3 Abteilungen: Verwaltung (20 Geräte), Produktion (50 Geräte), Gäste-WLAN (30 Geräte). Empfehle eine sinnvolle Netzwerkstruktur und begründe die Wahl der Technologien.</p>
+      <button class="sol-toggle" onclick="toggleSol(this)">💡 Lösung anzeigen</button>
+      <div class="solution">
+        <strong>Empfehlung:</strong><br>
+        1. <strong>VLANs</strong> für jede Abteilung → Trennung ohne extra Hardware<br>
+        - VLAN 10: Verwaltung (192.168.10.0/26 — 62 Hosts reichen)<br>
+        - VLAN 20: Produktion (192.168.20.0/26 — 62 Hosts reichen)<br>
+        - VLAN 30: Gäste (192.168.30.0/26 — 62 Hosts)<br><br>
+        2. <strong>Stern-Topologie</strong> mit zentralem Switch → einfach zu warten<br>
+        3. <strong>Firewall</strong> zwischen Internet und Innennetz<br>
+        4. <strong>DHCP-Server</strong> für automatische IP-Vergabe pro VLAN<br>
+        5. <strong>Gäste-WLAN</strong> im eigenen VLAN mit Internet-only-Zugang → kein Zugriff auf interne Ressourcen<br>
+        6. <strong>WPA3</strong> für WLAN-Verschlüsselung
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: QUIZ -->
+<!-- ================================================================ -->
+<div class="page" id="page-quiz">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 9 · Probequiz</div>
+    <h1>AP1 Probequiz — Netzwerke 🎯</h1>
+    <p style="color:var(--muted);">15 Fragen, Prüfungsniveau. Keine Multiple-Choice in der echten AP1 — aber gut zum Üben!</p>
+  </div>
+
+  <div class="quiz-score-bar">
+    Punktestand: <strong id="qz-score">0</strong> / <span id="qz-total">0</span> &nbsp;|&nbsp;
+    Frage <span id="qz-curr">1</span> von 15
+  </div>
+
+  <div id="qz-area"></div>
+  <div id="qz-summary" style="display:none;">
+    <div class="card" style="text-align:center;padding:40px;">
+      <div style="font-size:48px;font-weight:600;font-family:var(--mono);color:var(--accent);" id="qz-final"></div>
+      <p style="color:var(--muted);margin-top:8px;" id="qz-final-msg"></p>
+      <button onclick="initQuiz()" class="btn-calc" style="margin-top:24px;">↺ Quiz neu starten</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: MERKHILFEN -->
+<!-- ================================================================ -->
+<div class="page" id="page-merkhilfen">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 10 · Merkhilfen</div>
+    <h1>Eselsbrücken & Merkhilfen 🧠</h1>
+    <p style="color:var(--muted);">Clevere Tricks um sich Fachbegriffe zu merken.</p>
+  </div>
+
+  <div class="merk-grid">
+    <div class="merk-card">
+      <div class="emo">🪜</div>
+      <h4>OSI-Schichten (unten → oben)</h4>
+      <p><span class="highlight">B</span>itte <span class="highlight">S</span>end <span class="highlight">N</span>ew <span class="highlight">T</span>echnology <span class="highlight">P</span>lease <span class="highlight">D</span>ear <span class="highlight">A</span>ndy</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">📮</div>
+      <h4>DHCP DORA</h4>
+      <p><span class="highlight">D</span>iscover → <span class="highlight">O</span>ffer → <span class="highlight">R</span>equest → <span class="highlight">A</span>ck. Wie ein Briefwechsel in 4 Schritten.</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">📞</div>
+      <h4>DNS = Telefonbuch</h4>
+      <p>Du kennst den <span class="highlight">Namen</span> (google.com), DNS gibt dir die <span class="highlight">Nummer</span> (IP). Wie ein Telefonbuch.</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">🔢</div>
+      <h4>Binär-Stellenwerte</h4>
+      <p><span class="highlight">128·64·32·16·8·4·2·1</span><br>Jede Stelle verdoppelt sich von rechts nach links.</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">📬</div>
+      <h4>TCP = Einschreiben</h4>
+      <p>TCP = Einschreiben (Bestätigung nötig, zuverlässig, langsam). UDP = Postwurf (schnell, kein Nachweis).</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">🏠</div>
+      <h4>IP vs. MAC</h4>
+      <p>IP = <span class="highlight">Postadresse</span> (kann sich ändern). MAC = <span class="highlight">Personalausweis</span> (fest eingebaut, eindeutig).</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">✂️</div>
+      <h4>Subnetting: −2 nicht vergessen!</h4>
+      <p>Netzwerkadresse UND Broadcast sind <span class="highlight">nicht nutzbar</span>. Immer 2^n − 2 rechnen!</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">🏢</div>
+      <h4>Private IP-Bereiche</h4>
+      <p><span class="highlight">10.x.x.x</span> (groß), <span class="highlight">172.16–31.x.x</span> (mittel), <span class="highlight">192.168.x.x</span> (Heim/Klein).</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">🌡</div>
+      <h4>2,4 GHz vs. 5 GHz WLAN</h4>
+      <p><span class="highlight">2,4 GHz = Weitläufig aber träge</span> (viele stören). <span class="highlight">5 GHz = Schnell aber kurz</span>.</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">🔒</div>
+      <h4>Verschlüsselung: 80 vs. 443</h4>
+      <p>Port <span class="highlight">80</span> = HTTP (offen, unsicher). Port <span class="highlight">443</span> = HTTPS (TLS, verschlüsselt). Schloss im Browser!</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">🎭</div>
+      <h4>NAT-Analogie</h4>
+      <p>NAT = Mehrsprachige <span class="highlight">Dolmetscherin</span>. Innen sprichst du Privat-IP, nach außen übersetzt sie zur öffentlichen IP.</p>
+    </div>
+    <div class="merk-card">
+      <div class="emo">🏗</div>
+      <h4>VLAN-Analogie</h4>
+      <p>VLAN = Büros in einem Gebäude mit <span class="highlight">verschlossenen Türen</span>. Selbe Hardware, aber getrennte Kommunikation.</p>
+    </div>
+  </div>
+
+  <div class="section-divider"><h2>Wichtige Formeln</h2></div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Was berechnen?</th><th>Formel</th><th>Beispiel</th></tr></thead>
+        <tbody>
+          <tr><td>Nutzbare Hosts im Subnetz</td><td class="td-mono">2^(32 − CIDR) − 2</td><td>/24 → 2^8 − 2 = 254</td></tr>
+          <tr><td>Anzahl Subnetze</td><td class="td-mono">2^(neue Bits)</td><td>2 Bits geliehen → 4 Subnetze</td></tr>
+          <tr><td>Netzwerkadresse</td><td class="td-mono">IP AND Subnetzmaske</td><td>192.168.1.50 AND /24 = 192.168.1.0</td></tr>
+          <tr><td>Broadcast</td><td class="td-mono">Netzwerkadresse + (2^n − 1)</td><td>192.168.1.0 → 192.168.1.255</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PAGE: TRAPS -->
+<!-- ================================================================ -->
+<div class="page" id="page-traps">
+  <div class="page-intro">
+    <div class="eyebrow">Kapitel 11 · IHK-Fallen</div>
+    <h1>Häufige Fehler & IHK-Fallen ⚠️</h1>
+    <p style="color:var(--muted);">Diese Fehler machen viele — mach sie nicht!</p>
+  </div>
+
+  <div class="card-sm" style="border-left:3px solid var(--danger);">
+    <h4>🪤 Falle 1: Switch = Schicht 2, NICHT Schicht 3</h4>
+    <p style="font-size:14px;">Ein normaler Switch arbeitet auf Schicht 2. Es gibt auch Layer-3-Switches — die Frage gibt Kontext. "Ein Switch" ohne Zusatz = immer Schicht 2!</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--danger);">
+    <h4>🪤 Falle 2: −2 bei Hosts vergessen</h4>
+    <p style="font-size:14px;">Immer 2^n − 2 = nutzbare Hosts. Die Netzwerkadresse (.0) und Broadcast (.255) zählen NICHT als nutzbare Host-Adressen!</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--danger);">
+    <h4>🪤 Falle 3: DORA-Reihenfolge</h4>
+    <p style="font-size:14px;">DHCP läuft immer: Discover → Offer → Request → Acknowledge. Viele vertauschen Request und Offer!</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--danger);">
+    <h4>🪤 Falle 4: DNS ≠ DHCP</h4>
+    <p style="font-size:14px;">DNS = Namensauflösung (Name → IP). DHCP = IP-Vergabe. Komplett verschiedene Aufgaben! Die IHK fragt gerne beide in einem Szenario.</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--warning);">
+    <h4>🪤 Falle 5: IPv6 :: nur einmal</h4>
+    <p style="font-size:14px;">In einer IPv6-Adresse darf :: (aufeinanderfolgende Nullen) nur EINMAL vorkommen. Sonst ist die Adresse mehrdeutig.</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--warning);">
+    <h4>🪤 Falle 6: 127.0.0.1 ist kein Netzwerkgerät</h4>
+    <p style="font-size:14px;">127.0.0.1 (localhost) ist die Loopback-Adresse — nur für Tests auf dem eigenen Gerät. Nie für echte Kommunikation nutzbar!</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--warning);">
+    <h4>🪤 Falle 7: TCP-Handshake SYN-SYN/ACK-ACK</h4>
+    <p style="font-size:14px;">Der TCP-3-Wege-Handshake: Client → SYN, Server → SYN/ACK, Client → ACK. Dieser Ablauf kommt in Prüfungen vor!</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--warning);">
+    <h4>🪤 Falle 8: Private IPs ins Internet? Nein!</h4>
+    <p style="font-size:14px;">192.168.x.x, 10.x.x.x und 172.16–31.x.x sind private Adressen — im Internet nicht geroutet. Dafür gibt es NAT!</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--accent);">
+    <h4>🪤 Falle 9: Hub = veraltet & unsicher</h4>
+    <p style="font-size:14px;">Hubs senden an ALLE Ports (Sicherheitsproblem, viele Kollisionen). In modernen Netzwerken werden immer Switches verwendet.</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--accent);">
+    <h4>🪤 Falle 10: CIDR /32 und /0</h4>
+    <p style="font-size:14px;">/32 = eine einzelne Host-Adresse (kein Netz). /0 = das gesamte Internet (Default-Route). Diese Extremwerte können in Routing-Aufgaben auftauchen.</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--accent);">
+    <h4>🪤 Falle 11: WEP niemals empfehlen!</h4>
+    <p style="font-size:14px;">WEP ist geknackt und absolut unsicher. In einer Prüfungsaufgabe zur WLAN-Sicherheit immer WPA2 (mindestens) oder WPA3 empfehlen!</p>
+  </div>
+  <div class="card-sm" style="border-left:3px solid var(--accent);">
+    <h4>🪤 Falle 12: APIPA erkennen</h4>
+    <p style="font-size:14px;">Wenn ein PC die IP 169.254.x.x hat → kein DHCP-Server erreichbar. Das ist ein Diagnosepunkt in Praxisaufgaben!</p>
+  </div>
+</div>
+
+</main>
+</div>
+
+<footer>
+  AP1 Netzwerke Lernplan · Fachinformatikerin Systemintegration · Prüfungskatalog ZPA Nordwest 2025 · Alle Angaben ohne Gewähr
+</footer>
+
+<script>
+// ===== NAVIGATION =====
+let visitedPages = new Set(['overview']);
+
+function showPage(id, navEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if(navEl) navEl.classList.add('active');
+  visitedPages.add(id);
+  updateProgress();
+  window.scrollTo(0, 0);
+  if(id === 'quiz') initQuiz();
+}
+
+function updateProgress() {
+  const total = 8;
+  const done = Math.min(visitedPages.size, total);
+  document.getElementById('prog-text').textContent = done + ' / ' + total + ' Kapitel';
+  document.getElementById('main-prog').style.width = (done/total*100) + '%';
+}
+
+// ===== BINARY TOOL =====
+const bits = new Array(8).fill(0);
+const powers = [128, 64, 32, 16, 8, 4, 2, 1];
+
+function renderBits() {
+  const grid = document.getElementById('bit-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  powers.forEach((p, i) => {
+    const cell = document.createElement('div');
+    cell.className = 'bit-cell' + (bits[i] ? ' on' : '');
+    cell.innerHTML = `<span class="bit-val">${bits[i]}</span><span class="bit-pow">2<sup>${7-i}</sup>=${p}</span>`;
+    cell.onclick = () => { bits[i] = bits[i] ? 0 : 1; renderBits(); updateDecimal(); };
+    grid.appendChild(cell);
+  });
+}
+
+function updateDecimal() {
+  const val = bits.reduce((sum, b, i) => sum + b * powers[i], 0);
+  document.getElementById('bit-result').textContent = val;
+}
+
+function dec2bin() {
+  const n = parseInt(document.getElementById('dec-input').value);
+  if(isNaN(n) || n < 0 || n > 255) { alert('Bitte eine Zahl von 0 bis 255 eingeben!'); return; }
+  let rem = n;
+  const b = [];
+  powers.forEach(p => { b.push(rem >= p ? 1 : 0); if(rem >= p) rem -= p; });
+  const binStr = b.join('');
+  const used = powers.filter((p, i) => b[i] === 1).join(' + ');
+  document.getElementById('dec-result').innerHTML =
+    `<span class="sr-label">Dezimal:</span> <span class="sr-val">${n}</span><br>` +
+    `<span class="sr-label">Binär:</span> <span class="sr-val">${binStr}</span><br>` +
+    `<span class="sr-label">Rechnung:</span> <span class="sr-val">${used || '0'} = ${n}</span>`;
+  document.getElementById('dec-result').classList.add('show');
+}
+
+renderBits();
+
+// ===== SUBNET CALCULATOR =====
+function calcSubnet() {
+  const ipStr = document.getElementById('subnet-ip').value.trim();
+  const cidr = parseInt(document.getElementById('subnet-cidr').value);
+  const parts = ipStr.split('.').map(Number);
+  const res = document.getElementById('subnet-result');
+
+  if(parts.length !== 4 || parts.some(p => isNaN(p) || p < 0 || p > 255) || isNaN(cidr) || cidr < 1 || cidr > 30) {
+    res.innerHTML = '<span style="color:var(--danger);">⚠️ Ungültige Eingabe! Beispiel: 192.168.10.50 mit CIDR 24</span>';
+    res.classList.add('show'); return;
+  }
+
+  // Convert IP to 32-bit int
+  const ipInt = parts.reduce((acc, p) => (acc << 8) | p, 0) >>> 0;
+  // Subnet mask
+  const maskInt = cidr === 0 ? 0 : (0xFFFFFFFF << (32 - cidr)) >>> 0;
+  const netInt = (ipInt & maskInt) >>> 0;
+  const bcInt = (netInt | (~maskInt >>> 0)) >>> 0;
+  const firstInt = netInt + 1;
+  const lastInt = bcInt - 1;
+  const hosts = Math.pow(2, 32 - cidr) - 2;
+
+  const i2s = n => [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.');
+  const mask2s = n => [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.');
+
+  res.innerHTML =
+    `<span class="sr-label">IP-Adresse:       </span><span class="sr-val">${ipStr}</span><br>` +
+    `<span class="sr-label">CIDR:             </span><span class="sr-val">/${cidr}</span><br>` +
+    `<span class="sr-label">Subnetzmaske:     </span><span class="sr-val">${mask2s(maskInt)}</span><br>` +
+    `<span class="sr-label">Netzwerkadresse:  </span><span class="sr-val">${i2s(netInt)}</span><br>` +
+    `<span class="sr-label">Broadcast:        </span><span class="sr-val">${i2s(bcInt)}</span><br>` +
+    `<span class="sr-label">Erster Host:      </span><span class="sr-val">${i2s(firstInt)}</span><br>` +
+    `<span class="sr-label">Letzter Host:     </span><span class="sr-val">${i2s(lastInt)}</span><br>` +
+    `<span class="sr-label">Nutzbare Hosts:   </span><span class="sr-val">${hosts.toLocaleString('de-DE')}</span>`;
+  res.classList.add('show');
+}
+
+// ===== EXERCISE ACCORDION =====
+function toggleEx(head) {
+  const body = head.nextElementSibling;
+  const tog = head.querySelector('.ex-toggle');
+  body.classList.toggle('open');
+  tog.classList.toggle('open');
+}
+
+function toggleSol(btn) {
+  const sol = btn.nextElementSibling;
+  sol.classList.toggle('show');
+  btn.textContent = sol.classList.contains('show') ? '🔼 Lösung verbergen' : '💡 Lösung anzeigen';
+}
+
+// ===== QUIZ =====
+const quizQuestions = [
+  {
+    q: "Auf welcher OSI-Schicht arbeitet ein normaler Switch?",
+    opts: ["Schicht 1 — Bitübertragung", "Schicht 2 — Sicherungsschicht", "Schicht 3 — Vermittlungsschicht", "Schicht 4 — Transportschicht"],
+    correct: 1,
+    exp: "Ein normaler Switch arbeitet auf Schicht 2 (Sicherungsschicht) und verwendet MAC-Adressen zur gezielten Weiterleitung von Frames."
+  },
+  {
+    q: "Was ist das Ergebnis von 192.168.10.100 AND 255.255.255.0?",
+    opts: ["192.168.10.255", "192.168.10.0", "192.168.10.100", "255.255.255.0"],
+    correct: 1,
+    exp: "Bitweise AND: 100 AND 0 = 0. Das letzte Oktett wird zu 0. Ergebnis = 192.168.10.0 (Netzwerkadresse)."
+  },
+  {
+    q: "Wie viele nutzbare Hosts gibt es in einem /26-Netzwerk?",
+    opts: ["64", "62", "126", "254"],
+    correct: 1,
+    exp: "2^(32−26) − 2 = 2^6 − 2 = 64 − 2 = 62. Immer −2 für Netzwerkadresse und Broadcast!"
+  },
+  {
+    q: "Was passiert beim DHCP-Prozess als erstes?",
+    opts: ["DHCP Offer", "DHCP Request", "DHCP Discover", "DHCP Acknowledge"],
+    correct: 2,
+    exp: "DORA: Discover → Offer → Request → Acknowledge. Der Client schickt zuerst einen DHCP Discover-Broadcast."
+  },
+  {
+    q: "Welcher Port wird von HTTPS verwendet?",
+    opts: ["80", "8080", "443", "8443"],
+    correct: 2,
+    exp: "HTTPS (HTTP über TLS/SSL) verwendet standardmäßig Port 443. HTTP verwendet Port 80."
+  },
+  {
+    q: "Was ist ein VLAN?",
+    opts: [
+      "Eine spezielle Art von Router",
+      "Ein virtuelles Netzwerk, das ein physisches Netz logisch trennt",
+      "Ein Sicherheitsprotokoll für WLAN",
+      "Eine Methode zur IP-Adressierung"
+    ],
+    correct: 1,
+    exp: "VLAN (Virtual LAN) ermöglicht die logische Trennung eines physischen Netzwerks ohne zusätzliche Hardware."
+  },
+  {
+    q: "Was ist der Unterschied zwischen TCP und UDP?",
+    opts: [
+      "TCP ist schneller, UDP ist zuverlässiger",
+      "TCP ist verbindungsorientiert und zuverlässig, UDP ist verbindungslos und schneller",
+      "UDP verwendet Ports, TCP nicht",
+      "TCP ist nur für IPv6 geeignet"
+    ],
+    correct: 1,
+    exp: "TCP: Handshake, Bestätigung, geordnete Pakete — zuverlässig aber langsamer. UDP: kein Handshake, kein Retransmit — schnell aber unzuverlässig."
+  },
+  {
+    q: "Was ist NAT?",
+    opts: [
+      "Ein Netzwerkprotokoll für sichere Verbindungen",
+      "Ein Verfahren, das private IP-Adressen in öffentliche übersetzt",
+      "Ein WLAN-Sicherheitsstandard",
+      "Eine Methode zur DNS-Auflösung"
+    ],
+    correct: 1,
+    exp: "NAT (Network Address Translation) übersetzt private IP-Adressen (z.B. 192.168.x.x) in öffentliche IP-Adressen, da private Adressen im Internet nicht gültig sind."
+  },
+  {
+    q: "Welche IP-Adresse ist eine private Adresse?",
+    opts: ["8.8.8.8", "1.1.1.1", "172.20.0.1", "142.250.185.1"],
+    correct: 2,
+    exp: "172.20.0.1 liegt im privaten Bereich 172.16.0.0 – 172.31.255.255. Die anderen sind öffentliche IP-Adressen."
+  },
+  {
+    q: "Was macht DNS?",
+    opts: [
+      "Es verteilt automatisch IP-Adressen an Clients",
+      "Es verschlüsselt den Netzwerkverkehr",
+      "Es löst Domainnamen in IP-Adressen auf",
+      "Es verbindet verschiedene Netzwerke miteinander"
+    ],
+    correct: 2,
+    exp: "DNS (Domain Name System) übersetzt Domainnamen (z.B. google.com) in IP-Adressen (z.B. 142.250.185.238). Es ist das 'Telefonbuch des Internets'."
+  },
+  {
+    q: "Welche Aussage zu IPv6 ist korrekt?",
+    opts: [
+      "IPv6-Adressen sind 32 Bit lang",
+      "IPv6-Adressen werden dezimal geschrieben",
+      "IPv6 hat 128 Bit und ermöglicht deutlich mehr Adressen als IPv4",
+      "IPv6 verwendet NAT wie IPv4"
+    ],
+    correct: 2,
+    exp: "IPv6 hat 128 Bit (IPv4: 32 Bit). IPv6-Adressen werden hexadezimal und mit Doppelpunkten geschrieben. Da genug Adressen vorhanden sind, braucht IPv6 kein NAT."
+  },
+  {
+    q: "Was ist der Port für SSH?",
+    opts: ["21", "22", "23", "25"],
+    correct: 1,
+    exp: "SSH (Secure Shell) verwendet Port 22. Port 21 = FTP, Port 23 = Telnet (unsicher!), Port 25 = SMTP."
+  },
+  {
+    q: "Welche Topologie ist heute in Büronetzwerken am häufigsten?",
+    opts: ["Bus-Topologie", "Ring-Topologie", "Stern-Topologie", "Maschen-Topologie"],
+    correct: 2,
+    exp: "Die Stern-Topologie ist heute Standard: alle Geräte am zentralen Switch. Ausfall eines Geräts betrifft andere nicht. Einfach zu warten."
+  },
+  {
+    q: "Was ist WPA3?",
+    opts: [
+      "Ein Routing-Protokoll",
+      "Ein WLAN-Sicherheitsstandard (Nachfolger von WPA2)",
+      "Ein DNS-Sicherheitsprotokoll",
+      "Ein veraltetes Verschlüsselungsprotokoll"
+    ],
+    correct: 1,
+    exp: "WPA3 ist der aktuelle WLAN-Sicherheitsstandard, Nachfolger von WPA2. WEP ist geknackt und nie zu verwenden. WPA3 bietet verbesserte Verschlüsselung."
+  },
+  {
+    q: "Ein PC hat die IP-Adresse 169.254.10.5. Was bedeutet das?",
+    opts: [
+      "Der PC hat eine statische IP-Adresse",
+      "Der PC konnte keinen DHCP-Server erreichen und hat sich selbst eine APIPA-Adresse vergeben",
+      "Der PC ist im IPv6-Netz",
+      "Der PC ist mit dem Internet verbunden"
+    ],
+    correct: 1,
+    exp: "APIPA (Automatic Private IP Addressing): Wenn kein DHCP-Server erreichbar ist, vergibt Windows automatisch eine Adresse im Bereich 169.254.x.x. Das ist ein Diagnosemerkmal für Netzwerkprobleme!"
+  }
+];
+
+let qzIdx = 0, qzScore = 0, qzAnswered = false;
+let qzOrder = [];
+
+function initQuiz() {
+  qzIdx = 0; qzScore = 0; qzAnswered = false;
+  qzOrder = [...Array(quizQuestions.length).keys()].sort(() => Math.random() - .5);
+  document.getElementById('qz-summary').style.display = 'none';
+  document.getElementById('qz-area').style.display = 'block';
+  document.getElementById('qz-total').textContent = quizQuestions.length;
+  renderQz();
+}
+
+function renderQz() {
+  if(qzIdx >= quizQuestions.length) { showQzResult(); return; }
+  qzAnswered = false;
+  const q = quizQuestions[qzOrder[qzIdx]];
+  document.getElementById('qz-curr').textContent = qzIdx + 1;
+  document.getElementById('qz-score').textContent = qzScore;
+
+  const keys = ['A','B','C','D'];
+  document.getElementById('qz-area').innerHTML = `
+    <div class="quiz-q">
+      <p class="quiz-q-text">${qzIdx+1}. ${q.q}</p>
+      <div class="quiz-opts">
+        ${q.opts.map((o, i) => `
+          <button class="quiz-opt" onclick="answerQz(${i})" id="qo-${i}">
+            <span class="quiz-key">${keys[i]}</span>
+            <span>${o}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="quiz-exp" id="qz-exp"></div>
+      <button class="btn-quiz-next" id="qz-next" onclick="nextQz()">Nächste Frage →</button>
+    </div>
+  `;
+}
+
+function answerQz(chosen) {
+  if(qzAnswered) return;
+  qzAnswered = true;
+  const q = quizQuestions[qzOrder[qzIdx]];
+  const isRight = chosen === q.correct;
+  if(isRight) qzScore++;
+
+  document.querySelectorAll('.quiz-opt').forEach((el, i) => {
+    el.classList.add('locked');
+    if(i === q.correct) el.classList.add('correct');
+    else if(i === chosen && !isRight) el.classList.add('wrong');
+    else el.classList.add('dimmed');
+  });
+
+  const expEl = document.getElementById('qz-exp');
+  expEl.innerHTML = `<strong>${isRight ? '✓ Richtig!' : '✗ Leider falsch.'}</strong> ${q.exp}`;
+  expEl.className = `quiz-exp show ${isRight ? 'ok' : 'err'}`;
+  document.getElementById('qz-next').className = 'btn-quiz-next show';
+  document.getElementById('qz-score').textContent = qzScore;
+}
+
+function nextQz() { qzIdx++; renderQz(); }
+
+function showQzResult() {
+  document.getElementById('qz-area').style.display = 'none';
+  document.getElementById('qz-summary').style.display = 'block';
+  const pct = Math.round(qzScore / quizQuestions.length * 100);
+  document.getElementById('qz-final').textContent = `${qzScore} / ${quizQuestions.length} (${pct}%)`;
+  let msg = '';
+  if(pct >= 80) msg = '🎉 Ausgezeichnet! Du bist gut vorbereitet.';
+  else if(pct >= 60) msg = '👍 Gut! Noch ein paar Themen vertiefen.';
+  else msg = '💪 Weiter üben! Schau nochmal in die Kapitel.';
+  document.getElementById('qz-final-msg').textContent = msg;
+}
+
+// ===== Init =====
+updateProgress();
+</script>
+</body>
+</html>

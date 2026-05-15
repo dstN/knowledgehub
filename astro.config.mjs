@@ -161,6 +161,20 @@ export default defineConfig({
 						{ label: 'Binär-Konverter', link: '/tools/binaer-konverter/' },
 					],
 				},
+				{
+					label: 'Lernkarten',
+					collapsed: true,
+					items: [
+						{
+							label: 'AP1 Prüfungsvorbereitung',
+							collapsed: true,
+							items: [
+								{ label: 'Lernkarten (alle Themen)', link: '/tools/lernkarten-fisi/' },
+								{ label: 'Netzwerke Lernplan', link: '/tools/netzwerke-lernplan/' },
+							],
+						},
+					],
+				},
 			],
 			defaultLocale: 'root',
 			locales: {

@@ -1,0 +1,21 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+---
+
+<StarlightPage frontmatter={{ title: 'AP1 Netzwerke Lernplan', description: 'Umfassender Netzwerke-Lernplan zur AP1-Vorbereitung: OSI-Modell, Subnetting, DNS, DHCP, Quiz und Übungen.' }}>
+  <p>Kompletter Netzwerke-Lernplan mit interaktivem Binär-Rechner, Subnetz-Rechner, Quiz und Übungsaufgaben — erstellt von einer Kommilitonin.</p>
+
+  <div style="margin:1rem 0;">
+    <iframe
+      src="/embed/netzwerke-lernplan.html"
+      style="width:100%;height:85vh;border:1px solid #334155;border-radius:12px;background:#f7f6f2;"
+      title="AP1 Netzwerke Lernplan"
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <p style="font-size:12px;color:#64748b;margin-top:0.5rem;">
+    Hinweis: Dieser Lernplan wird als eingebettete Seite dargestellt und hat ein eigenes helles Design.
+    <a href="/embed/netzwerke-lernplan.html" target="_blank" style="color:#38bdf8;">In neuem Tab öffnen ↗</a>
+  </p>
+</StarlightPage>
