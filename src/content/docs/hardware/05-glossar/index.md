@@ -54,6 +54,12 @@ Gerät, das digitale Werte in analoge Signale konvertiert. Beispiel: Soundkarte 
 **DDR (Double Data Rate)**  
 RAM-Standard, das Daten auf beiden Flanken des Takts überträgt. Modern: DDR5.
 
+**Diskette (Floppy Disk)**  
+Flexible Scheibe aus magnetischem Material in einem Schutzgehäuse. In den 1970er Jahren eingeführt. Diente dem portablen Datenaustausch und dem Booten von Systemen. Heute obsolet.
+
+**DRAM (Dynamic Random Access Memory)**  
+Volatiler Arbeitsspeicher auf Halbleiterbasis. Jede Speicherzelle besteht aus einem Transistor und einem Kondensator, der sich durch Leckströme entlädt und daher regelmäßig aufgefrischt (refreshed) werden muss. Basis für DDR-RAM in modernen PCs.
+
 **DMI (Direct Media Interface)**  
 Hochgeschwindigkeits-Interface zwischen CPU und PCH (Chipsatz).
 
@@ -104,7 +110,7 @@ Spezialisierter Prozessor für Grafikberechnungen. Moderne CPUs haben integriert
 ### H
 
 **HDD (Hard Disk Drive)**  
-Festplatte mit rotierenden Magnetscheiben. Langsam aber große Kapazität.
+Festplatte mit rotierenden Magnetscheiben und einem mechanischen Schreib-/Lesekopf. Erste moderne HDDs kamen in den 1950er/60er Jahren auf. Langsam (5–15 ms Zugriffszeit) aber große Kapazität zu niedrigen Kosten.
 
 ---
 
@@ -121,13 +127,23 @@ Die Sammlung aller Befehle, die eine CPU ausführen kann. Beispiele: x86, ARM, R
 
 ---
 
+### K
+
+**Kernspeicher**  
+Erster weit verbreiteter Direktzugriffsspeicher (RAM) aus den 1950er Jahren. Bestand aus einem Gitter kleiner magnetischer Ferritringe, wobei jeder Ring ein Bit speicherte. Das Umpolen durch stromdurchflossene Drähte realisierte Lese- und Schreibzugriffe.
+
+---
+
 ### L
 
-**Latch-up**  
-Parasitärer Thyristor-Effekt, der zu Kurzschluss führt. Modernes Problem bei Overclocking.
+**Land (optisch)**  
+Flacher Bereich auf einem optischen Datenträger (CD, DVD, Blu-ray). Zusammen mit den Pits bildet das Muster aus Lands und Pits die gespeicherten Daten. Ein reflektierter Laserstrahl auf einem Land erzeugt kein Pegelwechsel-Signal.
 
 **Latenz**  
 Verzögerung zwischen Anfrage und Antwort. Beispiel: RAM-Latenz bei DDR5.
+
+**Lochkarte**  
+Eines der ältesten Datenspeichermedien. Bereits im 18. Jahrhundert entwickelt, im 20. Jahrhundert in frühen Computern und Tabelliermaschinen eingesetzt. Daten wurden durch das Muster von Stanzlöchern in Kartonkarten kodiert.
 
 **Load-Store Architektur**  
 CPU-Designphilosophie (typisch RISC): Nur LOAD/STORE greifen auf Speicher zu.
@@ -139,6 +155,12 @@ CPU-Designphilosophie (typisch RISC): Nur LOAD/STORE greifen auf Speicher zu.
 **MCH (Memory Controller Hub)**  
 Komponente des Chipsatzes, die RAM-Zugriffe verwaltet. Wird heute in die CPU integriert.
 
+**Magnetband**  
+In den 1950er Jahren populär gewordenes Speichermedium mit linearer magnetischer Beschichtung. Wurde hauptsächlich für Datensicherung (Backup) und als Primärspeicher in frühen Großrechnern eingesetzt. Noch heute für Langzeitarchivierung in Rechenzentren genutzt.
+
+**Magnetische Trommel**  
+Eines der ersten praktischen elektronischen Speichergeräte, in den 1930er/40er Jahren entwickelt. Nutzte ein rotierendes magnetisiertes Trommelgehäuse zur Datenspeicherung. Galt als direkter Vorläufer der modernen HDD.
+
 **Mainboard**  
 Hauptleiterplatte, auf der alle Komponenten eines Computers verbunden sind.
 
@@ -149,11 +171,24 @@ Gezackte Leiterbahnen zur Abstimmung von Laufzeiten und Vermeidung von Clock Ske
 
 ### N
 
+**NAND-Flash**  
+Nicht-volatiler Halbleiterspeicher, der Daten als elektrische Ladungen in Floating-Gate-Transistoren speichert. Basis für USB-Sticks, SD-Karten und SSDs. Lässt sich in Blöcken löschen und neu beschreiben.
+
 **Northbridge**  
 Klassische Chipsatz-Komponente für schnelle Peripherie (RAM, Grafik). Obsolet.
 
+**NVMe (Non-Volatile Memory Express)**  
+Hochleistungs-Protokoll und Schnittstelle für SSDs über den PCIe-Bus. Deutlich geringere Latenz und höhere Bandbreite als das ältere SATA-Protokoll. Sequenzielle Lesegeschwindigkeiten von bis zu 7.000 MB/s (PCIe 4.0) möglich.
+
 **NVRAM (Non-Volatile RAM)**  
 RAM, das Daten auch ohne Stromversorgung speichert. Neu in modernen Systemen.
+
+---
+
+### O
+
+**Optischer Datenträger**  
+Speichermedium, das Daten mithilfe von Laserlicht liest und/oder schreibt. Die Datenoberfläche enthält eine spiralförmige Spur aus Pits und Lands. Hauptvertreter: CD (700 MB), DVD (4,7 GB), Blu-ray (25 GB).
 
 ---
 
@@ -164,6 +199,12 @@ Moderner integrierter Chipsatz, der Northbridge und Southbridge ersetzt.
 
 **PCIe (PCI Express)**  
 Serielle Hochgeschwindigkeits-Verbindung für Peripher. Moderne Generationen: PCIe 5.0, 6.0.
+
+**Phase-Change-Speicher**  
+Technologie für wiederbeschreibbare optische Medien (CD-RW, DVD-RW, BD-RE). Eine spezielle Legierungsschicht wechselt durch gezielte Lasererhitzung zwischen einem kristallinen (stark reflektierenden) und einem amorphen (schwach reflektierenden) Zustand.
+
+**Pit (optisch)**  
+Mikroskopisch kleine Vertiefung auf der Datenschicht eines optischen Datenträgers. Der Übergang zwischen einem Pit und einem Land (und umgekehrt) wird beim Lesen durch eine Photodiode als Pegelwechsel (Bit `1`) interpretiert.
 
 **Polling**  
 Technik, bei der die CPU wiederholt prüft, ob neue Eingaben vorliegen. Ineffizient.
@@ -202,7 +243,7 @@ Speicher, der nach der Herstellung nicht mehr geändert werden kann. Veraltet.
 ### S
 
 **SSD (Solid State Drive)**  
-Speichermedium ohne bewegliche Teile. Schneller und zuverlässiger als HDD.
+Speichermedium auf Basis von NAND-Flash ohne bewegliche Teile. Zugriffszeiten unter 0,1 ms, sequenzielle Durchsätze von 500–7.000 MB/s (je nach Schnittstelle: SATA vs. NVMe). Hohe Stoßfestigkeit, begrenzte Schreib-Zyklen (→ TBW).
 
 **Southbridge**  
 Klassische Chipsatz-Komponente für langsame Peripherie (USB, Audio). Obsolet.
@@ -214,8 +255,14 @@ Auslagerung von RAM-Inhalten auf Festplatte wenn Speicher voll. Sehr langsam.
 
 ### T
 
+**TBW (Terabytes Written)**  
+Herstellerangabe für die Lebensdauer einer SSD, die angibt, wie viele Terabytes insgesamt auf das Laufwerk geschrieben werden können, bevor der NAND-Flash messbar an Zuverlässigkeit verliert.
+
 **Taktzyklus**  
 Eine komplette Periode des Master-Clock-Signals. Die Basis für alle CPU-Operationen.
+
+**Transistor-RAM (T-RAM)**  
+Vorläufer des modernen DRAM, in den 1950er/60er Jahren erforscht. Die erste Generation transistorbasierter Speicher legte die technologische Basis für alle modernen Halbleiterspeicher.
 
 **Taktfrequenz**  
 Anzahl der Taktzyklen pro Sekunde. Gemessen in GHz (Gigahertz).
@@ -233,6 +280,9 @@ Modernes Firmware-Interface, das BIOS ersetzt. Bietet Secure Boot und GUI.
 ---
 
 ### V
+
+**Volatil / Nicht-volatil**  
+Zentrale Eigenschaft von Speichermedien: **Volatiler** Speicher verliert seine Daten bei Stromausfall (z. B. RAM, DRAM, CPU-Cache). **Nicht-volatiler** Speicher behält Daten dauerhaft (z. B. NAND-Flash, SSD, HDD, ROM, EEPROM).
 
 **VRM (Voltage Regulator Module)**  
 Spannungsregler auf dem Mainboard, die 12V zu 1-2V für CPU konvertieren.

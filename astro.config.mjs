@@ -10,6 +10,7 @@ export default defineConfig({
 		starlight({
 			title: 'CaveHub',
 			description: 'Lernplattform für Fachinformatiker – Umschulung',
+			customCss: ['./src/styles/custom.css'],
 			components: {
 				SocialIcons: './src/components/ProgressBadge.astro',
 			},
@@ -71,12 +72,12 @@ export default defineConfig({
 									],
 								},
 								{
-									label: '05 Glossar & Wissen',
-									slug: 'hardware/05-glossar',
+									label: '05 Speichertechniken',
+									slug: 'hardware/06-speichertechniken',
 								},
 								{
-									label: '06 Speichertechniken',
-									slug: 'hardware/06-speichertechniken',
+									label: 'Glossar & Wissen',
+									slug: 'hardware/05-glossar',
 								},
 							],
 						},
@@ -85,7 +86,7 @@ export default defineConfig({
 							collapsed: true,
 							items: [
 								{
-									label: 'Übersicht & Lernziele',
+									label: '00 Übersicht & Lernziele',
 									slug: 'digitaltechnik/00-uebersicht',
 								},
 								{
@@ -116,6 +117,10 @@ export default defineConfig({
 									label: '07 Flipflops & Schaltwerke',
 									slug: 'digitaltechnik/07-flipflops',
 								},
+								{
+									label: 'Glossar Digitaltechnik',
+									slug: 'digitaltechnik/glossar',
+								},
 							],
 						},
 					],
@@ -125,7 +130,7 @@ export default defineConfig({
 					collapsed: true,
 					items: [
 						{
-							label: 'OSI-Modell',
+							label: '01 OSI-Modell',
 							collapsed: true,
 							items: [
 								{ label: 'Übersicht', slug: 'osi' },
@@ -140,7 +145,7 @@ export default defineConfig({
 							],
 						},
 						{
-							label: '01 Subnetting & CIDR',
+							label: '02 Subnetting & CIDR',
 							collapsed: true,
 							items: [
 								{ label: 'Übersicht & Subnetting', slug: 'netzwerke/01-subnetting' },
@@ -150,19 +155,19 @@ export default defineConfig({
 							],
 						},
 						{
-							label: '02 VLSM – Variable Length Subnet Masks',
+							label: '03 VLSM – Variable Length Subnet Masks',
 							slug: 'netzwerke/02-vlsm',
 						},
 						{
-							label: '03 Server-Architekturen & Cloud',
+							label: '04 Server-Architekturen & Cloud',
 							slug: 'netzwerke/03-server-architekturen',
 						},
 						{
-							label: '04 Netzwerksicherheit',
+							label: '05 Netzwerksicherheit',
 							slug: 'netzwerke/04-netzwerksicherheit',
 						},
-						{ label: 'Netzwerk-Glossar', slug: 'netzwerke/glossar' },
 						{ label: 'IP & Subnetting Cheatsheet', slug: 'netzwerke/cheatsheet' },
+						{ label: 'Netzwerk-Glossar', slug: 'netzwerke/glossar' },
 					],
 				},
 				{

@@ -1,0 +1,23 @@
+/*
+  CaveHub – Custom CSS Overrides für Starlight
+  Ziel: Verschachtelte Sidebar-Gruppen-Labels sehen wie normale Links aus.
+  Betrifft: Hardware-Untergruppen (01 Grundlagen etc.), OSI-Modell, 01 Subnetting etc.
+*/
+
+/* Nested group labels: font-weight und color auf Link-Niveau zurücksetzen */
+#starlight__sidebar ul ul summary .large {
+  font-weight: normal !important;
+  color: var(--sl-color-gray-2) !important;
+}
+
+/* Auf Desktop: font-size ebenfalls auf Link-Niveau (--sl-text-sm) */
+@media (min-width: 50rem) {
+  #starlight__sidebar ul ul summary .large {
+    font-size: var(--sl-text-sm) !important;
+  }
+}
+
+/* Hover: Farbe auf weiß – identisch mit Link-Hover-Verhalten */
+#starlight__sidebar ul ul summary:hover .large {
+  color: var(--sl-color-white) !important;
+}
