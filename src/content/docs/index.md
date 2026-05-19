@@ -27,6 +27,9 @@ Starte direkt mit diesen Inhalten:
 - [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren und Designphilosophien
 - [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
 - [Netzwerk-Glossar](/netzwerke/glossar/) – IP-Adressierung, Subnetting, VLSM
+- [Speichertechniken](/hardware/06-speichertechniken/) – Von Lochkarten bis SSD, optische Datenträger im Vergleich
+- [Server-Architekturen & Cloud](/netzwerke/03-server-architekturen/) – Server-Rollen, IaaS, PaaS und SaaS im Vergleich
+- [Netzwerksicherheit](/netzwerke/04-netzwerksicherheit/) – Firewall, IDS/IPS, VPN, Verschlüsselung, Defense in Depth
 
 ---
 
@@ -44,6 +47,7 @@ Alles über die physischen Komponenten eines Computers:
 - [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren, ALU, Steuerwerk, RISC vs. CISC
 - [Mainboard & Chipsatz](/hardware/04-mainboard-chipsatz/) – Bussysteme, Taktgeber, Speicherhierarchie
 - [Glossar Hardware](/hardware/05-glossar/) – Alle Fachbegriffe
+- [Speichertechniken](/hardware/06-speichertechniken/) – Historische Meilensteine, optische Datenträger (CD/DVD/Blu-ray), DRAM, NAND-Flash, SSDs
 
 ---
 
@@ -77,17 +81,26 @@ IP-Adressierung, Netzaufteilung und klassenlose Routingkonzepte:
 - [VLSM – Variable Length Subnet Masks](/netzwerke/02-vlsm/) – Flexible Subnetze unterschiedlicher Größe, IHK-Prüfungsrelevant, Schritt-für-Schritt Beispiele
 - [Netzwerk-Glossar](/netzwerke/glossar/) – Alle wichtigen Begriffe zu IP-Adressierung und Subnetting
 
+#### Server-Architekturen & Cloud
+Netzwerkdienste, Server-Rollen und Cloud-Computing-Modelle:
+
+- [Server-Architekturen & Cloud-Modelle](/netzwerke/03-server-architekturen/) – Webserver, Dateiserver, Datenbankserver, E-Mail, VPN, DNS, Streaming, Virtualisierung und der IaaS/PaaS/SaaS-Vergleich
+
+#### Netzwerksicherheit
+Schutz von Netzwerkinfrastrukturen und Daten:
+
+- [Grundlagen der Netzwerksicherheit](/netzwerke/04-netzwerksicherheit/) – Firewalls, IDS/IPS, VPN, Verschlüsselung, Authentifizierung (MFA), Netzwerksegmentierung, Patch-Management, Logging und das Defense-in-Depth-Prinzip
+
 ---
 
 ## Weitere Fächer (in Planung)
 
 In Kürze kommen weitere Lernbereiche hinzu:
 
-- **Netzwerkadministration** (z.B. VLAN, Routing-Protokolle, NAT)
+- **Netzwerkadministration** (VLAN, Routing-Protokolle, NAT)
 - **Betriebssysteme** (Windows, Linux, macOS)
 - **Programmierung** (Grundlagen, Objektorientierung)
 - **Datenbanken** (SQL, Datenbankdesign)
-- **Sicherheit & Datenschutz** (Verschlüsselung, Firewalls)
 - **Systemintegration** (Installation, Konfiguration, Troubleshooting)
 
 ---

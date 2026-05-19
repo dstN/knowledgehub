@@ -74,6 +74,10 @@ export default defineConfig({
 									label: '05 Glossar & Wissen',
 									slug: 'hardware/05-glossar',
 								},
+								{
+									label: '06 Speichertechniken',
+									slug: 'hardware/06-speichertechniken',
+								},
 							],
 						},
 						{
@@ -148,6 +152,14 @@ export default defineConfig({
 						{
 							label: '02 VLSM – Variable Length Subnet Masks',
 							slug: 'netzwerke/02-vlsm',
+						},
+						{
+							label: '03 Server-Architekturen & Cloud',
+							slug: 'netzwerke/03-server-architekturen',
+						},
+						{
+							label: '04 Netzwerksicherheit',
+							slug: 'netzwerke/04-netzwerksicherheit',
 						},
 						{ label: 'Netzwerk-Glossar', slug: 'netzwerke/glossar' },
 						{ label: 'IP & Subnetting Cheatsheet', slug: 'netzwerke/cheatsheet' },
