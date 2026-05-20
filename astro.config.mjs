@@ -166,6 +166,22 @@ export default defineConfig({
 							label: '05 Netzwerksicherheit',
 							slug: 'netzwerke/04-netzwerksicherheit',
 						},
+						{
+							label: '06 Redundanz & STP',
+							slug: 'netzwerke/05-redundanz-stp',
+						},
+						{
+							label: '07 NAT & IP-Routing',
+							slug: 'netzwerke/06-nat-routing',
+						},
+						{
+							label: '08 Adressierung & DHCP',
+							slug: 'netzwerke/07-adressierung-dhcp',
+						},
+						{
+							label: '09 VPN',
+							slug: 'netzwerke/08-vpn',
+						},
 						{ label: 'IP & Subnetting Cheatsheet', slug: 'netzwerke/cheatsheet' },
 						{ label: 'Netzwerk-Glossar', slug: 'netzwerke/glossar' },
 					],
