@@ -182,6 +182,10 @@ export default defineConfig({
 							label: '09 VPN',
 							slug: 'netzwerke/08-vpn',
 						},
+						{
+							label: '10 WANs & DSL',
+							slug: 'netzwerke/09-wan-dsl',
+						},
 						{ label: 'IP & Subnetting Cheatsheet', slug: 'netzwerke/cheatsheet' },
 						{ label: 'Netzwerk-Glossar', slug: 'netzwerke/glossar' },
 					],
