@@ -9,6 +9,12 @@ Willkommen im Netzwerk-Glossar! Hier findest du alle wichtigen Fachbegriffe rund
 
 ## A
 
+### **ADSL (Asymmetric Digital Subscriber Line)**
+Älterer DSL-Standard für Breitband-Internet über Kupfer-Telefonleitungen. Asymmetrisch bedeutet: Der Download ist deutlich schneller als der Upload (typisch 1–8 Mbit/s Download, 128 Kbit/s–1 Mbit/s Upload). Reicht für einfaches Surfen, ist aber für moderne Anwendungen wie 4K-Streaming nicht mehr ausreichend.
+
+### **ADSL2+**
+Erweiterter ADSL-Standard mit höheren Übertragungsraten (bis zu 24 Mbit/s Download). Nutzt denselben Kupferleitungen, erreicht aber durch verbesserte Modulationstechniken höhere Geschwindigkeiten als klassisches ADSL.
+
 ### **AES (Advanced Encryption Standard)**
 Symmetrisches Verschlüsselungsverfahren, das weltweit als Standard für die Datenverschlüsselung gilt. Nutzt Schlüssellängen von 128, 192 oder 256 Bit. Eingesetzt in VPNs, HTTPS, WLANs (WPA2/3) und der Festplattenverschlüsselung.
 
@@ -20,6 +26,18 @@ Umgekehrtes Konzept zu Subnetting: Das Zusammenfassen mehrerer kleinerer Netzwer
 ---
 
 ## B
+
+### **Backbone**
+Das Kernnetzwerk eines Providers oder Unternehmens, das die Hauptdatenverbindungen zwischen verschiedenen Regionen oder Standorten trägt. Ein typisches Provider-Backbone umfasst Tausende von Kilometern Glasfaser, redundante Leitungen und Übertragungskapazitäten von mehreren Terabit pro Sekunde.
+
+### **B-Kanal (Bearer Channel)**
+ISDN-Übertragungskanal mit einer Geschwindigkeit von **64 Kbit/s**. Jeder B-Kanal kann für Sprach- oder Datenübertragung genutzt werden. Mehrere B-Kanäle können gebündelt werden, um höhere Bandbreiten zu erreichen (z.B. 2 B-Kanäle = 128 Kbit/s).
+
+### **BPDU (Bridge Protocol Data Unit)**
+Steuerpakete des Spanning Tree Protocol (STP), die zwischen Switches ausgetauscht werden, um Schleifen im Netzwerk zu erkennen und zu verhindern. BPDUs enthalten Informationen wie Bridge-ID, Pfadkosten und Portzustände.
+
+### **Breitbandrouter**
+Netzwerkgerät, das Internetverbindungen (z.B. DSL, Kabel, Glasfaser) im lokalen Netzwerk (LAN) verteilt. Kombiniert Funktionen von Modem, Router, Switch und WLAN-Access-Point in einem Gerät. Verbindet das Heim- oder Büronetzwerk mit dem Internet.
 
 ### **Anwendungsserver (Application Server)**
 Server-Rolle, die die Geschäftslogik (Business Logic) einer Anwendung hostet. Bildet die Middleware-Schicht zwischen Webserver und Datenbankserver und übernimmt Aufgaben wie Benutzerauthentifizierung, Lastverteilung und Transaktionssicherheit.
@@ -52,6 +70,9 @@ Drei fundamentale Schutzziele der Informationssicherheit: **C**onfidentiality (V
 ### **Cloud Computing**
 Bereitstellung von IT-Ressourcen (Rechenleistung, Speicher, Software) über das Internet auf Abruf. Ersetzt lokale Hardware (On-Premise) durch skalierbare Dienste bei externen Anbietern. Hauptmodelle: IaaS, PaaS, SaaS.
 
+### **CDN (Content Delivery Network)**
+Netzwerk aus geografisch verteilten Servern, das Inhalte (Webseiten, Videos, Bilder) näher zum Endnutzer bereitstellt. Reduziert Latenzzeiten und entlastet das Ursprungsserver-Backend. Bekannte Anbieter: Cloudflare, Akamai, AWS CloudFront. Wird häufig für Streaming-Dienste und große Websites eingesetzt.
+
 ### **CIDR (Classless Inter-Domain Routing)**
 Flexible Subnetzierungsmethode, die die starre Klassenlogik (A, B, C) durch variable Subnetzmasken ersetzt. Die Schreibweise ist `IP/Präfix`, z.B. 192.168.1.0/24.
 
@@ -60,6 +81,15 @@ Flexible Subnetzierungsmethode, die die starre Klassenlogik (A, B, C) durch vari
 ---
 
 ## D
+
+### **D-Kanal (Data Channel)**
+ISDN-Signalisierungskanal mit einer Geschwindigkeit von **16 Kbit/s**. Der D-Kanal übernimmt Steuerungs- und Signalisierungsaufgaben (Anrufaufbau, Rufnummernübermittlung) und wird nicht für die eigentliche Sprach- oder Datenübertragung genutzt.
+
+### **DSL (Digital Subscriber Line)**
+Breitbandtechnologie, die Hochgeschwindigkeits-Internet über vorhandene Kupfer-Telefonleitungen ermöglicht. Trennt Sprach- und Datenfrequenzen durch einen Splitter, sodass gleichzeitig telefoniert und gesurft werden kann. Wichtige Standards: ADSL, VDSL, VDSL2, G.fast.
+
+### **DSL-Modem**
+Gerät, das das digitale DSL-Signal in ein für den Computer nutzbares Format wandelt. Verbindet die Telefonleitung (nach dem Splitter) mit dem Router oder direkt mit einem PC. Früher separates Gerät, heute meist im Breitbandrouter integriert.
 
 ### **Data in Transit / Data at Rest**
 Zwei Zustände, in denen Daten gespeichert oder übertragen werden. **Data in Transit**: Daten während der Übertragung über ein Netzwerk (z. B. HTTPS-Verbindung). **Data at Rest**: Daten in gespeichertem Zustand auf einem Datenträger (z. B. verschlüsselte Festplatte).
@@ -97,6 +127,9 @@ Primäre Sicherheitsbarriere zwischen internem und externem Netzwerk. Analysiert
 
 ---
 
+### **G.fast**
+Neuester DSL-Standard für extrem hohe Datenraten (bis zu **1 Gbit/s**) über kurze Kupferleitungen (max. ca. 100–250 Meter). Optimiert für Gebäude- und Wohnungsanschlüsse (Fiber-to-the-Building). Brücke zwischen Glasfaser und Endnutzer ohne komplette Neuverkabelung.
+
 ## H
 
 ### **Host-Bits**
@@ -107,6 +140,15 @@ Die Anzahl der Bits in einer IP-Adresse, die für die Adressierung einzelner Hos
 ---
 
 ## I
+
+### **ISDN (Integrated Services Digital Network)**
+Vorläufer moderner Breitbandtechnologien. ISDN ermöglichte digitale Sprach- und Datenübertragung über Telefonleitungen mit bis zu 128 Kbit/s (2 gebündelte B-Kanäle). Wurde weitgehend von DSL und VoIP abgelöst.
+
+### **IXP (Internet Exchange Point)**
+Physikalischer Knotenpunkt, an dem verschiedene Internetprovider ihre Netzwerke miteinander verbinden, um Datenaustausch zu ermöglichen. Reduziert Latenzzeiten und Kosten, da Daten nicht über Drittnetze geroutet werden müssen. Beispiele: DE-CIX (Frankfurt), AMS-IX (Amsterdam).
+
+### **IPTV (Internet Protocol Television)**
+Fernsehübertragung über das Internetprotokoll (IP) statt über klassisches terrestrisches, kabel- oder satellitengestütztes Fernsehen. Ermöglicht interaktive Funktionen, Video-on-Demand und zeitversetztes Fernsehen. Benötigt stabile Breitbandverbindung (typisch VDSL2 oder Glasfaser).
 
 ### **IaaS (Infrastructure as a Service)**
 Cloud-Modell: Der Anbieter stellt virtualisierte Grundinfrastruktur bereit (VMs, Speicher, Netzwerk). Der Nutzer verwaltet selbst das Betriebssystem, Middleware und Anwendungen. Beispiele: AWS EC2, Microsoft Azure VMs, Google Compute Engine.
@@ -132,6 +174,9 @@ Der gesamte Bereich von IPv4-Adressen, die einem Netzwerk zugeordnet sind. Ein g
 ### **MFA (Mehr-Faktor-Authentifizierung)**
 Authentifizierungsverfahren, das mindestens zwei unabhängige Faktoren kombiniert: **Wissen** (Passwort, PIN), **Besitz** (Smartphone, Hardware-Token) und **Inhärenz** (Fingerabdruck, Iris). Deutlich sicherer als reine Passwortauthentifizierung.
 
+### **MPLS (Multiprotocol Label Switching)**
+Technologie für effizientes Routing in WANs und Provider-Netzwerken. Datenpakete erhalten kurze Labels, anhand derer Router schnell weiterleiten können – ohne bei jedem Hop die IP-Adresse zu analysieren. Ermöglicht Traffic-Priorisierung (QoS) und sichere VPN-Verbindungen zwischen Standorten.
+
 ---
 
 ## N
@@ -149,6 +194,9 @@ Der Teil einer IP-Adresse, der das Netzwerk identifiziert. Wird durch die Subnet
 
 **Beispiel:** In 192.168.1.0/24 ist 192.168.1 der Netzanteil (die erste drei Oktette).
 
+### **NAT (Network Address Translation)**
+Verfahren, das private IP-Adressen in öffentliche IP-Adressen umwandelt und umgekehrt. Ermöglicht es, dass mehrere Geräte im LAN über eine einzige öffentliche IP-Adresse ins Internet kommunizieren können. Wird typischerweise im Router/Firewall durchgeführt.
+
 ### **Netzmaske / Subnetzmaske**
 Eine 32-Bit-Maske, die angibt, welche Bits einer IP-Adresse zum Netzanteil gehören und welche zum Hostanteil. Sie besteht aus einer zusammenhängenden Serie von Einsen gefolgt von Nullen.
 
@@ -164,6 +212,9 @@ Betriebsmodell, bei dem IT-Infrastruktur (Server, Speicher, Netzwerk) lokal im e
 ---
 
 ## P
+
+### **PAT (Port Address Translation)**
+Spezielle Form von NAT, bei der mehrere interne Geräte sich eine einzige öffentliche IP-Adresse teilen. Die Unterscheidung erfolgt über unterschiedliche Portnummern (NAT Overload). Standard in Heimroutern und kleinen Büros.
 
 ### **PaaS (Platform as a Service)**
 Cloud-Modell: Der Anbieter stellt eine fertig konfigurierte Entwicklungsplattform inkl. Laufzeitumgebung, Datenbanken und Frameworks bereit. Der Nutzer kümmert sich nur noch um Code und Daten. Beispiele: Heroku, AWS Elastic Beanstalk, Google App Engine.
@@ -186,6 +237,9 @@ Synonym für Präfix – die Anzahl der Bits, die zum Netzanteil gehören.
 
 ## R
 
+### **Router**
+Netzwerkgerät auf Schicht 3 (Vermittlungsschicht), das Datenpakete zwischen verschiedenen Netzwerken weiterleitet. Nutzt Routing-Tabellen, um den optimalen Pfad zum Ziel zu bestimmen. Heimrouter verbinden das LAN mit dem Internet (WAN-Port), Enterprise-Router verbinden Standorte über WAN-Leitungen.
+
 ### **RSA**
 Asymmetrisches Verschlüsselungsverfahren. Nutzt ein Schlüsselpärchen aus öffentlichem Schlüssel (zum Verschlüsseln) und privatem Schlüssel (zum Entschlüsseln). Löst das Schlüsselaustausch-Problem der symmetrischen Verschlüsselung. Basis für HTTPS-Zertifikate.
 
@@ -197,6 +251,9 @@ In jedem Subnetz gibt es zwei reservierte Adressen, die nicht für Hosts genutzt
 ---
 
 ## S
+
+### **SDSL (Symmetric Digital Subscriber Line)**
+DSL-Variante mit symmetrischen Geschwindigkeiten (Download = Upload). Wichtig für Server-Betrieb, Videokonferenzen und Cloud-Anwendungen. Teurer als asymmetrische DSL-Varianten, da die Telefonleitung vollständig für Daten genutzt wird (keine gleichzeitige Telefonie).
 
 ### **SaaS (Software as a Service)**
 Cloud-Modell: Fertige Softwareanwendungen werden über das Internet bereitgestellt und per Abonnement genutzt. Der Nutzer administriert weder Infrastruktur noch die Anwendung selbst. Beispiele: Microsoft 365, Salesforce, Dropbox, Google Workspace.
@@ -210,11 +267,23 @@ Protokoll zum Versenden von E-Mails zwischen Mailservern und vom Client zum Serv
 ### **SSL/TLS (Secure Sockets Layer / Transport Layer Security)**
 Kryptografische Protokolle zur Absicherung von Netzwerkverbindungen. TLS ist der Nachfolger von SSL. Basis für HTTPS, sichere E-Mail-Übertragung und VPN-Verbindungen. Ermöglicht Verschlüsselung und Authentifizierung per Zertifikat.
 
+### **SLA (Service Level Agreement)**
+Vertragliche Vereinbarung zwischen Dienstleister und Kunde über die erwartete Service-Qualität. Enthält messbare Parameter wie Verfügbarkeit (z.B. 99,9% Uptime), Reaktionszeiten bei Störungen und maximale Latenzzeiten. Bei Nichteinhaltung können Vertragsstrafen vereinbart sein.
+
+### **Splitter (DSL-Splitter)**
+Kleines Passiv-Gerät an der Telefonleitung, das Sprachfrequenzen (Telefonie) von Datenfrequenzen (DSL-Internet) trennt. Ermöglicht gleichzeitiges Telefonieren und Surfen ohne gegenseitige Beeinträchtigung. Wird zwischen Telefonanschluss und DSL-Modem geschaltet.
+
 ### **Streaming-Server**
 Spezialisierte Server-Rolle zur kontinuierlichen Übertragung von Audio- und Videodaten. Unterscheidet zwischen **Live-Streaming** (Echtzeit) und **On-Demand** (zeitversetzter Abruf). Nutzt Protokolle wie HLS, RTMP oder DASH.
 
 ### **Supernetting**
 Siehe **Aggregation**.
+
+### **STP (Spanning Tree Protocol)**
+Protokoll nach IEEE 802.1D zur Schleifenvermeidung in redundanten Layer-2-Netzwerken. Berechnet eine logisch schleifenfreie Baumtopologie aus physikalisch redundanten Verbindungen. Blockiert redundante Pfade im Normalbetrieb, aktiviert sie bei Ausfall automatisch (Failover).
+
+### **STUN (Session Traversal Utilities for NAT)**
+Protokoll, das Clients hinter einer NAT-Firewall hilft, ihre eigene öffentliche IP-Adresse und Portnummer zu ermitteln. Wird von Peer-to-Peer-Anwendungen, VoIP und Online-Gaming genutzt, um direkte Verbindungen trotz NAT aufzubauen.
 
 ### **Subnetting**
 Die Aufteilung eines großen IP-Netzwerks in mehrere kleinere **Subnetze**. Dies ermöglicht bessere Organisation, Sicherheit und Effizienz.
@@ -225,6 +294,9 @@ Die Aufteilung eines großen IP-Netzwerks in mehrere kleinere **Subnetze**. Dies
 Ein durch Subnetting erzeugtes Teilnetzwerk. Jedes Subnetz hat eine Netzadresse, einen Hostbereich und eine Broadcast-Adresse.
 
 **Beispiel:** 192.168.1.0/24 ist ein Subnetz mit 254 nutzbaren Host-Adressen.
+
+### **UPnP (Universal Plug and Play)**
+Protokoll, das Netzwerkgeräten ermöglicht, sich automatisch zu entdecken und Ports in der Firewall/Router dynamisch zu öffnen. Wird häufig von Spielkonsolen, Smart-TVs und IoT-Geräten genutzt. Aus Sicherheitsgründen in Unternehmensnetzwerken oft deaktiviert, da es potenzielle Angriffsvektoren schafft.
 
 ---
 
@@ -246,6 +318,12 @@ Der Bereich der IP-Adressen in einem Subnetz, die tatsächlich für Hosts genutz
 
 ## V
 
+### **VDSL (Very-high-bit-rate Digital Subscriber Line)**
+Schneller DSL-Standard für Breitband-Internet über Kupferleitungen. Bietet deutlich höhere Geschwindigkeiten als ADSL (bis zu 52 Mbit/s Download, 1,5–2,3 Mbit/s Upload). Optimal für Video-Streaming und Online-Gaming.
+
+### **VDSL2**
+Aktueller Breitband-Standard, der bis zu **100 Mbit/s Download** und **50 Mbit/s Upload** über Kupferleitungen ermöglicht. Unterstützt 4K-Streaming, IPTV und Mehrnutzer-Haushalte mit hohem Bandbreitenbedarf.
+
 ### **Verschlüsselung (Encryption)**
 Umwandlung von Klartext in unlesbaren Geheimtext mittels kryptografischer Verfahren. **Symmetrisch**: Gleicher Schlüssel für Ver- und Entschlüsselung (schnell, z. B. AES). **Asymmetrisch**: Öffentlicher Schlüssel zum Verschlüsseln, privater zum Entschlüsseln (z. B. RSA). Schützt Daten sowohl *in Transit* als auch *at Rest*.
 
@@ -263,6 +341,12 @@ Eine Subnetzierungstechnik, die es ermöglicht, **unterschiedliche Subnetzmasken
 ---
 
 ## W
+
+### **WAN (Wide Area Network)**
+Weitverkehrsnetzwerk, das geografisch entfernte Standorte über große Distanzen miteinander verbindet. Verbindet lokale Netzwerke (LANs) zu einem globalen Netzwerk. Beispiele: Unternehmensnetzwerke mit Standorten weltweit, das Internet als größtes WAN. Nutzt Standleitungen, MPLS, Glasfaser oder Satellit.
+
+### **Letzte Meile (Last Mile)**
+Der letzte Teilstück der Netzwerkverbindung vom Provider-Knotenpunkt zum Endnutzer (z.B. zum Haus oder zur Wohnung). Historisch der Engpass der Internetverbindung, da hier oft veraltete Kupferleitungen genutzt werden. Modern wird die Letzte Meile zunehmend durch Glasfaser ersetzt (Fiber to the Home).
 
 ### **Webserver**
 Server-Rolle für das Hosten und Ausliefern von Webseiten und Webanwendungen. Kommuniziert über **HTTP** (Port 80) und **HTTPS** (Port 443) zustandslos per Request-Response-Prinzip. Bekannte Lösungen: Apache HTTP Server, Nginx, Microsoft IIS.

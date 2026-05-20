@@ -19,6 +19,9 @@ Komponente der CPU, die mathematische und logische Operationen durchführt.
 
 ### B
 
+**Breitbandrouter**
+Kombinationsgerät aus Modem, Router, Switch und WLAN-Access-Point. Verteilt die Internetverbindung (DSL, Kabel oder Glasfaser) an mehrere Endgeräte im lokalen Netzwerk. Zentrales Netzwerkgerät in Heim- und Kleinbüro-Umgebungen.
+
 **BIOS (Basic Input Output System)**  
 Firmware, die beim Hochfahren des Computers ausgeführt wird. Wird durch UEFI ersetzt.
 
@@ -47,6 +50,9 @@ Der Prozessor - das "Gehirn" des Computers.
 ---
 
 ### D
+
+**DSL-Modem**
+Spezialisiertes Modem für DSL-Internetverbindungen. Wandelt das DSL-Signal von der Telefonleitung in ein Ethernet-Signal für den Computer oder Router um. Heute meist in Breitbandroutern integriert, früher als separates Gerät zwischen Telefonanschluss und PC.
 
 **DAC (Digital-to-Analog Converter)**  
 Gerät, das digitale Werte in analoge Signale konvertiert. Beispiel: Soundkarte mit DAC.
@@ -152,6 +158,9 @@ CPU-Designphilosophie (typisch RISC): Nur LOAD/STORE greifen auf Speicher zu.
 
 ### M
 
+**Modem**
+Gerät zur Modulation und Demodulation von Signalen. Wandelt digitale Daten eines Computers in analoge Signale für Telefonleitungen um (und umgekehrt). Früher für Einwahl-Internet (Dial-up), heute als DSL-Modem oder Kabelmodem für Breitband-Internet. Die Bezeichnung "Modem" leitet sich von **Mo**dulator/**Dem**odulator ab.
+
 **MCH (Memory Controller Hub)**  
 Komponente des Chipsatzes, die RAM-Zugriffe verwaltet. Wird heute in die CPU integriert.
 
@@ -223,6 +232,9 @@ Proprietärer Intel-Bus zwischen CPU und Chipsatz. Wurde durch DMI ersetzt.
 
 ### R
 
+**Router**
+Netzwerkgerät, das Datenpakete zwischen verschiedenen Netzwerken weiterleitet. Im Heimbereich verbindet der Router das lokale Netzwerk (LAN) mit dem Internet (WAN). Im Enterprise-Bereich verbinden Router Standorte über WAN-Leitungen. Router arbeiten auf Schicht 3 (Vermittlungsschicht) des OSI-Modells und nutzen Routing-Tabellen für die Pfadbestimmung.
+
 **RAM (Random Access Memory)**  
 Flüchtiger Speicher mit schnellem Zugriff. Moderne Standard: DDR5.
 
@@ -241,6 +253,9 @@ Speicher, der nach der Herstellung nicht mehr geändert werden kann. Veraltet.
 ---
 
 ### S
+
+**Splitter (DSL-Splitter)**
+Passives Gerät an der Telefonleitung, das Sprachfrequenzen (0–4 kHz) von Datenfrequenzen (höhere Frequenzen für DSL) trennt. Ermöglicht gleichzeitiges Telefonieren und Surfen ohne gegenseitige Störung. Wird zwischen Telefonanschluss und DSL-Modem/Breitbandrouter geschaltet.
 
 **SSD (Solid State Drive)**  
 Speichermedium auf Basis von NAND-Flash ohne bewegliche Teile. Zugriffszeiten unter 0,1 ms, sequenzielle Durchsätze von 500–7.000 MB/s (je nach Schnittstelle: SATA vs. NVMe). Hohe Stoßfestigkeit, begrenzte Schreib-Zyklen (→ TBW).
