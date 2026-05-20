@@ -111,6 +111,14 @@ Die Default-Route ist ein Fallback in der Routing-Tabelle mit der Zieladresse `0
 
 ---
 
+### **Datagram**
+**Schicht 4** | Dateneinheit bei verbindungslosen Protokollen (z. B. UDP)  
+Ein Datagramm ist die kleinste autonome Dateneinheit bei verbindungslosen Protokollen wie UDP. Es enthält Quell-Port, Ziel-Port, Länge, Prüfsumme und Payload. Im Gegensatz zu TCP-Segmenten gibt es keinen Verbindungsaufbau, keine Quittierung und keine Garantie für die Zustellung (Best-Effort). Datagramme werden einfach versendet und können verloren gehen, dupliziert werden oder in falscher Reihenfolge ankommen.
+
+**Beispiel:** Ein DNS-Request wird als UDP-Datagramm gesendet: klein, schnell, ohne Verbindungsaufbau.
+
+---
+
 ### **DHCP (Dynamic Host Configuration Protocol)**
 **Schicht 7** | Automatische IP-Adressvergabe  
 DHCP automatisiert die Konfiguration von IP-Adressen, Subnetzmasken, Default-Gateways und DNS-Servern. Ein DHCP-Server verwaltet einen Pool von verfügbaren IP-Adressen. Wenn ein neues Gerät sich verbindet, beantragt es eine IP-Adresse (DORA-Prozess: Discovery, Offer, Request, Acknowledgement). Die IP-Adresse ist zeitlich begrenzt (Lease) und wird bei Bedarf erneuert. Ohne DHCP müsste jedes Gerät manuell konfiguriert werden.
@@ -207,6 +215,14 @@ Ein Hub (oder Repeater Hub) ist ein Schicht-1-Gerät, das alle eingehenden Signa
 
 ---
 
+### **HDLC (High-Level Data Link Control)**
+**Schicht 2** | Synchrones, bit-orientiertes Datenübertragungsprotokoll  
+HDLC ist ein ISO-standardisiertes Protokoll für die sichere Datenübertragung auf der Sicherungsschicht. Es unterstützt verschiedene Übertragungsmodi: NRM (Normal Response Mode), ABM (Asynchronous Balanced Mode) und ARM (Asynchronous Response Mode). HDLC-Frames enthalten Flags, Adressfelder, Steuerfelder und eine CRC-Prüfsumme. War Grundlage für viele spätere Protokolle wie PPP und Frame Relay.
+
+**Beispiel:** In älteren WAN-Verbindungen (X.25, ISDN) wurde HDLC als Standard für die zuverlässige Punkt-zu-Punkt-Verbindung eingesetzt.
+
+---
+
 ## I
 
 ### **ICMP (Internet Control Message Protocol)**
@@ -214,6 +230,22 @@ Ein Hub (oder Repeater Hub) ist ein Schicht-1-Gerät, das alle eingehenden Signa
 ICMP wird für Diagnose-Befehle wie **Ping** und **Traceroute** verwendet. Ping sendet eine ICMP Echo-Request und wartet auf Echo-Reply, um Netzwerk-Erreichbarkeit zu prüfen. Traceroute nutzt ICMP Time-Exceeded-Nachrichten, um den Pfad zu einem Host aufzuzeichnen. ICMP ist essentiell für Netzwerk-Troubleshooting, kann aber auch für DoS-Attacken missbraucht werden. Viele Firewalls blockieren ICMP aus Sicherheitsgründen.
 
 **Beispiel:** `ping google.com` sendet ICMP-Pakete und zeigt Latenz an.
+
+---
+
+### **IGP (Interior Gateway Protocol)**
+**Schicht 3** | Routing-Protokoll für Netzwerke innerhalb einer Organisation  
+IGP ist die Oberkategorie für Routing-Protokolle, die innerhalb eines autonomen Systems (einer Organisation) eingesetzt werden. Die wichtigsten IGPs sind OSPF (Open Shortest Path First) und RIP (Routing Information Protocol). IGPs tauschen Routing-Informationen zwischen Routern desselben Netzwerks aus und berechnen die kürzesten Pfade zu allen erreichbaren Zielen.
+
+**Beispiel:** In einem Unternehmensnetzwerk mit 10 Routern nutzen alle Router OSPF als IGP, um interne Pfade zu ermitteln.
+
+---
+
+### **EGP (Exterior Gateway Protocol)**
+**Schicht 3** | Routing-Protokoll für den Austausch zwischen autonomen Systemen  
+EGP ist die Oberkategorie für Routing-Protokolle, die zwischen verschiedenen autonomen Systemen (z. B. ISPs) eingesetzt werden. Das wichtigste EGP ist BGP (Border Gateway Protocol), das das Routing im Internet ermöglicht. EGPs tauschen keine detaillierten internen Routing-Tabellen aus, sondern aggregierte Netzwerk-Präfixe.
+
+**Beispiel:** Dein ISP nutzt BGP, um mit anderen ISPs Routing-Informationen auszutauschen und den besten Pfad zu Google zu finden.
 
 ---
 
@@ -700,6 +732,14 @@ VoIP übermittelt Telefon-Audio über Netzwerke statt über Telefon-Leitungen. S
 ---
 
 ## W
+
+### **Windowing (Sliding Window)**
+**Schicht 4** | Flusskontrollmechanismus bei TCP  
+Windowing ist der Mechanismus, mit dem TCP die Menge an unbestätigten Daten steuert, die ein Sender auf einmal senden darf. Der Empfänger teilt in jedem ACK seine aktuelle Empfangsfenstergröße (Window Size) mit. Der Sender darf nur so viele Bytes senden, wie in das Fenster passen. Dynamische Anpassung (Window Scaling) ermöglicht hohe Durchsätze auch über Verbindungen mit großer Bandbreite und hoher Latenz (BDP – Bandwidth-Delay Product).
+
+**Beispiel:** Ein Server sendet 10 Segmente und wartet auf ACK. Erhält er das ACK für Segment 1, schiebt er das Fenster um 1 nach vorne und sendet Segment 11.
+
+---
 
 ### **WAN (Wide Area Network)**
 **Allgemein** | Großes Netzwerk über geografisch verteilte Standorte  

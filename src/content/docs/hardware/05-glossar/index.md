@@ -35,11 +35,17 @@ Kommunikationskanal, der mehrere Komponenten verbindet. Beispiele: Datenbus, Adr
 **Cache**  
 Schneller Zwischenspeicher zwischen CPU und RAM. Mehrere Ebenen: L1, L2, L3.
 
+**Cache Hit / Cache Miss**  
+Ein **Cache Hit** tritt auf, wenn die CPU benötigte Daten im Cache findet (schnell). Ein **Cache Miss** bedeutet, die Daten müssen aus dem langsameren Hauptspeicher (RAM) geladen werden. Die **Hit Rate** gibt an, wie oft ein Hit erfolgt und ist ein wichtiger Leistungsindikator.
+
 **CISC (Complex Instruction Set Computing)**  
 CPU-Architektur mit großem, mächtigem Befehlssatz. Beispiele: x86, x64.
 
 **Clock Skew**  
 Zeitlicher Versatz von Signalen auf parallelen Leitungen bei hohen Frequenzen.
+
+**Crosstalk**  
+Übersprechen zwischen benachbarten Leiterbahnen auf einer Platine, bei dem Signale von einer Leitung in eine andere einkoppeln. Wird durch Meander (Serpentinen), Schirmung und ausreichenden Abstand zwischen den Leitungen minimiert.
 
 **CMOS (Complementary Metal-Oxide-Semiconductor)**  
 Technologie für Schaltkreise. CMOS-Battery speichert BIOS-Einstellungen.
@@ -82,6 +88,9 @@ Nicht-flüchtiger Speicher, der elektrisch gelöscht und neu programmiert werden
 **EMI (Elektromagnetische Interferenz)**  
 Störungen durch elektromagnetische Felder, die Datenintegrität beeinflussen.
 
+**Embedded System**  
+Spezialisiertes Computersystem, das in ein größeres Gerät integriert ist und eine dedizierte Funktion erfüllt. Beispiele: Mikrocontroller in Waschmaschinen, Autos, Medizingeräten, IoT-Geräten. Zeichnet sich durch geringen Stromverbrauch, Echtzeitanforderungen und lange Lebensdauer aus.
+
 **EVA-Prinzip**  
 **E**ingabe, **V**erarbeitung, **A**usgabe - Das universelle Grundmodell jedes IT-Systems.
 
@@ -108,6 +117,9 @@ Spezialisierte CPU-Komponente für Gleitkomma-Berechnungen.
 
 ### G
 
+**GPT (GUID Partition Table)**  
+Moderner Standard zur Partitionierung von Festplatten, der das ältere MBR-Schema ersetzt. Unterstützt Festplatten > 2 TB, bis zu 128 Partitionen und bietet eine redundante Partitionstabelle zur Wiederherstellung bei Datenbeschädigung.
+
 **GPU (Graphics Processing Unit)**  
 Spezialisierter Prozessor für Grafikberechnungen. Moderne CPUs haben integrierte GPUs.
 
@@ -124,6 +136,12 @@ Festplatte mit rotierenden Magnetscheiben und einem mechanischen Schreib-/Leseko
 
 **IDU (Instruction Decode Unit)**  
 CPU-Komponente, die Programmbefehle in Mikrocode übersetzt.
+
+**Interrupt**  
+Signal, das die CPU unterbricht, um ein zeitkritisches Ereignis zu bearbeiten (z.B. Tastendruck, Netzwerkpaket eingetroffen). Effizienter als Polling, da die CPU nicht ständig prüfen muss. Nach Bearbeitung des Interrupts wird die vorherige Arbeit fortgesetzt.
+
+**DMA (Direct Memory Access)**  
+Technik, die Peripheriegeräten ermöglicht, direkt auf den Hauptspeicher zuzugreifen, ohne die CPU zu belasten. Beschleunigt Datentransfers zwischen Festplatte und RAM erheblich.
 
 **ICH (I/O Controller Hub)**  
 Komponente des Chipsatzes für langsame Peripherie (USB, Audio, etc.). Wird durch PCH ersetzt.
@@ -170,8 +188,14 @@ In den 1950er Jahren populär gewordenes Speichermedium mit linearer magnetische
 **Magnetische Trommel**  
 Eines der ersten praktischen elektronischen Speichergeräte, in den 1930er/40er Jahren entwickelt. Nutzte ein rotierendes magnetisiertes Trommelgehäuse zur Datenspeicherung. Galt als direkter Vorläufer der modernen HDD.
 
+**Mainframe**  
+Leistungsstarker Großrechner für kritische Unternehmensanwendungen (Banken, Versicherungen, Flugbuchungssysteme). Zeichnet sich durch extreme Zuverlässigkeit, hohe Verfügbarkeit (>99,999%), massive Parallelverarbeitung und enorme E/A-Durchsatzraten aus.
+
 **Mainboard**  
 Hauptleiterplatte, auf der alle Komponenten eines Computers verbunden sind.
+
+**Mikrocontroller**  
+Ein-Chip-Computer mit CPU, Speicher (RAM/ROM) und Peripherie-Schnittstellen auf einem einzigen Chip. Kernbestandteil von Embedded Systems. Beispiele: Arduino (ATmega), ESP32, STM32. Optimiert für Steuerungs- und Automatisierungsaufgaben mit minimalem Stromverbrauch.
 
 **Meander (Serpentinen)**  
 Gezackte Leiterbahnen zur Abstimmung von Laufzeiten und Vermeidung von Clock Skew.
@@ -203,6 +227,9 @@ Speichermedium, das Daten mithilfe von Laserlicht liest und/oder schreibt. Die D
 
 ### P
 
+**PLL (Phase-Locked Loop)**  
+Elektronische Schaltung, die einen Taktgenerator synchronisiert und stabilisiert. Besteht aus einem Phasenvergleicher, einem Tiefpassfilter und einem spannungsgesteuerten Oszillator (VCO). Sorgt für stabile Taktsignale trotz Temperatur- und Spannungsschwankungen.
+
 **PCH (Platform Controller Hub)**  
 Moderner integrierter Chipsatz, der Northbridge und Southbridge ersetzt.
 
@@ -215,8 +242,23 @@ Technologie für wiederbeschreibbare optische Medien (CD-RW, DVD-RW, BD-RE). Ein
 **Pit (optisch)**  
 Mikroskopisch kleine Vertiefung auf der Datenschicht eines optischen Datenträgers. Der Übergang zwischen einem Pit und einem Land (und umgekehrt) wird beim Lesen durch eine Photodiode als Pegelwechsel (Bit `1`) interpretiert.
 
+**Pipelining**  
+Technik, bei der die CPU mehrere Befehle gleichzeitig in verschiedenen Verarbeitungsphasen bearbeitet (wie eine Fließbandproduktion). Während ein Befehl ausgeführt wird, wird der nächste bereits dekodiert und der übernächste geholt. Steigert den Durchsatz erheblich, ohne die Einzelbefehlszeit zu verkürzen.
+
 **Polling**  
 Technik, bei der die CPU wiederholt prüft, ob neue Eingaben vorliegen. Ineffizient.
+
+**Program Counter (PC)**  
+Spezialregister in der CPU, das die Speicheradresse des nächsten auszuführenden Befehls enthält. Wird nach jedem Befehl inkrementiert (bzw. bei Sprüngen neu gesetzt). Essentiell für die sequenzielle Abarbeitung von Programmen.
+
+**Steuerwerk (Control Unit)**  
+CPU-Komponente, die den Ablauf der Befehlsausführung koordiniert. Steuert ALU, Register, Speicherzugriffe und Datenumleitungen. Arbeitet nach dem Fetch-Decode-Execute-Zyklus und generiert die Steuersignale für alle CPU-Komponenten.
+
+**Stack Pointer (SP)**  
+Register, das die aktuelle Spitze des Stacks (Kellerspeicher) im RAM adressiert. Wird beim Aufruf von Funktionen inkrementiert (Speicher reservieren) und beim Rücksprung dekrementiert (Speicher freigeben). Grundlage für Funktionsaufrufe und lokale Variablen.
+
+**Flag Register (Statusregister)**  
+Spezialregister, das Zustandsinformationen nach Operationen speichert: Zero Flag (Ergebnis = 0), Carry Flag (Übertrag aufgetreten), Overflow Flag (Überlauf), Sign Flag (negatives Ergebnis). Steuert bedingte Sprünge und arithmetische Korrekturen.
 
 **Portabilität**  
 Fähigkeit von Software, auf verschiedenen Systemen ohne Änderung zu laufen.
@@ -260,6 +302,9 @@ Passives Gerät an der Telefonleitung, das Sprachfrequenzen (0–4 kHz) von Date
 **SSD (Solid State Drive)**  
 Speichermedium auf Basis von NAND-Flash ohne bewegliche Teile. Zugriffszeiten unter 0,1 ms, sequenzielle Durchsätze von 500–7.000 MB/s (je nach Schnittstelle: SATA vs. NVMe). Hohe Stoßfestigkeit, begrenzte Schreib-Zyklen (→ TBW).
 
+**SoC (System on Chip)**  
+Integrierte Schaltung, die alle wichtigen Komponenten eines Computers auf einem einzigen Chip vereint: CPU, GPU, Speichercontroller, I/O-Schnittstellen. Reduziert Stromverbrauch und Platzhbedarf. Beispiele: Apple M1/M2, Qualcomm Snapdragon, Raspberry Pi BCM-Chips.
+
 **Southbridge**  
 Klassische Chipsatz-Komponente für langsame Peripherie (USB, Audio). Obsolet.
 
@@ -269,6 +314,9 @@ Auslagerung von RAM-Inhalten auf Festplatte wenn Speicher voll. Sehr langsam.
 ---
 
 ### T
+
+**Taktgeber (Oscillator / Timer-IC)**  
+Quarzoszillator auf dem Mainboard, der das Master-Clock-Signal erzeugt. Alle Komponenten (CPU, RAM, Busse) synchronisieren ihre Operationen an diesem Takt. Typische Frequenzen: 25–100 MHz Basis-Takt, die CPU multipliziert diesen intern auf mehrere GHz.
 
 **TBW (Terabytes Written)**  
 Herstellerangabe für die Lebensdauer einer SSD, die angibt, wie viele Terabytes insgesamt auf das Laufwerk geschrieben werden können, bevor der NAND-Flash messbar an Zuverlässigkeit verliert.
@@ -282,6 +330,12 @@ Vorläufer des modernen DRAM, in den 1950er/60er Jahren erforscht. Die erste Gen
 **Taktfrequenz**  
 Anzahl der Taktzyklen pro Sekunde. Gemessen in GHz (Gigahertz).
 
+**Thin Client**  
+Minimaler Computer ohne eigene leistungsstarke Hardware. Führt keine lokale Datenverarbeitung durch, sondern greift auf zentrale Server oder virtuelle Desktops zu. Geringer Stromverbrauch, einfache Verwaltung, typisch in Callcentern und Krankenhäusern.
+
+**Supercomputer**  
+Höchstleistungsrechner mit extrem hoher Rechenleistung (gemessen in Petaflops oder Exaflops). Eingesetzt für Wettervorhersage, Klimaforschung, Molekulardynamik, Kryptographie und KI-Training. Besteht aus Tausenden von Knoten mit massiv paralleler Architektur.
+
 **TPM (Trusted Platform Module)**  
 Sicherheits-Chip für sichere Speicherung von Verschlüsselungsschlüsseln.
 
@@ -292,6 +346,9 @@ Sicherheits-Chip für sichere Speicherung von Verschlüsselungsschlüsseln.
 **UEFI (Unified Extensible Firmware Interface)**  
 Modernes Firmware-Interface, das BIOS ersetzt. Bietet Secure Boot und GUI.
 
+**Secure Boot**  
+Sicherheitsfunktion in UEFI, die beim Systemstart nur vertrauenswürdige, signierte Bootloader und Betriebssystem-Kernel lädt. Verhindert das Ausführen von Malware während des Boot-Vorgangs (Rootkits, Bootkits).
+
 ---
 
 ### V
@@ -300,7 +357,7 @@ Modernes Firmware-Interface, das BIOS ersetzt. Bietet Secure Boot und GUI.
 Zentrale Eigenschaft von Speichermedien: **Volatiler** Speicher verliert seine Daten bei Stromausfall (z. B. RAM, DRAM, CPU-Cache). **Nicht-volatiler** Speicher behält Daten dauerhaft (z. B. NAND-Flash, SSD, HDD, ROM, EEPROM).
 
 **VRM (Voltage Regulator Module)**  
-Spannungsregler auf dem Mainboard, die 12V zu 1-2V für CPU konvertieren.
+Stromversorgungsmodul auf dem Mainboard, das die Spannung aus dem Netzteil auf die vom Prozessor benötigte niedrige Betriebsspannung (ca. 1,0–1,3 V) regelt. Besteht aus Spulen, Kondensatoren und MOSFETs. Bessere VRMs ermöglichen stabilere Übertaktung.
 
 ---
 

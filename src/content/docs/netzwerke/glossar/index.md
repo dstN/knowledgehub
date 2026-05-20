@@ -9,6 +9,9 @@ Willkommen im Netzwerk-Glossar! Hier findest du alle wichtigen Fachbegriffe rund
 
 ## A
 
+### **Access Point (AP)**
+Netzwerkgerät auf Schicht 1 und 2, das drahtlose Netzwerke (WLAN) bereitstellt. Verbindet Wireless-Clients (Laptops, Smartphones) mit dem kabelgebundenen Netzwerk. Typisch in Heimroutern integriert oder als separates Gerät in Unternehmen eingesetzt.
+
 ### **ADSL (Asymmetric Digital Subscriber Line)**
 Älterer DSL-Standard für Breitband-Internet über Kupfer-Telefonleitungen. Asymmetrisch bedeutet: Der Download ist deutlich schneller als der Upload (typisch 1–8 Mbit/s Download, 128 Kbit/s–1 Mbit/s Upload). Reicht für einfaches Surfen, ist aber für moderne Anwendungen wie 4K-Streaming nicht mehr ausreichend.
 
@@ -73,6 +76,9 @@ Bereitstellung von IT-Ressourcen (Rechenleistung, Speicher, Software) über das 
 ### **CDN (Content Delivery Network)**
 Netzwerk aus geografisch verteilten Servern, das Inhalte (Webseiten, Videos, Bilder) näher zum Endnutzer bereitstellt. Reduziert Latenzzeiten und entlastet das Ursprungsserver-Backend. Bekannte Anbieter: Cloudflare, Akamai, AWS CloudFront. Wird häufig für Streaming-Dienste und große Websites eingesetzt.
 
+### **CRC (Cyclic Redundancy Check)**
+Mathematisches Verfahren zur Fehlererkennung bei der Datenübertragung. Jeder Frame erhält eine Prüfsumme, die vom Empfänger neu berechnet und verglichen wird. Bei Abweichung wird der Frame verworfen. Wird auf Schicht 2 (Sicherungsschicht) eingesetzt.
+
 ### **CIDR (Classless Inter-Domain Routing)**
 Flexible Subnetzierungsmethode, die die starre Klassenlogik (A, B, C) durch variable Subnetzmasken ersetzt. Die Schreibweise ist `IP/Präfix`, z.B. 192.168.1.0/24.
 
@@ -90,6 +96,9 @@ Breitbandtechnologie, die Hochgeschwindigkeits-Internet über vorhandene Kupfer-
 
 ### **DSL-Modem**
 Gerät, das das digitale DSL-Signal in ein für den Computer nutzbares Format wandelt. Verbindet die Telefonleitung (nach dem Splitter) mit dem Router oder direkt mit einem PC. Früher separates Gerät, heute meist im Breitbandrouter integriert.
+
+### **Datagram**
+Dateneinheit bei verbindungslosen Protokollen wie UDP. Im Gegensatz zu TCP-Segmenten hat ein Datagramm keinen Verbindungsaufbau, keine Quittierung und keine Garantie für die Zustellung. Es wird einfach versendet („Best-Effort").
 
 ### **Data in Transit / Data at Rest**
 Zwei Zustände, in denen Daten gespeichert oder übertragen werden. **Data in Transit**: Daten während der Übertragung über ein Netzwerk (z. B. HTTPS-Verbindung). **Data at Rest**: Daten in gespeichertem Zustand auf einem Datenträger (z. B. verschlüsselte Festplatte).
@@ -114,6 +123,11 @@ Das Netzwerk 0.0.0.0/0 repräsentiert alle möglichen IPv4-Adressen. In Routing-
 ---
 
 ## E
+
+### **Encapsulation (Datenkapselung)**
+Prozess im OSI-Modell, bei dem jede Schicht Daten von der darüberliegenden Schicht empfängt und mit eigenem Header (und ggf. Trailer) umschließt, bevor sie zur nächsten Schicht weitergegeben werden. Schicht 4 fügt TCP-Header hinzu (→ Segment), Schicht 3 fügt IP-Header hinzu (→ Paket), Schicht 2 fügt Ethernet-Header hinzu (→ Frame). Beim Empfänger wird dieser Vorgang in umgekehrter Richtung durchgeführt (Decapsulation).
+
+**Beispiel:** HTTP-Daten → TCP-Header → IP-Header → Ethernet-Frame → Übertragung als Bits.
 
 ### **E-Mail-Server**
 Server-Rolle zur Zustellung, zum Empfang und zur Verwaltung von E-Mails. Nutzt **SMTP** (Port 25/587) zum Senden und **POP3** (Port 110) oder **IMAP** (Port 143) zum Empfang/Postfachverwaltung. Lösungen: Microsoft Exchange, Postfix, Sendmail.
@@ -181,6 +195,9 @@ Technologie für effizientes Routing in WANs und Provider-Netzwerken. Datenpaket
 
 ## N
 
+### **NIC (Network Interface Card)**
+Netzwerkkarte, die einen Computer mit dem Netzwerk verbindet. Jede NIC hat eine weltweit eindeutige MAC-Adresse. Heute meist direkt auf dem Mainboard integriert, früher als Steckkarte (PCI/PCIe).
+
 ### **NAS (Network Attached Storage)**
 Dediziertes Speichergerät, das Dateien zentral über ein Netzwerk bereitstellt. Entspricht einem einfachen Dateiserver für Heim- und Kleinunternehmensnetzwerke. Kommuniziert über SMB/CIFS (Windows) oder NFS (Linux).
 
@@ -237,6 +254,9 @@ Synonym für Präfix – die Anzahl der Bits, die zum Netzanteil gehören.
 
 ## R
 
+### **Repeater**
+Netzwerkgerät auf Schicht 1, das geschwächte Signale verstärkt und weiterleitet. Ermöglicht größere Übertragungsdistanzen, indem es den Signalverlust auf langen Kabelstrecken ausgleicht. Wird heute meist durch Switches ersetzt.
+
 ### **Router**
 Netzwerkgerät auf Schicht 3 (Vermittlungsschicht), das Datenpakete zwischen verschiedenen Netzwerken weiterleitet. Nutzt Routing-Tabellen, um den optimalen Pfad zum Ziel zu bestimmen. Heimrouter verbinden das LAN mit dem Internet (WAN-Port), Enterprise-Router verbinden Standorte über WAN-Leitungen.
 
@@ -251,6 +271,9 @@ In jedem Subnetz gibt es zwei reservierte Adressen, die nicht für Hosts genutzt
 ---
 
 ## S
+
+### **Socket**
+Kombination aus IP-Adresse und Portnummer, die eine eindeutige Ende-zu-Ende-Verbindung zwischen zwei Anwendungen identifiziert. Beispiel: `192.168.1.100:443` = IP + HTTPS-Port. Grundlage für TCP- und UDP-Kommunikation.
 
 ### **SDSL (Symmetric Digital Subscriber Line)**
 DSL-Variante mit symmetrischen Geschwindigkeiten (Download = Upload). Wichtig für Server-Betrieb, Videokonferenzen und Cloud-Anwendungen. Teurer als asymmetrische DSL-Varianten, da die Telefonleitung vollständig für Daten genutzt wird (keine gleichzeitige Telefonie).

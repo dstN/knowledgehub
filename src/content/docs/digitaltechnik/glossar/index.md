@@ -9,6 +9,9 @@ Alle wichtigen Fachbegriffe der Digitaltechnik – von Zahlensystemen über Bool
 
 ## A
 
+### **ALU (Arithmetic Logic Unit)**
+Kombinierte Rechen- und Logikeinheit im Prozessor. Führt arithmetische Operationen (Addition, Subtraktion) und logische Operationen (AND, OR, NOT, XOR) aus. bildet das Kernstück jedes Prozessors und ist direkt mit den Registern verbunden.
+
 ### **AND (Logisches UND)**
 Grundgatter der Booleschen Algebra. Der Ausgang ist nur dann `1`, wenn **alle** Eingänge `1` sind. Wahrheitstabelle: `0 AND 0 = 0`, `1 AND 1 = 1`, sonst `0`. Symbol: `·` oder `&`.
 
