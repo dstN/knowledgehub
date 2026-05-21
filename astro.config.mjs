@@ -186,6 +186,18 @@ export default defineConfig({
 							label: '10 WANs & DSL',
 							slug: 'netzwerke/09-wan-dsl',
 						},
+						{
+							label: '11 Frame Relay & MPLS',
+							slug: 'netzwerke/10-frame-relay',
+						},
+						{
+							label: '12 Mobilfunktechnologien',
+							slug: 'netzwerke/11-mobilfunk',
+						},
+						{
+							label: '13 Satellitennetze',
+							slug: 'netzwerke/12-satelliten',
+						},
 						{ label: 'IP & Subnetting Cheatsheet', slug: 'netzwerke/cheatsheet' },
 						{ label: 'Netzwerk-Glossar', slug: 'netzwerke/glossar' },
 					],
@@ -196,6 +208,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Subnetz-Rechner', link: '/tools/subnet-rechner/' },
 						{ label: 'Binär-Konverter', link: '/tools/binaer-konverter/' },
+						{ label: 'Linux CLI Cheatsheet', slug: 'tools/linux-cheatsheet' },
 					],
 				},
 				{

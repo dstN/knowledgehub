@@ -30,8 +30,19 @@ Umgekehrtes Konzept zu Subnetting: Das Zusammenfassen mehrerer kleinerer Netzwer
 
 ## B
 
+### **Basisstation (Base Station)**
+Sende- und Empfangsstation in einem Mobilfunknetz, die die Funkverbindung zu Mobilgeräten (Smartphones, Tablets, IoT-Geräten) herstellt. Jede Basisstation versorgt eine Zelle (Cell) und ist mit dem Kernnetz (Core Network) verbunden. Je nach Größe: Makrozellen-Basisstationen (hohe Sendeleistung, große Reichweite) oder kleinere Mikro-/Picozellen-Basisstationen.
+
+### **BeiDou**
+Chinesisches globales Satellitennavigationssystem, vergleichbar mit GPS, GLONASS und Galileo. Bietet weltweite Abdeckung mit 35 Satelliten und besondere Funktionen wie Kurznachrichten-Übertragung über das Navigationssystem hinaus. Vollständige globale Abdeckung seit 2020.
+
 ### **Backbone**
 Das Kernnetzwerk eines Providers oder Unternehmens, das die Hauptdatenverbindungen zwischen verschiedenen Regionen oder Standorten trägt. Ein typisches Provider-Backbone umfasst Tausende von Kilometern Glasfaser, redundante Leitungen und Übertragungskapazitäten von mehreren Terabit pro Sekunde.
+
+### **Broadcast-Adresse**
+Die letzte IP-Adresse in einem Subnetz. Sie wird verwendet, um an **alle** Geräte im Netzwerk zu senden. Diese Adresse ist nicht für Hosts reservierbar.
+
+**Beispiel:** In 192.168.1.0/24 ist die Broadcast-Adresse 192.168.1.255.
 
 ### **B-Kanal (Bearer Channel)**
 ISDN-Übertragungskanal mit einer Geschwindigkeit von **64 Kbit/s**. Jeder B-Kanal kann für Sprach- oder Datenübertragung genutzt werden. Mehrere B-Kanäle können gebündelt werden, um höhere Bandbreiten zu erreichen (z.B. 2 B-Kanäle = 128 Kbit/s).
@@ -50,18 +61,6 @@ Server-Rolle, die die Geschäftslogik (Business Logic) einer Anwendung hostet. B
 
 ### **Autorisierung**
 Zuweisung von Rechten und Zugriffsberechtigungen nach erfolgreicher Authentifizierung. Regelt, welche Ressourcen ein Benutzer nutzen darf (Prinzip der **geringsten Rechte / Least Privilege**).
-
-### **Bits (Host-Bits & Netz-Bits)**
-IPv4-Adressen bestehen aus insgesamt 32 Bits. Diese werden aufgeteilt in:
-- **Netz-Bits:** Identifizieren das Netzwerk (definiert durch die Subnetzmaske)
-- **Host-Bits:** Identifizieren einen einzelnen Host im Netzwerk
-
-**Beispiel:** In 192.168.1.0/24 sind die ersten 24 Bits Netz-Bits (192.168.1), die letzten 8 Bits Host-Bits (.0–.255).
-
-### **Broadcast-Adresse**
-Die letzte IP-Adresse in einem Subnetz. Sie wird verwendet, um an **alle** Geräte im Netzwerk zu senden. Diese Adresse ist nicht für Hosts reservierbar.
-
-**Beispiel:** In 192.168.1.0/24 ist die Broadcast-Adresse 192.168.1.255.
 
 ---
 
@@ -124,6 +123,9 @@ Das Netzwerk 0.0.0.0/0 repräsentiert alle möglichen IPv4-Adressen. In Routing-
 
 ## E
 
+### **EGNOS (European Geostationary Navigation Overlay Service)**
+Europäisches satellitengestütztes Korrektursystem für GNSS (GPS, GLONASS, Galileo). Verbessert die Positionsgenauigkeit von 3–5 Metern auf 1–2 Meter. Wichtig für sicherheitskritische Anwendungen wie Luft- und Seefahrt. Ähnliche Systeme: WAAS (USA), SBAS (generisch).
+
 ### **Encapsulation (Datenkapselung)**
 Prozess im OSI-Modell, bei dem jede Schicht Daten von der darüberliegenden Schicht empfängt und mit eigenem Header (und ggf. Trailer) umschließt, bevor sie zur nächsten Schicht weitergegeben werden. Schicht 4 fügt TCP-Header hinzu (→ Segment), Schicht 3 fügt IP-Header hinzu (→ Paket), Schicht 2 fügt Ethernet-Header hinzu (→ Frame). Beim Empfänger wird dieser Vorgang in umgekehrter Richtung durchgeführt (Decapsulation).
 
@@ -136,10 +138,34 @@ Server-Rolle zur Zustellung, zum Empfang und zur Verwaltung von E-Mails. Nutzt *
 
 ## F
 
+### **Femtozelle (Femtocell)**
+Sehr kleine Mobilfunkzelle für den Einsatz in Privathaushalten oder kleinen Büros. Deckt Bereiche von wenigen Metern ab und wird über den bestehenden Internetanschluss mit dem Mobilfunknetz verbunden. Verbessert die Empfangsqualität in Gebäuden mit schlechter Außendeckung.
+
+### **Frame Relay**
+Historische Paketvermittlungstechnologie für Wide Area Networks (WANs) aus den 1980er/1990er Jahren. Nutzt virtuelle Verbindungen (PVCs) und ist einfacher als X.25, aber mit begrenzter Fehlererkennung und QoS. Wird heute weitgehend durch MPLS und moderne Breitbandtechnologien abgelöst.
+
+### **Frequenz / Frequenzband**
+Maß für die Schwingungsrate elektromagnetischer Wellen, entscheidend für die Datenübertragungsrate im Mobilfunk. Höhere Frequenzen ermöglichen mehr Daten, haben aber geringere Reichweite und schlechtere Durchdringung von Gebäuden. **Einheiten:** Hz, kHz, MHz, GHz. Mobilfunk nutzt typischerweise Bereiche von 700 MHz bis 3,5 GHz (5G bis 28 GHz und höher).
+
 ### **Firewall**
 Primäre Sicherheitsbarriere zwischen internem und externem Netzwerk. Analysiert Datenpakete und erlaubt oder blockiert Verbindungen anhand von Sicherheitsregeln (Policies). Typen: Paketfilter (Layer 3/4), Stateful Inspection, Application-Layer (WAF, Layer 7).
 
 ---
+
+### **5G (Fifth Generation)**
+Fünfte Mobilfunkgeneration (ab 2019) mit Datenraten bis zu 10 Gbit/s und extrem niedriger Latenz (< 1 ms). Ermöglicht Echtzeitanwendungen wie autonomes Fahren, Telechirurgie, Smart Cities und massive IoT-Vernetzung. Nutzt Frequenzen bis zu 100 GHz.
+
+### **4G / LTE (Fourth Generation / Long Term Evolution)**
+Vierte Mobilfunkgeneration (ab 2012) mit Datenraten bis zu 1 Gbit/s (LTE-Advanced). Revolutionierte mobiles Internet und ermöglicht HD-Video-Streaming, Videoanrufe und mobile Breitbandnutzung. Nachfolger von 3G/UMTS, Vorgänger von 5G.
+
+### **3G / UMTS (Third Generation / Universal Mobile Telecommunications System)**
+Dritte Mobilfunkgeneration (ab 2003), die mobiles Internet und Videoanrufe ermöglichte. Datenraten bis zu 42 Mbit/s (mit HSPA). Einführung der Packet-Switched-Datenübertragung statt nur Circuit-Switched-Telefonie.
+
+### **2G / GSM (Second Generation / Global System for Mobile Communications)**
+Zweite Mobilfunkgeneration (ab 1993), die die Digitalisierung der Mobiltelefonie brachte. Ermöglicht neben Sprache auch SMS und einfache Datenübertragung (GPRS, EDGE). Datenraten bis zu 384 kbit/s.
+
+### **1G (First Generation)**
+Erste Mobilfunkgeneration (ab 1978) mit analoger Sprachübertragung. Keine Datenübertragung möglich, nur reine Telefonie. In Deutschland als C-Netz (450 MHz) und später D-Netz (900 MHz) bekannt.
 
 ### **G.fast**
 Neuester DSL-Standard für extrem hohe Datenraten (bis zu **1 Gbit/s**) über kurze Kupferleitungen (max. ca. 100–250 Meter). Optimiert für Gebäude- und Wohnungsanschlüsse (Fiber-to-the-Building). Brücke zwischen Glasfaser und Endnutzer ohne komplette Neuverkabelung.
@@ -154,6 +180,9 @@ Die Anzahl der Bits in einer IP-Adresse, die für die Adressierung einzelner Hos
 ---
 
 ## I
+
+### **IoT (Internet of Things)**
+Vernetzung physischer Geräte (Sensoren, Aktoren, Smart-Home-Geräte, Industriemaschinen) über das Internet. 5G wurde speziell für massive IoT-Anbindung optimiert (bis zu 1 Million Geräte pro km²). Anwendungen: Smart Cities, Industrie 4.0, vernetzte Fahrzeuge, medizinische Überwachung.
 
 ### **ISDN (Integrated Services Digital Network)**
 Vorläufer moderner Breitbandtechnologien. ISDN ermöglichte digitale Sprach- und Datenübertragung über Telefonleitungen mit bis zu 128 Kbit/s (2 gebündelte B-Kanäle). Wurde weitgehend von DSL und VoIP abgelöst.
@@ -185,6 +214,18 @@ Der gesamte Bereich von IPv4-Adressen, die einem Netzwerk zugeordnet sind. Ein g
 
 ## M
 
+### **Makrozelle (Macrocell)**
+Große Mobilfunkzelle mit hoher Sendeleistung (bis zu einigen Watt), die Bereiche von mehreren Kilometern abdeckt. Eingesetzt auf dem Land, entlang von Autobahnen und zur flächendeckenden Grundversorgung. Basisstationen auf Masten oder Gebäuden.
+
+### **Mikrozelle (Microcell)**
+Mittelgroße Mobilfunkzelle mit geringerer Sendeleistung als Makrozellen, die Bereiche von 100-500 Metern abdeckt. Eingesetzt in städtischen Bereichen zur Kapazitätserhöhung dort, wo Makrozellen nicht ausreichen. Basisstationen oft an Gebäuden oder Straßenlaternen.
+
+### **Multi-GNSS**
+Gleichzeitige Nutzung mehrerer Satellitennavigationssysteme (GPS, GLONASS, Galileo, BeiDou) durch einen Empfänger. Durch Kombination der Signale von verschiedenen Systemen erhält man höhere Genauigkeit (mehr Satelliten sichtbar) und bessere Zuverlässigkeit (Redundanz bei Ausfall eines Systems).
+
+### **MHz (Megahertz)**
+Frequenzeinheit: 1 Million Schwingungen pro Sekunde (10⁶ Hz). Frühere Mobilfunkgenerationen (2G, 3G) und UKW-Radio nutzen Frequenzen im MHz-Bereich. Niedrigere MHz-Frequenzen haben größere Reichweite und bessere Gebäudedurchdringung als höhere Frequenzen.
+
 ### **MFA (Mehr-Faktor-Authentifizierung)**
 Authentifizierungsverfahren, das mindestens zwei unabhängige Faktoren kombiniert: **Wissen** (Passwort, PIN), **Besitz** (Smartphone, Hardware-Token) und **Inhärenz** (Fingerabdruck, Iris). Deutlich sicherer als reine Passwortauthentifizierung.
 
@@ -194,6 +235,9 @@ Technologie für effizientes Routing in WANs und Provider-Netzwerken. Datenpaket
 ---
 
 ## N
+
+### **NavIC / IRNSS (Indian Regional Navigation Satellite System)**
+Regionales indisches Satellitennavigationssystem. Deckt primär den asiatischen Raum (Indien und Umgebung) mit 7 Satelliten ab. Genauigkeit: ca. 10 Meter. Kein globales System, sondern optimiert für die regionale Navigation in Südasien.
 
 ### **NIC (Network Interface Card)**
 Netzwerkkarte, die einen Computer mit dem Netzwerk verbindet. Jede NIC hat eine weltweit eindeutige MAC-Adresse. Heute meist direkt auf dem Mainboard integriert, früher als Steckkarte (PCI/PCIe).
@@ -209,7 +253,7 @@ Die erste IP-Adresse in einem Subnetz. Sie identifiziert das Subnetz selbst und 
 ### **Netzanteil (Network-Anteil)**
 Der Teil einer IP-Adresse, der das Netzwerk identifiziert. Wird durch die Subnetzmaske definiert. Alle Geräte im selben Netzwerk haben den gleichen Netzanteil.
 
-**Beispiel:** In 192.168.1.0/24 ist 192.168.1 der Netzanteil (die erste drei Oktette).
+**Beispiel:** In 192.168.1.0/24 ist 192.168.1 der Netzanteil (die ersten drei Oktette).
 
 ### **NAT (Network Address Translation)**
 Verfahren, das private IP-Adressen in öffentliche IP-Adressen umwandelt und umgekehrt. Ermöglicht es, dass mehrere Geräte im LAN über eine einzige öffentliche IP-Adresse ins Internet kommunizieren können. Wird typischerweise im Router/Firewall durchgeführt.
@@ -230,11 +274,17 @@ Betriebsmodell, bei dem IT-Infrastruktur (Server, Speicher, Netzwerk) lokal im e
 
 ## P
 
+### **Picozelle (Picocell)**
+Kleine Mobilfunkzelle mit sehr geringer Reichweite (< 100m) für den Einsatz in Gebäuden, bei Veranstaltungen oder in stark frequentierten Innenbereichen (Shopping Center, Flughäfen). Erhöht die Kapazität in Bereichen mit hoher Nutzerdichte.
+
 ### **PAT (Port Address Translation)**
 Spezielle Form von NAT, bei der mehrere interne Geräte sich eine einzige öffentliche IP-Adresse teilen. Die Unterscheidung erfolgt über unterschiedliche Portnummern (NAT Overload). Standard in Heimroutern und kleinen Büros.
 
 ### **PaaS (Platform as a Service)**
 Cloud-Modell: Der Anbieter stellt eine fertig konfigurierte Entwicklungsplattform inkl. Laufzeitumgebung, Datenbanken und Frameworks bereit. Der Nutzer kümmert sich nur noch um Code und Daten. Beispiele: Heroku, AWS Elastic Beanstalk, Google App Engine.
+
+### **PVC (Permanent Virtual Circuit)**
+Permanente virtuelle Verbindung in Paketvermittlungsnetzwerken wie Frame Relay oder ATM. Ein PVC stellt eine feste logische Verbindung zwischen zwei Endpunkten her, auch wenn die physikalische Leitung geteilt wird. Im Gegensatz zu SVC (Switched Virtual Circuit), das dynamisch aufgebaut wird.
 
 ### **Patch-Management**
 Geregelter Prozess zur zeitnahen Schließung von Sicherheitslücken (CVEs) in Betriebssystemen, Firmware und Anwendungen. Schritte: Inventarisierung → Priorisierung (CVSS-Score) → Test → Rollout → Verifikation.
@@ -254,8 +304,8 @@ Synonym für Präfix – die Anzahl der Bits, die zum Netzanteil gehören.
 
 ## R
 
-### **Repeater**
-Netzwerkgerät auf Schicht 1, das geschwächte Signale verstärkt und weiterleitet. Ermöglicht größere Übertragungsdistanzen, indem es den Signalverlust auf langen Kabelstrecken ausgleicht. Wird heute meist durch Switches ersetzt.
+### **Roaming**
+Nutzung von Mobilfunkdiensten außerhalb des eigenen Netzbetreibers durch bilaterale Vereinbarungen zwischen Providern. Ermöglicht Konnektivität im Urlaub oder Geschäftsreisen im Ausland. Die Abrechnung erfolgt über den Heimatprovider. Wichtig für nahtlose mobile Kommunikation über Netzwerkgrenzen hinweg.
 
 ### **Router**
 Netzwerkgerät auf Schicht 3 (Vermittlungsschicht), das Datenpakete zwischen verschiedenen Netzwerken weiterleitet. Nutzt Routing-Tabellen, um den optimalen Pfad zum Ziel zu bestimmen. Heimrouter verbinden das LAN mit dem Internet (WAN-Port), Enterprise-Router verbinden Standorte über WAN-Leitungen.
@@ -271,6 +321,18 @@ In jedem Subnetz gibt es zwei reservierte Adressen, die nicht für Hosts genutzt
 ---
 
 ## S
+
+### **Satellitennavigation**
+Positionsbestimmung durch Empfang von Signalen von Navigationssatelliten. Mindestens 4 Satelliten nötig für dreidimensionale Positionsberechnung (Längengrad, Breitengrad, Höhe). Ohne Korrektursignale: Genauigkeit 3–5m; mit Korrektursignalen (EGNOS/WAAS): 1–2m; mit RTK/GBAS: < 1m.
+
+### **SBAS (Satellite-Based Augmentation System)**
+Satellitengestütztes Korrektursystem für GNSS. Überträgt Korrekturdaten über separate Satelliten an GNSS-Empfänger. Beispiele: EGNOS (Europa), WAAS (USA), MSAS (Japan). Verbessert die Genauigkeit auf 1–2 Meter für Luft- und Seefahrt.
+
+### **Starlink**
+Satelliteninternet-Projekt von SpaceX mit Tausenden von LEO-Satelliten (Low Earth Orbit, ca. 550 km Höhe) für globale Breitband-Internetabdeckung. Niedrigere Latenz (~30ms) als geostationäre Satelliten durch geringere Entfernung zur Erde. Ermöglicht Internetzugang in ländlichen und abgelegenen Gebieten.
+
+### **Smartphone**
+Mobilfunkendgerät, das Telefonie, mobiles Internet, Computing und verschiedene Sensoren (GPS, Kamera, Beschleunigungssensor) in einem Gerät kombiniert. Interagiert über Funk mit Basisstationen (Mobilfunk), Satelliten (GNSS) und Access Points (WLAN).
 
 ### **Socket**
 Kombination aus IP-Adresse und Portnummer, die eine eindeutige Ende-zu-Ende-Verbindung zwischen zwei Anwendungen identifiziert. Beispiel: `192.168.1.100:443` = IP + HTTPS-Port. Grundlage für TCP- und UDP-Kommunikation.
@@ -383,6 +445,9 @@ Das inverse Konzept der Subnetzmaske. Wird in Zugriffskontrolllisten (ACLs) und 
 
 ## Z
 
+### **Zelle (Cell)**
+Geografisches Versorgungsgebiet einer Basisstation im Mobilfunknetz. Jede Zelle hat eine eindeutige Identifikation und definierte Frequenzen. Zellen sind hexagonal angeordnet (Wabenstruktur), um flächendeckende Versorgung ohne Lücken zu ermöglichen. Größen: Makrozellen (km), Mikrozellen (100-500m), Picozellen (<100m), Femtozellen (<10m).
+
 ### **Zusammenhängende Bitfolge**
 Eine Anforderung in der Subnetzmaske: Alle Bits für den Netzanteil müssen zusammenhängend von links nach rechts folgen, gefolgt von allen Host-Bits.
 
@@ -399,4 +464,7 @@ Eine Anforderung in der Subnetzmaske: Alle Bits für den Netzanteil müssen zusa
 - [VLSM – Variable Length Subnet Masks](/netzwerke/02-vlsm/)
 - [Server-Architekturen & Cloud](/netzwerke/03-server-architekturen/)
 - [Netzwerksicherheit](/netzwerke/04-netzwerksicherheit/)
+- [Frame Relay & MPLS](/netzwerke/10-frame-relay/)
+- [Mobilfunktechnologien](/netzwerke/11-mobilfunk/)
+- [Satellitennetze](/netzwerke/12-satelliten/)
 - [OSI-Modell Glossar](/osi/glossar/)
