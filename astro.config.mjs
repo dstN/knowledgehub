@@ -123,6 +123,40 @@ export default defineConfig({
 								},
 							],
 						},
+						{
+							label: 'Infrastruktur & Betriebssicherheit',
+							collapsed: true,
+							items: [
+								{
+									label: '00 Übersicht & Lernziele',
+									slug: 'systemtechnik/00-uebersicht',
+								},
+								{
+									label: '01 Stromversorgung & USV',
+									slug: 'systemtechnik/01-stromversorgung',
+								},
+								{
+									label: '02 Leistungsarten',
+									slug: 'systemtechnik/02-leistungsarten',
+								},
+								{
+									label: '03 Kennzeichnung elektrischer Geräte',
+									slug: 'systemtechnik/03-kennzeichnung',
+								},
+								{
+									label: '04 Brandschutz in Rechenzentren',
+									slug: 'systemtechnik/04-brandschutz',
+								},
+								{
+									label: '05 Recycling & Entsorgung',
+									slug: 'systemtechnik/05-recycling',
+								},
+								{
+									label: 'Glossar Systemtechnik',
+									slug: 'systemtechnik/glossar',
+								},
+							],
+						},
 					],
 				},
 				{

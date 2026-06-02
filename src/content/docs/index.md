@@ -19,17 +19,25 @@ Willkommen bei **CaveHub** – deiner umfassenden Lernplattform zur Vorbereitung
 
 Starte direkt mit diesen Inhalten:
 
+**Hardware & Infrastruktur:**
+- [Hardware Grundlagen](/hardware/01-grundlagen/) – Evolution und Kategorisierung von IT-Systemen
+- [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren und Designphilosophien
+- [Speichertechniken](/hardware/06-speichertechniken/) – Von Lochkarten bis SSD, optische Datenträger im Vergleich
+- [Stromversorgung & USV](/systemtechnik/01-stromversorgung/) – Unterbrechungsfreie Stromversorgung und Ausfallsicherheit
+- [Brandschutz](/systemtechnik/04-brandschutz/) – Sicherheitsmaßnahmen in Rechenzentren
+
+**Netzwerke & Kommunikation:**
 - [OSI-Modell verstehen](/osi/) – Das Fundament der Netzwerkkommunikation
 - [Subnetting](/netzwerke/01-subnetting/) – Netzaufteilung, Binärrechnung, vollständige Berechnungsbeispiele
 - [CIDR – Classless Inter-Domain Routing](/netzwerke/01-subnetting/cidr/) – Von Klassen-IP zur flexiblen Netzaufteilung
 - [VLSM – Variable Length Subnet Masks](/netzwerke/02-vlsm/) – Flexible Subnetzierung mit unterschiedlichen Größen
-- [Hardware Grundlagen](/hardware/01-grundlagen/) – Evolution und Kategorisierung von IT-Systemen
-- [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren und Designphilosophien
-- [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
-- [Netzwerk-Glossar](/netzwerke/glossar/) – IP-Adressierung, Subnetting, VLSM
-- [Speichertechniken](/hardware/06-speichertechniken/) – Von Lochkarten bis SSD, optische Datenträger im Vergleich
 - [Server-Architekturen & Cloud](/netzwerke/03-server-architekturen/) – Server-Rollen, IaaS, PaaS und SaaS im Vergleich
 - [Netzwerksicherheit](/netzwerke/04-netzwerksicherheit/) – Firewall, IDS/IPS, VPN, Verschlüsselung, Defense in Depth
+
+**Glossare & Nachschlagewerk:**
+- [OSI-Glossar](/osi/glossar/) – Über 100 Fachbegriffe erklärt
+- [Netzwerk-Glossar](/netzwerke/glossar/) – IP-Adressierung, Subnetting, VLSM
+- [Systemtechnik-Glossar](/systemtechnik/glossar/) – Stromversorgung, Kennzeichnungen, Recycling
 
 ---
 
@@ -46,8 +54,18 @@ Alles über die physischen Komponenten eines Computers:
 - [EVA-Prinzip](/hardware/02-eva-prinzip/) – Eingabe → Verarbeitung → Ausgabe
 - [CPU & Architektur](/hardware/03-cpu-architektur/) – Prozessoren, ALU, Steuerwerk, RISC vs. CISC
 - [Mainboard & Chipsatz](/hardware/04-mainboard-chipsatz/) – Bussysteme, Taktgeber, Speicherhierarchie
-- [Glossar Hardware](/hardware/05-glossar/) – Alle Fachbegriffe
 - [Speichertechniken](/hardware/06-speichertechniken/) – Historische Meilensteine, optische Datenträger (CD/DVD/Blu-ray), DRAM, NAND-Flash, SSDs
+- [Glossar Hardware](/hardware/05-glossar/) – Alle Fachbegriffe
+
+#### Infrastruktur & Betriebssicherheit
+Stromversorgung, Betriebssicherheit und Nachhaltigkeit in IT-Systemen:
+
+- [Stromversorgung & USV](/systemtechnik/01-stromversorgung/) – Unterbrechungsfreie Stromversorgung, RTO/RPO, Redundanz, Ausfallsicherheit
+- [Leistungsarten](/systemtechnik/02-leistungsarten/) – Wirkleistung (P), Blindleistung (Q), Scheinleistung (S), Leistungsfaktor cos φ
+- [Kennzeichnung elektrischer Geräte](/systemtechnik/03-kennzeichnung/) – CE-Zeichen, RoHS, WEEE, FCC, UL, TÜV, Energy Star
+- [Brandschutz in Rechenzentren](/systemtechnik/04-brandschutz/) – Brandklassen, Löschmittel, Sicherheitsmaßnahmen, Normen (DIN, EN, ISO)
+- [Recycling & Entsorgung](/systemtechnik/05-recycling/) – Wertstoffe, Rückgewinnungsquoten, seltene Erden, Umweltstandards (R2, e-Stewards)
+- [Glossar Systemtechnik](/systemtechnik/glossar/) – Alle wichtigen Fachbegriffe
 
 ---
 
