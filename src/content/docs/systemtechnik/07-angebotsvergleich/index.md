@@ -199,5 +199,6 @@ Eine strukturierte Bewertungsmatrix ermöglicht objektive Vergleiche.
 
 ## Verwandte Themen
 
+- [Nutzwertanalyse](/systemtechnik/09-nutzwertanalyse/)
 - [Kostenbewertung & TCO](/systemtechnik/06-kostenbewertung/)
 - [Handelskalkulation](/systemtechnik/08-handelskalkulation/)

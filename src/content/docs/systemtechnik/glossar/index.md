@@ -16,8 +16,11 @@ Gewährleistung eines kontinuierlichen Betriebs auch bei Störungen. Messgröße
 
 ## B
 
+**Ausschlusskriterium (K.O.-Kriterium, Muss-Kriterium)**
+Mindestanforderung, die eine Alternative zwingend erfüllen muss. Bei Nichterfüllung scheidet die Alternative aus — unabhängig vom Gesamtnutzwert. Beispiel: Budget-Obergrenze, DSGVO-Konformität.
+
 **Bewertungsmatrix**
-Strukturiertes Verfahren zum Vergleich mehrerer Angebote mittels Gewichtung und Bewertung von Kriterien. Ermöglicht objektive Entscheidungsfindung.
+Strukturiertes Verfahren zum Vergleich mehrerer Angebote mittels Gewichtung und Bewertung von Kriterien. Ermöglicht objektive Entscheidungsfindung. Siehe auch [Nutzwertanalyse](/systemtechnik/09-nutzwertanalyse/).
 
 **Blindleistung (Q)**
 Elektrische Leistung, die bei Phasenverschiebung zwischen Spannung und Strom hin- und hergeleitet wird, ohne verbraucht zu werden. Einheit: Voltampere Reaktiv (var).
@@ -82,6 +85,12 @@ Schutzgerät gegen gefährliche Fehlerströme in der Elektroinstallation.
 Batterietyp mit separaten Elektrolyt-Tanks; skalierbar und unbegrenzte Zyklen.
 
 ## G
+
+**Gesamtnutzwert**
+Summe aller Teilnutzwerte einer Alternative in der Nutzwertanalyse. Die Alternative mit dem höchsten Gesamtnutzwert gewinnt (sofern keine K.O.-Kriterien verletzt sind). Maximalwert: 10,0.
+
+**Gewichtungsfaktor**
+Ausdruck der relativen Wichtigkeit eines Kriteriums in der Nutzwertanalyse (0,0 bis 1,0). Die Summe aller Gewichtungsfaktoren muss genau 1,0 (= 100 %) ergeben.
 
 **Gaslöschanlage**
 Automatische Brandbekämpfung mit Löschgasen (CO₂, Inertgase). Ideal für Rechenzentren.
@@ -158,6 +167,12 @@ Durchschnittliche Zeit zwischen zwei Ausfällen eines Systems. Maß für Zuverl�
 **N+1 Redundanz**
 Stromversorgung mit mindestens 2 identischen USV-Systemen.
 
+**Nutzwert**
+Ergebniswert einer Alternative in der Nutzwertanalyse; synonym mit Gesamtnutzwert. Eine einzige Zahl, die alle gewichteten Kriterien zusammenfasst.
+
+**Nutzwertanalyse (NWA)**
+Strukturierte Entscheidungsmethode (auch Scoring-Modell oder Punktwertverfahren) zum Vergleich mehrerer Alternativen anhand gewichteter Kriterien. Formel: Teilnutzwert = Punktzahl × Gewichtungsfaktor.
+
 ## O
 
 **Offline-USV (Standby)**
@@ -210,6 +225,9 @@ Zertifikat für ethisches und umweltgerechtes e-Waste-Recycling weltweit.
 
 ## S
 
+**Scoring-Modell**
+Synonym für Nutzwertanalyse. Bewertung von Alternativen durch Punktevergabe und Gewichtung von Kriterien.
+
 **Scheinleistung (S)**
 Geometrische Summe aus Wirkleistung und Blindleistung. Einheit: Voltampere (VA).
 
@@ -232,6 +250,9 @@ Automatische Brandbekämpfung mit Wasser. Für Rechenzentren oft ungeeignet (Har
 Gesamtsystem von Stromquelle bis Verbraucher (Trafo, USV, Verteilung).
 
 ## T
+
+**Teilnutzwert**
+Produkt aus Punktzahl und Gewichtungsfaktor für ein einzelnes Kriterium einer Alternative: Teilnutzwert = Punktzahl × Gewichtungsfaktor.
 
 **TCO (Total Cost of Ownership)**
 Gesamtkosten einer IT-Lösung über ihren gesamten Lebenszyklus (Anschaffung + Betrieb + Entsorgung).

@@ -164,6 +164,10 @@ export default defineConfig({
 									slug: 'systemtechnik/08-handelskalkulation',
 								},
 								{
+									label: '09 Nutzwertanalyse',
+									slug: 'systemtechnik/09-nutzwertanalyse',
+								},
+								{
 									label: 'Glossar Systemtechnik',
 									slug: 'systemtechnik/glossar',
 								},

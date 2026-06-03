@@ -47,5 +47,8 @@ Vergleichskriterien, Bewertungsmatrizen und systematische Angebotsanalyse.
 ### [08 Handelskalkulation](/systemtechnik/08-handelskalkulation/)
 Preisbildung, Gewinnmargen, Kostenaufschläge und Preiskalkulation für IT-Produkte.
 
+### [09 Nutzwertanalyse](/systemtechnik/09-nutzwertanalyse/)
+Strukturierte Entscheidungsfindung mit Kriterien, Gewichtung, Teilnutzwerten und Sensitivitätsanalyse.
+
 ### [Glossar Systemtechnik](/systemtechnik/glossar/)
 Wichtige Fachbegriffe nachschlagen.
