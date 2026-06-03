@@ -19,6 +19,8 @@ Nach Durcharbeiten dieses Kapitels kannst du:
 
 ## Themen dieses Kapitels
 
+### Infrastruktur & Betriebssicherheit
+
 ### [01 Stromversorgung](/systemtechnik/01-stromversorgung/)
 Unterbrechungsfreie Stromversorgung (USV), Redundanz, Notfallbetrieb und Ausfallsicherheit.
 
@@ -33,6 +35,17 @@ Brandschutzanforderungen in Rechenzentren, Brandklassen und Löschmittel.
 
 ### [05 Recycling & Entsorgung](/systemtechnik/05-recycling/)
 Nachhaltige Entsorgung, Rückgewinnungsquoten und Umweltschutz in der IT.
+
+### Wirtschaft & Kostenmanagement
+
+### [06 Kostenbewertung](/systemtechnik/06-kostenbewertung/)
+TCO (Total Cost of Ownership), ROI, Leasing vs. Kauf, Amortisationszeit und Finanzierungsmodelle.
+
+### [07 Angebotsvergleich](/systemtechnik/07-angebotsvergleich/)
+Vergleichskriterien, Bewertungsmatrizen und systematische Angebotsanalyse.
+
+### [08 Handelskalkulation](/systemtechnik/08-handelskalkulation/)
+Preisbildung, Gewinnmargen, Kostenaufschläge und Preiskalkulation für IT-Produkte.
 
 ### [Glossar Systemtechnik](/systemtechnik/glossar/)
 Wichtige Fachbegriffe nachschlagen.

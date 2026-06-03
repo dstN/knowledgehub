@@ -152,6 +152,18 @@ export default defineConfig({
 									slug: 'systemtechnik/05-recycling',
 								},
 								{
+									label: '06 Kostenbewertung',
+									slug: 'systemtechnik/06-kostenbewertung',
+								},
+								{
+									label: '07 Angebotsvergleich',
+									slug: 'systemtechnik/07-angebotsvergleich',
+								},
+								{
+									label: '08 Handelskalkulation',
+									slug: 'systemtechnik/08-handelskalkulation',
+								},
+								{
 									label: 'Glossar Systemtechnik',
 									slug: 'systemtechnik/glossar',
 								},
