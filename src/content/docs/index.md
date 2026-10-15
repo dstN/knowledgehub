@@ -139,4 +139,4 @@ CaveHub entstand als Lernmaterialien-Sammlung für die Fachinformatiker-Umschulu
 
 ---
 
-**Viel Erfolg beim Lernen!**
+**Viel Erfolg beim Lernen!** ✨
